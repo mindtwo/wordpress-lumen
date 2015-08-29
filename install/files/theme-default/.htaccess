@@ -1,0 +1,13 @@
+
+Deny from all
+
+<Files ~ "\.(html|png|jpg|gif|css|js|font|eot|svg|ttf|woff|otf)$">
+    Order Deny,Allow
+    Satisfy any
+    Allow from all
+</Files>
+<FilesMatch "^(refresh)\.php$">
+    Order Deny,Allow
+    Satisfy any
+    Allow from all
+</FilesMatch>

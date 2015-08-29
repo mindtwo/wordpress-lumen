@@ -1,0 +1,10 @@
+<div class="list-errors">
+    <h3>Eingabe nicht korrekt!</h3>
+    <ul>
+        {% for error in errors %}
+            {% autoescape false %}
+                <li><span class="fa fa-chevron-circle-right"></span> {{ error }}</li>
+            {% endautoescape %}
+        {% endfor %}
+    </ul>
+</div>

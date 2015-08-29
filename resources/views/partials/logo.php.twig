@@ -1,0 +1,9 @@
+<strong class="logo navbar-brand" itemprop="name">
+    <a href="/">
+        <?php if(svg_ready()){ ?>
+        <img src="<?php theme_images_path(); the_field('logo_vektor_image_filename', 'option'); ?>" height="106" width="252" alt="<?php the_field('logo_alt', 'option'); ?>">
+        <?php } else { ?>
+        <img src="<?php theme_images_path(); the_field('logo_image_filename', 'option'); ?>" height="106" width="252" alt="<?php the_field('logo_alt', 'option'); ?>">
+        <?php } ?>
+    </a>
+</strong>

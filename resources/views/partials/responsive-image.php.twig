@@ -1,0 +1,14 @@
+{% if image_large and fancybox %}
+    <a href="{{image_large}}" {% if fancybox %} class="fancybox"{% endif %}>
+{% elseif permalink %}
+    <a href="{{permalink}}">
+{% endif %}
+    <picture>
+        <!--[if IE 9]><video style="display: none;><![endif]-->
+        <source srcset="{{ image }}" media="(min-width: 800px)">
+        <!--[if IE 9]></video><![endif]-->
+        <img srcset="{{ image_responsive }}" class="{% if image_class %} {{ image_class }} {% endif %}" {% if alt %} alt="{{ alt }}" {% endif %}>
+    </picture>
+{% if permalink or image_large %}
+    </a>
+{% endif %}

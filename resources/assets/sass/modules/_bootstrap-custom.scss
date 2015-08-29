@@ -1,0 +1,96 @@
+// custom variables
+$base-min-width: 320px;
+
+/* colors */
+$white: #fff;
+$blue: #0c479d;
+$light-blue: #acc7e5;
+$gray-darker: #333;
+$gray-dark: #666;
+$gray: #878787;
+$light-gray: #f6f6f6;
+$yellow: #e6a117;
+$brand-danger: #b00;
+$brand-success: #00b29d;
+$black: #000;
+$golden: #ffb219;
+
+/* Scaffolding */
+$base-text-color: #1d1d1b;
+$text-color: #727272;
+$link-color: #818181;
+$link-hover-color: $primary-color;
+$body-bg: #1d1d1b;
+
+/* Typography */
+$font-size-base: 22px;
+$base-line-height: 32px;
+$font-family-base: 'TitilliumWeb', Arial, Helvetica, sans-serif;
+$font-arial: Arial, Helvetica, sans-serif;
+
+$font-size-h1:48px;
+$font-size-h2:26px;
+$font-size-h3:20px;
+$font-size-h4:15px;
+$font-size-h5:15px;
+$font-size-h6:14px;
+$headings-font-weight: 700;
+$headings-color: $gray-darker;
+
+/* Iconography */
+$icon-font-path: "../fonts/";
+
+/* Buttons */
+$btn-font-weight: 700;
+$btn-default-color: $white;
+$btn-default-bg: #0a50a1;
+$btn-default-border: rgba(8,64,128,.8);
+
+/* Forms */
+$input-bg: #eaeaea;
+$input-color: $blue;
+$input-color-placeholder: $blue;
+$input-border: rgba(255,255,255,.75);
+$input-border-radius: 4px;
+$input-border-focus: rgba(255,255,255,.75);
+$input-height-base: 34px;
+
+/* Dropdowns */
+$dropdown-bg: transparent;
+$dropdown-link-color: #797979;
+$dropdown-link-hover-color: $primary-color;
+$dropdown-link-hover-bg : transparent;
+$dropdown-border: transparent;
+
+/* Container sizes */
+$container-lg: 1200px;
+$container-md: 990px;
+
+/* Navbar */
+$navbar-margin-bottom: 0;
+$navbar-border-radius: 0;
+$navbar-margin-bottom: 24px;
+$navbar-height: auto;
+$navbar-padding-horizontal: 0;
+$navbar-padding-vertical: 0;
+$navbar-default-color: $white;
+$navbar-default-bg: transparent;
+$navbar-default-border: 0;
+$navbar-default-link-color: $white;
+$navbar-default-link-hover-color: $primary-color;
+$navbar-default-link-active-color: $primary-color;
+$navbar-default-link-active-bg: transparent;
+$navbar-default-toggle-hover-bg: $gray;
+$navbar-default-toggle-icon-bar-bg: $white;
+$navbar-margin-bottom: 0;
+
+/* Navs */
+
+$nav-link-padding: 0;
+
+/* Media queries breakpoints */
+$screen-md: 990px;
+$screen-sm :767px;
+
+
+$well-bg: lime;

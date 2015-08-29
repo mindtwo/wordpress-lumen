@@ -1,0 +1,34 @@
+# Some system files
+.idea
+.DS_Store
+Thumbs.db
+
+
+# External repositories
+/resources/assets/bower_components
+/lumen/vendor
+
+
+# Public folder
+/public/**
+!/public/l
+!/public/l/**
+
+
+# Backup files
+/backup/backups/**
+!/backup
+!/backup/backups
+
+
+# Asset eesources cache files
+/resources/assets/.sass-cache/**
+/resources/assets/sass/.sass-cache/**
+
+
+# Secure config files from git?
+backup/start.sh
+/install/config/**
+!/install/config/*-sample.json
+# /lumen/.env.*
+!/lumen/.env

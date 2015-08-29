@@ -1,0 +1,30 @@
+{% extends "layout.base" %}
+{% block content %}
+    <div id="content" class="container">
+        <h1>Suche</h1>
+        <div class="post-holder">
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+            <article id="post_<?php the_ID(); ?>" <?php post_class('clearfix blog-post row'); ?> role="article" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <?php include(THEME_INCLUDES . 'partials/blog-thumbnail.php'); ?>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-holder">
+                <time itemprop="datePublished" content="<?php echo get_the_date('Y-m-d'); ?>">
+                    <span class="fa fa-clock-o"></span> <?php echo get_the_date('j. F Y'); ?>
+                </time>
+                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <?php the_excerpt(); ?>
+                <a class="read-more" href="<?php the_permalink(); ?>">Mehr: <?php the_title(); ?></a>
+            </div>
+            </article>
+            <hr>
+            <?php endwhile; else : ?>
+            <article class="blog-post row">
+                <h2>Oops, Es wurde kein Inhalt gefunden!</h2>
+            </article>
+            <?php endif; ?>
+        </div>
+
+        {% include 'partials/pager.php.twig' %}
+    </div>
+{% endblock %}

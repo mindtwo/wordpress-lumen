@@ -1,0 +1,24 @@
+{% extends "mail.layout.base" %}
+{% block content %}
+    <h1 style="font-family:Arial, Helvetica, sans-serif; color:#3b3b3b; line-height:24px; font-weight:bold; font-size:22px;">
+        Anfrage von: {{ data.saltuation }} {{ data.name }} {{ data.lastname }}
+    </h1>
+    <p style="font-family:Arial, Helvetica, sans-serif; color:#666666; line-height:24px; font-size:16px; margin-top: 5px;">
+        Folgende Nachricht wurde übermittelt:
+    </p>
+    <div style="font-family:Arial, Helvetica, sans-serif; color:#666666; padding: 20px 20px 10px; line-height:24px; font-size:16px; display:block; border:1px solid #dcdcdc;">
+        <strong style="color: #3b3b3b; font-weight:bold;">Vorname:</strong> {{ data.name }}
+        <br />
+        <strong style="color: #3b3b3b; font-weight:bold;">Nachname:</strong> {{ data.lastname }}
+        <br />
+        <strong style="color: #3b3b3b; font-weight:bold;">E-Mail Adresse:</strong> {{ data.email }}
+        <br />
+        <strong style="color: #3b3b3b; font-weight:bold;">Telefon:</strong> {{ data.phone }}
+        <br />
+        <strong style="color: #3b3b3b; font-weight:bold;">Nachricht:</strong>
+        <div>
+            {{ data.message|raw }}
+        </div>
+    </div>
+    <br />
+{% endblock %}

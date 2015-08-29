@@ -1,0 +1,8 @@
+{% extends "layout.base" %}
+{% block content %}
+    <h1>{{post.title}}</h1>
+    <img src="{{post.thumbnail.src}}" />
+    <div class="body">
+        {{post.content}}
+    </div>
+{% endblock %}

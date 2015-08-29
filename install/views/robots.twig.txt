@@ -1,0 +1,50 @@
+# Sitemap
+# Sitemap: http://www.domain.de/sitemap.xml
+
+# Google AdSense
+User-agent: Mediapartners-Google*
+Disallow:
+
+# Digg mirror
+User-agent: duggmirror
+Disallow: /
+
+# Global
+User-agent: *
+
+# WordPress specific config
+Disallow: /wp-admin/
+Disallow: /wp-content/languages/
+Disallow: /wp-content/plugins/
+Disallow: /wp-includes/
+
+# Disallow some more annoying bots
+User-agent: SurveyBot
+Disallow: /
+
+User-agent: ShopWiki
+Disallow: /
+
+User-agent: Jakarta Commons-HttpClient
+Disallow: /
+
+User-Agent: AboutUsBot
+Disallow: /
+
+User-agent: Semager
+Disallow: /
+
+User-agent: Linguee
+Disallow: /
+
+User-agent: Updownerbot
+Disallow: /
+
+User-agent: gonzo
+Disallow: /
+
+User-agent: Zeusbot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /

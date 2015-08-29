@@ -1,0 +1,22 @@
+<div id="content" class="row team_container">
+    {% for team_row in list|batch(3, 'No team member.') %}
+        <div class="row row-no-padding row-no-margin">
+            {% for team in team_row %}
+                {% if team.title %}
+                    <article itemscope itemtype="http://schema.org/Person" class="team-post col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <a itemprop="url" href="{{ team.permalink }}">
+                            {% include 'partials/responsive-image.html.twig' with {
+                                'image': team.thumbnail.image,
+                                'image_responsive': team.thumbnail.image_responsive,
+                                'alt': team.thumbnail.alt
+                            } only %}
+                            <span class="btn-holder">
+                                <span class="btn btn-name" itemprop="name">{{ team.title }}</span>
+                            </span>
+                        </a>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

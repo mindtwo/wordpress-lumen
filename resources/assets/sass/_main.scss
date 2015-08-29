@@ -1,0 +1,202 @@
+/*  ---------------------------------------------------------
+
+    Mixins ready to use:
+    @include linear-gradient(#000, #BADA55);
+    @include transition(all, 0.2s, ease-in-out);
+    @include box-sizing(border-box);
+    @include border-radius(5px);
+    @include border-top-radius(10px);
+    @include border-right-radius(8px);
+    @include border-bottom-radius(10px);
+    @include border-left-radius (6px);
+    @include opacity(0.8);
+    @include font-size(12);
+    @include line-height(16);
+    @include rotate(0,50%,50%);
+    @include grayscale();
+
+	---------------------------------------------------------*/
+
+/*  ---------------------------------------------------------
+	Include mixins and modules
+	---------------------------------------------------------*/
+@import "markup-mixins";
+@import "markup-variables";
+@import "modules/csstyle";
+@import "modules/fancybox";
+@import "modules/bootstrap";
+@import "modules/font-awesome";
+
+
+/*  ---------------------------------------------------------
+	Include componsnts
+	---------------------------------------------------------*/
+@import "components/blog";
+@import "components/form";
+
+
+/*  ---------------------------------------------------------
+	General page styles
+	---------------------------------------------------------*/
+* {
+    color: $text-color;
+    @include font-size(16);
+    @include line-height(22);
+    @include transition(all, 0.5s);
+
+    @media (max-width: $tablet) {
+        @include font-size(16);
+        @include line-height(22);
+    }
+    @media (max-width: $mobile) {
+        @include font-size(18);
+        @include line-height(24);
+    }
+}
+
+html {
+    @include font-size(16);
+}
+
+body {
+    background: #fff;
+}
+
+
+/*  ---------------------------------------------------------
+	Headline styles
+	---------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    font-weight: 800;
+    font-style: italic;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+
+}
+
+h1 {
+    @include font-size(28);
+    color: $primary-color;
+}
+
+h2 {
+    @include font-size(28);
+    color: $primary-color;
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
+}
+
+
+/*  ---------------------------------------------------------
+	Link styles
+	---------------------------------------------------------*/
+a {
+    color: #000;
+}
+
+a:hover,
+a:focus {
+
+}
+
+
+/*  ---------------------------------------------------------
+    List styles
+	---------------------------------------------------------*/
+ul {
+    list-style: disc;
+}
+
+ul li {
+
+}
+
+ol {
+    list-style: decimal;
+}
+
+ol li {
+
+}
+
+
+/*  ---------------------------------------------------------
+	Table styles
+	---------------------------------------------------------*/
+table {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr {
+
+}
+
+table th {
+    font-weight: 700;
+}
+
+table td {
+    vertical-align: top;
+}
+
+
+/*  ---------------------------------------------------------
+	Global content styles
+	---------------------------------------------------------*/
+img {
+    max-width: 100%;
+}	
+
+
+/*  ---------------------------------------------------------
+	Main structure
+	---------------------------------------------------------*/
+.centered {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/**
+ * Header
+ */
+
+
+/**
+ * Content
+ */
+#content_wrapper {
+
+}
+
+
+/**
+ * Footer
+ */
+
+
+/*  ---------------------------------------------------------
+	Include print styles
+	---------------------------------------------------------*/
+@import "print";

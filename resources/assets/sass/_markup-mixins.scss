@@ -1,0 +1,269 @@
+// reset for list
+%listreset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+// clear the floating
+%clear-fix {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+// img full width
+%img-full-width {
+	width:100%;
+	height:auto;
+	display: block;
+}
+
+// arrow align-top
+%align-top{
+	display: inline-block;
+	vertical-align: top;
+}
+
+// arrow align-middle
+%align-middle{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+@mixin hide-text() {
+	font: #{0/0} a;
+	color: transparent;
+	border: 0;
+}
+
+
+// reset for after and before
+@mixin element($element, $top, $right, $bottom, $left){
+	position: relative;
+	&:#{$element} {
+	position: absolute;
+	content: "";
+	top:$top;
+	bottom:$bottom;
+	left:$left;
+	right:$right;
+	}
+}
+
+
+
+
+
+@mixin element($element, $top, $right, $bottom, $left){
+	position: relative;
+	&:#{$element} {
+	position: absolute;
+	content: "";
+	top:$top;
+	bottom:$bottom;
+	left:$left;
+	right:$right;
+	}
+}
+
+
+// custom font mixin
+@mixin fontface ($fontfamily, $filename, $fontweight: normal, $fontstyle: normal) {
+	font-family: $fontfamily;
+	src:url('../fonts/#{$filename}.eot');
+	src:url('../fonts/#{$filename}.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/#{$filename}.woff') format('woff'),
+		url('../fonts/#{$filename}.ttf') format('truetype'),
+		url('../fonts/#{$filename}.svg#{$filename}') format('svg');
+	font-weight: $fontweight;
+	font-style: $fontstyle;
+}
+
+// from http://codepen.io/MichaelArestad/pen/IxFGj 
+@mixin arrow-lazy($al-direction: top, $al-size: 10px, $al-color: #ccc, $al-center: 50%, $al-margin: -1px, $al-pseudo: before){
+	position: relative;
+	border-color: $al-color;
+
+	&:#{$al-pseudo} {
+		position: absolute;
+		content: "";
+		width: 0;
+		height: 0;
+		border-color: $al-color;
+		border-style: solid;
+		z-index: 9;
+
+		@if $al-direction == "right" {
+				top: $al-center;
+				left: 100%;
+				margin-left: $al-margin;
+				margin-top: $al-size * -1;
+				border-width: $al-size 0 $al-size $al-size;
+				border-left-color: inherit;
+		} @else if $al-direction == "down" {
+				top: 100%;
+				left: $al-center;
+				margin-top: $al-margin;
+				margin-left: $al-size * -1;
+				border-width: $al-size $al-size 0;
+				border-left: $al-size solid transparent;
+				border-right: $al-size solid transparent;
+				border-top: $al-size solid $al-color;
+				border-top-color: inherit;
+		} @else if $al-direction == "left" {
+				top: $al-center;
+				right: 100%;
+				margin-right: $al-margin;
+				margin-top: $al-size * -1;
+				border-width: $al-size $al-size $al-size 0;
+				border-right-color: inherit;
+		} @else {
+				bottom: 100%;
+				left: $al-center;
+				margin-bottom: $al-margin;
+				margin-left: $al-size * -1;
+				border-width: 0 $al-size $al-size;
+				border-bottom-color: inherit;
+		}
+	}
+}
+// from http://codepen.io/MichaelArestad/pen/IxFGj 
+@mixin verticle-middle-method(){
+	&:after {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		height: inherit;
+		width: 1px;
+		margin: 0 0 0 -1px;
+	}
+}
+
+
+
+// placeholder
+@mixin placeholder {
+	::-webkit-input-placeholder {@content}
+	::-moz-placeholder     {opacity: 1; @content}
+	:-moz-placeholder      {@content}
+	:-ms-input-placeholder   {@content}
+	.placeholder        {@content}
+}
+
+/* Mixins
+----------------------------------------------------------------------------------------------------------------------*/
+
+@mixin fa-icon-css($name) {
+    @extend .#{$fa-css-prefix}-#{$name};
+    @extend .#{$fa-css-prefix};
+}
+
+@mixin linear-gradient($fromColor, $toColor) {
+    background-color: $toColor;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+    background-image: -webkit-linear-gradient(top, $fromColor, $toColor);
+    background-image:    -moz-linear-gradient(top, $fromColor, $toColor);
+    background-image:     -ms-linear-gradient(top, $fromColor, $toColor);
+    background-image:      -o-linear-gradient(top, $fromColor, $toColor);
+    background-image:         linear-gradient(top, $fromColor, $toColor);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+
+
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+@mixin rotate($angle,$x:50%,$y:50%) {
+    -moz-transform: rotate($angle + deg);
+    -ms-transform: rotate($angle + deg);
+    -o-transform: rotate($angle + deg);
+    -webkit-transform: rotate($angle + deg);
+    -webkit-transform-origin: $x $y;
+    -moz-transform-origin: $x $y;
+    -ms-transform-origin: $x $y;
+    -o-transform-origin: $x $y;
+    transform-origin: $x $y;
+}
+
+@mixin border-top-radius($radius) {
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-right-radius($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-bottom-radius($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-left-radius($radius) {
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin grayscale($level:100%) {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray;
+    -webkit-filter: grayscale($level);
+}
+
+@mixin rotate($deg:30deg) {
+    -moz-transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+    transform: rotate($deg);
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie);
+}
+
+@mixin font-size($sizeValue: 12, $base: 0.0625) {
+    font-size: $sizeValue + px;
+    font-size: ($base * $sizeValue) + rem;
+}
+
+@mixin line-height($sizeValue: 12, $base: 0.0625) {
+    line-height: $sizeValue + px;
+    line-height: ($base * $sizeValue) + rem;
+}

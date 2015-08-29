@@ -1,0 +1,103 @@
+{
+    "// Project slug for backup files": "::comment //",
+    "project_slug": "project_name",
+
+    "// Set key for theme screenshot etc.": "::comment //",
+    "dev_company_slug": "mindtwo",
+    
+    "// Database setup": "::comment //",
+    "database": {
+        "name": "",
+        "user": "",
+        "pass": "",
+        "host": "localhost",
+        "charset": "utf8"
+    },
+
+    "// Basicauth protection on install?": "::comment //",
+    "basicauth":{
+        "status": true,
+        "users": {
+            "demo": "$apr1$9Pkb5l1m$KDcCIAAnLlVTS1nz2JB7p1"
+        },
+        "users_plain": {
+            "demo": "demo"
+        }
+    },
+
+    "// Assets": "::comment //",
+    "gulp": true,
+
+    "// WordPress tweeks": "::comment //",
+    "post_revisions": false,
+    "empty_trash_in_days": 15,
+    "disallow_file_edit": true,
+    "disable_all_automatic_updates": false,
+    "autosave_interval_in_seconds": 60,
+    "debug": true,
+
+    "// WordPress multisite aupport?": "::comment //",
+    "multisite": {
+        "status": true,
+        "primary_host": "www.example.com"
+    },
+
+    "// WordPress plugins": "::comment //",
+    "wordpress_plugins": {
+        "advanced-custom-fields-pro": {
+            "filename": "advanced-custom-fields-pro.zip",
+            "src": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ADD_ACF_LICENCE_KEY_HEAR"
+        },
+        "wpseo": {
+            "filename": "wpseo.zip",
+            "src": "https://cdn.wpseo.de/plugin/v3/zip/latest/wpseo.zip"
+        }
+    },
+
+    "// WordPress file and folder remover": "::comment //",
+    "wordpress_delete_files_and_folders": [
+        "/wp-content/themes/twentyseventeen",
+        "/wp-content/themes/twentysixteen",
+        "/wp-content/themes/twentyfifteen",
+        "/wp-content/themes/twentyfourteen",
+        "/wp-content/themes/twentythirteen",
+        "/wp-content/plugins/akismet",
+        "/wp-content/plugins/hello.php",
+        "/readme.html",
+        "/license.txt",
+        "/liesmich.html",
+        "/wp-config-sample.php",
+        "/wp-content/themes/default/screenshot-mindtwo.png",
+        "/wp-content/themes/default/screenshot-creativegroup.png",
+        "/wp-content/themes/default/screenshot-medsite.png",
+        "/wp-content/themes/default/screenshot-salonsite.png"
+    ],
+
+    "// Install file and folder remover": "::comment //",
+    "remove_install_files_status": true,
+    "remove_install_files": [
+        "/install/files",
+        "/.git",
+        "/README.md"
+    ],
+
+    "// WordPress version": "::comment //",
+    "wordpress_version": {
+        "install": "https://de.wordpress.org/latest-de_DE.tar.gz",
+        "official_packages": {
+            "wordpress_version_de": "https://de.wordpress.org/latest-de_DE.tar.gz",
+            "wordpress_version_en": "http://wordpress.org/latest.tar.gz"
+        }
+    },
+    
+    "// WordPress theme info": "::comment //",
+    "infos": {
+        "theme_name": "WordPress Lumen",
+        "theme_uri": "http://www.mindtwo.de/",
+        "description": "Quality theme from http://www.mindtwo.de/",
+        "author": "mindtwo",
+        "author_mail": "info@mindtwo.de",
+        "author_uri": "http://www.mindtwo.de/",
+        "theme_version": "999.0"
+    }
+}

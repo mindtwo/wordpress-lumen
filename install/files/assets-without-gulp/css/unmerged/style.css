@@ -1,0 +1,417 @@
+/* ==========================================================================
+   Modified Eric Meyer’s CSS Reset
+   ========================================================================== */
+* {padding: 0; margin: 0; border: 0; vertical-align: baseline;}
+option {padding-left: 0.4em;}
+html {height: 100%; margin-bottom: 1px; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+fildset,img {border: none; overflow: hidden;}
+ol,ul {list-style: none;}
+table {border-collapse: separate; border-spacing: 0;}
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+caption,th,td { font-weight: normal; text-align: left;}
+blockquote:before,blockquote:after,q:before,q:after {content:""; content: none;}
+blockquote,q {quotes: none;}
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+.hidden {display: none;}
+.invisible {visibility: hidden;}
+.indent {height: 0; width: 0; line-height: 0; font-size: 0; padding: 0; margin: 0; border: 0; position: absolute; top: -999em; left: -999em; display: block; visibility: hidden;}
+.clr {height: 0; width: 0; line-height: 0; font-size: 0; padding: 0; margin: 0; border: 0; clear: both; display: block; visibility: hidden;}
+.hr {clear: both; height: 1px; line-height: 0; font-size: 0; background-color: #dfdfdf; margin: 30px 0; overflow: hidden;}
+.clr hr, .hr hr {display: none;}
+.clearfix:before, .clearfix:after {content: ""; display: table;}
+.clearfix:after {clear: both;}
+.clearfix {*zoom: 1;}
+.chromeframe {margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0;}
+::-moz-selection {background: #999; color: #fff; text-shadow: none;}
+::selection {background: #000; color: #fff; text-shadow: none;}
+
+
+
+/* ==========================================================================
+   Global styles
+   ========================================================================== */
+* {
+    color: #000;
+    font-family: sans-serif;
+}
+
+body {
+    font-size: 14px;
+    line-height: 140%;
+    height: 101%;
+}
+
+
+
+/* ==========================================================================
+   Headline styles
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    font-weight: 700;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
+}
+
+/**
+ * Special Headlines
+ */
+
+
+
+/* ==========================================================================
+   Link styles
+   ========================================================================== */
+a {
+    color: #000;
+}
+
+a:hover,
+a:focus {
+
+}
+
+/**
+ * Buttons
+ */
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    cursor: pointer;
+    *overflow: visible;
+}
+
+.button:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+
+}
+
+
+
+/* ==========================================================================
+   List styles
+   ========================================================================== */
+ul {
+    list-style: disc;
+}
+
+ul li {
+
+}
+
+ol {
+    list-style: decimal;
+}
+
+ol li {
+
+}
+
+
+
+/* ==========================================================================
+   Form styles
+   ========================================================================== */
+form {
+    display: block;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    line-height: 140%;
+}
+
+#captcha_image {
+    display: block;
+    height: 34px;
+    width: 100px;
+}
+
+
+
+/* ==========================================================================
+   Table styles
+   ========================================================================== */
+table {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr {
+
+}
+
+table th {
+    font-weight: 700;
+}
+
+table td {
+    vertical-align: top;
+}
+
+
+
+/* ==========================================================================
+   Main structure
+   ========================================================================== */
+.centered {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/**
+ * Header
+ */
+
+
+/**
+ * Content
+ */
+
+
+/**
+ * Footer
+ */
+
+
+/* ==========================================================================
+   Content styles & additional structure
+   ========================================================================== */
+/**
+ * Generic
+ */
+.center {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/**
+ * Header
+ */
+#logo {
+    display: block;
+}
+
+
+
+/* ==========================================================================
+   Navigations
+   ========================================================================== */
+nav ul,
+nav li {
+    list-style: none;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * Nav main
+ */
+#nav_main {
+    
+}
+
+/**
+ * Nav footer
+ */
+#nav_footer {
+    
+}
+
+/**
+ * Pager
+ */
+.nav_pager ol {
+    margin-left: 0;
+}
+
+.nav_pager li {
+    float: left;
+    margin-right: 5px;
+}
+
+.nav_pager .current {
+    background-color: #cfcfcf;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+.nav_pager li a {
+    float: left;
+    display: block;
+    background-color: #fff;
+    padding: 5px 10px;
+}
+
+.nav_pager li:hover a {
+    text-decoration: none;
+    background-color: #cfcfcf;
+    color: #fff;
+}
+
+
+
+/* ==========================================================================
+   Media queries
+   ========================================================================== */
+@media only screen and (max-width: 1024px) {
+    /**
+     * 
+     */
+}
+
+@media only screen and (max-width: 768px) {
+    /**
+     * 
+     */
+}
+
+@media only screen and (max-width: 560px) {
+    /**
+     * 
+     */
+}
+
+
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

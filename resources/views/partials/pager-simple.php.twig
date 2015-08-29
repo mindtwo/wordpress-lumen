@@ -1,0 +1,9 @@
+<ul class="pager">
+    {% if prev %}
+        <li class="previous"><a href="{{prev.link}}">{{prev.text}}</a></li>
+    {% endif %}
+
+    {% if next %}
+        <li class="next"><a href="{{next.link}}">{{next.text}}</a></li>
+    {% endif %}
+</ul>
