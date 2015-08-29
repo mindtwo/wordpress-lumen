@@ -64,6 +64,13 @@ $app->singleton(
 //     // Illuminate\View\Middleware\ShareErrorsFromSession::class,
 //     // Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
 // ]);
+$app->middleware([
+    Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    Illuminate\Cookie\Middleware\EncryptCookies::class,
+    Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    Illuminate\Session\Middleware\StartSession::class,
+    Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
+]);
 
 // $app->routeMiddleware([
 
