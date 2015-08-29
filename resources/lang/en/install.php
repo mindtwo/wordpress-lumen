@@ -6,5 +6,6 @@ return [
 		'contact' => 'Contact',
 		'landingpage' => 'Landingpage',
 		'team' => 'Team',
+		'blog' => 'Blog',
 	],
 ];

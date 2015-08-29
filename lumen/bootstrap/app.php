@@ -15,7 +15,7 @@ Dotenv::load(__DIR__.'/../');
 |
 */
 
-$app = new Laravel\Lumen\Application(
+$app = new App\DomainApplication(
     realpath(__DIR__.'/../')
 );
 
@@ -85,7 +85,6 @@ $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\TwigServiceProvider::class);
 $app->register(App\Providers\TwigInstallerServiceProvider::class);
 $app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
-$app->register(Illuminate\Translation\TranslationServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
