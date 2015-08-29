@@ -36,6 +36,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 			$output = $this->setWpAutoUpdate( $output );
 			$output = $this->setPostAutosaveInterval( $output );
 			$output = $this->setMultisiteSupport( $output );
+			$output = $this->setLanguage( $output );
 			$output = $this->setComposerAutoloading( $output );
 
 			// Write WordPress config file
@@ -260,4 +261,28 @@ define( 'AUTOSAVE_INTERVAL', {$this->config->autosave_interval_in_seconds} );" .
 	}
 
 
+	/**
+	 * Set Language
+	 *
+	 * @param $output
+	 *
+	 * @return mixed
+	 */
+	private function setLanguage($output) {
+
+		// Return output if there is no language set
+		if ( !isset( $this->config->wordpress_language_key ) ) { return $output; }
+
+		// Update WPLANG
+		if (strpos($output,'WPLANG') !== false) {
+			echo "Update language in wp-config.php file\n";
+			return preg_replace( '/(define\(\'WPLANG\', )(\'.+\')(\)\;)/', '${1}' . $this->config->wordpress_language_key . '${3}', $output );
+		}
+
+		// Set WPLANG if not exists
+		echo "Set language in wp-config.php file\n";
+		return str_replace( '<?php', "<?php\n
+/** WordPress Translation */
+define( 'WPLANG', {$this->config->wordpress_language_key} );" . "\n", $output );
+	}
 }

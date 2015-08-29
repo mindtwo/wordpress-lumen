@@ -4,6 +4,11 @@
 
     "// Set key for theme screenshot etc.": "::comment //",
     "dev_company_slug": "mindtwo",
+
+    "// Set language": "::comment //",
+    "language": "en",
+    "language_fallback": "en",
+    "wordpress_language_key": "en",
     
     "// Database setup": "::comment //",
     "database": {

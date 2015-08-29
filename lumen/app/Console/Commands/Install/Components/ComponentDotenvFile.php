@@ -28,6 +28,9 @@ class ComponentDotenvFile extends ComponentBase implements WpInstallComponentsIn
 
 			// Add database data
 			echo "Lumen dotenv configuration\n";
+			$output = preg_replace( '/(APP_LOCALE\=)(.+)/', '${1}' . $this->config->language, $output );
+			$output = preg_replace( '/(APP_FALLBACK_LOCALE\=)(.+)/', '${1}' . $this->config->language_fallback, $output );
+
 			$output = preg_replace( '/(DB_USERNAME\=)(.+)/', '${1}' . $this->config->database->user, $output );
 			$output = preg_replace( '/(DB_PASSWORD\=)(.+)/', '${1}' . $this->config->database->pass, $output );
 			$output = preg_replace( '/(DB_DATABASE\=)(.+)/', '${1}' . $this->config->database->name, $output );
