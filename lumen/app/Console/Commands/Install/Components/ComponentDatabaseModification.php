@@ -36,7 +36,7 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar plugin install better-wp-security",
 			"cd {$this->home_dir} && php wp-cli.phar plugin install w3-total-cache",
 			"cd {$this->home_dir} && php wp-cli.phar plugin install timber-library",
-			"cd {$this->home_dir} && php wp-cli.phar plugin activate",
+			"cd {$this->home_dir} && php wp-cli.phar plugin activate --all",
 			"cd {$this->home_dir} && php wp-cli.phar core update",
 			"cd {$this->home_dir} && php wp-cli.phar core update-db",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar option update siteurl \"http://wordpress-lumen.dev\"",
