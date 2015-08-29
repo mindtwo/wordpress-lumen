@@ -1,4 +1,4 @@
-the same as above, but for acf<?php
+<?php
 
 /**
  * Custom navigation
