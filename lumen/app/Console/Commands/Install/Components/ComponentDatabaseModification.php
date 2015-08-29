@@ -27,6 +27,13 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			return true;
 		}
 
+		// Get translations
+		$contact = app('translator')->get('install.wordpress-database.contact');
+		$team = app('translator')->get('install.wordpress-database.team');
+		$landingpage = app('translator')->get('install.wordpress-database.landingpage');
+		$home = app('translator')->get('install.wordpress-database.home');
+		$blog = app('translator')->get('install.wordpress-database.blog');
+
 		$excecute_commands = [
 			"cd {$this->home_dir} && php wp-cli.phar db reset --yes",
 			"cd {$this->home_dir} && php wp-cli.phar core install --url=http://wordpress-lumen.dev/ --title=WordPress/Lumen --admin_user=admin --admin_password=166328 --admin_email=info@mindtwo.de",
@@ -46,11 +53,11 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar option update page_for_posts \"3\"",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar option update default_ping_status \"closed\"",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar option update permalink_structure \"/%postname%/\"",
-			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post update 2 --post_name=\"home\" --post_title=\"Home\" --comment_status=closed --ping_status=closed",
-			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"Blog\" --post_name=\"blog\" --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"Contact\" --post_name=\"contact\" --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"Landingpage\" --post_name=\"landingpage\" --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"Team\" --post_name=\"team\" --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post update 2 --post_name=\"$home\" --post_title=\"$home\" --comment_status=closed --ping_status=closed",
+			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"$blog\" --post_name=\"$blog\" --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"$contact\" --post_name=\"$contact\" --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"$landingpage\" --post_name=\"$landingpage\" --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post create --post_type=page --post_title=\"$team\" --post_name=\"$team\" --post_status=publish",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post meta set 4 _wp_page_template template-contact.php",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post meta set 5 _wp_page_template template-landingpage.php",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
