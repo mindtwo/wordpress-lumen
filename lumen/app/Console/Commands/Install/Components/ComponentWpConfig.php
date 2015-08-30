@@ -283,6 +283,6 @@ define( 'AUTOSAVE_INTERVAL', {$this->config->autosave_interval_in_seconds} );" .
 		echo "Set language in wp-config.php file\n";
 		return str_replace( '<?php', "<?php\n
 /** WordPress Translation */
-define( 'WPLANG', {$this->config->wordpress_language_key} );" . "\n", $output );
+define('WPLANG', '\''.{$this->config->wordpress_language_key}. '\'');" . "\n", $output );
 	}
 }
