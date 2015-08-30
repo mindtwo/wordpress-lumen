@@ -36,7 +36,7 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 
 		$excecute_commands = [
 			"cd {$this->home_dir} && php wp-cli.phar db reset --yes",
-			"cd {$this->home_dir} && php wp-cli.phar core install --url=http://wordpress-lumen.dev/ --title=WordPress/Lumen --admin_user=admin --admin_password=166328 --admin_email=info@mindtwo.de",
+			"cd {$this->home_dir} && php wp-cli.phar core install --url={$this->config->wordpress_install->wordpress_primary_domain} --title={$this->config->wordpress_install->site_name} --admin_user={$this->config->wordpress_install->admin_username} --admin_password={$this->config->wordpress_install->admin_pass} --admin_email={$this->config->wordpress_install->admin_email}",
 			"cd {$this->home_dir} && php wp-cli.phar theme activate default",
 			"cd {$this->home_dir} && php wp-cli.phar plugin install regenerate-thumbnails",
 			"cd {$this->home_dir} && php wp-cli.phar plugin install wp-optimize",

@@ -19,6 +19,15 @@
         "charset": "utf8"
     },
 
+    "// WordPress installer settings": "::comment //",
+    "wordpress_install": {
+        "wordpress_primary_domain": "http://example.com",
+        "admin_username": "admin",
+        "admin_pass": "yRmdBZset47FL9FEcm",
+        "admin_email": "info@example.com",
+        "site_name": "WordPress/Lumen"
+    },
+
     "// Basicauth protection on install?": "::comment //",
     "basicauth":{
         "status": true,
@@ -43,8 +52,8 @@
 
     "// WordPress multisite aupport?": "::comment //",
     "multisite": {
-        "status": true,
-        "primary_host": "www.example.com"
+        "status": false,
+        "primary_host": "example.com"
     },
 
     "// WordPress plugins": "::comment //",
