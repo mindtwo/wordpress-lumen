@@ -21,7 +21,7 @@ class ComponentBackup extends ComponentBase implements WpInstallComponentsInterf
 	 * @return mixed
 	 */
 	public function fire() {
-		system( "cd {$this->backup_dir} && sh start.sh", $buff );
+		system( "cd {$this->backup_dir} && bash start.sh", $buff );
 		unset( $buff );
 	}
 }
