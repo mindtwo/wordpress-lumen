@@ -62,7 +62,7 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post meta set 5 _wp_page_template template-landingpage.php",
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
 		];
-		
+
 		foreach ( $excecute_commands as $command ) {
 			echo shell_exec( $command );
 		}

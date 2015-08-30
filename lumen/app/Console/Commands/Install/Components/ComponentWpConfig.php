@@ -276,7 +276,7 @@ define( 'AUTOSAVE_INTERVAL', {$this->config->autosave_interval_in_seconds} );" .
 		// Update WPLANG
 		if (strpos($output,'WPLANG') !== false) {
 			echo "Update language in wp-config.php file\n";
-			return preg_replace( '/(define\(\'WPLANG\', )(\'.+\')(\)\;)/', '${1}' . $this->config->wordpress_language_key . '${3}', $output );
+			return preg_replace( '/(define\(\'WPLANG\', )(\'.+\')(\)\;)/', '${1}\'' . $this->config->wordpress_language_key . '\'${3}', $output );
 		}
 
 		// Set WPLANG if not exists
