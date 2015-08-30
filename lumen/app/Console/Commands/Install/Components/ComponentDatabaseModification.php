@@ -63,6 +63,7 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
 		];
 
+		Dotenv::load($this->lumen_dir);
 		foreach ( $excecute_commands as $command ) {
 			echo shell_exec( $command );
 		}
