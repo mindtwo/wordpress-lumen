@@ -20,7 +20,7 @@ define('THEME_TEMPLATES', THEME_DIR . 'templates/');
 define('THEME_ASSETS', THEME_DIR . 'assets/');
 define('THEME_ASSETS_LIVE', get_bloginfo('template_directory') . '/assets/');
 define('THEME_STORAGE', realpath(THEME_APPLICATION_DIR) . 'lumen/storage/wordpress/');
-define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . '../lumen/resources/views/'));
+define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
 
 
 /**
@@ -29,6 +29,7 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . '../lumen/resources/view
 $autoload_class_files = array(
     // THEME_FUNCTIONS . 'general/minify_html.php',
     // THEME_FUNCTIONS . 'general/theme_init_actions.php',
+    THEME_FUNCTIONS . 'general/config.php',
     THEME_FUNCTIONS . 'general/theme_helper.php',
     THEME_FUNCTIONS . 'general/session.php',
     THEME_FUNCTIONS . 'general/custom_excerpt.php',
@@ -63,6 +64,13 @@ $autoload_class_files = array(
 foreach($autoload_class_files as $file){
 	require_once($file);
 }
+
+
+/**
+ * Add Timber template pathes
+ */
+Timber::$locations = TEMPLATE_DIR;
+Timber::$dirname = TEMPLATE_DIR;
 
 
 /**
