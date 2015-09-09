@@ -91,9 +91,8 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 	 * @return mixed
 	 */
 	private function setDebug( $output ) {
-		if ( isset( $this->config->database->debug ) && $this->config->database->debug == true ) {
+		if ( isset( $this->config->debug ) && $this->config->debug == true ) {
 			echo "WordPress debug mode enabled\n";
-
 			return str_replace( 'define(\'WP_DEBUG\', false);', 'define(\'WP_DEBUG\', true);', $output );
 		}
 
