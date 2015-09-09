@@ -2,7 +2,7 @@
 
 class CustomSearch_Widget extends WP_Widget {
 	function __construct() {
-		parent::WP_Widget('CustomSearch_Widget', 'Custom Search Widget ausgeben', array( 'description' => '' ) );
+		parent::__construct('CustomSearch_Widget', 'Custom Search Widget ausgeben', array( 'description' => '' ) );
 	}
 
 	/** @see WP_Widget::widget */
