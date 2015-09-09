@@ -49,7 +49,7 @@ class InstallCommand extends Command {
 		\App\Console\Commands\Install\Components\ComponentWpConfig::class,
 		\App\Console\Commands\Install\Components\ComponentBackupSettings::class,
 		\App\Console\Commands\Install\Components\ComponentRemoveFiles::class,
-		\App\Console\Commands\Install\Components\ComponentDatabaseModification::class,
+		\App\Console\Commands\Install\Components\ComponentWpCli::class,
 	];
 
 	/**

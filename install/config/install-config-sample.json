@@ -65,7 +65,14 @@
         "wpseo": {
             "filename": "wpseo.zip",
             "src": "https://cdn.wpseo.de/plugin/v3/zip/latest/wpseo.zip"
-        }
+        },
+        "wp_cli": [
+            "regenerate-thumbnails",
+            "wp-optimize",
+            "better-wp-security",
+            "w3-total-cache",
+            "timber-library"
+        ]
     },
 
     "// WordPress file and folder remover": "::comment //",

@@ -4,9 +4,9 @@ namespace App\Console\Commands\Install\Components;
 
 
 /**
- * Class ComponentDatabaseModification
+ * Class ComponentWpCli
  */
-class ComponentDatabaseModification extends ComponentBase implements WpInstallComponentsInterface {
+class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterface {
 
 	/**
 	 * Create a new command instance.
@@ -38,12 +38,6 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar db reset --yes",
 			"cd {$this->home_dir} && php wp-cli.phar core install --url={$this->config->wordpress_install->wordpress_primary_domain} --title={$this->config->wordpress_install->site_name} --admin_user={$this->config->wordpress_install->admin_username} --admin_password={$this->config->wordpress_install->admin_pass} --admin_email={$this->config->wordpress_install->admin_email}",
 			"cd {$this->home_dir} && php wp-cli.phar theme activate default",
-			"cd {$this->home_dir} && php wp-cli.phar plugin install regenerate-thumbnails",
-			"cd {$this->home_dir} && php wp-cli.phar plugin install wp-optimize",
-			"cd {$this->home_dir} && php wp-cli.phar plugin install better-wp-security",
-			"cd {$this->home_dir} && php wp-cli.phar plugin install w3-total-cache",
-			"cd {$this->home_dir} && php wp-cli.phar plugin install timber-library",
-			"cd {$this->home_dir} && php wp-cli.phar plugin activate --all",
 			"cd {$this->home_dir} && php wp-cli.phar core update",
 			"cd {$this->home_dir} && php wp-cli.phar core update-db",
 			"cd {$this->home_dir} && php wp-cli.phar option update siteurl \"{$this->config->wordpress_install->wordpress_primary_domain}\"",
@@ -67,6 +61,15 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
 		];
 
+		// Install plugins
+		foreach($this->config->wordpress_plugins->wp_cli as $plugin) {
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar plugin install $plugin");
+		}
+
+		// Enable plugins
+		array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar plugin activate --all");
+
+		// Loop all commands
 		foreach ( $excecute_commands as $command ) {
 			echo shell_exec( $command );
 		}
