@@ -38,6 +38,14 @@ php wp-cli.phar post create --post_type=page --post_title="Contact" --post_name=
 php wp-cli.phar post create --post_type=page --post_title="Landingpage" --post_name="landingpage" --post_status=publish
 ```
 
+## Setting up Total Cache Plugin
+```bash
+chmod 777 /var/www/wordpress-lumen.mindtwo.de/system/public/wp-content/cache
+chmod 777 /var/www/wordpress-lumen.mindtwo.de/system/public/wp-content/w3tc-config
+rm -rf /var/www/wordpress-lumen.mindtwo.de/system/public/wp-content/cache/config
+rm -rf /var/www/wordpress-lumen.mindtwo.de/system/public/wp-content/cache/tmp
+```
+
 ## Documentation
 Theme function description is coming soon...
 
