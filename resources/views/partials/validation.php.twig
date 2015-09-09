@@ -1,0 +1,8 @@
+<div class="list-errors">
+    <h3>{{ headline }}</h3>
+    <ul>
+        {% for error in errors %}
+            <li><span class="fa fa-chevron-circle-right"></span> {{ error|raw }}</li>
+        {% endfor %}
+    </ul>
+</div>
