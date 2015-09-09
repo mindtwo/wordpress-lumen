@@ -49,6 +49,7 @@ class ComponentDatabaseModification extends ComponentBase implements WpInstallCo
 			"cd {$this->home_dir} && php wp-cli.phar option update siteurl \"{$this->config->wordpress_install->wordpress_primary_domain}\"",
 			"cd {$this->home_dir} && php wp-cli.phar option update home \"{$this->config->wordpress_install->wordpress_primary_domain}\"",
 			"cd {$this->home_dir} && php wp-cli.phar option update blogdescription \"\"",
+			"cd {$this->home_dir} && php wp-cli.phar option update show_on_front \"page\"",
 			"cd {$this->home_dir} && php wp-cli.phar option update page_on_front \"2\"",
 			"cd {$this->home_dir} && php wp-cli.phar option update page_for_posts \"3\"",
 			"cd {$this->home_dir} && php wp-cli.phar option update default_ping_status \"closed\"",
