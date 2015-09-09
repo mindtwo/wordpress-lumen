@@ -28,6 +28,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 
 			// Run replacements and add some additional constants
 			$output = $this->setDebug( $output );
+			$output = $this->setPhpErrorLoggingInDebugMode( $output );
 			$output = $this->setDatabaseSettings( $output );
 			$output = $this->setSalts( $output );
 			$output = $this->setPostRevisions( $output );
@@ -101,6 +102,25 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 
 
 	/**
+	 * Enable PHP error logging in debug mode
+	 *
+	 * @param $output
+	 *
+	 * @return mixed
+	 */
+	private function setPhpErrorLoggingInDebugMode( $output ) {
+		echo "Enable PHP error logging in debug mode\n";
+
+		return preg_replace( "/(define\(\s*?'WP_DEBUG'\s*?,\s*?(false|true)\s*?\);)/", "$1\n
+/** Enable PHP Errors */
+if(WP_DEBUG) {
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+}\n", $output );
+	}
+
+
+	/**
 	 * Set secret salts in config.php (https://api.wordpress.org/secret-key/1.1/salt/)
 	 *
 	 * @param $output
@@ -147,6 +167,7 @@ define('WP_POST_REVISIONS', " . ( boolval( $this->config->post_revisions ) ? 'tr
 
 		return $output;
 	}
+
 
 	/**
 	 * Enable/disable wordpress multisite?
