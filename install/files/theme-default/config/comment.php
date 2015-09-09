@@ -1,15 +1,10 @@
 <?php
-    
-return "\n    <!-- 
-        all material copyright " . date('Y') . " / www.creativegroup.de / bonn / germany
-        feel free to ask us about webdesign, corporate design and advertisement
-        phone: +49 (0) 228 / 62 919 990 email: info@creativegroup.de
-        thank you for examining our code
-    -->\n";
+
+return array(
 
 
-/*  
-return "\n    <!--
+
+    'default' => "\n    <!--
     ======================================================================================
     == Lovingly brought to you by... =====================================================
 
@@ -24,12 +19,20 @@ return "\n    <!--
     =======================================================================================
     ============================================================= http://www.mindtwo.de/ ==
     =======================================================================================
-    -->\n";
-    
-    
-    
-    
-return "\n    <!--
+    -->\n",
+
+
+
+    'creativegroup' => "\n    <!--
+        all material copyright " . date('Y') . " / www.creativegroup.de / bonn / germany
+        feel free to ask us about webdesign, corporate design and advertisement
+        phone: +49 (0) 228 / 62 919 990 email: info@creativegroup.de
+        thank you for examining our code
+    -->\n",
+
+
+
+    'medsite' => "\n    <!--
 
         111111111
         111111111
@@ -43,11 +46,11 @@ return "\n    <!--
              11111111
              11111111            WEB: http://www.medsite.de/ | MAIL: info@MEDsite.de | FON: 0228-28629273
 
-     -->\n";
+     -->\n",
 
 
-     
-return "\n    <!--
+
+    'salonsite' => "\n    <!--
 
     00000000000000
 	00000000000000                                                                      000
@@ -62,5 +65,8 @@ return "\n    <!--
 	11111111111              WEB: http://www.salonsite.de/ | MAIL: info@SALONsite.de | FON: 0228-28629273
 	1111111111111
 
-     -->\n";
-*/
+     -->\n",
+
+
+
+);
