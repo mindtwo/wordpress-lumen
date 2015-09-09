@@ -66,8 +66,11 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		];
 
 		// Install plugins
-		foreach($this->config->wordpress_plugins->wp_cli as $plugin) {
-			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar plugin install $plugin");
+		if(isset($this->config->wordpress_plugins) && isset($this->config->wordpress_plugins->wp_cli) && is_array($this->config->wordpress_plugins->wp_cli)) {
+			foreach($this->config->wordpress_plugins->wp_cli as $plugin) {
+				echo "Install WordPress Plugin: " . $plugin;
+				array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar plugin install $plugin");
+			}
 		}
 
 		// Enable plugins
