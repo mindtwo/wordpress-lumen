@@ -34,7 +34,7 @@ ToDos:
 - Restart apache or nginx
 - Import ACF .json files from "public/wp-content/themes/default/acf-json"
 - Fill ACF Pro option page
-- Setup backup script in crontab "bash backup/backup.sh"
+- Setup backup script in crontab "php /lumen/artisan schedule:run >> /dev/null 2>&1"
 - Setup correct file and folder access rights:
 ```bash
 find /public/ -type d -exec chmod 755 {} \;
