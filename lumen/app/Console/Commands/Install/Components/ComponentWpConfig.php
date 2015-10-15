@@ -300,7 +300,7 @@ define( 'WP_PROTOCOL',  stripos(\$_SERVER['SERVER_PROTOCOL'],'https') === true ?
 define( 'WP_FULL_URL',  (isset(\$_SERVER['HTTP_HOST'])) ? WP_PROTOCOL . \$_SERVER['HTTP_HOST'] : '" . $this->config->wordpress_install->wordpress_primary_domain . "' );
 define( 'WP_SITEURL', WP_FULL_URL . '/wordpress' );
 define( 'WP_HOME', WP_FULL_URL );
-define( 'UPLOADS', '/content/uploads/' );
+define( 'UPLOADS', '/content/uploads' );
 define( 'WP_CONTENT_URL', WP_FULL_URL . '/content' );
 define( 'WP_CONTENT_DIR', realpath( dirname( __FILE__ ) . '/content' ) );" . "\n", $output );
 		return $output;
