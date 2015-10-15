@@ -274,7 +274,7 @@ define( 'DISALLOW_FILE_EDIT', " . ( boolval( $this->config->disallow_file_edit )
 		$output = str_replace( '<?php', "<?php\n
 /** Change WordPress wp-content directory */
 define( 'WP_PROTOCOL',  stripos(\$_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://' );
-define( 'WP_SITEURL', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] . '/wp' );
+define( 'WP_SITEURL', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] . '/wordpress' );
 define( 'WP_HOME', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] );
 define( 'UPLOADS', '/content/uploads/' );
 define( 'WP_CONTENT_URL', WP_HOME . '/content' );
