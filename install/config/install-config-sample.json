@@ -87,11 +87,7 @@
         "/readme.html",
         "/license.txt",
         "/liesmich.html",
-        "/wp-config-sample.php",
-        "/wp-content/themes/default/screenshot-mindtwo.png",
-        "/wp-content/themes/default/screenshot-creativegroup.png",
-        "/wp-content/themes/default/screenshot-medsite.png",
-        "/wp-content/themes/default/screenshot-salonsite.png"
+        "/wp-config-sample.php"
     ],
 
     "// Install file and folder remover": "::comment //",
@@ -99,7 +95,11 @@
     "remove_install_files": [
         "/install/files",
         "/.git",
-        "/README.md"
+        "/README.md",
+        "/public/content/themes/default/screenshot-mindtwo.png",
+        "/public/content/themes/default/screenshot-creativegroup.png",
+        "/public/content/themes/default/screenshot-medsite.png",
+        "/public/content/themes/default/screenshot-salonsite.png"
     ],
 
     "// WordPress version": "::comment //",

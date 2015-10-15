@@ -68,8 +68,7 @@ function mobile_image_prefix() {
 }
 
 function theme_comment() {
-	global $theme_comment;
-	echo $theme_comment;
+	return theme_config_file('comment')['mindtwo'];
 }
 
 

@@ -32,7 +32,7 @@ class ComponentRemoveFiles extends ComponentBase implements WpInstallComponentsI
 		echo "Remove WordPress selected wordpress files and folders...\n";
 		$wordpress_delete_files_and_folders = $this->config->wordpress_delete_files_and_folders;
 		foreach ( $wordpress_delete_files_and_folders as $value ) {
-			$this->delete_file_or_folder( $this->public_dir . $value );
+			$this->delete_file_or_folder( $this->wp_dir . $value );
 		}
 	}
 

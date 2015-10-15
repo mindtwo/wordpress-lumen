@@ -26,7 +26,7 @@ class ComponentAssets extends ComponentBase implements WpInstallComponentsInterf
 		$bower_folder = "./../../../../../../resources/assets/bower_components/";
 
 
-		if ( $this->filesystem->exists( $this->public_dir . '/wp-content/themes/default/assets' ) ) { return false; }
+		if ( $this->filesystem->exists( $assets_folder ) ) { return false; }
 
 		if ( $this->config->gulp == true && $this->filesystem->exists( $this->install_files_dir . '/assets-with-gulp' ) ) {
 			$this->filesystem->copyDirectory( "{$this->install_files_dir}/assets-with-gulp", $assets_folder );

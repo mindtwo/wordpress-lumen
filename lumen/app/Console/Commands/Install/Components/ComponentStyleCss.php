@@ -21,7 +21,7 @@ class ComponentStyleCss extends ComponentBase implements WpInstallComponentsInte
 	 * @return mixed
 	 */
 	public function fire() {
-		if ( $this->filesystem->exists( $this->install_templates_dir . '/style.twig.css' ) && ! $this->filesystem->exists( $this->public_dir . "/wp-content/themes/default/style.css" ) ) {
+		if ( $this->filesystem->exists( $this->install_templates_dir . '/style.twig.css' ) && ! $this->filesystem->exists( $this->wp_theme_dir . "/style.css" ) ) {
 
 			// Render backup template
 			$output = $this->twig->render(
@@ -38,7 +38,7 @@ class ComponentStyleCss extends ComponentBase implements WpInstallComponentsInte
 			);
 
 			// Write file
-			$this->filesystem->put( $this->public_dir . "/wp-content/themes/default/style.css", $output );
+			$this->filesystem->put( $this->wp_theme_dir . "/style.css", $output );
 
 			// Unset temp var
 			unset( $output );

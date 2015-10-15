@@ -22,7 +22,7 @@ class ComponentScreenshot extends ComponentBase implements WpInstallComponentsIn
 	 */
 	public function fire() {
 		if ( isset($this->config->dev_company_slug) && $this->getFile($this->config->dev_company_slug)) {
-			$this->filesystem->copy( $this->getFile($this->config->dev_company_slug), $this->public_dir . "/wp-content/themes/default/screenshot.png" );
+			$this->filesystem->copy( $this->getFile($this->config->dev_company_slug), $this->wp_theme_dir . "/screenshot.png" );
 		}
 	}
 
@@ -34,8 +34,8 @@ class ComponentScreenshot extends ComponentBase implements WpInstallComponentsIn
 	 * @return bool|string
 	 */
 	private function getFile($project_key) {
-		if($this->filesystem->exists( $this->public_dir . "/wp-content/themes/default/screenshot-{$project_key}.png" )) {
-			return $this->public_dir . "/wp-content/themes/default/screenshot-{$project_key}.png";
+		if($this->filesystem->exists( $this->wp_theme_dir . "/screenshot-{$project_key}.png" )) {
+			return $this->wp_theme_dir . "/screenshot-{$project_key}.png";
 		}
 		return false;
 	}

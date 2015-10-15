@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 use Laravel\Lumen\Application;
 
 class DomainApplication extends Application {

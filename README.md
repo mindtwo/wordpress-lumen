@@ -32,9 +32,9 @@ ToDos:
 - Run "php /lumen/artisan wp-lumen:install"
 - Set document root to "/public"
 - Restart apache or nginx
-- Import ACF .json files from "public/wp-content/themes/default/acf-json"
+- Import ACF .json files from "public/content/themes/default/acf-json"
 - Fill ACF Pro option page
-- Setup backup script in crontab "php /lumen/artisan schedule:run >> /dev/null 2>&1"
+- Setup backup script in crontab "* * * * * php /lumen/artisan schedule:run >> /dev/null 2>&1"
 - Setup correct file and folder access rights:
 ```bash
 find /public/ -type d -exec chmod 755 {} \;

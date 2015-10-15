@@ -21,13 +21,14 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 	 * @return mixed
 	 */
 	public function fire() {
-		if ( ! $this->filesystem->exists( $this->public_dir . '/wp-config.php' ) && $this->filesystem->exists( $this->public_dir . '/wp-config-sample.php' ) ) {
+		if ( ! $this->filesystem->exists( $this->public_dir . '/wp-config.php' ) && $this->filesystem->exists( $this->wp_dir . '/wp-config-sample.php' ) ) {
 
 			// Load wp-config-sample.php file
-			$output = $this->filesystem->get( $this->public_dir . '/wp-config-sample.php' );
+			$output = $this->filesystem->get( $this->wp_dir . '/wp-config-sample.php' );
 
 			// Run replacements and add some additional constants
 			$output = $this->setDebug( $output );
+			$output = $this->setWordpressDirectory( $output );
 			$output = $this->setPhpErrorLoggingInDebugMode( $output );
 			$output = $this->setDatabaseSettings( $output );
 			$output = $this->setSalts( $output );
@@ -35,6 +36,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 			$output = $this->setTrashCleanup( $output );
 			$output = $this->setDisallowFileEdit( $output );
 			$output = $this->setWpAutoUpdate( $output );
+			$output = $this->setDifferentWpContentDirectory( $output );
 			$output = $this->setPostAutosaveInterval( $output );
 			$output = $this->setMultisiteSupport( $output );
 			$output = $this->setLanguage( $output );
@@ -101,6 +103,23 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 
 
 	/**
+	 * Set WordPress directory
+	 *
+	 * @param $output
+	 *
+	 * @return mixed
+	 */
+	private function setWordpressDirectory( $output ) {
+		if ( isset( $this->config->debug ) && $this->config->debug == true ) {
+			echo "WordPress debug mode enabled\n";
+			return str_replace( 'define(\'ABSPATH\', dirname(__FILE__) . \'/\');', 'define(\'ABSPATH\', dirname(__FILE__) . \'/wordpress/\' );', $output );
+		}
+
+		return $output;
+	}
+
+
+	/**
 	 * Enable PHP error logging in debug mode
 	 *
 	 * @param $output
@@ -113,6 +132,7 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 		return preg_replace( "/(define\(\s*?'WP_DEBUG'\s*?,\s*?(false|true)\s*?\);)/", "$1\n
 /** Enable PHP Errors */
 if(WP_DEBUG) {
+	define('SAVEQUERIES', true);
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 }\n", $output );
@@ -237,6 +257,27 @@ define( 'EMPTY_TRASH_DAYS', {$this->config->empty_trash_in_days} );" . "\n", $ou
 define( 'DISALLOW_FILE_EDIT', " . ( boolval( $this->config->disallow_file_edit ) ? 'true' : 'false' ) . " );" . "\n", $output );
 		}
 
+		return $output;
+	}
+
+
+	/**
+	 * Change WordPress wp-content directory
+	 *
+	 * @param $output
+	 *
+	 * @return mixed
+	 */
+	private function setDifferentWpContentDirectory( $output ) {
+		echo "Change WordPress wp-content directory\n";
+		$output = str_replace( '<?php', "<?php\n
+/** Change WordPress wp-content directory */
+define( 'WP_PROTOCOL',  stripos(\$_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://' );
+define( 'WP_SITEURL', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] . '/wp' );
+define( 'WP_HOME', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] );
+define( 'UPLOADS', '/content/uploads/' );
+define( 'WP_CONTENT_URL', WP_HOME . '/content' );
+define( 'WP_CONTENT_DIR', realpath( dirname( __FILE__ ) . '/content' );" . "\n", $output );
 		return $output;
 	}
 
