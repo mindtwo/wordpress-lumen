@@ -36,7 +36,7 @@ abstract class ComponentBase {
 		$this->install_templates_dir = $this->home_dir . '/install/views';
 		$this->install_files_dir     = $this->home_dir . '/install/files';
 		$this->wp_theme_dir          = $this->public_dir . '/content/themes/default';
-		$this->wp_dir                = $this->public_dir . '/wp';
+		$this->wp_dir                = $this->public_dir . '/wordpress';
 
 		// Load required components
 		$this->filesystem = app( "files" );
