@@ -41,6 +41,10 @@ class ComponentWordpress extends ComponentBase implements WpInstallComponentsInt
 			echo "Create directory: '" . $this->wp_dir . "'...\n";
 			$this->filesystem->makeDirectory($this->wp_dir, 0776, true);
 
+			// Create WordPress uploads directory
+			echo "Create directory: '" . $this->wp_upload_dir . "'...\n";
+			$this->filesystem->makeDirectory($this->wp_upload_dir, 0776, true);
+
 			// Remove existing archive
 			if ( $this->filesystem->exists( $wordpress_tar_file ) ) {
 				echo "Old WordPress file exists and was deleted!\n";
