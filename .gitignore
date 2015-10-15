@@ -11,6 +11,7 @@ Thumbs.db
 
 # Public folder
 /public/wordpress
+!/public/wordpress/wp-config.php
 /public/wp-config.php
 
 # Backup files
