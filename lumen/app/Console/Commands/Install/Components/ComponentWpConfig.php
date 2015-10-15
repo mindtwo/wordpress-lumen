@@ -45,6 +45,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 			// Write WordPress config file
 			echo "Write \"{$this->public_dir}/wp-config.php\" file.\n";
 			$this->filesystem->put( $this->public_dir . '/wp-config.php', $output );
+			$this->filesystem->put( $this->wp_dir . '/wp-config.php', '<?php require_once( realpath( dirname( __FILE__ ) . \'/../wp-config.php\' ) );' );
 			unset( $output );
 		}
 	}
@@ -277,7 +278,7 @@ define( 'WP_SITEURL', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] . '/wp' );
 define( 'WP_HOME', WP_PROTOCOL . \$_SERVER['HTTP_HOST'] );
 define( 'UPLOADS', '/content/uploads/' );
 define( 'WP_CONTENT_URL', WP_HOME . '/content' );
-define( 'WP_CONTENT_DIR', realpath( dirname( __FILE__ ) . '/content' );" . "\n", $output );
+define( 'WP_CONTENT_DIR', realpath( dirname( __FILE__ ) . '/content' ) );" . "\n", $output );
 		return $output;
 	}
 
