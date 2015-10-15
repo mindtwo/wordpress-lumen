@@ -41,13 +41,38 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 			$output = $this->setMultisiteSupport( $output );
 			$output = $this->setLanguage( $output );
 			$output = $this->setComposerAutoloading( $output );
+			$output = $this->removeWpSettingsFile( $output );
 
 			// Write WordPress config file
 			echo "Write \"{$this->public_dir}/wp-config.php\" file.\n";
 			$this->filesystem->put( $this->public_dir . '/wp-config.php', $output );
-			$this->filesystem->put( $this->wp_dir . '/wp-config.php', '<?php require_once( realpath( dirname( __FILE__ ) . \'/../wp-config.php\' ) );' );
+			$this->filesystem->put( $this->wp_dir . '/wp-config.php', '<?php
+
+/** Absolute path to the WordPress directory. */
+if ( !defined(\'ABSPATH\') )
+    define(\'ABSPATH\', dirname(__FILE__) . \'/\');
+
+/** Location of your WordPress configuration. */
+require_once(ABSPATH . \'../wp-config.php\');
+
+/** Load WordPress settings file */
+require_once(ABSPATH . \'wp-settings.php\');' );
 			unset( $output );
 		}
+	}
+
+
+	/**
+	 * Remove wp-settings.php link in config file
+	 *
+	 * @param $output
+	 *
+	 * @return mixed
+	 */
+	private function removeWpSettingsFile( $output ) {
+		echo "Remove wp-settings.php link in config file\n";
+		$output = preg_replace( '/\n\/\*\*.+\*\/\nrequire_once\(ABSPATH \. \'wp-settings\.php\'\);\n/', '', $output );
+		return $output;
 	}
 
 
