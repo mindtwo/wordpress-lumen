@@ -111,10 +111,8 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 	 * @return mixed
 	 */
 	private function setWordpressDirectory( $output ) {
-		if ( isset( $this->config->debug ) && $this->config->debug == true ) {
-			echo "WordPress debug mode enabled\n";
-			return str_replace( 'define(\'ABSPATH\', dirname(__FILE__) . \'/\');', 'define(\'ABSPATH\', dirname(__FILE__) . \'/wordpress/\' );', $output );
-		}
+		echo "Set WordPress directory\n";
+		return str_replace( 'define(\'ABSPATH\', dirname(__FILE__) . \'/\');', 'define(\'ABSPATH\', dirname(__FILE__) . \'/wordpress/\' );', $output );
 
 		return $output;
 	}
