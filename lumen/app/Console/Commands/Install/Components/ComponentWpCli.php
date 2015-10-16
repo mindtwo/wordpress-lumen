@@ -70,8 +70,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_image_filename \"logo.png\"" ,
 
 
-			"cd {$this->home_dir} && php wp-cli.phar term create nav_menu menu-main --slug=\"menu-main\"" ,
-			"cd {$this->home_dir} && php wp-cli.phar term create nav_menu menu-footer --slug=\"menu-footer\"  --description=\"\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar term create \"nav_menu\" \"menu-main\" --slug=\"menu-main\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar term create \"nav_menu\" \"menu-footer\" --slug=\"menu-footer\"  --description=\"\"" ,
 
 		];
 
