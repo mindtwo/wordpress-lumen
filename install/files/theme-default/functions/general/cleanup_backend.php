@@ -15,7 +15,6 @@ function remove_wordpress_backend_menu_li() {
 		}
 	}
 }
-
 add_action( 'admin_menu', 'remove_wordpress_backend_menu_li' );
 
 
@@ -36,7 +35,6 @@ function my_unregister_widgets() {
 	unregister_widget( 'WP_Widget_RSS' );
 	// unregister_widget( 'WP_Widget_Text' );
 }
-
 add_action( 'widgets_init', 'my_unregister_widgets' );
 
 
@@ -59,7 +57,6 @@ function remove_admin_bar_links() {
 	//$wp_admin_bar->remove_menu('w3tc');             // If you use w3 total cache remove the performance link
 	//$wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
 }
-
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 
 
@@ -69,7 +66,6 @@ add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 function my_acf_admin_head() {
 	echo '<style type="text/css">.acf_postbox .field textarea{min-height:0;}</style>';
 }
-
 add_action( 'acf/input/admin_head', 'my_acf_admin_head' );
 
 
@@ -78,8 +74,6 @@ add_action( 'acf/input/admin_head', 'my_acf_admin_head' );
  */
 function mce_mod( $init ) {
 	$init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
-
 	return $init;
 }
-
 add_filter( 'tiny_mce_before_init', 'mce_mod' );

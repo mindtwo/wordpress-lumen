@@ -3,53 +3,9 @@
     "title": "Theme Options - General Settings",
     "fields": [
         {
-            "key": "field_54f5d7b139b41",
-            "label": "ID der Blog Startseite",
-            "name": "blog_page_id",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_54abbd80864e2",
             "label": "Logo Image Filename",
             "name": "logo_image_filename",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_54abbda6864e3",
-            "label": "Logo Vektor Image Filename",
-            "name": "logo_vektor_image_filename",
             "prefix": "",
             "type": "text",
             "instructions": "",

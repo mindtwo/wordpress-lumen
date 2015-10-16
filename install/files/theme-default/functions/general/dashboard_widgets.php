@@ -8,16 +8,14 @@ function dashboard_widget_function() {
 	echo '<h4 style="border-bottom:1px solid #eeeeee;">Standard Shortcodes</h4>';
 	echo '<table style="width:100%;margin-bottom:20px">';
 	echo '<tr><td style="width:200px;"><strong>Horizontale Trennlinie</strong></td><td>[hr]</td></tr>';
-	echo '<tr><td style="width:200px;"><strong>Clear</strong></td><td>[clear]</td></tr>';
 	echo '<tr><td style="width:200px;"><strong>Spacer</strong></td><td>[spacer]</td></tr>';
 	echo '</table>';
 	echo '<h4 style="border-bottom:1px solid #eeeeee;">Erweiterte Shortcodes</h4>';
 	echo '<table style="width:100%;margin-bottom:20px;">';
 	echo '<tr><td style="width:200px;"><strong>Button</strong></td><td>[button href="" text=""]</td></tr>';
-	echo '<tr><td style="width:200px;"><strong>Link</strong></td><td>[link href="" text=""]</td></tr>';
-	echo '<tr><td style="width:200px;"><strong>Link (extern)</strong></td><td>[link-extern href="" text=""]</td></tr>';
 	echo '<tr><td style="width:200px;"><strong>Icon-Headline</strong></td><td>[icon-header icon="" text=""]</td></tr>';
 	echo '<tr><td style="width:200px;"><strong>Großer Text</strong></td><td>[large]Text[/large]</td></tr>';
+	echo '<tr><td style="width:200px;"><strong>Zeile</strong></td><td>[row]Text[/row]</td></tr>';
 	echo '<tr><td style="width:200px;"><strong>Spalte</strong></td><td>[col class=""]Text[/col]</td></tr>';
 	echo '</table>';
 }

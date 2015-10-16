@@ -9,7 +9,6 @@ date_default_timezone_set('Europe/Berlin');
 /**
  * Define constants
  */
-define('THEME_MAILS_TO_DEVELOPER', true);
 define('THEME_APPLICATION_DIR', realpath(ABSPATH . '/../../') . '/');
 define('THEME_DIR', realpath(get_template_directory()) . '/');
 define('THEME_FUNCTIONS', THEME_DIR . 'functions/');
@@ -28,7 +27,6 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
  */
 $autoload_class_files = array(
     // THEME_FUNCTIONS . 'general/minify_html.php',
-    // THEME_FUNCTIONS . 'general/theme_init_actions.php',
     THEME_FUNCTIONS . 'general/config.php',
     THEME_FUNCTIONS . 'general/theme_helper.php',
     THEME_FUNCTIONS . 'general/session.php',

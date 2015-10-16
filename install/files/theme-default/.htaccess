@@ -1,4 +1,3 @@
-
 Deny from all
 
 <Files ~ "\.(html|png|jpg|gif|css|js|font|eot|svg|ttf|woff|otf)$">
