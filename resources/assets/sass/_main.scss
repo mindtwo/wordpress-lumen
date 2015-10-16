@@ -77,12 +77,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 h1 {
     @include font-size(28);
-    color: $primary-color;
+    color: $brand-primary;
 }
 
 h2 {
     @include font-size(28);
-    color: $primary-color;
+    color: $brand-primary;
 }
 
 h3 {

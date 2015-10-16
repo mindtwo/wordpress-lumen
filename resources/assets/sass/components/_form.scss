@@ -41,7 +41,7 @@
         box-sizing: border-box;
         padding: 3px 8px;
         float: left;
-        border: 1px solid $gray;
+        border: 1px solid $gray-light;
     }
 
     textarea {
@@ -54,18 +54,18 @@
         box-sizing: border-box;
         border: none;
         padding: 4px 8px;
-        background: $primary-color;
+        background: $brand-primary;
         cursor: pointer;
         @include transition(all, 0.3s);
 
         &,
         i {
-            color: $primary-contrast-color;
+            color: $gray-light;
         }
 
         &:focus,
         &:hover {
-            background: darken($primary-color,8%);
+            background: darken($brand-primary,8%);
         }
     }
 

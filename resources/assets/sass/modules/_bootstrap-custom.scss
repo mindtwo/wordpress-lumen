@@ -19,7 +19,7 @@ $golden: #ffb219;
 $base-text-color: #1d1d1b;
 $text-color: #727272;
 $link-color: #818181;
-$link-hover-color: $primary-color;
+$link-hover-color: $brand-primary;
 $body-bg: #1d1d1b;
 
 /* Typography */
@@ -58,7 +58,7 @@ $input-height-base: 34px;
 /* Dropdowns */
 $dropdown-bg: transparent;
 $dropdown-link-color: #797979;
-$dropdown-link-hover-color: $primary-color;
+$dropdown-link-hover-color: $brand-primary;
 $dropdown-link-hover-bg : transparent;
 $dropdown-border: transparent;
 
@@ -77,8 +77,8 @@ $navbar-default-color: $white;
 $navbar-default-bg: transparent;
 $navbar-default-border: 0;
 $navbar-default-link-color: $white;
-$navbar-default-link-hover-color: $primary-color;
-$navbar-default-link-active-color: $primary-color;
+$navbar-default-link-hover-color: $brand-primary;
+$navbar-default-link-active-color: $brand-primary;
 $navbar-default-link-active-bg: transparent;
 $navbar-default-toggle-hover-bg: $gray;
 $navbar-default-toggle-icon-bar-bg: $white;
