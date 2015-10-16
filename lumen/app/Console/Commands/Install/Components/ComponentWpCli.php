@@ -70,10 +70,10 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_image_filename \"logo.png\"" ,
 
 
-			"cd {$this->home_dir} && php wp-cli.phar menu create menu-main",
-			"cd {$this->home_dir} && php wp-cli.phar menu create menu-footer" ,
-			"cd {$this->home_dir} && php wp-cli.phar menu location assign menu-main menu-main",
-			"cd {$this->home_dir} && php wp-cli.phar menu location assign menu-footer menu-footer",
+			"cd {$this->home_dir} && php wp-cli.phar menu create \"Main\"",
+			"cd {$this->home_dir} && php wp-cli.phar menu create \"Footer\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar menu location assign menu-main main",
+			"cd {$this->home_dir} && php wp-cli.phar menu location assign menu-footer footer",
 
 		];
 
