@@ -33,6 +33,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		$landingpage = app('translator')->get('install.wordpress-database.landingpage');
 		$home = app('translator')->get('install.wordpress-database.home');
 		$blog = app('translator')->get('install.wordpress-database.blog');
+		$imprint = app('translator')->get('install.wordpress-database.imprint');
+		$privacy = app('translator')->get('install.wordpress-database.privacy');
 
 		$excecute_commands = [
 			"cd {$this->home_dir} && php wp-cli.phar db reset --yes",
@@ -60,6 +62,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=page --post_title=\"$contact\" --post_name=\"$contact\" --post_status=publish",
 			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=page --post_title=\"$landingpage\" --post_name=\"$landingpage\" --post_status=publish",
 			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=page --post_title=\"$team\" --post_name=\"$team\" --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=page --post_title=\"$imprint\" --post_name=\"$imprint\" --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=page --post_title=\"$privacy\" --post_name=\"$privacy\" --post_status=publish",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 4 _wp_page_template template-contact.php",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 5 _wp_page_template template-landingpage.php",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
@@ -69,12 +73,19 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar option add _options_logo_alt \"field_54abbd55864e1\"" ,
 			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_image_filename \"logo.png\"" ,
 
-
+			// Add menus
 			"cd {$this->home_dir} && php wp-cli.phar menu create \"Main\"",
 			"cd {$this->home_dir} && php wp-cli.phar menu create \"Footer\"" ,
 			"cd {$this->home_dir} && php wp-cli.phar menu location assign menu-main main",
 			"cd {$this->home_dir} && php wp-cli.phar menu location assign menu-footer footer",
 
+			// Add menu items
+			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 2 --title=\"$home\"",
+			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 6 --title=\"$team\"",
+			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 3 --title=\"$blog\"",
+			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 4 --title=\"$contact\"",
+			"cd {$this->home_dir} && php wp-cli.phar menu item add-post footer 7 --title=\"$imprint\"",
+			"cd {$this->home_dir} && php wp-cli.phar menu item add-post footer 8 --title=\"$privacy\"",
 		];
 
 		// Install plugins

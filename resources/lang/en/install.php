@@ -7,5 +7,7 @@ return [
 		'landingpage' => 'Landingpage',
 		'team' => 'Team',
 		'blog' => 'Blog',
+		'privacy' => 'Privacy',
+		'imprint' => 'Imprint',
 	],
 ];
