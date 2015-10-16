@@ -10,7 +10,7 @@ date_default_timezone_set('Europe/Berlin');
  * Define constants
  */
 define('THEME_MAILS_TO_DEVELOPER', true);
-define('THEME_APPLICATION_DIR', realpath(ABSPATH . '/../') . '/');
+define('THEME_APPLICATION_DIR', realpath(ABSPATH . '/../../') . '/');
 define('THEME_DIR', realpath(get_template_directory()) . '/');
 define('THEME_FUNCTIONS', THEME_DIR . 'functions/');
 define('THEME_CONFIG', THEME_DIR . 'config/');
@@ -36,6 +36,7 @@ $autoload_class_files = array(
     THEME_FUNCTIONS . 'general/cleanup_backend.php',
     THEME_FUNCTIONS . 'general/cleanup_frontend.php',
     THEME_FUNCTIONS . 'general/shortcode_helper.php',
+    THEME_FUNCTIONS . 'general/timber_global.php',
     THEME_FUNCTIONS . 'site/shortcode-acf.php', // must be initialized before acf.php
     THEME_FUNCTIONS . 'general/acf.php',
     // THEME_FUNCTIONS . 'general/dashboard_widgets.php',
