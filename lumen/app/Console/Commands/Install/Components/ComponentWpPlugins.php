@@ -23,10 +23,14 @@ class ComponentWpPlugins extends ComponentBase implements WpInstallComponentsInt
 	public function fire() {
 		if ( isset( $this->config->wordpress_plugins ) ) {
 
+			// Create directory
+			if(! $this->filesystem->exists( $this->wp_plugin_dir )) {
+				$this->filesystem->makeDirectory($this->wp_plugin_dir, intval(0776), true);
+			}
+
 			foreach ( $this->config->wordpress_plugins as $name => $plugin_data ) {
 				if ( ! $this->filesystem->exists( $this->wp_plugin_dir . "/$name" ) && $name != 'wp_cli') {
-					// Create directory
-					$this->filesystem->makeDirectory($this->wp_plugin_dir, intval(0776), true);
+
 
 					// Check permissions
 					if ( $this->filesystem->isWritable( $this->wp_plugin_dir ) === false ) {
