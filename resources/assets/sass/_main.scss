@@ -22,7 +22,6 @@
 	---------------------------------------------------------*/
 @import "markup-mixins";
 @import "markup-variables";
-@import "modules/csstyle";
 @import "modules/fancybox";
 @import "modules/bootstrap";
 @import "modules/font-awesome";
@@ -56,6 +55,7 @@
 
 html {
     @include font-size(16);
+
 }
 
 body {
@@ -67,7 +67,6 @@ body {
 	Headline styles
 	---------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
-    color: #000;
     font-weight: 800;
     font-style: italic;
 }
@@ -165,7 +164,7 @@ table td {
 	---------------------------------------------------------*/
 img {
     max-width: 100%;
-}	
+}
 
 
 /*  ---------------------------------------------------------

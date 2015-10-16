@@ -26,7 +26,7 @@ ToDos:
 - Edit "/install/config/installer-config-sample.json" with project settings and save as "/install/config/installer-config.json"
 - Run 'composer install --working-dir="./lumen"'
 - If using gulp?
-    - Run "/resources/assets/npm update"
+    - Run "/resources/assets/npm install"
     - Run "bower install -y --config.cwd="./resources/assets""
 - Run "php /lumen/artisan wp-lumen:refresh-dotenv-file"
 - Run "php /lumen/artisan wp-lumen:install"

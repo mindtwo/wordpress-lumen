@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     gzip = require('gulp-gzip'),
     livereload = require('gulp-livereload');
 
-var public_assets_dir = '../public/wp-content/themes/default/assets/';
+var public_assets_dir = '../../public/content/themes/default/assets/';
 
 var paths = {
     bower: {

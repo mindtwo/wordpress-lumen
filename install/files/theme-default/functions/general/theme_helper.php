@@ -67,15 +67,15 @@ function theme_comment() {
 	return theme_config_file('comment')['default'];
 }
 
-function primary_menu($name='main-menu') {
+function primary_menu($name='menu-main') {
 	ob_start();
 	wp_nav_menu( array(
 		'theme_location' => $name,
 		'container' => 'nav',
 		'depth' => 2,
-		'container_id' => 'bs-example-navbar-collapse-1',
-		'container_class' => 'collapse navbar-collapse',
-		'menu_class' => 'nav navbar-nav',
+		'container_id' => '',
+		'container_class' => 'navbar navbar-default',
+		'menu_class' => 'nav nav-pills pull-right',
 		'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 		'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 		'walker'=> new wp_bootstrap_navwalker()
@@ -84,7 +84,7 @@ function primary_menu($name='main-menu') {
 	return $content;
 }
 
-function footer_menu($name='main-footer') {
+function footer_menu($name='menu-footer') {
 	ob_start();
 	if(has_nav_menu($name)) {
 		wp_nav_menu( array(

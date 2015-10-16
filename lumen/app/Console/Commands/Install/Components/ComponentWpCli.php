@@ -68,7 +68,11 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_alt \"{$this->config->wordpress_install->site_name}\"" ,
 			"cd {$this->home_dir} && php wp-cli.phar option add _options_logo_alt \"field_54abbd55864e1\"" ,
 			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_image_filename \"logo.png\"" ,
-			"cd {$this->home_dir} && php wp-cli.phar option add _options_logo_image_filename \"field_54abbd80864e2\"" ,
+
+
+			"cd {$this->home_dir} && php wp-cli.phar term create nav_menu menu-main --slug=\"menu-main\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar term create nav_menu menu-footer --slug=\"menu-footer\"  --description=\"\"" ,
+
 		];
 
 		// Install plugins
