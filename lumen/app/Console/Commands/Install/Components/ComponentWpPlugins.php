@@ -25,12 +25,17 @@ class ComponentWpPlugins extends ComponentBase implements WpInstallComponentsInt
 
 			foreach ( $this->config->wordpress_plugins as $name => $plugin_data ) {
 				if ( ! $this->filesystem->exists( $this->wp_plugin_dir . "/$name" ) && $name != 'wp_cli') {
+					// Create directory
+					$this->filesystem->makeDirectory($this->wp_plugin_dir, intval(0776), true);
+
+					// Check permissions
 					if ( $this->filesystem->isWritable( $this->wp_plugin_dir ) === false ) {
 						echo "It does not appear that the current directory ($this->wp_plugin_dir) is writable.\n";
 						echo "Please correct and re-run this script.\n";
 						continue;
 					}
 
+					// Get plugins
 					echo "Plugin \"$name\" downloading...\n";
 					$file = $this->wp_plugin_dir . '/' . $plugin_data->filename;
 					$this->filesystem->put( $file, file_get_contents( $plugin_data->src ) );
