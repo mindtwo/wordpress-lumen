@@ -63,6 +63,12 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 4 _wp_page_template template-contact.php",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 5 _wp_page_template template-landingpage.php",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
+
+			// Set ACF options
+			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_alt \"{$this->config->wordpress_install->site_name}\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar option add _options_logo_alt \"field_54abbd55864e1\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar option add options_logo_image_filename \"logo.png\"" ,
+			"cd {$this->home_dir} && php wp-cli.phar option add _options_logo_image_filename \"field_54abbd80864e2\"" ,
 		];
 
 		// Install plugins

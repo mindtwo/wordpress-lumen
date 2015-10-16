@@ -1,12 +1,6 @@
 <?php
 
 /**
- * Set timezone for this application
- */
-date_default_timezone_set('Europe/Berlin');
-
-
-/**
  * Define constants
  */
 define('THEME_APPLICATION_DIR', realpath(ABSPATH . '/../../') . '/');
@@ -27,6 +21,7 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
  */
 $autoload_class_files = array(
     // THEME_FUNCTIONS . 'general/minify_html.php',
+    THEME_FUNCTIONS . 'general/debug.php',
     THEME_FUNCTIONS . 'general/config.php',
     THEME_FUNCTIONS . 'general/theme_helper.php',
     THEME_FUNCTIONS . 'general/session.php',
@@ -43,14 +38,8 @@ $autoload_class_files = array(
     THEME_FUNCTIONS . 'site/pagination.php',
     THEME_FUNCTIONS . 'site/shortcodes.php',
     THEME_FUNCTIONS . 'site/bootstrap_walker_nav.php',
-    THEME_FUNCTIONS . 'site/footer_nav.php',
     THEME_FUNCTIONS . 'site/multisite.php',
     THEME_FUNCTIONS . 'site/navigation.php',
-    THEME_FUNCTIONS . 'get_content/helper/get_thumbnail_image.php',
-    THEME_FUNCTIONS . 'get_content/customers-list.php',
-    THEME_FUNCTIONS . 'get_content/projects-list.php',
-    THEME_FUNCTIONS . 'get_content/team-list.php',
-    THEME_FUNCTIONS . 'get_content/pager_simple_next_prev.php',
     THEME_FUNCTIONS . 'custom_post_type/team.php',
 	THEME_WIDGETS . 'search-box.php',
 	THEME_WIDGETS . '_widget_init.php', // Must loaded after widget import

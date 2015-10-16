@@ -66,13 +66,3 @@ function theme_site_name( $callback = false ) {
 		echo $result;
 	}
 }
-
-
-function get_google_analytics() {
-	$config = get_site_config();
-	if ( isset( $config['GOOGLE_ANALYTICS'] ) && ! empty( $config['GOOGLE_ANALYTICS'] ) ) {
-		return $config['GOOGLE_ANALYTICS'];
-	} else {
-		return false;
-	}
-}

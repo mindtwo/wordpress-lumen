@@ -30,7 +30,7 @@ function theme_config_file($filename) {
 		} else {
 
 			// Return config file directly
-			return $config[0];
+			return (isset($config[0])) ? $config[0] : $config;
 
 		}
 	}

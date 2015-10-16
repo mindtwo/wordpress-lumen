@@ -64,7 +64,41 @@ function mobile_image_prefix() {
 }
 
 function theme_comment() {
-	return theme_config_file('comment')['mindtwo'];
+	return theme_config_file('comment')['default'];
+}
+
+function primary_menu($name='main-menu') {
+	ob_start();
+	wp_nav_menu( array(
+		'theme_location' => $name,
+		'container' => 'nav',
+		'depth' => 2,
+		'container_id' => 'bs-example-navbar-collapse-1',
+		'container_class' => 'collapse navbar-collapse',
+		'menu_class' => 'nav navbar-nav',
+		'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+		'walker'=> new wp_bootstrap_navwalker()
+	));
+	$content = ob_get_contents(); ob_end_clean();
+	return $content;
+}
+
+function footer_menu($name='main-footer') {
+	ob_start();
+	if(has_nav_menu($name)) {
+		wp_nav_menu( array(
+			'theme_location' => $name,
+			'container'      => false,
+			'depth'          => 1,
+			'link_before'    => '<span class="fa fa-chevron-right"></span>',
+			'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+			'fallback_cb'    => 'wp_bootstrap_navwalker::fallback',
+			'walker'         => new wp_bootstrap_navwalker()
+		) );
+	}
+	$content = ob_get_contents(); ob_end_clean();
+	return $content;
 }
 
 
