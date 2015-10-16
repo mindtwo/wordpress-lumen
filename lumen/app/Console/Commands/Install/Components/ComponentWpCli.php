@@ -77,8 +77,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			// Add menus
 			"cd {$this->home_dir} && php wp-cli.phar menu create \"Main\"",
 			"cd {$this->home_dir} && php wp-cli.phar menu create \"Footer\"" ,
-			"cd {$this->home_dir} && php wp-cli.phar menu location assign Main main",
-			"cd {$this->home_dir} && php wp-cli.phar menu location assign Footer footer",
+			"cd {$this->home_dir} && php wp-cli.phar menu location assign main menu-main",
+			"cd {$this->home_dir} && php wp-cli.phar menu location assign footer menu-footer",
 
 			// Add menu items
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 2 --title=\"$home\"",
