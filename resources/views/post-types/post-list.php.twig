@@ -1,8 +1,14 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
     <h1>{{post.title}}</h1>
-    <img src="{{post.thumbnail.src}}" />
     <div class="body">
         {{post.content}}
+
+        {% for post in posts %}
+            <h2><a href="{{post.get_path}}">{{post.post_title}}</a></h2>
+            <div>
+                {{function('get_the_excerpt')}}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

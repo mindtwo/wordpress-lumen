@@ -180,12 +180,24 @@ img {
 /**
  * Header
  */
+#site__header {
+    .logo {
+        &,
+        a {
+            display: block;
 
+        }
+    }
+
+    .navbar {
+        min-height: inherit;
+    }
+}
 
 /**
  * Content
  */
-#content_wrapper {
+#site__main {
 
 }
 
@@ -193,7 +205,20 @@ img {
 /**
  * Footer
  */
+#site__footer {
+    nav {
+        text-align: right;
 
+        li,
+        a {
+            display: inline-block;
+        }
+
+        a {
+            margin-left: 10px;
+        }
+    }
+}
 
 /*  ---------------------------------------------------------
 	Include print styles

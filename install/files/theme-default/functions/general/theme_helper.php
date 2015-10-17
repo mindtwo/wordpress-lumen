@@ -71,11 +71,11 @@ function primary_menu($name='menu-main') {
 	ob_start();
 	wp_nav_menu( array(
 		'theme_location' => $name,
-		'container' => 'nav',
+		'container' => false,
 		'depth' => 2,
 		'container_id' => '',
-		'container_class' => 'navbar navbar-default',
-		'menu_class' => 'nav nav-pills pull-right',
+		'container_class' => '',
+		'menu_class' => 'nav nav-pills',
 		'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 		'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 		'walker'=> new wp_bootstrap_navwalker()
@@ -89,9 +89,10 @@ function footer_menu($name='menu-footer') {
 	if(has_nav_menu($name)) {
 		wp_nav_menu( array(
 			'theme_location' => $name,
-			'container'      => false,
+			'container'      => 'nav',
+			'container_class'=> '',
 			'depth'          => 1,
-			'link_before'    => '<span class="fa fa-chevron-right"></span>',
+			'link_before'    => '',
 			'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 			'fallback_cb'    => 'wp_bootstrap_navwalker::fallback',
 			'walker'         => new wp_bootstrap_navwalker()

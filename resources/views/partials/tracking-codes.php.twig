@@ -7,7 +7,6 @@
     ga('create', '{{options.google_analytics_code}}', 'auto');
     ga('set', 'anonymizeIp', true);
     ga('require', 'displayfeatures');
-    ga('send', 'pageview');
     {% block custom_google_analytics_pageview %}ga('send','pageview');{% endblock %}
 </script>
 {% endif %}

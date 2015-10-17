@@ -18,7 +18,9 @@
     <div id="site">
         <header id="site__header" class="header clearfix" itemscope itemtype="http://schema.org/Organization">
             <div class="container">
-                {% include 'partials/logo.php.twig' %}
+                <div class="page-header">
+                    {% include 'partials/logo.php.twig' %}
+                </div>
                 {% include 'partials/nav-primary.php.twig' %}
             </div>
         </header>
@@ -28,9 +30,14 @@
             </div>
 
         </main>
-        <footer id="site__footer">
+        <footer id="site__footer" class="footer">
             <div class="container">
-                {% include 'partials/nav-footer.php.twig' %}
+                <hr>
+                <div class="row">
+                    <div class="col-md-6"><a href="http://www.mindtwo.de/" target="_blank">Theme by mindtwo GmbH</a></div>
+                    <div class="col-md-6">{% include 'partials/nav-footer.php.twig' %}</div>
+
+                </div>
             </div>
         </footer>
     </div>
