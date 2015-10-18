@@ -22,6 +22,8 @@ abstract class ComponentBase {
 	public $wp_dir;
 	public $wp_upload_dir;
 	public $wp_plugin_dir;
+	public $wp_theme_dir;
+	public $wp_themes_dir;
 
 	/**
 	 * ComponentBase constructor.
@@ -37,6 +39,7 @@ abstract class ComponentBase {
 		$this->install_config_dir    = $this->home_dir . '/install/config';
 		$this->install_templates_dir = $this->home_dir . '/install/views';
 		$this->install_files_dir     = $this->home_dir . '/install/files';
+		$this->wp_themes_dir         = $this->public_dir . '/content/themes';
 		$this->wp_theme_dir          = $this->public_dir . '/content/themes/default';
 		$this->wp_dir                = $this->public_dir . '/wordpress';
 		$this->wp_upload_dir         = $this->public_dir . '/content/uploads';

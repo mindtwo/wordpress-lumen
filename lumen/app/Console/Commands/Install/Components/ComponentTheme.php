@@ -22,6 +22,7 @@ class ComponentTheme extends ComponentBase implements WpInstallComponentsInterfa
 	 */
 	public function fire() {
 		if ( ! $this->filesystem->exists( $this->wp_theme_dir ) && $this->filesystem->exists( $this->install_files_dir . "/theme-default" ) ) {
+			$this->filesystem->makeDirectory($this->wp_themes_dir, intval(0776), true);
 			$this->filesystem->copyDirectory( "{$this->install_files_dir}/theme-default", $this->wp_theme_dir );
 		}
 	}
