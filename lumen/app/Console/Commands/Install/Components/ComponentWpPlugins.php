@@ -29,7 +29,7 @@ class ComponentWpPlugins extends ComponentBase implements WpInstallComponentsInt
 			}
 
 			foreach ( $this->config->wordpress_plugins as $name => $plugin_data ) {
-				if ( ! $this->filesystem->exists( $this->wp_plugin_dir . "/$name" ) && $name != 'wp-cli') {
+				if ( ! $this->filesystem->exists( $this->wp_plugin_dir . "/$name" ) && $name != 'wp_cli') {
 
 					// Check permissions
 					if ( $this->filesystem->isWritable( $this->wp_plugin_dir ) === false ) {
