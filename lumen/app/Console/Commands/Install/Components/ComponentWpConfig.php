@@ -22,31 +22,55 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 	 */
 	public function fire() {
 		if ( ! $this->filesystem->exists( $this->public_dir . '/wp-config.php' ) && $this->filesystem->exists( $this->wp_dir . '/wp-config-sample.php' ) ) {
+			// Generate Custom WorPress Core "wp_config.php"-File.
+			$this->generateCustomWorPressCoreWpConfigFile();
 
-			// Load wp-config-sample.php file
-			$output = $this->filesystem->get( $this->wp_dir . '/wp-config-sample.php' );
+			// Generate WorPress Core "wp_config.php"-File.
+			$this->generateWorPressCoreWpConfigFile();
+		}
+	}
 
-			// Run replacements and add some additional constants
-			$output = $this->setDebug( $output );
-			$output = $this->setWordpressDirectory( $output );
-			$output = $this->setPhpErrorLoggingInDebugMode( $output );
-			$output = $this->setDatabaseSettings( $output );
-			$output = $this->setSalts( $output );
-			$output = $this->setPostRevisions( $output );
-			$output = $this->setTrashCleanup( $output );
-			$output = $this->setDisallowFileEdit( $output );
-			$output = $this->setWpAutoUpdate( $output );
-			$output = $this->setDifferentWpContentDirectory( $output );
-			$output = $this->setPostAutosaveInterval( $output );
-			$output = $this->setMultisiteSupport( $output );
-			$output = $this->setLanguage( $output );
-			$output = $this->setComposerAutoloading( $output );
-			$output = $this->removeWpSettingsFile( $output );
+	/**
+	 * Generate Custom WorPress Core "wp_config.php"-File.
+	 *
+	 * @return mixed
+	 */
+	private function generateCustomWorPressCoreWpConfigFile(  ) {
+		// Load wp-config-sample.php file
+		$output = $this->filesystem->get( $this->wp_dir . '/wp-config-sample.php' );
 
-			// Write WordPress config file
-			echo "Write \"{$this->public_dir}/wp-config.php\" file.\n";
-			$this->filesystem->put( $this->public_dir . '/wp-config.php', $output );
-			$this->filesystem->put( $this->wp_dir . '/wp-config.php', '<?php
+		// Run replacements and add some additional constants
+		$output = $this->setDebug( $output );
+		$output = $this->setWordpressDirectory( $output );
+		$output = $this->setPhpErrorLoggingInDebugMode( $output );
+		$output = $this->setDatabaseSettings( $output );
+		$output = $this->setSalts( $output );
+		$output = $this->setPostRevisions( $output );
+		$output = $this->setTrashCleanup( $output );
+		$output = $this->setDisallowFileEdit( $output );
+		$output = $this->setWpAutoUpdate( $output );
+		$output = $this->setDifferentWpContentDirectory( $output );
+		$output = $this->setPostAutosaveInterval( $output );
+		$output = $this->setMultisiteSupport( $output );
+		$output = $this->setLanguage( $output );
+		$output = $this->setComposerAutoloading( $output );
+		$output = $this->removeWpSettingsFile( $output );
+
+		// Write WordPress config file
+		$this->info("Write \"{$this->public_dir}/wp-config.php\" file.\n");
+		$this->filesystem->put( $this->public_dir . '/wp-config.php', $output );
+		unset( $output );
+	}
+
+
+	/**
+	 * Generate WorPress Core "wp_config.php"-File.
+	 *
+	 * @return mixed
+	 */
+	private function generateWorPressCoreWpConfigFile(  ) {
+		echo "Generate WorPress Core \"wp_config.php\"-File.\n";
+		$this->filesystem->put( $this->wp_dir . '/wp-config.php', '<?php
 
 /** Absolute path to the WordPress directory. */
 if ( !defined(\'ABSPATH\') )
@@ -57,8 +81,7 @@ require_once(ABSPATH . \'../wp-config.php\');
 
 /** Load WordPress settings file */
 require_once(ABSPATH . \'wp-settings.php\');' );
-			unset( $output );
-		}
+
 	}
 
 
