@@ -27,7 +27,7 @@ ToDos:
 - Run 'composer install'
 - If using gulp?
     - Run "npm install"
-    - Run "bower install -y --config.cwd="./resources/assets""
+    - Run "bower install -y"
 - Run "php /lumen/artisan wp-lumen:refresh-dotenv-file"
 - Run "php /lumen/artisan wp-lumen:install"
 - Set document root to "/public"
