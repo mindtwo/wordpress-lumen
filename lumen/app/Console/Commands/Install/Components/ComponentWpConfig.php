@@ -35,7 +35,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 	 *
 	 * @return mixed
 	 */
-	private function generateCustomWorPressCoreWpConfigFile(  ) {
+	protected function generateCustomWorPressCoreWpConfigFile(  ) {
 		// Load wp-config-sample.php file
 		$output = $this->filesystem->get( $this->wp_dir . '/wp-config-sample.php' );
 
@@ -57,7 +57,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 		$output = $this->removeWpSettingsFile( $output );
 
 		// Write WordPress config file
-		$this->info("Write \"{$this->public_dir}/wp-config.php\" file.\n");
+		echo "Write \"{$this->public_dir}/wp-config.php\" file.\n";
 		$this->filesystem->put( $this->public_dir . '/wp-config.php', $output );
 		unset( $output );
 	}
@@ -68,7 +68,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 	 *
 	 * @return mixed
 	 */
-	private function generateWorPressCoreWpConfigFile(  ) {
+	protected function generateWorPressCoreWpConfigFile() {
 		echo "Generate WorPress Core \"wp_config.php\"-File.\n";
 		$this->filesystem->put( $this->wp_dir . '/wp-config.php', '<?php
 
@@ -92,7 +92,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	 *
 	 * @return mixed
 	 */
-	private function removeWpSettingsFile( $output ) {
+	protected function removeWpSettingsFile( $output ) {
 		echo "Remove wp-settings.php link in config file\n";
 		$output = preg_replace( '/\n\/\*\*.+\*\/\nrequire_once\(ABSPATH \. \'wp-settings\.php\'\);\n/', '', $output );
 		return $output;
@@ -106,7 +106,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	 *
 	 * @return mixed
 	 */
-	private function setDatabaseSettings( $output ) {
+	protected function setDatabaseSettings( $output ) {
 		echo "WordPress database configuration\n";
 		$output = preg_replace( '/(define\(\'DB_USER\', )(\'.+\')(\)\;)/', '${1}Dotenv::findEnvironmentVariable(\'DB_USERNAME\')${3}', $output );
 		$output = preg_replace( '/(define\(\'DB_PASSWORD\', )(\'.+\')(\)\;)/', '${1}Dotenv::findEnvironmentVariable(\'DB_PASSWORD\')${3}', $output );
@@ -124,7 +124,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	 *
 	 * @return mixed
 	 */
-	private function setComposerAutoloading( $output ) {
+	protected function setComposerAutoloading( $output ) {
 		echo "Set Composer autoloading to WordPress\n";
 
 		return str_replace( '<?php', "<?php\n
@@ -141,7 +141,7 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 	 *
 	 * @return mixed
 	 */
-	private function setDebug( $output ) {
+	protected function setDebug( $output ) {
 		if ( isset( $this->config->debug ) && $this->config->debug == true ) {
 			echo "WordPress debug mode enabled\n";
 			return str_replace( 'define(\'WP_DEBUG\', false);', 'define(\'WP_DEBUG\', true);', $output );
@@ -158,7 +158,7 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 	 *
 	 * @return mixed
 	 */
-	private function setWordpressDirectory( $output ) {
+	protected function setWordpressDirectory( $output ) {
 		echo "Set WordPress directory\n";
 		return str_replace( 'define(\'ABSPATH\', dirname(__FILE__) . \'/\');', 'define(\'ABSPATH\', dirname(__FILE__) . \'/wordpress/\' );', $output );
 
@@ -173,7 +173,7 @@ Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
 	 *
 	 * @return mixed
 	 */
-	private function setPhpErrorLoggingInDebugMode( $output ) {
+	protected function setPhpErrorLoggingInDebugMode( $output ) {
 		echo "Enable PHP error logging in debug mode\n";
 
 		return preg_replace( "/(define\(\s*?'WP_DEBUG'\s*?,\s*?(false|true)\s*?\);)/", "$1\n
@@ -193,7 +193,7 @@ if(WP_DEBUG) {
 	 *
 	 * @return mixed
 	 */
-	private function setSalts( $output ) {
+	protected function setSalts( $output ) {
 		echo "Write secret salts to \"/public/wp_config.php\" file\n";
 		$wp_secure_keys = array(
 			'AUTH_KEY',
@@ -222,7 +222,7 @@ if(WP_DEBUG) {
 	 *
 	 * @return mixed
 	 */
-	private function setPostRevisions( $output ) {
+	protected function setPostRevisions( $output ) {
 		if ( isset( $this->config->post_revisions ) ) {
 			echo "WordPress post_revisions mode disabled\n";
 
@@ -242,7 +242,7 @@ define('WP_POST_REVISIONS', " . ( boolval( $this->config->post_revisions ) ? 'tr
 	 *
 	 * @return mixed
 	 */
-	private function setMultisiteSupport( $output ) {
+	protected function setMultisiteSupport( $output ) {
 		if ( isset( $this->config->multisite->status ) && $this->config->multisite->status == true ) {
 
 			echo "Add Wordpress multisite support\n";
@@ -276,7 +276,7 @@ define('BLOG_ID_CURRENT_SITE', 1);" . "\n", $output );
 	 *
 	 * @return mixed
 	 */
-	private function setTrashCleanup( $output ) {
+	protected function setTrashCleanup( $output ) {
 		if ( isset( $this->config->empty_trash_in_days ) ) {
 			echo "WordPress empty trash in " . $this->config->empty_trash_in_days . " days enabled.\n";
 
@@ -296,7 +296,7 @@ define( 'EMPTY_TRASH_DAYS', {$this->config->empty_trash_in_days} );" . "\n", $ou
 	 *
 	 * @return mixed
 	 */
-	private function setDisallowFileEdit( $output ) {
+	protected function setDisallowFileEdit( $output ) {
 		if ( isset( $this->config->disallow_file_edit ) ) {
 			echo "WordPress post_revisions mode disabled\n";
 			$output = str_replace( '<?php', "<?php\n
@@ -315,7 +315,7 @@ define( 'DISALLOW_FILE_EDIT', " . ( boolval( $this->config->disallow_file_edit )
 	 *
 	 * @return mixed
 	 */
-	private function setDifferentWpContentDirectory( $output ) {
+	protected function setDifferentWpContentDirectory( $output ) {
 		echo "Change WordPress wp-content directory\n";
 		$output = str_replace( '<?php', "<?php\n
 /** Change WordPress wp-content directory */
@@ -336,7 +336,7 @@ define( 'WP_CONTENT_DIR', realpath( dirname( __FILE__ ) . '/content' ) );" . "\n
 	 *
 	 * @return mixed
 	 */
-	private function setWpAutoUpdate( $output ) {
+	protected function setWpAutoUpdate( $output ) {
 		if ( isset( $this->config->disable_all_automatic_updates ) ) {
 			echo "WordPress post_revisions mode disabled\n";
 
@@ -356,7 +356,7 @@ define( 'AUTOMATIC_UPDATER_DISABLED', " . ( boolval( $this->config->disable_all_
 	 *
 	 * @return mixed
 	 */
-	private function setPostAutosaveInterval( $output ) {
+	protected function setPostAutosaveInterval( $output ) {
 		if ( isset( $this->config->autosave_interval_in_seconds ) ) {
 			echo "Modify AutoSave Interval\n";
 
@@ -376,7 +376,7 @@ define( 'AUTOSAVE_INTERVAL', {$this->config->autosave_interval_in_seconds} );" .
 	 *
 	 * @return mixed
 	 */
-	private function setLanguage($output) {
+	protected function setLanguage($output) {
 
 		// Return output if there is no language set
 		if ( !isset( $this->config->wordpress_language_key ) ) { return $output; }

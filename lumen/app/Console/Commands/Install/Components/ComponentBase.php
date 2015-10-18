@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands\Install\Components;
 
-
 use Hampel\Json\Json;
 use Hampel\Json\JsonException;
+use Illuminate\Console\Command;
 
-abstract class ComponentBase {
+abstract class ComponentBase extends Command {
 
 	public $filesystem;
 	public $twig;
@@ -25,11 +25,11 @@ abstract class ComponentBase {
 	public $wp_theme_dir;
 	public $wp_themes_dir;
 
+
 	/**
 	 * ComponentBase constructor.
 	 */
 	public function __construct() {
-
 		// Define app pathes
 		$this->home_dir              = realpath( base_path() . '/../' );
 		$this->lumen_dir             = $this->home_dir . '/lumen';
@@ -44,6 +44,7 @@ abstract class ComponentBase {
 		$this->wp_dir                = $this->public_dir . '/wordpress';
 		$this->wp_upload_dir         = $this->public_dir . '/content/uploads';
 		$this->wp_plugin_dir        = $this->public_dir . '/content/plugins';
+
 
 		// Load required components
 		$this->filesystem = app( "files" );
