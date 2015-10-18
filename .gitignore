@@ -20,11 +20,10 @@ Thumbs.db
 !/backup/backups
 
 
-# Asset eesources cache files
-/resources/assets/.sass-cache/**
-/resources/assets/sass/.sass-cache/**
-/node_modules
-/resources/assets/npm-debug.log
+# Asset resources cache files
+.sass-cache
+node_modules
+npm-debug.log
 
 
 # Secure config files from git?
