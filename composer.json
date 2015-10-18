@@ -27,18 +27,19 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "lumen/app/"
         },
         "classmap": [
-            "database/"
+            "lumen/database/"
         ]
     },
     "autoload-dev": {
         "classmap": [
-            "tests/"
+            "lumen/tests/"
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "vendor-dir": "lumen/vendor"
     }
 }

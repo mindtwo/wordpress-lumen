@@ -23,7 +23,7 @@ Thumbs.db
 # Asset eesources cache files
 /resources/assets/.sass-cache/**
 /resources/assets/sass/.sass-cache/**
-/resources/assets/node_modules
+/node_modules
 /resources/assets/npm-debug.log
 
 

@@ -12,22 +12,23 @@ var gulp = require('gulp'),
     gzip = require('gulp-gzip'),
     livereload = require('gulp-livereload');
 
+var source_assets_dir = 'resources/assets/';
 var public_assets_dir = '../../public/content/themes/default/assets/';
 
 var paths = {
     bower: {
-        components: 'bower_components/'
+        components: source_assets_dir+'bower_components/'
     },
     scripts: {
-        original: 'js/',
-        vendor: 'js/vendor/',
+        original: source_assets_dir+'js/',
+        vendor: source_assets_dir+'js/vendor/',
         output: public_assets_dir + 'js',
-        watch: 'js/**/*.js'
+        watch: source_assets_dir+'js/**/*.js'
     },
     styles: {
-        original: 'sass/',
+        original: source_assets_dir+'sass/',
         output: public_assets_dir + 'css',
-        watch: 'sass/**/*.scss',
+        watch: source_assets_dir+'sass/**/*.scss',
         compiled_bower_components: 'sass/components/libs/'
     },
     images: {
