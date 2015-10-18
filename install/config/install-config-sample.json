@@ -66,7 +66,7 @@
             "filename": "wpseo.zip",
             "src": "https://cdn.wpseo.de/plugin/v3/zip/latest/wpseo.zip"
         },
-        "wp-cli": [
+        "wp_cli": [
             "regenerate-thumbnails",
             "wp-optimize",
             "better-wp-security",
