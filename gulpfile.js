@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 var source_assets_dir = 'resources/assets/';
-var public_assets_dir = '../../public/content/themes/default/assets/';
+var public_assets_dir = 'public/content/themes/default/assets/';
 
 var paths = {
     bower: {
