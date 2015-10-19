@@ -44,7 +44,7 @@ abstract class ComponentBase extends Command {
 		$this->wp_dir                = $this->public_dir . '/wordpress';
 		$this->wp_upload_dir         = $this->public_dir . '/content/uploads';
 		$this->wp_plugin_dir        = $this->public_dir . '/content/plugins';
-
+		$this->wp_languages_dir        = $this->public_dir . '/content/languages';
 
 		// Load required components
 		$this->filesystem = app( "files" );

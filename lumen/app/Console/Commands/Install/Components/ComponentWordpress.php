@@ -38,12 +38,22 @@ class ComponentWordpress extends ComponentBase implements WpInstallComponentsInt
 			$wordpress_tar_file = $this->wp_dir . "/" . basename( $url );
 
 			// Create WordPress directory
-			echo "Create directory: '" . $this->wp_dir . "'...\n";
-			$this->filesystem->makeDirectory($this->wp_dir, intval(0776), true);
+			if ( ! $this->filesystem->exists( $this->wp_dir ) ) {
+				echo "Create directory: '" . $this->wp_dir . "'...\n";
+				$this->filesystem->makeDirectory( $this->wp_dir, intval( 0776 ), true );
+			}
 
 			// Create WordPress uploads directory
-			echo "Create directory: '" . $this->wp_upload_dir . "'...\n";
-			$this->filesystem->makeDirectory($this->wp_upload_dir, intval(0776), true);
+			if ( ! $this->filesystem->exists( $this->wp_upload_dir ) ) {
+				echo "Create directory: '" . $this->wp_upload_dir . "'...\n";
+				$this->filesystem->makeDirectory($this->wp_upload_dir, intval(0776), true);
+			}
+
+			// Create WordPress languages directory
+			if ( ! $this->filesystem->exists( $this->wp_languages_dir ) ) {
+				echo "Create directory: '" . $this->wp_languages_dir . "'...\n";
+				$this->filesystem->makeDirectory($this->wp_languages_dir, intval(0776), true);
+			}
 
 			// Remove existing archive
 			if ( $this->filesystem->exists( $wordpress_tar_file ) ) {
