@@ -8,23 +8,28 @@ use Illuminate\Console\Command;
 
 abstract class ComponentBase extends Command {
 
-	public $filesystem;
-	public $twig;
-	public $config;
-	public $home_dir;
-	public $lumen_dir;
-	public $assets_dir;
-	public $public_dir;
-	public $backup_dir;
-	public $install_config_dir;
-	public $install_templates_dir;
-	public $install_files_dir;
-	public $wp_dir;
-	public $wp_upload_dir;
-	public $wp_plugin_dir;
-	public $wp_theme_dir;
-	public $wp_themes_dir;
-
+	protected $filesystem;
+	protected $twig;
+	protected $config;
+	protected $home_dir;
+	protected $lumen_dir;
+	protected $assets_dir;
+	protected $public_dir;
+	protected $backup_dir;
+	protected $install_config_dir;
+	protected $install_templates_dir;
+	protected $install_files_dir;
+	protected $wp_dir;
+	protected $wp_upload_dir;
+	protected $wp_plugin_dir;
+	protected $wp_theme_dir;
+	protected $wp_languages_dir;
+	protected $wp_themes_dir;
+	protected $wp_assets_dir;
+	protected $wp_fonts_dir;
+	protected $bower_folder;
+	protected $gulp_delete_files;
+	protected $gulp_symlinks;
 
 	/**
 	 * ComponentBase constructor.
@@ -43,8 +48,27 @@ abstract class ComponentBase extends Command {
 		$this->wp_theme_dir          = $this->public_dir . '/content/themes/default';
 		$this->wp_dir                = $this->public_dir . '/wordpress';
 		$this->wp_upload_dir         = $this->public_dir . '/content/uploads';
-		$this->wp_plugin_dir        = $this->public_dir . '/content/plugins';
-		$this->wp_languages_dir        = $this->public_dir . '/content/languages';
+		$this->wp_plugin_dir         = $this->public_dir . '/content/plugins';
+		$this->wp_languages_dir      = $this->public_dir . '/content/languages';
+		$this->wp_assets_dir         = $this->wp_theme_dir . '/assets';
+		$this->wp_fonts_dir          = $this->wp_assets_dir . '/fonts';
+		$this->bower_folder          = $this->assets_dir . 'bower_components';
+
+		// Delete files if gulp is not selected
+		$this->delete_files = [
+			$this->home_dir . '/resources/assets',
+			$this->home_dir . 'package.json',
+			$this->home_dir . '.bowerrc',
+			$this->home_dir . 'bower.json',
+			$this->home_dir . 'gulpfile.js',
+		];
+
+		// Symlinks if gulp is selected
+		$this->symlinks = [
+			$this->bower_folder . "/bootstrap-sass/assets/fonts/bootstrap bootstrap",
+			$this->bower_folder . "/fontawesome/fonts fontawesome"
+		];
+
 
 		// Load required components
 		$this->filesystem = app( "files" );
