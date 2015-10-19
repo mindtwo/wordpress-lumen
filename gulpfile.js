@@ -8,8 +8,7 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     s3 = require('aws-publisher'),
     chmod = require('gulp-chmod'),
-    gzip = require('gulp-gzip'),
-    livereload = require('gulp-livereload');
+    gzip = require('gulp-gzip');
 
 var source_assets_dir = 'resources/assets/';
 var public_assets_dir = 'public/content/themes/default/assets/';
@@ -43,7 +42,7 @@ var isCDNisActive = false;
 
 // create a new publisher
 if(isCDNisActive) {
-    var publisher = new s3({bucket: 'cdn.synnous.de',  key: '', secret: '', region: "eu-west-1"});
+    var publisher = new s3({bucket: 'cdn.sample.com',  key: '', secret: '', region: "eu-west-1"});
 }
 
 // define filter closure that will only select js, png, and css file
@@ -111,7 +110,7 @@ gulp.task('generate_bower_scss_component_files', function() {
         // paths.bower.components + 'example_package/core.css',
     ];
 
-    if(arrayName.length > 0) {
+    if(files.length > 0) {
         return gulp.src(files)
             .pipe(rename(function(path){
                 path.basename = '_'+path.basename;
