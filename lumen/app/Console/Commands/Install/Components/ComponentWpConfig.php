@@ -51,6 +51,7 @@ class ComponentWpConfig extends ComponentBase implements WpInstallComponentsInte
 		$output = $this->setWpAutoUpdate( $output );
 		$output = $this->setDifferentWpContentDirectory( $output );
 		$output = $this->setPostAutosaveInterval( $output );
+		$output = $this->setCookieDomainSupport( $output );
 		$output = $this->setMultisiteSupport( $output );
 		$output = $this->setLanguage( $output );
 		$output = $this->setComposerAutoloading( $output );
@@ -234,6 +235,22 @@ define('WP_POST_REVISIONS', " . ( boolval( $this->config->post_revisions ) ? 'tr
 		return $output;
 	}
 
+	/**
+	 * Add Wordpress cookie domain support
+	 *
+	 * @param $output
+	 *
+	 * @return mixed
+	 */
+	protected function setCookieDomainSupport( $output ) {
+		echo "Add Wordpress cookie domain support\n";
+		return str_replace( '<?php', "<?php\n
+/** Cookie multisite settings */
+define('ADMIN_COOKIE_PATH', '/');
+define('COOKIEPATH', '');
+define('SITECOOKIEPATH', '');
+define('COOKIE_DOMAIN', false);" . "\n", $output );
+	}
 
 	/**
 	 * Enable/disable wordpress multisite?
@@ -248,13 +265,6 @@ define('WP_POST_REVISIONS', " . ( boolval( $this->config->post_revisions ) ? 'tr
 			echo "Add Wordpress multisite support\n";
 
 			return str_replace( '<?php', "<?php\n
-/** Cookie multisite settings */
-define('ADMIN_COOKIE_PATH', '/');
-define('COOKIEPATH', '');
-define('SITECOOKIEPATH', '');
-define('COOKIE_DOMAIN', false);
-
-
 /** Multisite configuration */
 define('WP_ALLOW_MULTISITE', true);
 define('MULTISITE', true);
