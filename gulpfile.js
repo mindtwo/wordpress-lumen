@@ -7,7 +7,6 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     runSequence = require('run-sequence'),
     s3 = require('aws-publisher'),
-    // chown = require('gulp-chown'),
     chmod = require('gulp-chmod'),
     gzip = require('gulp-gzip'),
     livereload = require('gulp-livereload');
@@ -58,16 +57,10 @@ gulp.task('scripts', function() {
         paths.bower.components+'jquery/dist/jquery.min.js',
         paths.bower.components+'jquery-migrate/dist/jquery-migrate.min.js',
         paths.bower.components+'bootstrap-sass/assets/javascripts/bootstrap.min.js',
-        paths.bower.components+'hammerjs/hammer.min.js',
         paths.bower.components+'jquery.scrollTo/jquery.scrollTo.min.js',
         paths.bower.components+'jquery.localScroll/jquery.localScroll.min.js',
         paths.bower.components+'fancybox/source/jquery.fancybox.pack.js',
-        paths.bower.components+'respimage/respimage.min.js',
-        paths.bower.components+'lazysizes/lazysizes.min.js',
-        paths.bower.components+'lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js',
-        paths.bower.components+'alertify.js/lib/alertify.min.js',
-        paths.scripts.vendor+'jquery-custom-form-plugin.js',
-        paths.scripts.vendor+'jquery-carousel-plugin.js',
+        paths.bower.components+'vue/dist/vue.min.js',
         paths.scripts.original+'main.js'
     ])
     .pipe(uglify())
@@ -115,19 +108,21 @@ gulp.task('publish_js', function() {
 });
 
 gulp.task('generate_bower_scss_component_files', function() {
-    return gulp.src([
-        paths.bower.components + 'alertify.js/themes/alertify.core.css',
-        paths.bower.components + 'alertify.js/themes/alertify.bootstrap.css',
-    ])
-    .pipe(rename(function(path){
-        path.basename = '_'+path.basename;
-        path.extname = ".scss";
-    }))
-    .pipe(gulp.dest(paths.styles.compiled_bower_components));
+    var files = [
+        // paths.bower.components + 'example_package/core.css',
+    ];
+
+    if(arrayName.length > 0) {
+        return gulp.src(files)
+            .pipe(rename(function(path){
+                path.basename = '_'+path.basename;
+                path.extname = ".scss";
+            }))
+            .pipe(gulp.dest(paths.styles.compiled_bower_components));
+    }
 });
 
 gulp.task('watch', function () {
-    livereload.listen({host:'synnous.mindtwo.de'});
     // Return the task when a file changes or added
     gulp.watch(paths.styles.watch, ['build_css']);
     gulp.watch(paths.scripts.watch, ['build_js']);
