@@ -76,10 +76,8 @@ class ComponentAssets extends ComponentBase implements WpInstallComponentsInterf
 		$this->createFontsDirsForSymlinks();
 
 		foreach($this->gulp_symlinks as $symlink) {
-			if ( $this->filesystem->exists( $symlink ) ) {
-				echo "Symlink \"$symlink\" was created!\n";
-				system( "cd {$this->wp_fonts_dir} && ln -s $symlink", $buff );
-			}
+			echo "Symlink \"$symlink\" was created!\n";
+			system( "cd {$this->wp_fonts_dir} && ln -s $symlink", $buff );
 		}
 	}
 
