@@ -245,7 +245,7 @@ define('WP_POST_REVISIONS', " . ( boolval( $this->config->post_revisions ) ? 'tr
 	protected function setCookieDomainSupport( $output ) {
 		echo "Add Wordpress cookie domain support\n";
 		return str_replace( '<?php', "<?php\n
-/** Cookie multisite settings */
+/** WordPress cookie domain settings */
 define('ADMIN_COOKIE_PATH', '/');
 define('COOKIEPATH', '');
 define('SITECOOKIEPATH', '');
