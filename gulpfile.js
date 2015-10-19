@@ -55,7 +55,7 @@ function filter (f, stat) {
 gulp.task('scripts', function() {
     return gulp.src([
         paths.bower.components+'jquery/dist/jquery.min.js',
-        paths.bower.components+'jquery-migrate/dist/jquery-migrate.min.js',
+        paths.bower.components+'jquery-migrate/jquery-migrate.min.js',
         paths.bower.components+'bootstrap-sass/assets/javascripts/bootstrap.min.js',
         paths.bower.components+'jquery.scrollTo/jquery.scrollTo.min.js',
         paths.bower.components+'jquery.localScroll/jquery.localScroll.min.js',
@@ -77,8 +77,7 @@ gulp.task('styles', function() {
         .pipe(minifycss({'keepSpecialComments':0}))
         .pipe(rename({suffix: '.min'}))
         .pipe(chmod(776))
-        .pipe(gulp.dest(paths.styles.output))
-        .pipe(livereload({host:'synnous.mindtwo.de'}));
+        .pipe(gulp.dest(paths.styles.output));
 });
 
 gulp.task('build_css', function(callback) {
