@@ -106,7 +106,7 @@ function footer_menu($name='menu-footer') {
 // Load is_home() Blog Frontpage postdata
 function get_home_pagedata() {
 	// Get "Blog Page ID"
-	$page_id = get_option('page_on_front');
+	$page_id = get_option('page_for_posts');
 
 	// Get Post
 	$page = get_post( $page_id );
