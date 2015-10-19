@@ -55,7 +55,7 @@ abstract class ComponentBase extends Command {
 		$this->bower_folder          = $this->assets_dir . 'bower_components';
 
 		// Delete files if gulp is not selected
-		$this->delete_files = [
+		$this->gulp_delete_files = [
 			$this->home_dir . '/resources/assets',
 			$this->home_dir . 'package.json',
 			$this->home_dir . '.bowerrc',
@@ -64,7 +64,7 @@ abstract class ComponentBase extends Command {
 		];
 
 		// Symlinks if gulp is selected
-		$this->symlinks = [
+		$this->gulp_symlinks = [
 			$this->bower_folder . "/bootstrap-sass/assets/fonts/bootstrap bootstrap",
 			$this->bower_folder . "/fontawesome/fonts fontawesome"
 		];
