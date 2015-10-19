@@ -52,7 +52,7 @@ abstract class ComponentBase extends Command {
 		$this->wp_languages_dir      = $this->public_dir . '/content/languages';
 		$this->wp_assets_dir         = $this->wp_theme_dir . '/assets';
 		$this->wp_fonts_dir          = $this->wp_assets_dir . '/fonts';
-		$this->bower_folder          = $this->assets_dir . 'bower_components';
+		$this->bower_folder          = $this->assets_dir . '/bower_components';
 
 		// Delete files if gulp is not selected
 		$this->gulp_delete_files = [
