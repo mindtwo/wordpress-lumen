@@ -4,9 +4,50 @@
     "fields": [
         {
             "key": "field_54abbd80864e2",
-            "label": "Logo Image Filename",
+            "label": "Logo image filename",
             "name": "logo_image_filename",
-            "prefix": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_563284a207a8a",
+            "label": "Logo image svg filename",
+            "name": "logo_image_svg_filename",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_563284d907a8b",
+            "label": "Logo mail image filename",
+            "name": "logo_mail_image_filename",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -26,31 +67,8 @@
         },
         {
             "key": "field_54abbd55864e1",
-            "label": "Logo Alt-Tag",
+            "label": "Logo alt-tag",
             "name": "logo_alt",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_54ac093086d32",
-            "label": "Theme Assets Path (Development)",
-            "name": "theme_assets_path_development",
-            "prefix": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -84,5 +102,6 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1429634827
+    "active": 1,
+    "description": ""
 }
