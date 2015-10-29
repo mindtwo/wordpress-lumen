@@ -1,0 +1,3 @@
+{% if href %}
+    <a class="{{ class ? class : 'btn-primary' }}" href="{{ href|raw }}">{{ label ? label|raw : href|raw }}</a>
+{% endif %}

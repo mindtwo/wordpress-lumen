@@ -9,6 +9,7 @@ define('THEME_FUNCTIONS', THEME_DIR . 'functions/');
 define('THEME_CONFIG', THEME_DIR . 'config/');
 define('THEME_WIDGETS', THEME_DIR . 'widgets/');
 define('THEME_INCLUDES', THEME_DIR . 'includes/');
+define('THEME_MODULES', THEME_DIR . 'modules/');
 define('THEME_TEMPLATES', THEME_DIR . 'templates/');
 define('THEME_ASSETS', THEME_DIR . 'assets/');
 define('THEME_ASSETS_LIVE', get_bloginfo('template_directory') . '/assets/');
@@ -23,6 +24,7 @@ $autoload_class_files = array(
     // THEME_FUNCTIONS . 'general/minify_html.php',
     THEME_FUNCTIONS . 'general/debug.php',
     THEME_FUNCTIONS . 'general/config.php',
+    THEME_FUNCTIONS . 'general/walker_bootstrap.php',
     THEME_FUNCTIONS . 'general/theme_helper.php',
     THEME_FUNCTIONS . 'general/session.php',
     THEME_FUNCTIONS . 'general/custom_excerpt.php',
@@ -33,18 +35,16 @@ $autoload_class_files = array(
     THEME_FUNCTIONS . 'general/acf.php',
     // THEME_FUNCTIONS . 'general/dashboard_widgets.php',
     // THEME_FUNCTIONS . 'general/capabilities.php',
-    // THEME_FUNCTIONS . 'modules/PostTypeSample.php',
-    THEME_FUNCTIONS . 'modules/AjaxActionsModule.php',
-    THEME_FUNCTIONS . 'modules/PostsModule.php',
-    THEME_FUNCTIONS . 'modules/ShortcodesModule.php',
-    THEME_FUNCTIONS . 'modules/ShortcodesBootstrapModule.php',
-    THEME_FUNCTIONS . 'modules/CutomPostTypeSample.php',
-    THEME_FUNCTIONS . 'modules/TeamModule.php',
+    // THEME_MODULES . 'PostTypeSample.php',
+    THEME_MODULES . 'AjaxActionsModule.php',
+    THEME_MODULES . 'PostsModule.php',
+    THEME_MODULES . 'ShortcodesModule.php',
+    THEME_MODULES . 'ShortcodesBootstrapModule.php',
+    THEME_MODULES . 'TeamModule.php',
     THEME_FUNCTIONS . 'site/sidebar.php',
-    THEME_FUNCTIONS . 'site/shortcodes.php',
+    THEME_FUNCTIONS . 'site/image-sizes.php',
     THEME_FUNCTIONS . 'site/multisite.php',
     THEME_FUNCTIONS . 'site/navigation.php',
-    THEME_FUNCTIONS . 'custom_post_type/team.php',
 	THEME_WIDGETS . 'search-box.php',
 	THEME_WIDGETS . '_widget_init.php', // Must loaded after widget import
 );

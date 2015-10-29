@@ -12,9 +12,26 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	 */
 	if ( function_exists( 'acf_add_options_sub_page' ) ) {
 		acf_add_options_sub_page( 'Default' );
-		acf_add_options_sub_page( 'Shortcode Generator' );
 	}
 
+
+	/**
+	 * @param $path
+	 *
+	 * @return string
+	 */
+	function my_acf_json_save_point( $path ) {
+
+		// update path
+		$path = get_stylesheet_directory() . '/acf-json';
+
+
+		// return
+		return $path;
+
+	}
+
+	add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 
 	/**
 	 * ACF Shortcode option field loader
