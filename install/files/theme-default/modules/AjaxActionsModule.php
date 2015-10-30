@@ -26,7 +26,7 @@ class AjaxActionsModule {
 		$page = $_POST['paged'];
 		$order = $_POST['order'];
 		$orderby = $_POST['orderby'];
-		$count = $_POST['count'];
+		$count = isset($_POST['count']) ? $_POST['count'] : get_option('posts_per_page');
 		$cat = $_POST['cat'];
 
 		$args = $this->get_blog_posts_wpquery_args( $page, $order, $orderby, $count, $cat );
