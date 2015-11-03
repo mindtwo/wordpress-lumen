@@ -3,7 +3,6 @@
 /**
  * Define WordPress image sizes
  * add_image_size ( string $name, int $width, int $height, bool|array $crop = false );
- * TODO: PHPDoc Block Comments
  */
 add_image_size ( 'square', 600, 600, true );
 add_image_size ( 'square-mobile', 300, 300, true );
