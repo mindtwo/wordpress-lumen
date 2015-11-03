@@ -2,7 +2,6 @@
 
 class AjaxActionsModule {
 
-
 	/**
 	 * GlobalAjaxActions constructor.
 	 */
@@ -13,8 +12,8 @@ class AjaxActionsModule {
 		// add_action( 'wp_ajax_nopriv_test',      array( $this, 'ajax_load_twint_blog_posts' ) );
 
 		// register ajax handlers for loading the blog posts (load more)
-		add_action( 'wp_ajax_twint_blog_posts', array( $this, 'ajax_load_blog_posts' ) );
-		add_action( 'wp_ajax_nopriv_twint_blog_posts', array( $this, 'ajax_load_blog_posts' ) );
+		add_action( 'wp_ajax_blog_posts', array( $this, 'ajax_load_blog_posts' ) );
+		add_action( 'wp_ajax_nopriv_blog_posts', array( $this, 'ajax_load_blog_posts' ) );
 
 	}
 
