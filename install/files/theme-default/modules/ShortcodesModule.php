@@ -48,7 +48,7 @@ class ShortcodesModule {
 			'get_phone_number_display'        => 'shortcode_get_phone_number_display',
 			'get_phone_number_display'        => 'shortcode_get_phone_number_href',
 			'get_fax'                         => 'shortcode_get_fax',
-			'get_email'                       => 'shortcode_get_email',
+			'get_email'                       => 'shortcode_email',
 
 			// Theme
 			'responsive_image'            => 'shortcode_responsive_image',
@@ -56,7 +56,7 @@ class ShortcodesModule {
 			'button'                      => 'shortcode_button',
 			'box'                         => 'shortcode_box',
 			'latest_posts'                => 'shortcode_latest_posts',
-			'flexibel_contents'           => 'shortcode_flexibel_contents',
+			'flexible_contents'           => 'shortcode_flexible_contents',
 			'google_analytics_id'         => 'shortcode_google_analytics_id',
 			'footer_tracking_codes'       => 'shortcode_footer_tracking_codesText',
 			//'contact_form'            => 'shortcode_contact_form',
@@ -186,7 +186,7 @@ class ShortcodesModule {
 	 *
 	 * @return mixed|string
 	 */
-	public function shortcode_flexibel_contents() {
+	public function shortcode_flexible_contents() {
 		$output = '';
 
 		if ( is_home() ) {
@@ -195,8 +195,8 @@ class ShortcodesModule {
 			$post_id = false;
 		}
 
-		if ( have_rows( 'flexibel-content', $post_id ) ) {
-			while ( have_rows( "flexibel-content", $post_id ) ) : the_row();
+		if ( have_rows( 'flexible-content', $post_id ) ) {
+			while ( have_rows( "flexible-content", $post_id ) ) : the_row();
 				switch ( get_row_layout() ) {
 					case 'col_three_content':
 						$output = $this->render_fc_view( 'col_one_content.php.twig' );

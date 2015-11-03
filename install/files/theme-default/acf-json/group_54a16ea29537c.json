@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_54dff3cf57bff",
-            "label": "Flexibel Content",
-            "name": "flexibel-content",
+            "label": "Flexible Content",
+            "name": "flexible-content",
             "type": "flexible_content",
             "instructions": "",
             "required": 0,

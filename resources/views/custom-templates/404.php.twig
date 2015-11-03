@@ -1,14 +1,8 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
-    <h1>404 Fehler – Seite nicht gefunden!</h1>
-    <h2>Liebe Besucher/-innen,</h2>
-    <p>
-        Die von Ihnen gewünschte Seite existiert leider nicht mehr oder ein Tippfehler verhindert den Aufruf. Deshalb wird der so genannten 404 Fehler eingeblendet.
-    </p>
-    <p>
-        Wir hoffen, dass Sie die gewünschten Informationen auf unseren Unterseiten noch finden können. Bei speziellen Fragen, zögern Sie bitte nicht direkt mit uns in Kontakt zu treten.
-    </p>
-    <p>
-        Hier gelangen Sie zur <a href="/">Startseite</a>.
-    </p>
+    <h1>{{ trans('404.headline') }}</h1>
+    <h2>{{ trans('404.subheadline') }}</h2>
+    <p>{{ trans('404.paragraph_1') }}</p>
+    <p>{{ trans('404.paragraph_2') }}</p>
+    <p>{{ trans('404.headline', ['link' => '/']) }}</p>
 {% endblock %}
