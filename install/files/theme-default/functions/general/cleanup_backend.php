@@ -67,6 +67,20 @@ add_action ( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 
 
 /*
+ * Remove nodes from admin bar item new-content
+ */
+function remove_wp_nodes ()
+{
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_node ( 'new-post' );
+    $wp_admin_bar->remove_node ( 'new-link' );
+    $wp_admin_bar->remove_node ( 'new-media' );
+}
+
+add_action ( 'admin_bar_menu', 'remove_wp_nodes', 999 );
+
+
+/*
  * Custom ACF Backend CSS
  */
 function my_acf_admin_head ()
