@@ -247,7 +247,7 @@ class ShortcodesModule {
 	 * @return mixed
 	 */
 	private function render_fc_view( $view, $data = null ) {
-		return $this->render_view( 'flexibel-contents/' . $view, $data, false );
+		return $this->render_view( 'flexible-contents/' . $view, $data, false );
 	}
 }
 
