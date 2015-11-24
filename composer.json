@@ -17,6 +17,7 @@
         "illuminate/support": "5.1.*",
         "illuminate/mail": "5.1.*",
         "vlucas/phpdotenv": "~1.0",
+        "mandrill/mandrill": "~1.0",
         "jenssegers/agent": "2.*",
         "cg/helpers": "dev-master",
         "hampel/json": "2.*",
@@ -38,6 +39,9 @@
         },
         "classmap": [
             "lumen/database/"
+        ],
+        "files": [
+            "lumen/app/Http/helpers.php"
         ]
     },
     "autoload-dev": {
