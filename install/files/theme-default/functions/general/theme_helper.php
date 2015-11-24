@@ -63,6 +63,10 @@ function mobile_image_prefix() {
 	}
 }
 
+function get_esc_permalink() {
+	return esc_url( get_permalink() );
+}
+
 function theme_comment() {
 	return theme_config_file('comment')['default'];
 }
