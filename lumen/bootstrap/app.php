@@ -20,7 +20,6 @@ $app = new App\DomainApplication(
 );
 
 $app->withFacades();
-
 $app->withEloquent();
 
 
@@ -47,6 +46,7 @@ $configuration_files = [
 foreach($configuration_files as $config) {
     $app->configure($config);
 }
+
 
 
 /*
@@ -94,6 +94,8 @@ $app->middleware([
 // $app->routeMiddleware([
 
 // ]);
+
+
 
 /*
 |--------------------------------------------------------------------------
