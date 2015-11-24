@@ -1,8 +1,8 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
-    <h1>{{ trans('404.headline') }}</h1>
-    <h2>{{ trans('404.subheadline') }}</h2>
-    <p>{{ trans('404.paragraph_1') }}</p>
-    <p>{{ trans('404.paragraph_2') }}</p>
-    <p>{{ trans('404.headline', ['link' => '/']) }}</p>
+    <h1>{{ function('trans', '404.headline') }}</h1>
+    <h2>{{ function('trans', '404.subheadline') }}</h2>
+    <p>{{ function('trans', '404.paragraph_1') }}</p>
+    <p>{{ function('trans', '404.paragraph_2') }}</p>
+
 {% endblock %}
