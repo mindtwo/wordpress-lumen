@@ -5,9 +5,9 @@
  */
 if (! function_exists('setLocalInHttpEnv')) {
 	function setLocalInHttpEnv() {
-		if(in_array($_SERVER['HTTP_HOST'], ['jonasemde.de.local', 'jonasemde.de'])) {
+		if(in_array($_SERVER['HTTP_HOST'], ['domain.de.local', 'domain.de'])) {
 			app('translator')->setLocale('de');
-		} else if(in_array($_SERVER['HTTP_HOST'], ['jonasemde.at.local', 'jonasemde.at'])) {
+		} else if(in_array($_SERVER['HTTP_HOST'], ['domain.at.local', 'domain.at'])) {
 			app('translator')->setLocale('de-AT');
 			app('translator')->setFallback('de');
 		}
