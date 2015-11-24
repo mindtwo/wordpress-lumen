@@ -27,7 +27,6 @@ $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
  * Set files to be autoloaded
  */
 $autoload_class_files = array(
-    // THEME_FUNCTIONS . 'general/session.php',
     // THEME_FUNCTIONS . 'general/minify_html.php',
     THEME_FUNCTIONS . 'general/debug.php',
     THEME_FUNCTIONS . 'general/walker_bootstrap.php',
