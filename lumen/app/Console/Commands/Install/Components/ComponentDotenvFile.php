@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Install\Components;
 
+use Illuminate\Support\Str;
 
 /**
  * Class ComponentDotenvFile
@@ -38,7 +39,7 @@ class ComponentDotenvFile extends ComponentBase implements WpInstallComponentsIn
 			$output = preg_replace( '/(DB_HOST\=)(.+)/', '${1}' . $this->config->database->host, $output );
 
 			// Set secret salts in config.php (https://api.wordpress.org/secret-key/1.1/salt/)
-			$salt   = str_replace( '$', '', password_hash( time() . uniqid(), PASSWORD_BCRYPT ) . password_hash( uniqid() . time(), PASSWORD_BCRYPT ) );
+			$salt   = $this->getRandomKey($this->laravel['config']['app.cipher']);
 			$output = preg_replace( '/(APP_KEY\=)(SomeRandomKey.+)/', '${1}' . $salt, $output );
 
 			// Write dotenv config file
@@ -46,5 +47,20 @@ class ComponentDotenvFile extends ComponentBase implements WpInstallComponentsIn
 			$this->filesystem->put( "{$this->lumen_dir}/.env", $output );
 			unset( $output );
 		}
+	}
+
+	/**
+	 * Generate a random key for the application.
+	 *
+	 * @param  string  $cipher
+	 * @return string
+	 */
+	protected function getRandomKey($cipher)
+	{
+		if ($cipher === 'AES-128-CBC') {
+			return Str::random(16);
+		}
+
+		return Str::random(32);
 	}
 }
