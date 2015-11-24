@@ -14,6 +14,7 @@ Thumbs.db
 !/public/wordpress/wp-config.php
 /public/wp-config.php
 
+
 # Backup files
 /backup/backups/**
 !/backup
@@ -24,6 +25,7 @@ Thumbs.db
 .sass-cache
 node_modules
 npm-debug.log
+/resources/assets/js/compiled
 
 
 # Secure config files from git?
