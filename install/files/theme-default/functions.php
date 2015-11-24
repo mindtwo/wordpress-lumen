@@ -30,7 +30,6 @@ $autoload_class_files = array(
     // THEME_FUNCTIONS . 'general/session.php',
     // THEME_FUNCTIONS . 'general/minify_html.php',
     THEME_FUNCTIONS . 'general/debug.php',
-    THEME_FUNCTIONS . 'general/config.php',
     THEME_FUNCTIONS . 'general/walker_bootstrap.php',
     THEME_FUNCTIONS . 'general/theme_helper.php',
     THEME_FUNCTIONS . 'general/custom_excerpt.php',
@@ -71,13 +70,6 @@ if (class_exists('Timber')) {
     Timber::$locations = TEMPLATE_DIR;
     Timber::$dirname   = TEMPLATE_DIR;
 }
-
-/**
- * Load theme config files
- */
-$theme_sites_config = include(THEME_CONFIG . 'sites.php');
-$smtps = include(THEME_CONFIG . 'smtp.php');
-$theme_comment = include(THEME_CONFIG . 'comment.php');
 
 
 /**

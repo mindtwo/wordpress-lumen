@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Load configuration file of all sites
+ * @return mixed List of all sites
+ */
+function get_sites_config() {
+	$config = app('config');
+	return $config->get('sites');
+}
+
+
+/**
+ * Set site specific configuration file
+ * @param null $id
+ *
+ * @return bool Site specific configuration
+ */
 function get_site_config( $id = null ) {
 	global $blog_id;
 	$theme_sites_config = get_sites_config();
@@ -14,13 +30,11 @@ function get_site_config( $id = null ) {
 }
 
 
-function get_sites_config() {
-	global $theme_sites_config;
-
-	return $theme_sites_config;
-}
-
-
+/**
+ * Loop all theme sites
+ *
+ * @return mixed List of all sites but only home and name field
+ */
 function theme_sites() {
 	// Set sitenames
 	$sites = get_sites_config();
@@ -36,6 +50,11 @@ function theme_sites() {
 }
 
 
+/**
+ * @param bool|true $callback
+ *
+ * @return mixed
+ */
 function theme_site_id( $callback = true ) {
 	global $blog_id;
 	if ( $callback ) {
@@ -46,6 +65,13 @@ function theme_site_id( $callback = true ) {
 }
 
 
+/**
+ * Get theme name
+ *
+ * @param bool|false $callback
+ *
+ * @return string
+ */
 function theme_site_name( $callback = false ) {
 	// Load current multisite blog id
 	global $blog_id;

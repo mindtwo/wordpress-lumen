@@ -35,11 +35,13 @@ $configuration_files = [
     'auth',
     'broadcasting',
     'cache',
+    'comment',
     'database',
     'filesystems',
     'mail',
     'queue',
     'session',
+    'sites',
     'view',
 ];
 

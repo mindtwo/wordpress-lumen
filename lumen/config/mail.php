@@ -121,4 +121,19 @@ return [
 
     'pretend' => false,
 
+	/*
+	|--------------------------------------------------------------------------
+	| Default mailserver
+	|--------------------------------------------------------------------------
+	*/
+    'mailserver' => array(
+	    'PHP_MAILER_TYPE'        => 'SMTP',
+	    'PHP_MAILER_HOST'        => 'mail.domain.com',
+	    'PHP_MAILER_SMTP_AUTH'   => true,
+	    'PHP_MAILER_USERNAME'    => 'info@domain.com',
+	    'PHP_MAILER_PASSWORD'    => 'xxx',
+	    'PHP_MAILER_SMTP_SECURE' => 'ssl',
+	    'PHP_MAILER_PORT'        => 465,
+    ),
+
 ];
