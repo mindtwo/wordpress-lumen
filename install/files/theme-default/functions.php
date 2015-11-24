@@ -18,6 +18,12 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
 
 
 /**
+ * Load Lumen application
+ */
+$app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
+
+
+/**
  * Set files to be autoloaded
  */
 $autoload_class_files = array(
