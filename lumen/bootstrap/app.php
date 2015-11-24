@@ -23,6 +23,32 @@ $app->withFacades();
 
 $app->withEloquent();
 
+
+
+/*
+|--------------------------------------------------------------------------
+| Load Configuration Files
+|--------------------------------------------------------------------------
+*/
+
+$configuration_files = [
+    'app',
+    'auth',
+    'broadcasting',
+    'cache',
+    'database',
+    'filesystems',
+    'mail',
+    'queue',
+    'session',
+    'view',
+];
+
+foreach($configuration_files as $config) {
+    $app->configure($config);
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
