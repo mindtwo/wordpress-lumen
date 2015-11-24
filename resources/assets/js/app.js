@@ -1,3 +1,16 @@
+var Vue = require('vue');
+Vue.use(require('vue-resource'));
+Vue.http.headers.common['X-CSRF-TOKEN'] = $('#csrf_token').attr('content');
+
+new Vue({
+    el: '#app',
+
+    components: {
+        'form-contact': require('./modules/FormContact.js')
+    }
+});
+
+
 /**
  * App load
  */
