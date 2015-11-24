@@ -3,12 +3,13 @@
     <h1>{{post.title}}</h1>
     <div class="body">
         {{post.content}}
-
         {% for post in posts %}
-            <h2><a href="{{post.get_path}}">{{post.post_title}}</a></h2>
-            <div>
+        <div class="post col-md-6" rel="bookmark">
+            <h2 class="post-headline"><a href="{{function('get_esc_permalink')}}">{{post.post_title}}</a></h2>
+            <div class="post-content">
                 {{function('get_the_excerpt')}}
             </div>
+        </div>
         {% endfor %}
     </div>
 {% endblock %}
