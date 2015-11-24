@@ -8,8 +8,8 @@ var elixir = require('laravel-elixir');
 
 elixir.config.assetsPath = 'resources/assets';
 elixir.config.css.sass.folder = 'sass';
-elixir.config.css.outputFolder = 'assets/css';
-elixir.config.js.outputFolder = 'assets/js';
+elixir.config.css.outputFolder = 'content/themes/default/assets/css';
+elixir.config.js.outputFolder = 'content/themes/default/assets/js';
 elixir.config.versioning.buildFolder = '';
 
 
