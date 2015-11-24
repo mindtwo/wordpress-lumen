@@ -13,7 +13,9 @@ class ShortcodesModule {
 	public function __construct() {
 
 		// Load all option fields at once
-		$this->option_fields = get_fields( 'option' );
+		if(function_exists('get_fields')) {
+			$this->option_fields = get_fields( 'option' );
+		}
 
 		// Register WordPress shortcodes
 		$this->register();
