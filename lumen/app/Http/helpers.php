@@ -26,13 +26,12 @@ if (! function_exists('elixir')) {
 	function elixir($file)
 	{
 		static $manifest = null;
-
 		if(env('APP_ENV') == 'local') {
-			$manifest = json_decode(file_get_contents(base_path('/public/rev-manifest-local.json')), true);
+			// $manifest = json_decode(file_get_contents(base_path('../public/rev-manifest-local.json')), true);
 		}
 
 		if (is_null($manifest)) {
-			$manifest = json_decode(file_get_contents(base_path('/public/rev-manifest.json')), true);
+			$manifest = json_decode(file_get_contents(base_path('../public/rev-manifest.json')), true);
 		}
 
 		if (isset($manifest[$file])) {
