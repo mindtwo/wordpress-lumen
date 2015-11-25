@@ -1,6 +1,6 @@
 <?php
 
-class TeamModule extends ModuleController {
+class JobModule extends ModuleController {
 
 	public function __construct() {
 
@@ -14,31 +14,31 @@ class TeamModule extends ModuleController {
 	 * http://codex.wordpress.org/Function_Reference/register_post_type
 	 */
 	public function register_post_type() {
-		register_post_type( 'team',
+		register_post_type( 'job',
 			array(
 				'labels' => array(
-					'name' => 'Team',
-					'singular_name' => 'Team',
-					'all_items' => 'All team members',
+					'name' => 'Jobs',
+					'singular_name' => 'Job',
+					'all_items' => 'All Job',
 					'add_new' => 'Add New',
-					'add_new_item' => 'Add New team member',
+					'add_new_item' => 'Add New Job',
 					'edit' => 'Edit',
-					'edit_item' => 'Edit team member',
-					'new_item' => 'New team member',
-					'view_item' => 'View team member',
-					'search_items' => 'Search team member',
+					'edit_item' => 'Edit Job',
+					'new_item' => 'New Job',
+					'view_item' => 'View Job',
+					'search_items' => 'Search Job',
 					'not_found' =>  'Nothing found in the Database.',
 					'not_found_in_trash' => 'Nothing found in Trash',
 					'parent_item_colon' => ''
 				),
-				'description' => 'This is the team member',
+				'description' => 'This is the Job',
 				'public' => true,
 				'publicly_queryable' => true,
 				'exclude_from_search' => false,
 				'show_ui' => true,
 				'query_var' => true,
 				'menu_position' => 25,
-				'menu_icon' =>'dashicons-groups', // Select an icon: https://developer.wordpress.org/resource/dashicons/
+				'menu_icon' =>'dashicons-businessman', // Select an icon: https://developer.wordpress.org/resource/dashicons/
 				'rewrite' => array( 'slug' => 'team', 'with_front' => false ),
 				'has_archive' => false,
 				'capability_type' => 'page',
@@ -54,17 +54,17 @@ class TeamModule extends ModuleController {
 	 */
 	public function register_taxonomy() {
 		register_taxonomy(
-			'team-category',
-			'team',
+			'job-category',
+			'job',
 			array(
 				'label' => 'Category',
 				'public' => true,
-				'rewrite' => array( 'slug' => 'team-category', 'with_front' => false ),
+				'rewrite' => array( 'slug' => 'job-category', 'with_front' => false ),
 				'hierarchical' => false,
 			)
 		);
 	}
 }
 
-$team_module = new TeamModule();
+$job_module = new JobModule();
 

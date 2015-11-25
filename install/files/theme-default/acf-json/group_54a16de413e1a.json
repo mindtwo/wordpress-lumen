@@ -396,7 +396,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "team"
             }
         ]
     ],
@@ -407,5 +407,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
-    "description": ""
+    "description": "",
+    "modified": 1448487075
 }
