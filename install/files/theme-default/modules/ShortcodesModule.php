@@ -124,20 +124,18 @@ class ShortcodesModule {
 	}
 
 	/**
-	 * Contact form
-	 *
 	 * @param $atts
+	 *
+	 * @return mixed
 	 */
-	public function contact_form( $atts ) {
+	public function shortcode_contact_form( $atts ) {
 		extract( shortcode_atts( array(
-			'style'       => 'light',
-			'wrap_before' => '<section class="container">',
-			'wrap_after'  => '</section>',
-			'text'        => ''
+			'wrap_before' => '',
+			'wrap_after'  => ''
 		), $atts ) );
 
-		// TODO: Load and return template
-		// return $template;
+		// Load and return template
+		return $this->render_view( 'forms/contact-form.php.twig' );
 	}
 
 	/**

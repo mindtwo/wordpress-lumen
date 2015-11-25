@@ -5,7 +5,7 @@
         <div class="form-errors" v-if="errors">
             <strong>{{function('trans','home.error_message_headline')}}</strong>
             <ul>
-                <li v-for="error in errors">{{ error }}</li>
+                <li v-for="error in errors">@{{ error }}</li>
             </ul>
         </div>
 
@@ -25,4 +25,4 @@
         <button type="submit" @click="onSubmitForm" class="btn btn-secondary" v-if="! submitted"><span>{{function('trans','home.send_a_message')}}</span><i class="ti-email"></i></button>
     </form>
 </script>
-<form-contact></form-contact>
+<form-contact/>
