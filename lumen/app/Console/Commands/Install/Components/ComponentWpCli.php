@@ -3,7 +3,7 @@
 namespace App\Console\Commands\Install\Components;
 
 
-use Faker\Factory;
+use Faker\Factory as Faker;
 
 
 /**
@@ -19,7 +19,7 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 	public function __construct() {
 		parent::__construct();
 
-		$this->faker = new Factory();
+		$this->faker = Faker::create();
 	}
 
 	/**
