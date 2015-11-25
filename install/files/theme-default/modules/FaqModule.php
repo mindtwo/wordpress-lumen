@@ -37,7 +37,7 @@ class FaqModule extends ModuleController {
 		      'show_ui' => true,
 		      'query_var' => true,
 		      'menu_position' => 8,
-		      'menu_icon' =>'dashicons-editor-help', /* Select an icon: https://developer.wordpress.org/resource/dashicons/ */
+		      'menu_icon' =>'dashicons-editor-help', // Select an icon: https://developer.wordpress.org/resource/dashicons/
 		      'rewrite' => array( 'slug' => 'faq', 'with_front' => false ),
 		      'has_archive' => 'custom_type',
 		      'capability_type' => 'page',
