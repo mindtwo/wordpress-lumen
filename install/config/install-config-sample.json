@@ -42,6 +42,9 @@
     "// Assets": "::comment //",
     "gulp": true,
 
+    "// Add some dummy data?": "::comment //",
+    "dummy_data": false,
+
     "// WordPress tweeks": "::comment //",
     "post_revisions": false,
     "empty_trash_in_days": 15,

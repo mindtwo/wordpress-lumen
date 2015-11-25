@@ -66,11 +66,11 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar option update large_size_w \"1000\"",
 			"cd {$this->home_dir} && php wp-cli.phar post update 2 --post_name=\"$home\" --post_title=\"$home\" --post_content='" . $this->faker->paragraph(5) . " --comment_status=closed --ping_status=closed",
 			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$blog\" --post_name=\"$blog\" --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$contact\" --post_name=\"$contact\" --post_content='" . $this->faker->paragraph(1) . " [form_contact]'  --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$landingpage\" --post_name=\"$landingpage\" --post_content='" . $this->faker->paragraph(15) . "'  --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$team\" --post_name=\"$team\" --post_content='" . $this->faker->paragraph(2) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$imprint\" --post_name=\"$imprint\" --post_content='" . $this->faker->paragraph(15) . "'  --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$privacy\" --post_name=\"$privacy\" --post_content='" . $this->faker->paragraph(15) . "'  --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$contact\" --post_name=\"$contact\" --post_content='" . $this->faker->text(200) . " [form_contact]'  --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$landingpage\" --post_name=\"$landingpage\" --post_content='" . $this->faker->text(450) . "'  --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$team\" --post_name=\"$team\" --post_content='" . $this->faker->text(100) . "' --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$imprint\" --post_name=\"$imprint\" --post_content='" . $this->faker->text(1000) . "'  --post_status=publish",
+			"cd {$this->home_dir} && php wp-cli.phar post create --user=1 --post_type=page --post_title=\"$privacy\" --post_name=\"$privacy\" --post_content='" . $this->faker->text(1000) . "'  --post_status=publish",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 4 _wp_page_template template-contact.php",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 5 _wp_page_template template-landingpage.php",
 			"cd {$this->home_dir} && php wp-cli.phar post meta set 6 _wp_page_template template-team.php",
@@ -88,39 +88,6 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar menu location assign footer menu-footer",
 
 
-			// Dummy data
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->paragraph(5) . "' --post_status=publish",
-
 			// Add menu items
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 2 --title=\"$home\"",
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 6 --title=\"$team\"",
@@ -128,7 +95,45 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 4 --title=\"$contact\"",
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post footer 7 --title=\"$imprint\"",
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post footer 8 --title=\"$privacy\"",
+
+
 		];
+
+		if(isset($this->config->dummy_data) && $this->config->dummy_data) {
+			// Dummy data
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(1000) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->text(500) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->text(500) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->text(500) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->text(500) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->text(500) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->text(500) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+			array_push($excecute_commands, "cd {$this->home_dir} && php wp-cli.phar post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->faker->text(300) . "' --post_status=publish");
+
+		}
 
 		// Install plugins
 		if(isset($this->config->wordpress_plugins) && isset($this->config->wordpress_plugins->wp_cli) && is_array($this->config->wordpress_plugins->wp_cli)) {
