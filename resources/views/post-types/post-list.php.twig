@@ -1,15 +1,32 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
     <h1>{{post.title}}</h1>
-    <div class="body">
+    <div class="body row">
         {{post.content}}
         {% for post in posts %}
-        <div class="post col-md-6" rel="bookmark">
-            <h2 class="post-headline"><a href="{{function('get_esc_permalink')}}">{{post.post_title}}</a></h2>
-            <div class="post-content">
-                {{function('get_the_excerpt')}}
+            <div class="post col-md-6" rel="bookmark" role="article" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+                <div class="panel panel-default">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="{{function('get_esc_permalink')}}">
+                                {{function('the_post_thumbnail', 'news-teaser-single')}}
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h2 class="post-headline"><a href="{{function('get_esc_permalink')}}" itemprop="headline">{{post.post_title}}</a></h2>
+                            <div class="well well-sm">
+                                <time itemprop="datePublished" content="{{function('get_the_date', 'Y-m-d')}}" class="timeBanner">
+                                    <i class="fa fa-calendar"></i> <time datetime="{{function('get_the_date', 'Y-m-d')}}">{{function('get_the_date', 'j. F Y')}}</time>
+                                </time>
+                                {{function('the_tags', '<span class="fa fa-tag"></span>', ', ', '')}}
+                            </div>
+                            <div class="post-content">
+                                {{function('get_the_excerpt')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 {% endblock %}

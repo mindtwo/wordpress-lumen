@@ -76,29 +76,51 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1 {
-    @include font-size(28);
-    color: $brand-primary;
+    &,
+    & > a {
+        color: $brand-primary;
+        @include font-size(32);
+    }
 }
 
 h2 {
-    @include font-size(28);
-    color: $brand-primary;
+    &,
+    & > a {
+        @include font-size(28);
+        color: $brand-primary;
+    }
 }
 
 h3 {
-
+    &,
+    & > a {
+        @include font-size(22);
+        color: $brand-primary;
+    }
 }
 
 h4 {
-
+    &,
+    & > a {
+        @include font-size(18);
+        color: $brand-primary;
+    }
 }
 
 h5 {
-
+    &,
+    & > a {
+        @include font-size(16);
+        color: $brand-primary;
+    }
 }
 
 h6 {
-
+    &,
+    & > a {
+        @include font-size(18);
+        color: $brand-primary;
+    }
 }
 
 
