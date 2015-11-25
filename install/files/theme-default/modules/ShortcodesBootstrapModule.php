@@ -2,6 +2,9 @@
 
 class ShortcodesBootstrapModule {
 
+	/**
+	 * ShortcodesBootstrapModule constructor.
+	 */
 	public function __construct() {
 		$register_shortcodes = array(
 			'bs_notification'   => 'bs_notice',
@@ -28,6 +31,12 @@ class ShortcodesBootstrapModule {
 		}
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_notice( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'type' => 'unknown'
@@ -40,6 +49,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_buttons( $params, $content=null ) {
 		extract(shortcode_atts(array(
 			'size' => 'default',
@@ -53,6 +68,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_collapse( $params, $content=null ){
 		extract( shortcode_atts( array(
 			'id'=>''
@@ -64,6 +85,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_citem( $params, $content=null ){
 		extract( shortcode_atts( array(
 			'id'=> '',
@@ -85,6 +112,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_row( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'class' => 'row'
@@ -96,6 +129,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_span( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'class' => 'col-md-6'
@@ -107,6 +146,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_icons( $params, $content=null ) {
 		extract(shortcode_atts(array(
 			'name' => 'default'
@@ -117,6 +162,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_labels( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'type' => 'default'
@@ -128,6 +179,12 @@ class ShortcodesBootstrapModule {
 	}
 
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_lead( $params, $content=null ){
 
 		$content = preg_replace( '/<br class="nc".\/>/', '', $content );
@@ -152,6 +209,12 @@ class ShortcodesBootstrapModule {
 		[/bs_tcontents]
 	[/bs_tabs]
 	---------------*/
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_tabs( $params, $content=null ){
 		$content = preg_replace( '/<br class="nc".\/>/', '', $content );
 		$result = '<div class="tab_wrap">';
@@ -160,6 +223,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_thead( $params, $content=null) {
 		$content = preg_replace( '/<br class="nc".\/>/', '', $content );
 		$result = '<ul class="nav nav-tabs">';
@@ -168,6 +237,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_tab( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'href' => '#',
@@ -182,6 +257,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_dropdown( $params, $content=null ) {
 		global $bs_timestamp;
 		extract( shortcode_atts( array(
@@ -198,6 +279,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_tcontents( $params, $content=null ) {
 		$content = preg_replace( '/<br class="nc".\/>/', '', $content );
 		$result = '<div class="tab-content">';
@@ -206,6 +293,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_tcontent( $params, $content=null ) {
 		extract(shortcode_atts(array(
 			'id' => '',
@@ -219,6 +312,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_tooltip( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'placement' => 'top',
@@ -233,6 +332,12 @@ class ShortcodesBootstrapModule {
 		return force_balance_tags( $result );
 	}
 
+	/**
+	 * @param      $params
+	 * @param null $content
+	 *
+	 * @return mixed
+	 */
 	public function bs_well( $params, $content=null ) {
 		extract( shortcode_atts( array(
 			'size' => 'unknown'

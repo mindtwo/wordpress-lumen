@@ -1,6 +1,6 @@
 <?php
 
-class TeamModule {
+class TeamModule extends ModuleController {
 
 	public function __construct() {
 
@@ -36,7 +36,7 @@ class TeamModule {
 			      'show_ui' => true,
 			      'query_var' => true,
 			      'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
-			      'menu_icon' =>'dashicons-businessman', /* the icon for the custom post type menu */
+			      'menu_icon' =>'dashicons-businessman', /* the icon for the custom post type menu: https://developer.wordpress.org/resource/dashicons/ */
 			      'rewrite' => array( 'slug' => 'team', 'with_front' => false ), /* you can specify its url slug */
 			      'has_archive' => 'custom_type', /* you can rename the slug here */
 			      'capability_type' => 'page',
@@ -48,5 +48,5 @@ class TeamModule {
 	}
 }
 
-
+$team_module = new TeamModule();
 

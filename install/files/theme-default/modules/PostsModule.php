@@ -1,6 +1,6 @@
 <?php
 
-class PostsModule {
+class PostsModule extends ModuleController {
 
 	public function __construct() {
 

@@ -61,7 +61,7 @@ class ShortcodesModule {
 			'flexible_contents'           => 'shortcode_flexible_contents',
 			'google_analytics_id'         => 'shortcode_google_analytics_id',
 			'footer_tracking_codes'       => 'shortcode_footer_tracking_codesText',
-			//'contact_form'            => 'shortcode_contact_form',
+			'form_contact'                => 'shortcode_contact_form',
 
 		);
 
