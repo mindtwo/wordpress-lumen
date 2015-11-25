@@ -3,16 +3,23 @@
 namespace App\Console\Commands\Install\Components;
 
 
+use Faker\Factory;
+
+
 /**
  * Class ComponentWpCli
  */
 class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterface {
+
+	protected $faker;
 
 	/**
 	 * Create a new command instance.
 	 */
 	public function __construct() {
 		parent::__construct();
+
+		$this->faker = new Factory();
 	}
 
 	/**
@@ -79,6 +86,30 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			"cd {$this->home_dir} && php wp-cli.phar menu create \"Footer\"" ,
 			"cd {$this->home_dir} && php wp-cli.phar menu location assign main menu-main",
 			"cd {$this->home_dir} && php wp-cli.phar menu location assign footer menu-footer",
+
+
+			// Dummy data
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=post --post_title='" . $this->faker->word(3) . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
+			"cd {$this->home_dir} && php wp-cli.phar post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->faker->sentence(5) . "' --post_status=future --post_date='2020-12-01 07:00:00'",
 
 			// Add menu items
 			"cd {$this->home_dir} && php wp-cli.phar menu item add-post main 2 --title=\"$home\"",
