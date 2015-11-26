@@ -43,6 +43,7 @@ $configuration_files = [
     'session',
     'sites',
     'view',
+    'services',
 ];
 
 foreach($configuration_files as $config) {

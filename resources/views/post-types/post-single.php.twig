@@ -2,6 +2,7 @@
 {% block content %}
     <div class="post" role="article" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-headline" itemprop="headline">{{post.post_title}}</h1>
+        {{ function('do_shortcode', '[hr]') }}
         <div class="well well-sm">
             <time itemprop="datePublished" content="{{function('get_the_date', 'Y-m-d')}}" class="timeBanner">
                 <i class="fa fa-calendar"></i> <time datetime="{{function('get_the_date', 'Y-m-d')}}">{{function('get_the_date', 'j. F Y')}}</time>
@@ -9,9 +10,11 @@
             {{function('the_tags', '<span class="fa fa-tag"></span>', ', ', '')}}
         </div>
         {{function('the_tags', '<span class="fa fa-tag"></span>', ', ', '')}}
+
+        {% set the_post_thumbnail = function('csrf_token') %}
         {{function('the_post_thumbnail', 'news-teaser-single')}}
         <div class="post-content">
-            {{function('get_the_excerpt')}}
+            {{function('get_the_content')}}
         </div>
     </div>
 {% endblock %}

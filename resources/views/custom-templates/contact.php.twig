@@ -1,7 +1,7 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
     <h1>{{post.title}}</h1>
-    <img src="{{post.thumbnail.src}}" />
+    {{ function('do_shortcode', '[hr]') }}
     <div class="body">
         {{post.content}}
     </div>

@@ -2,7 +2,7 @@
 
 // Language settings
 if(!App::runningInConsole()) {
-    setLocalInHttpEnv();
+    set_local_in_http_env();
 }
 
 

@@ -41,7 +41,6 @@
     color: $text-color;
     @include font-size(16);
     @include line-height(22);
-    @include transition(all, 0.5s);
 
     @media (max-width: $tablet) {
         @include font-size(16);
@@ -69,10 +68,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
     font-style: italic;
+    @include transition(all, 0.2s);
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-
+    @include transition(all, 0.2s);
 }
 
 h1 {
@@ -154,6 +154,12 @@ ol {
 
 ol li {
 
+}
+
+
+
+.pagination .current {
+    @extend .active;
 }
 
 

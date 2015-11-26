@@ -1,28 +1,28 @@
 <script id="form-contact-template" type="x-template">
     <form action="/l/form-contact" method="POST" id="form-contact" @submit="onSubmitForm">
-        <div class="alert alert-success" v-if="submitted">{{function('trans','home.email_was_send_message')}}</div>
+        <div class="alert alert-success" v-if="submitted">{{function('trans','form.contact.success_message')}}</div>
 
         <div class="form-errors" v-if="errors">
-            <strong>{{function('trans','home.error_message_headline')}}</strong>
+            <strong>{{function('trans','form.error.headline')}}</strong>
             <ul>
                 <li v-for="error in errors">@{{ error }}</li>
             </ul>
         </div>
 
         <div class="form-group" v-if="! submitted">
-            <label for="cform_name">{{function('trans','home.name')}}:</label>
+            <label for="cform_name">{{function('trans','form.default.name')}}:</label>
             <input id="cform_name" class="form-control" type="text" v-model="inquery.name">
         </div>
         <div class="form-group" v-if="! submitted">
-            <label for="cform_email">{{function('trans','home.email_address')}}:</label>
+            <label for="cform_email">{{function('trans','form.default.email')}}:</label>
             <input id="cform_email" class="form-control" type="text" v-model="inquery.email">
         </div>
         <div class="form-group" v-if="! submitted">
-            <label for="cform_message">{{function('trans','home.message')}}:</label>
+            <label for="cform_message">{{function('trans','form.default.message')}}:</label>
             <textarea id="cform_message" class="form-control" v-model="inquery.message" rows="4"></textarea>
         </div>
         <input type="hidden" name="_token" value="{{function('csrf_token')}}" v-if="! submitted">
-        <button type="submit" @click="onSubmitForm" class="btn btn-secondary" v-if="! submitted"><span>{{function('trans','home.send_a_message')}}</span><i class="ti-email"></i></button>
+        <button type="submit" @click="onSubmitForm" class="btn btn-primary btn-lg" v-if="! submitted"><span>{{function('trans','form.default.send')}}</span><i class="ti-email"></i></button>
     </form>
 </script>
 <form-contact/>

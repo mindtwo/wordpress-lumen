@@ -50,18 +50,20 @@ class ShortcodesModule {
 			'get_phone_number_display'        => 'shortcode_get_phone_number_display',
 			'get_phone_number_display'        => 'shortcode_get_phone_number_href',
 			'get_fax'                         => 'shortcode_get_fax',
+			'get_google_analytics_id'         => 'shortcode_get_google_analytics_id',
+			'get_footer_tracking_codes'       => 'shortcode_get_footer_tracking_codes',
+			'get_header_tracking_codes'       => 'shortcode_get_header_tracking_codes',
 			'get_email'                       => 'shortcode_email',
 
 			// Theme
+			'global_javascript_vars'      => 'shortcode_global_javascript_vars',
 			'responsive_image'            => 'shortcode_responsive_image',
 			'hr'                          => 'shortcode_hr',
 			'button'                      => 'shortcode_button',
 			'box'                         => 'shortcode_box',
 			'latest_posts'                => 'shortcode_latest_posts',
 			'flexible_contents'           => 'shortcode_flexible_contents',
-			'google_analytics_id'         => 'shortcode_google_analytics_id',
-			'footer_tracking_codes'       => 'shortcode_footer_tracking_codesText',
-			'form_contact'                => 'shortcode_contact_form',
+			'form'                        => 'shortcode_form',
 
 		);
 
@@ -107,6 +109,33 @@ class ShortcodesModule {
 	}
 
 	/**
+	 * Footer Global JavaScript Vars
+	 *
+	 * @return mixed
+	 */
+	public function shortcode_global_javascript_vars() {
+		$result = [
+			// URL to wp-admin/admin-ajax.php to process the request
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+
+			// Set api keys
+			'google_maps_public_api_key' => config('services.google.maps.public_api_key'),
+			'google_recaptcha_public_api_key' => config('services.google.recaptcha.public_api_key'),
+
+			// Submit server vars
+			'http_host' => (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ''),
+
+			// Submit responsive vars
+			'svg_ready' => svg_ready(),
+			'is_mobile' => is_mobile(),
+			'is_tablet' => is_tablet(),
+			'is_desktop' => (!is_tablet() && !is_mobile())
+		];
+
+		return '<script type="text/javascript">var GlobalVars=' . json_encode($result) . ';</script>';
+	}
+
+	/**
 	 * Button
 	 *
 	 * @param $atts
@@ -116,8 +145,8 @@ class ShortcodesModule {
 	public function button( $atts ) {
 		extract( shortcode_atts( array(
 			'href'  => '#',
-			'label' => false,
-			'class' => false,
+			'label' => '',
+			'class' => 'btn btn-primary',
 		), $atts ) );
 
 		return $this->render_view( 'partials/button.php.twig', [ 'href' => $href, 'label' => $label, 'class' => $class ] );
@@ -128,14 +157,30 @@ class ShortcodesModule {
 	 *
 	 * @return mixed
 	 */
-	public function shortcode_contact_form( $atts ) {
+	public function shortcode_form( $atts ) {
 		extract( shortcode_atts( array(
+			'name' => 'contact',
 			'wrap_before' => '',
 			'wrap_after'  => ''
 		), $atts ) );
 
 		// Load and return template
-		return $this->render_view( 'forms/contact-form.php.twig' );
+		return $this->render_view( "forms/$name-form.php.twig" );
+	}
+
+	/**
+	 * @param $atts
+	 *
+	 * @return mixed
+	 */
+	public function shortcode_applicationt_form( $atts ) {
+		extract( shortcode_atts( array(
+				'wrap_before' => '',
+				'wrap_after'  => ''
+		), $atts ) );
+
+		// Load and return template
+		return $this->render_view( 'forms/application-form.php.twig' );
 	}
 
 	/**
@@ -229,13 +274,14 @@ class ShortcodesModule {
 	/**
 	 * Render flexible content view
 	 *
-	 * @param      $view
-	 * @param null $data
+	 * @param       $view
+	 * @param array $data
 	 *
 	 * @return mixed
 	 */
-	private function render_view( $view, $data = null ) {
-		return Timber::render( $view, $data, false );
+	private function render_view( $view, $data = [] ) {
+		$templete = file_get_contents(TEMPLATE_DIR.'/'.$view);
+		return Timber::compile_string( $templete, (!is_array($data) ? [$data] : $data ) );
 	}
 
 	/**

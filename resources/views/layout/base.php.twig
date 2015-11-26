@@ -11,6 +11,7 @@
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta id="csrf_token" name="token" content="{{function('csrf_token')}}">
+    {{ function('do_shortcode', '[get_header_tracking_codes]') }}
 
     <link type="text/css" rel="stylesheet" href="{{function('theme_css_path')}}bundle.min.css">
     <link type="text/css" rel="stylesheet" href="{{function('elixir', 'content/themes/default/assets/css/app.css')}}">
@@ -44,6 +45,7 @@
     <div class="preloader">
         <div class="preloader__loader"></div>
     </div>
+    {{ function('do_shortcode', '[global_javascript_vars]') }}
     <script type="text/javascript" src="{{function('elixir', 'content/themes/default/assets/js/all.js')}}"></script>
     {% include 'partials/tracking-codes.php.twig' %}
 </body>

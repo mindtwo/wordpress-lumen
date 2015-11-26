@@ -1,6 +1,7 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
     <h1>{{post.title}}</h1>
+    {{ function('do_shortcode', '[hr]') }}
     <div class="body row">
         {{post.content}}
         {% for post in posts %}
@@ -29,4 +30,5 @@
             </div>
         {% endfor %}
     </div>
+    {% include 'partials/pager-simple.php.twig' %}
 {% endblock %}

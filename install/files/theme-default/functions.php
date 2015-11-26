@@ -86,4 +86,4 @@ $helper = new \cg\Helper\HelperBuilder();
 /**
  * Enable meta logging
  */
-$helper->meta()->writeClickStreamToSession();
+write_clickstream_to_session();
