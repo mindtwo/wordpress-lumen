@@ -11,16 +11,16 @@ return [
 	'labels' => array(
 		'name' => 'Conversions',
 		'singular-name' => 'Conversion',
-		'all-items' => 'All Conversions',
-		'add-new' => 'Add Conversion',
-		'add-new-item' => 'Add New Conversion',
-		'edit' => 'Edit',
-		'edit-item' => 'Edit Conversion',
-		'new-item' => 'New Conversion',
-		'view-item' => 'View Conversion',
-		'search-items' => 'Search Conversion',
-		'not-found' =>  'Nothing found in the Database.',
-		'not-found-in-trash' => 'Nothing found in Trash',
+		'all-items' => 'Alle Conversions',
+		'add-new' => 'Conversion anlegen',
+		'add-new-item' => 'Neue Conversion hinzufügen',
+		'edit' => 'Bearbeiten',
+		'edit-item' => 'Conversion bearbeiten',
+		'new-item' => 'Neue Conversion',
+		'view-item' => 'Conversion ansehen',
+		'search-items' => 'Conversions durchsuchen',
+		'not-found' =>  'Es wurde kein Eintrag in der Datenbank gefunden.',
+		'not-found-in-trash' => 'Es wurde nichts im Papierkorb gefunden.',
 		'parent-item-colon' => ''
 	),
 	'description' => 'Website Conversions',
@@ -31,7 +31,7 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 	'conversion-source' => array(
-		'label' => 'Conversion Source',
+		'label' => 'Conversion Quelle',
 	)
 
 ];
