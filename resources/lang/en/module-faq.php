@@ -9,29 +9,31 @@ return [
 	*/
 
 	'labels' => array(
-		'name' => 'Conversions',
-		'singular_name' => 'Conversion',
-		'all_items' => 'All Conversions',
-		'add_new' => 'Add Conversion',
-		'add_new_item' => 'Add New Conversion',
+		'name' => 'FAQ',
+		'singular-name' => 'FAQ',
+		'all-items' => 'All FAQs',
+		'add-new' => 'Add FAQ',
+		'add-new-item' => 'Add New FAQ',
 		'edit' => 'Edit',
-		'edit_item' => 'Edit Conversion',
-		'new_item' => 'New Conversion',
-		'view_item' => 'View Conversion',
-		'search_items' => 'Search Conversion',
-		'not_found' =>  'Nothing found in the Database.',
-		'not_found_in_trash' => 'Nothing found in Trash',
-		'parent_item_colon' => ''
+		'edit-item' => 'Edit FAQ',
+		'new-item' => 'New FAQ',
+		'view-item' => 'View FAQ',
+		'search-items' => 'Search FAQ',
+		'not-found' =>  'Nothing found in the Database.',
+		'not-found-in-trash' => 'Nothing found in Trash',
+		'parent-item-colon' => ''
 	),
-	'description' => 'Website Conversions',
+	'description' => 'This is the FAQ',
+
 
 	/*
 	|--------------------------------------------------------------------------
 	| Register Custom Post Type Taxonomies
 	|--------------------------------------------------------------------------
 	*/
-	'conversion-source' => array(
-		'label' => 'Conversion Source',
+
+	'faq-category' => array(
+		'label' => 'FAQ Category',
 	)
 
 ];

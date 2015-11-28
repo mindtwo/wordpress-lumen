@@ -9,21 +9,21 @@ return [
 	*/
 
 	'labels' => array(
-		'name' => 'FAQ',
-		'singular-name' => 'FAQ',
-		'all-items' => 'All FAQs',
-		'add-new' => 'Add FAQ',
-		'add-new-item' => 'Add New FAQ',
+		'name' => 'Jobs',
+		'singular-name' => 'Job',
+		'all-items' => 'All Job',
+		'add-new' => 'Add New',
+		'add-new-item' => 'Add New Job',
 		'edit' => 'Edit',
-		'edit-item' => 'Edit FAQ',
-		'new-item' => 'New FAQ',
-		'view-item' => 'View FAQ',
-		'search-items' => 'Search FAQ',
+		'edit-item' => 'Edit Job',
+		'new-item' => 'New Job',
+		'view-item' => 'View Job',
+		'search-items' => 'Search Job',
 		'not-found' =>  'Nothing found in the Database.',
 		'not-found-in-trash' => 'Nothing found in Trash',
 		'parent-item-colon' => ''
 	),
-	'description' => 'This is the FAQ',
+	'description' => 'This is the Job',
 
 	
 	/*
@@ -32,8 +32,8 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 
-	'faq-category' => array(
-		'label' => 'FAQ Category',
+	'job-category' => array(
+		'label' => 'Job Category',
 	)
 
 ];
