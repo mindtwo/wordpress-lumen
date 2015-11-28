@@ -23,6 +23,12 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
 $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
 
 
+try {
+	$app->run();
+} catch (Exception $e) {
+
+}
+
 /**
  * Set localisation
  * :TODO: set language by domain
