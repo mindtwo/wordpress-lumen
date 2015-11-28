@@ -46,7 +46,7 @@
         <div class="preloader__loader"></div>
     </div>
     {{ function('do_shortcode', '[global_javascript_vars]') }}
-    <script type="text/javascript" src="{{function('elixir', 'content/themes/default/assets/js/all.js')}}"></script>
+    <script type="text/javascript" src="{{function('elixir', 'content/themes/default/assets/js/all.js')}}" async></script>
     {% include 'partials/tracking-codes.php.twig' %}
 </body>
 </html>
