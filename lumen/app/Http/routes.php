@@ -7,8 +7,8 @@ if(!App::runningInConsole()) {
 
 
 // Routs
-$app->post('/form-contact', 'ContactFormController@store');
-$app->post('/form-callback', 'CallbackFormController@store');
+$app->post('/form-contact', 'FormContactController@store');
+$app->post('/form-callback', 'FormCallbackController@store');
 
 
 // Debug mail template:

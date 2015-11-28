@@ -1,5 +1,5 @@
 <script id="form-contact-template" type="x-template">
-    <form action="/l/form-contact" method="POST" id="form-contact" @submit="onSubmitForm">
+    <form id="form-contact" @submit="onSubmitForm">
         <div class="alert alert-success" v-if="submitted">{{function('trans','form.contact.success_message')}}</div>
 
         <div class="form-errors" v-if="errors">

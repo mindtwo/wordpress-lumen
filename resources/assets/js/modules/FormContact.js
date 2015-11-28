@@ -14,7 +14,7 @@ module.exports = {
         onSubmitForm: function(e) {
             e.preventDefault();
             var _inquery = this.inquery;
-            this.$http.post('/', _inquery).success(function(data, status, request) {
+            this.$http.post('/l/form-contact', _inquery).success(function(data, status, request) {
                 this.errors = false;
                 this.submitted = true;
             }).error(function (data, status, request) {
