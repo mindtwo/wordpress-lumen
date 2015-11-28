@@ -3,7 +3,7 @@
 /**
  * Define constants
  */
-define('THEME_APPLICATION_DIR', realpath(ABSPATH . '/../../') . '/');
+define('THEME_APPLICATION_DIR', realpath( ABSPATH . '/../../') . '/');
 define('THEME_DIR', realpath(get_template_directory()) . '/');
 define('THEME_FUNCTIONS', THEME_DIR . 'functions/');
 define('THEME_CONFIG', THEME_DIR . 'config/');
@@ -21,6 +21,16 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
  * Load Lumen application
  */
 $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
+
+
+/**
+ * Set localisation
+ * :TODO: set language by domain
+ */
+// if(is_admin()) {
+//     $translator = app('translator');
+//     $translator->setLocale('en');
+// }
 
 
 /**
