@@ -1,6 +1,7 @@
 <?php
 
 return [
+
 	'wordpress-database' => [
 		'home' => 'Home',
 		'contact' => 'Contact',
@@ -10,4 +11,5 @@ return [
 		'privacy' => 'Privacy',
 		'imprint' => 'Imprint',
 	],
+
 ];

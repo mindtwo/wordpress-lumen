@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Lang;
+
 class ConversionModule extends ModuleController {
+	protected $translator;
 
 	public function __construct() {
 
 		add_action( 'init', array( $this, 'register_post_type' ));
 		add_action( 'init', array( $this, 'register_taxonomy' ));
+		$this->translator = new Lang;
 
 	}
 
@@ -17,21 +21,21 @@ class ConversionModule extends ModuleController {
 		register_post_type( 'conversion',
 			array(
 				'labels' => array(
-					'name' => 'Conversions',
-					'singular_name' => 'Conversion',
-					'all_items' => 'All Conversions',
-					'add_new' => 'Add Conversion',
-					'add_new_item' => 'Add New Conversion',
-					'edit' => 'Edit',
-					'edit_item' => 'Edit Conversion',
-					'new_item' => 'New Conversion',
-					'view_item' => 'View Conversion',
-					'search_items' => 'Search Conversion',
-					'not_found' =>  'Nothing found in the Database.',
-					'not_found_in_trash' => 'Nothing found in Trash',
-					'parent_item_colon' => ''
+					'name' => trans('module-conversion.labels.name'),
+					'singular_name' => trans('module-conversion.labels.singular-name'),
+					'all_items' => trans('module-conversion.labels.all-items'),
+					'add_new' => trans('module-conversion.labels.add-new'),
+					'add_new_item' => trans('module-conversion.labels.add-new-item'),
+					'edit' => trans('module-conversion.labels.edit'),
+					'edit_item' => trans('module-conversion.labels.edit-item'),
+					'new_item' => trans('module-conversion.labels.new-item'),
+					'view_item' => trans('module-conversion.labels.view-item'),
+					'search_items' => trans('module-conversion.labels.search-items'),
+					'not_found' => trans('module-conversion.labels.not-found'),
+					'not_found_in_trash' => trans('module-conversion.labels.not-found-in-trash'),
+					'parent_item_colon' => trans('module-conversion.labels.parent-item-colon')
 				),
-				'description' => 'Website Conversions',
+				'description' => trans('module-conversion.description'),
 				'public' => false,
 				'publicly_queryable' => false,
 				'exclude_from_search' => true,
@@ -53,12 +57,12 @@ class ConversionModule extends ModuleController {
 	 */
 	public function register_taxonomy() {
 		register_taxonomy(
-			'conversion-category',
+			'conversion-source',
 			'conversion',
 			array(
-				'label' => 'Category',
+				'label' => trans('module-conversion.conversion-source.label'),
 				'public' => true,
-				'rewrite' => array( 'slug' => 'conversion-category', 'with_front' => false ),
+				'rewrite' => array( 'slug' => 'conversion-source', 'with_front' => false ),
 				'hierarchical' => false,
 			)
 		);

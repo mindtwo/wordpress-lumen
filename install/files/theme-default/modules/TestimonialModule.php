@@ -17,21 +17,21 @@ class TestimonialModule extends ModuleController {
 		register_post_type( 'testimonial',
 			array(
 				'labels' => array(
-					'name' => 'Testimonials',
-					'singular_name' => 'Testimonial',
-					'all_items' => 'All Testimonials',
-					'add_new' => 'Add Testimonial',
-					'add_new_item' => 'Add New Testimonial',
-					'edit' => 'Edit',
-					'edit_item' => 'Edit Testimonial',
-					'new_item' => 'New Testimonial',
-					'view_item' => 'View Testimonial',
-					'search_items' => 'Search Testimonial',
-					'not_found' =>  'Nothing found in the Database.',
-					'not_found_in_trash' => 'Nothing found in Trash',
-					'parent_item_colon' => ''
+					'name' => trans('module-testimonial.labels.name'),
+					'singular_name' => trans('module-testimonial.labels.singular-name'),
+					'all_items' => trans('module-testimonial.labels.all-items'),
+					'add_new' => trans('module-testimonial.labels.add-new'),
+					'add_new_item' => trans('module-testimonial.labels.add-new-item'),
+					'edit' => trans('module-testimonial.labels.edit'),
+					'edit_item' => trans('module-testimonial.labels.edit-item'),
+					'new_item' => trans('module-testimonial.labels.new-item'),
+					'view_item' => trans('module-testimonial.labels.view-item'),
+					'search_items' => trans('module-testimonial.labels.search-items'),
+					'not_found' => trans('module-testimonial.labels.not-found'),
+					'not_found_in_trash' => trans('module-testimonial.labels.not-found-in-trash'),
+					'parent_item_colon' => trans('module-testimonial.labels.parent-item-colon')
 				),
-				'description' => 'Customers and Partners Testimonial',
+				'description' => trans('module-testimonial.description'),
 				'public' => true,
 				'publicly_queryable' => true,
 				'exclude_from_search' => true,
@@ -53,12 +53,12 @@ class TestimonialModule extends ModuleController {
 	 */
 	public function register_taxonomy() {
 		register_taxonomy(
-			'testimonial-category',
+			'testimonial-type',
 			'testimonial',
 			array(
-				'label' => 'Category',
+				'label' => trans('module-testimonial.testimonial-type.label'),
 				'public' => true,
-				'rewrite' => array( 'slug' => 'testimonial-category', 'with_front' => false ),
+				'rewrite' => array( 'slug' => 'testimonial-type', 'with_front' => false ),
 				'hierarchical' => false,
 			)
 		);
