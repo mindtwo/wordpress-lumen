@@ -91,9 +91,9 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			$wp_cli . "menu location assign footer menu-footer",
 
 			// Add default conversion terms
-			$wp_cli . "term create conversion-source \"Form Contact\" form_contact",
-			$wp_cli . "term create conversion-source \"Form Callback\" form_callback",
-			$wp_cli . "term create conversion-source \"Form Application\" form_application",
+			$wp_cli . "term create conversion-source \"Form Contact\" --slug=\"form_contact\"",
+			$wp_cli . "term create conversion-source \"Form Callback\" --slug=\"form_callback\"",
+			$wp_cli . "term create conversion-source \"Form Application\" --slug=\"form_application\"",
 
 			// Add menu items
 			$wp_cli . "menu item add-post main 2 --title=\"$home\"",
