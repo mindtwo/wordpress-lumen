@@ -10355,7 +10355,9 @@ new Vue({
     el: '#app',
 
     components: {
-        'form-contact': require('./modules/FormContact.js')
+        'form-contact': require('./modules/FormContact.js'),
+        'form-callback': require('./modules/FormCallback.js'),
+        'form-application': require('./modules/FormApplication.js')
     }
 });
 
@@ -10397,7 +10399,73 @@ function initPreloader() {
     });
 }
 
-},{"./modules/FormContact.js":12,"vue":10,"vue-resource":3}],12:[function(require,module,exports){
+},{"./modules/FormApplication.js":12,"./modules/FormCallback.js":13,"./modules/FormContact.js":14,"vue":10,"vue-resource":3}],12:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+
+    template: document.querySelector('#form-application-template'),
+
+    data: function data() {
+        return {
+            inquery: { name: '', email: '', message: '' },
+            submitted: false,
+            errors: false
+        };
+    },
+
+    methods: {
+        onSubmitForm: function onSubmitForm(e) {
+            e.preventDefault();
+            var _inquery = this.inquery;
+            this.$http.post('/l/form-application', _inquery).success(function (data, status, request) {
+                this.errors = false;
+                this.submitted = true;
+            }).error(function (data, status, request) {
+                var _errors = [];
+                $.each(JSON.parse(request.response), function (key, value) {
+                    _errors.push(value);
+                });
+                this.errors = _errors;
+            });
+        }
+    }
+};
+
+},{}],13:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+
+    template: document.querySelector('#form-callback-template'),
+
+    data: function data() {
+        return {
+            inquery: { name: '', phone: '' },
+            submitted: false,
+            errors: false
+        };
+    },
+
+    methods: {
+        onSubmitForm: function onSubmitForm(e) {
+            e.preventDefault();
+            var _inquery = this.inquery;
+            this.$http.post('/l/form-callback', _inquery).success(function (data, status, request) {
+                this.errors = false;
+                this.submitted = true;
+            }).error(function (data, status, request) {
+                var _errors = [];
+                $.each(JSON.parse(request.response), function (key, value) {
+                    _errors.push(value);
+                });
+                this.errors = _errors;
+            });
+        }
+    }
+};
+
+},{}],14:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -10416,7 +10484,7 @@ module.exports = {
         onSubmitForm: function onSubmitForm(e) {
             e.preventDefault();
             var _inquery = this.inquery;
-            this.$http.post('/', _inquery).success(function (data, status, request) {
+            this.$http.post('/l/form-contact', _inquery).success(function (data, status, request) {
                 this.errors = false;
                 this.submitted = true;
             }).error(function (data, status, request) {
