@@ -155,6 +155,6 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 
 	protected function create_post($ype, $title, $content, $status) {
 		$wp_cli = $this->wp_cli;
-		return $wp_cli . "post create --post_type=$ype --post_title='$title' --post_content='$content' --post_status='$status'"
+		return $wp_cli . "post create --post_type=$ype --post_title='$title' --post_content='$content' --post_status='$status'";
 	}
 }
