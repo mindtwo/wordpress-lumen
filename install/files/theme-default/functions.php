@@ -26,12 +26,10 @@ $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
 try {
 	$request = Illuminate\Http\Request::capture();
 	$app->run($request);
-} catch (Exception $e) {
-
-}
+} catch (Exception $e) {}
 
 /**
- * Set localisation
+ * Set backend localisation
  * :TODO: set language by domain
  */
 // if(is_admin()) {
