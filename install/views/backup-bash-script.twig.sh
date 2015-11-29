@@ -20,10 +20,8 @@ DB_HOST="{{DB_HOST}}"
 ########################################################################################################################
 # Excludes #############################################################################################################
 ########################################################################################################################
-WWW_EXCLUDE1="resources/assets/node_modules"
-WWW_EXCLUDE2="resources/assets/.sass-cache"
-WWW_EXCLUDE3="public/wp-content/cache"
-WWW_EXCLUDE4="backup/backups"
+WWW_EXCLUDE1="public/content/cache"
+WWW_EXCLUDE2="backup/backups"
 
 
 ########################################################################################################################
@@ -54,7 +52,7 @@ DB_TRANSFORM="s,^${BACKUP_DIR:1},database,"
 # Project with DB ######################################################################################################
 ########################################################################################################################
 # Create the archive and the MySQL dump
-tar -cvf $BACKUP_DIR/$FILE $WWW_DIR --exclude=$WWW_EXCLUDE1 --exclude=$WWW_EXCLUDE2 --exclude=$WWW_EXCLUDE3 --exclude=$WWW_EXCLUDE4 --exclude-vcs --transform $WWW_TRANSFORM
+tar -cvf $BACKUP_DIR/$FILE $WWW_DIR --exclude=$WWW_EXCLUDE1 --exclude=$WWW_EXCLUDE2 --exclude 'node_modules' --exclude '.git' --exclude 'vendor'  --exclude '.sass-cache' --exclude-'vcs' --transform $WWW_TRANSFORM
 mysqldump -h $DB_HOST -u$DB_USER -p$DB_PASS $DB_NAME > $BACKUP_DIR/$DB_FILE
 
 # Append the dump to the archive, remove the dump and compress the whole archive.
