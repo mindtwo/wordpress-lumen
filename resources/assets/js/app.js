@@ -18,7 +18,6 @@ new Vue({
  */
 jQuery(function(){
     initLocalScroll();
-    initlazySizes();
     initFancybox();
     initPreloader();
 });
