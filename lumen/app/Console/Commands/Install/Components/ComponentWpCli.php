@@ -147,7 +147,7 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		$result = [];
 
 		for ($i = 0; $i <= $paragraphs; $i++) {
-			array_push($result, $this->faker->paragraph($this->faker->numberBetween(20,100)));
+			array_push($result, $this->faker->paragraph($this->faker->numberBetween(5,30)));
 		}
 
 		return implode("\n\n",$result);
