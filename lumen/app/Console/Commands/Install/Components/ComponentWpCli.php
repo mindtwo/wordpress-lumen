@@ -12,6 +12,7 @@ use Faker\Factory as Faker;
 class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterface {
 
 	protected $faker;
+	protected $wp_cli;
 
 	/**
 	 * Create a new command instance.
@@ -28,7 +29,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 	 * @return mixed
 	 */
 	public function fire() {
-		$wp_cli = "cd {$this->home_dir} && php wp-cli.phar ";
+		$this->wp_cli = "cd {$this->home_dir} && php wp-cli.phar ";
+		$wp_cli = $this->wp_cli;
 
 		// Use WordPress cli manually!
 		if ( $this->filesystem->exists( '/Applications/MAMP/Library/bin' ) ) {
@@ -100,59 +102,27 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 
 		];
 
+		// Dummy data
 		if(isset($this->config->dummy_data) && $this->config->dummy_data) {
-			// Dummy data
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=post --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(20) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->get_text() . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->get_text() . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->get_text() . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->get_text() . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->get_text() . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=team --post_title='" . $this->faker->name() . "' --post_content='" . $this->get_text() . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=faq --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=lexicon --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
-			array_push($exec, $wp_cli . "post create --post_type=job --post_title='" . $this->faker->sentence(5) . "' --post_content='" . $this->get_text(5) . "' --post_status=publish");
+			for ($i = 0; $i <= 15; $i++) {
+				array_push($exec, create_post("post", $this->faker->sentence(5), $this->get_text(20), 'publish'));
+			}
+
+			for ($i = 0; $i <= 15; $i++) {
+				array_push($exec, create_post("team", $this->faker->name(), $this->get_text(), 'publish'));
+			}
+
+			for ($i = 0; $i <= 10; $i++) {
+				array_push($exec, create_post("faq", $this->faker->sentence(5), $this->get_text(5), 'publish'));
+			}
+
+			for ($i = 0; $i <= 10; $i++) {
+				array_push($exec, create_post("lexicon", $this->faker->sentence(5), $this->get_text(5), 'publish'));
+			}
+
+			for ($i = 0; $i <= 10; $i++) {
+				array_push($exec, create_post("job", $this->faker->sentence(5), $this->get_text(5), 'publish'));
+			}
 
 		}
 
@@ -181,5 +151,10 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		}
 
 		return implode("\n\n",$result);
+	}
+
+	protected function create_post($ype, $title, $content, $status) {
+		$wp_cli = $this->wp_cli;
+		return $wp_cli . "post create --post_type=$ype --post_title='$title' --post_content='$content' --post_status='$status'"
 	}
 }
