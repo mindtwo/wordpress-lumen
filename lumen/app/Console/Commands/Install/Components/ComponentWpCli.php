@@ -130,7 +130,7 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		if(isset($this->config->wordpress_plugins) && isset($this->config->wordpress_plugins->wp_cli) && is_array($this->config->wordpress_plugins->wp_cli)) {
 			foreach($this->config->wordpress_plugins->wp_cli as $plugin) {
 				echo "Install WordPress Plugin: " . $plugin;
-				array_push($excecute_commands, $wp_cli . "plugin install $plugin");
+				array_push($exec, $wp_cli . "plugin install $plugin");
 			}
 		}
 
