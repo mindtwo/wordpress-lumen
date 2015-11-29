@@ -105,23 +105,23 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		// Dummy data
 		if(isset($this->config->dummy_data) && $this->config->dummy_data) {
 			for ($i = 0; $i <= 15; $i++) {
-				array_push($exec, create_post("post", $this->faker->sentence(5), $this->get_text(20), 'publish'));
+				array_push($exec, $this->create_post("post", $this->faker->sentence(5), $this->get_text(20), 'publish'));
 			}
 
 			for ($i = 0; $i <= 15; $i++) {
-				array_push($exec, create_post("team", $this->faker->name(), $this->get_text(), 'publish'));
+				array_push($exec, $this->create_post("team", $this->faker->name(), $this->get_text(), 'publish'));
 			}
 
 			for ($i = 0; $i <= 10; $i++) {
-				array_push($exec, create_post("faq", $this->faker->sentence(5), $this->get_text(5), 'publish'));
+				array_push($exec, $this->create_post("faq", $this->faker->sentence(5), $this->get_text(5), 'publish'));
 			}
 
 			for ($i = 0; $i <= 10; $i++) {
-				array_push($exec, create_post("lexicon", $this->faker->sentence(5), $this->get_text(5), 'publish'));
+				array_push($exec, $this->create_post("lexicon", $this->faker->sentence(5), $this->get_text(5), 'publish'));
 			}
 
 			for ($i = 0; $i <= 10; $i++) {
-				array_push($exec, create_post("job", $this->faker->sentence(5), $this->get_text(5), 'publish'));
+				array_push($exec, $this->create_post("job", $this->faker->sentence(5), $this->get_text(5), 'publish'));
 			}
 
 		}
