@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use App\Modules\Mailer\Services\MandrillService;
 use Illuminate\Http\Request;
 
-class ContactCallbackController extends Controller {
+class FormCallbackController extends Controller {
 	public function store(Request $request) {
 		$this->validate($request, [
 			'name' => 'required|min:2',
-			'email' => 'required|email',
-			'message' => 'required|min:10',
+			'phone' => 'required|min:5',
 		]);
 
-		$view = view('mail.contact-form')->with(['name' => $request->name, 'email' => $request->email, 'message' => nl2br($request->message)]);
+		$view = view('mail.callback-form')->with(['name' => $request->name, 'email' => $request->email, 'message' => nl2br($request->message)]);
 
 		(new MandrillService())->send(
 			$view->render(),

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Modules\Mailer\Services\MandrillService;
 use Illuminate\Http\Request;
 
-class ContactFormController extends Controller {
+class FormContactController extends Controller {
 	public function store(Request $request) {
 		$this->validate($request, [
 			'name' => 'required|min:2',
