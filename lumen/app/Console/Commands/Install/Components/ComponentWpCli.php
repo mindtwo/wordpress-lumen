@@ -69,7 +69,7 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			$wp_cli . "option update large_size_w \"1000\"",
 			$wp_cli . "post update 2 --post_name=\"$home\" --post_title=\"$home\" --post_content='" . $this->faker->paragraph(5) . " --comment_status=closed --ping_status=closed",
 			$wp_cli . "post create --user=1 --post_type=page --post_title=\"$blog\" --post_name=\"$blog\" --post_status=publish",
-			$wp_cli . "post create --user=1 --post_type=page --post_title=\"$contact\" --post_name=\"$contact\" --post_content='" . $this->get_text(1) . " [form_contact]'  --post_status=publish",
+			$wp_cli . "post create --user=1 --post_type=page --post_title=\"$contact\" --post_name=\"$contact\" --post_content='" . $this->get_text(1) . " [form]'  --post_status=publish",
 			$wp_cli . "post create --user=1 --post_type=page --post_title=\"$landingpage\" --post_name=\"$landingpage\" --post_content='" . $this->get_text() . "'  --post_status=publish",
 			$wp_cli . "post create --user=1 --post_type=page --post_title=\"$team\" --post_name=\"$team\" --post_content='" . $this->get_text(2) . "' --post_status=publish",
 			$wp_cli . "post create --user=1 --post_type=page --post_title=\"$imprint\" --post_name=\"$imprint\" --post_content='" . $this->get_text(20) . "'  --post_status=publish",
@@ -90,6 +90,10 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 			$wp_cli . "menu location assign main menu-main",
 			$wp_cli . "menu location assign footer menu-footer",
 
+			// Add default conversion terms
+			$wp_cli . "term create conversion-source form_contact --description=\"Form Contact\"",
+			$wp_cli . "term create conversion-source form_callback --description=\"Form Callback\"",
+			$wp_cli . "term create conversion-source form_application --description=\"Form Application\"",
 
 			// Add menu items
 			$wp_cli . "menu item add-post main 2 --title=\"$home\"",
