@@ -230,14 +230,10 @@ if (! function_exists('write_clickstream_to_session')) {
 
 		$data['DATETIME'] = date('Y-m-d H:i:s');
 
-		if(session('_CLICKSTREAM') == NULL) {
-			$click_steam = [];
-			array_push($click_steam, $data);
+		if(session()->get('_CLICKSTREAM') == NULL) {
+			session()->put('_CLICKSTREAM', [$data]);
 		} else {
-			$click_steam = session('_CLICKSTREAM');
-			array_push($click_steam, $data);
+			session()->push('_CLICKSTREAM', $data);
 		}
-
-		session(['_CLICKSTREAM' => $click_steam]);
 	}
 }
