@@ -6,7 +6,9 @@ new Vue({
     el: '#app',
 
     components: {
-        'form-contact': require('./modules/FormContact.js')
+        'form-contact': require('./modules/FormContact.js'),
+        'form-callback': require('./modules/FormCallback.js'),
+        'form-application': require('./modules/FormApplication.js')
     }
 });
 
