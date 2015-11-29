@@ -235,5 +235,6 @@ if (! function_exists('write_clickstream_to_session')) {
 		} else {
 			session()->push('_CLICKSTREAM', $data);
 		}
+		session()->save();
 	}
 }
