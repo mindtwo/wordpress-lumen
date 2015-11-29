@@ -24,7 +24,8 @@ $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
 
 
 try {
-	$app->run();
+	$request = Illuminate\Http\Request::capture();
+	$app->run($request);
 } catch (Exception $e) {
 
 }
