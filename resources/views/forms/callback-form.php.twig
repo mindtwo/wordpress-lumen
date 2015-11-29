@@ -1,5 +1,6 @@
 <script id="form-callback-template" type="x-template">
-    <form action="/l/form-callback" method="POST" id="form-callback" @submit="onSubmitForm">
+    <form id="form-callback" @submit="onSubmitForm">
+
         <div class="alert alert-success" v-if="submitted">{{function('trans','form.callback.success_message')}}</div>
 
         <div class="form-errors" v-if="errors">
@@ -14,15 +15,12 @@
             <input id="cform_name" class="form-control" type="text" v-model="inquery.name">
         </div>
         <div class="form-group" v-if="! submitted">
-            <label for="cform_email">{{function('trans','form.default.email')}}:</label>
-            <input id="cform_email" class="form-control" type="text" v-model="inquery.email">
-        </div>
-        <div class="form-group" v-if="! submitted">
-            <label for="cform_message">{{function('trans','form.default.message')}}:</label>
-            <textarea id="cform_message" class="form-control" v-model="inquery.message" rows="4"></textarea>
+            <label for="cform_email">{{function('trans','form.default.phone')}}:</label>
+            <input id="cform_email" class="form-control" type="text" v-model="inquery.phone">
         </div>
         <input type="hidden" name="_token" value="{{function('csrf_token')}}" v-if="! submitted">
         <button type="submit" @click="onSubmitForm" class="btn btn-primary btn-lg" v-if="! submitted"><span>{{function('trans','form.default.send')}}</span><i class="ti-email"></i></button>
+
     </form>
 </script>
-<form-contact></form-contact>
+<form-callback></form-callback>

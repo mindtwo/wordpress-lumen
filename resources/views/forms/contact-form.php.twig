@@ -1,5 +1,6 @@
 <script id="form-contact-template" type="x-template">
     <form id="form-contact" @submit="onSubmitForm">
+
         <div class="alert alert-success" v-if="submitted">{{function('trans','form.contact.success_message')}}</div>
 
         <div class="form-errors" v-if="errors">
@@ -23,6 +24,7 @@
         </div>
         <input type="hidden" name="_token" value="{{function('csrf_token')}}" v-if="! submitted">
         <button type="submit" @click="onSubmitForm" class="btn btn-primary btn-lg" v-if="! submitted"><span>{{function('trans','form.default.send')}}</span><i class="ti-email"></i></button>
+
     </form>
 </script>
 <form-contact/>
