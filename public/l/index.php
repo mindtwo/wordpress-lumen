@@ -1,5 +1,8 @@
 <?php
 
+// include to process the URL
+use Illuminate\Http\Request as Request;
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -25,4 +28,5 @@ $app = require __DIR__.'/../../lumen/bootstrap/app.php';
 |
 */
 
-$app->run();
+$request = Request::capture();
+$app->run($request);
