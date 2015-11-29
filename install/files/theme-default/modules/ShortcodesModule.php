@@ -95,8 +95,7 @@ class ShortcodesModule {
 	 * @return string
 	 */
 	public function shortcode_email() {
-		global $helper;
-		return $helper->hash()->encode_all_htmlentities( $this->option_fields['email'] );
+		return encode_all_htmlentities( $this->option_fields['email'] );
 	}
 
 	/**

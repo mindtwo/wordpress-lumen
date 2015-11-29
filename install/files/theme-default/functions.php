@@ -97,7 +97,6 @@ if (class_exists('Timber')) {
  * Load global theme classes
  */
 $detect = new \Jenssegers\Agent\Agent();
-$helper = new \cg\Helper\HelperBuilder();
 
 
 /**
