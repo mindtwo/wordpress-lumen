@@ -10366,7 +10366,6 @@ new Vue({
  */
 jQuery(function () {
     initLocalScroll();
-    initlazySizes();
     initFancybox();
     initPreloader();
 });
@@ -10418,7 +10417,7 @@ module.exports = {
         onSubmitForm: function onSubmitForm(e) {
             e.preventDefault();
             var _inquery = this.inquery;
-            this.$http.post('/l/form-application', _inquery).success(function (data, status, request) {
+            this.$http.post('/api/form-application', _inquery).success(function (data, status, request) {
                 this.errors = false;
                 this.submitted = true;
             }).error(function (data, status, request) {
@@ -10451,7 +10450,7 @@ module.exports = {
         onSubmitForm: function onSubmitForm(e) {
             e.preventDefault();
             var _inquery = this.inquery;
-            this.$http.post('/l/form-callback', _inquery).success(function (data, status, request) {
+            this.$http.post('/api/form-callback', _inquery).success(function (data, status, request) {
                 this.errors = false;
                 this.submitted = true;
             }).error(function (data, status, request) {
@@ -10484,7 +10483,7 @@ module.exports = {
         onSubmitForm: function onSubmitForm(e) {
             e.preventDefault();
             var _inquery = this.inquery;
-            this.$http.post('/l/form-contact', _inquery).success(function (data, status, request) {
+            this.$http.post('/api/form-contact', _inquery).success(function (data, status, request) {
                 this.errors = false;
                 this.submitted = true;
             }).error(function (data, status, request) {

@@ -14,6 +14,17 @@ if (! function_exists('set_local_in_http_env')) {
 	}
 }
 
+if (! function_exists('is_wordpress')) {
+	function is_wordpress() {
+		if(defined('ABSPATH')) {
+			return true;
+		}
+		return false;
+	}
+}
+
+
+
 if (! function_exists('elixir')) {
 	/**
 	 * Get the path to a versioned Elixir file.
@@ -44,7 +55,7 @@ if (! function_exists('elixir')) {
 
 if (! function_exists('get_wordpress_url')) {
 	function get_wordpress_url(  ) {
-		$lumen_public_path = '/l';
+		$lumen_public_path = '/api';
 		return str_replace($lumen_public_path, '/', url('/'));
 	}
 }
@@ -236,5 +247,6 @@ if (! function_exists('write_clickstream_to_session')) {
 			session()->push('_CLICKSTREAM', $data);
 		}
 		session()->save();
+		var_dump(session()->get('_CLICKSTREAM'));
 	}
 }
