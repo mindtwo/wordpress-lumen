@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         // Prevent exeptions inside wordpress
-        if(defined('ABSPATH')) { return ''; }
+        if(is_wordpress()) { return true; }
 
         return parent::render($request, $e);
     }

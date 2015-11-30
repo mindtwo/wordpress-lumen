@@ -128,8 +128,10 @@ $app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
 |
 */
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__.'/../app/Http/routes.php';
-});
+if(!is_wordpress()) {
+    $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
+        require __DIR__.'/../app/Http/routes.php';
+    });
+}
 
 return $app;
