@@ -115,3 +115,20 @@ function tinymce_paste_as_text ( $init )
 }
 
 add_filter ( 'tiny_mce_before_init', 'tinymce_paste_as_text' );
+
+
+/**
+ * Add the wp-editor back into WordPress after it was removed in 4.2.2.
+ *
+ * @param Object $post
+ * @return void
+ */
+function fix_no_editor_on_posts_page( $post ) {
+    if( isset( $post ) && $post->ID != get_option('page_for_posts') ) {
+        return;
+    }
+
+    remove_action( 'edit_form_after_title', '_wp_posts_page_notice' );
+    add_post_type_support( 'page', 'editor' );
+}
+add_action( 'edit_form_after_title', 'fix_no_editor_on_posts_page', 0 );
