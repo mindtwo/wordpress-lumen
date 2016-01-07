@@ -1,11 +1,12 @@
 Deny from all
 
-<Files ~ "\.(html|png|jpg|gif|css|js|font|eot|svg|ttf|woff|otf)$">
+<Files ~ "\.(html|png|jpg|gif|swf|css|css\.map|js|js\.gz|js\.map|font|eot|svg|svgz|ttf|woff|woff2|otf)$">
     Order Deny,Allow
     Satisfy any
     Allow from all
 </Files>
-<FilesMatch "^(refresh)\.php$">
+
+<FilesMatch "^(refresh|captcha_code)\.php$">
     Order Deny,Allow
     Satisfy any
     Allow from all
