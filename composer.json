@@ -20,7 +20,12 @@
         "mandrill/mandrill": "~1.0",
         "jenssegers/agent": "2.*",
         "hampel/json": "2.*",
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "bugsnag/bugsnag": "~2.0",
+        "advanced-custom-fields/advanced-custom-fields-pro": "*",
+        "wpackagist-plugin/w3-total-cache": "*",
+        "wpackagist-plugin/google-sitemap-generator": "*",
+        "wpackagist-plugin/force-regenerate-thumbnails": "*",
     },
     "repositories": [
         {
@@ -53,6 +58,97 @@
         "preferred-install": "dist",
         "vendor-dir": "lumen/vendor"
     },
+    "repositories": [
+        {
+            "type" : "composer",
+            "url"  : "http://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "http://languages.koodimonni.fi"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "advanced-custom-fields/advanced-custom-fields-pro",
+                "version": "5.3.2.2",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=XXX"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mindtwo/advanced-post-types-order",
+                "type": "wordpress-plugin",
+                "version": "3.8.5",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://composer.mindtwo.de/advanced-taxonomy-terms-order.zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mindtwo/advanced-taxonomy-terms-order",
+                "type": "wordpress-plugin",
+                "version": "2.5.9",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://composer.mindtwo.de/advanced-post-types-order.zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "deliciousbrains/wp-migrate-db-pro",
+                "type": "wordpress-plugin",
+                "version": "1.5.3",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=XXX&site_url=composer-test.dev"
+                },
+                "require": {
+                    "composer/installers": "v1.0.7"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "deliciousbrains/wp-migrate-db-pro-media-files",
+                "type": "wordpress-plugin",
+                "version": "1.4",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-media-files-latest.zip?licence_key=XXX&site_url=composer-test.dev"
+                },
+                "require": {
+                    "composer/installers": "v1.0.7"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "deliciousbrains/wp-migrate-db-pro-cli",
+                "type": "wordpress-plugin",
+                "version": "1.1",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-cli-latest.zip?licence_key=XXX&site_url=composer-test.dev"
+                },
+                "require": {
+                    "composer/installers": "v1.0.7"
+                }
+            }
+        }
+    ],
     "extra": {
         "wordpress-install-dir": "public/wordpress",
         "installer-paths": {
@@ -80,5 +176,5 @@
                 "vendor:theme-language"
             ]
         }
-    }
+    },
 }
