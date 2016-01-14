@@ -59,25 +59,6 @@
         "primary_host": "example.com"
     },
 
-    "// WordPress plugins": "::comment //",
-    "wordpress_plugins": {
-        "advanced-custom-fields-pro": {
-            "filename": "advanced-custom-fields-pro.zip",
-            "src": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ADD_ACF_LICENCE_KEY_HEAR"
-        },
-        "wpseo": {
-            "filename": "wpseo.zip",
-            "src": "https://cdn.wpseo.de/plugin/v3/zip/latest/wpseo.zip"
-        },
-        "wp_cli": [
-            "regenerate-thumbnails",
-            "wp-optimize",
-            "better-wp-security",
-            "w3-total-cache",
-            "timber-library"
-        ]
-    },
-
     "// WordPress file and folder remover": "::comment //",
     "wordpress_delete_files_and_folders": [
         "/wp-content/themes/twentyseventeen",
