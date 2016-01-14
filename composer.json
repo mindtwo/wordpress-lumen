@@ -27,12 +27,6 @@
         "wpackagist-plugin/google-sitemap-generator": "*",
         "wpackagist-plugin/force-regenerate-thumbnails": "*"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://wpackagist.org"
-        }
-    ],
     "require-dev": {
         "laravel/envoy": "~1.0",
         "phpunit/phpunit": "~4.0",
