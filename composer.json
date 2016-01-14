@@ -16,7 +16,7 @@
         "illuminate/config": "5.2.*",
         "illuminate/support": "5.2.*",
         "illuminate/mail": "5.2.*",
-        "vlucas/phpdotenv": "~1.0",
+        "vlucas/phpdotenv": "~2.2",
         "mandrill/mandrill": "~1.0",
         "jenssegers/agent": "2.*",
         "hampel/json": "2.*",
