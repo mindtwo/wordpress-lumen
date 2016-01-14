@@ -75,7 +75,7 @@
                 "type": "wordpress-plugin",
                 "dist": {
                     "type": "zip",
-                    "url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=XXX"
+                    "url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ACF_LICENCE_KEY"
                 }
             }
         },
