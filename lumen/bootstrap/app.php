@@ -111,6 +111,14 @@ $app->register(App\Providers\TwigServiceProvider::class);
 $app->register(App\Providers\TwigInstallerServiceProvider::class);
 $app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
 
+$app->singleton('filesystem', function ($app) {
+    return $app->loadComponent(
+        'filesystems',
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
+        'filesystem'
+    );
+});
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
