@@ -2,7 +2,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-Dotenv::load(__DIR__.'/../');
+try {
+    (new Dotenv\Dotenv(__DIR__.'/../'))->load();
+} catch (Dotenv\Exception\InvalidPathException $e) {
+    //
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +19,13 @@ Dotenv::load(__DIR__.'/../');
 |
 */
 
-$app = new App\DomainApplication(
+$app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
 $app->withFacades();
+
 $app->withEloquent();
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -50,8 +53,6 @@ foreach($configuration_files as $config) {
     $app->configure($config);
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -73,8 +74,6 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -86,19 +85,13 @@ $app->singleton(
 |
 */
 
-$app->middleware([
-    Illuminate\Cookie\Middleware\EncryptCookies::class,
-    Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-    Illuminate\Session\Middleware\StartSession::class,
-    Illuminate\View\Middleware\ShareErrorsFromSession::class,
-    Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
-]);
-
-// $app->routeMiddleware([
-
+// $app->middleware([
+//    App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-
+// $app->routeMiddleware([
+//     'auth' => App\Http\Middleware\Authenticate::class,
+// ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +105,7 @@ $app->middleware([
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\TwigServiceProvider::class);
 $app->register(App\Providers\TwigInstallerServiceProvider::class);
