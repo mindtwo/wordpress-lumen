@@ -25,7 +25,7 @@
         "advanced-custom-fields/advanced-custom-fields-pro": "*",
         "wpackagist-plugin/w3-total-cache": "*",
         "wpackagist-plugin/google-sitemap-generator": "*",
-        "wpackagist-plugin/force-regenerate-thumbnails": "*",
+        "wpackagist-plugin/force-regenerate-thumbnails": "*"
     },
     "repositories": [
         {
