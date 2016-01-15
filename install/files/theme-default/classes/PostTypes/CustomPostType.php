@@ -2,6 +2,8 @@
 
 namespace WpTheme\PostTypes;
 
+use ReflectionClass;
+
 /**
  * Class CustomPostType
  *
