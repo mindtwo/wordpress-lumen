@@ -109,13 +109,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	 */
 	protected function setDatabaseSettings( $output ) {
 		echo "WordPress database configuration\n";
-
-		try {
-			(new Dotenv\Dotenv(__DIR__.'/../lumen/'))->load();
-		} catch (Dotenv\Exception\InvalidPathException $e) {
-			//
-		}
-
+		
 		$output = preg_replace( '/(define\(\'DB_USER\', )(\'.+\')(\)\;)/', '${1}getenv(\'DB_USERNAME\')${3}', $output );
 		$output = preg_replace( '/(define\(\'DB_PASSWORD\', )(\'.+\')(\)\;)/', '${1}getenv(\'DB_PASSWORD\')${3}', $output );
 		$output = preg_replace( '/(define\(\'DB_HOST\', )(\'.+\')(\)\;)/', '${1}getenv(\'DB_HOST\')${3}', $output );
@@ -135,10 +129,13 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	protected function setComposerAutoloading( $output ) {
 		echo "Set Composer autoloading to WordPress\n";
 
-		return str_replace( '<?php', "<?php\n
-/** Autoload lumen system */
-require_once(realpath(__DIR__ . '/../lumen/vendor/autoload.php'));
-Dotenv::load(__DIR__.'/../lumen/');" . "\n", $output );
+		$dotenv = "/** Autoload lumen system */\n";
+		$dotenv .= "require_once(realpath(__DIR__ . '/../lumen/vendor/autoload.php'));\n";
+		$dotenv .= "try {\n";
+		$dotenv .= "	(new Dotenv\\Dotenv(__DIR__.'/../lumen/'))->load();\n";
+		$dotenv .= "} catch (Dotenv\\Exception\\InvalidPathException \$e) {}\n";
+
+		return str_replace( '<?php', "<?php\n$dotenv" . "\n", $output );
 	}
 
 
