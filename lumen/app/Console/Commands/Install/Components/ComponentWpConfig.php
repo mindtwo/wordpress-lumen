@@ -95,7 +95,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	 */
 	protected function removeWpSettingsFile( $output ) {
 		echo "Remove wp-settings.php link in config file\n";
-		$output = preg_replace( '/\n\/\*\*.+\*\/\nrequire_once\(ABSPATH \. \'wp-settings\.php\'\);\n/', '', $output );
+		$output = str_replace("require_once(ABSPATH . 'wp-settings.php');", "// require_once(ABSPATH . 'wp-settings.php');", $output);
 		return $output;
 	}
 
