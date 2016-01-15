@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         // Prevent exeptions inside wordpress
-        if(is_wordpress()) { return true; }
+        if(is_wordpress()) { return ''; }
 
         return parent::render($request, $e);
     }
