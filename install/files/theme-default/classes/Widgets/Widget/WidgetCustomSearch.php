@@ -1,8 +1,10 @@
 <?php
 
-class CustomSearch_Widget extends WP_Widget {
+namespace WpTheme\Widgets\Widget;
+
+class WidgetCustomSearch extends \WP_Widget {
 	function __construct() {
-		parent::__construct('CustomSearch_Widget', 'Custom Search Widget ausgeben', array( 'description' => '' ) );
+		parent::__construct('WidgetCustomSearch', 'Custom Search Widget ausgeben', array( 'description' => '' ) );
 	}
 
 	/** @see WP_Widget::widget */

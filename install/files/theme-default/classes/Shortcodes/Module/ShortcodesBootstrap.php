@@ -1,11 +1,13 @@
 <?php
 
-class ShortcodesBootstrapModule {
+namespace WpTheme\Shortcodes\Module;
+
+class ShortcodesBootstrap {
 
 	/**
-	 * ShortcodesBootstrapModule constructor.
+	 * Register ShortcodesBootstrapModule
 	 */
-	public function __construct() {
+	public function register() {
 		$register_shortcodes = array(
 			'bs_notification'   => 'bs_notice',
 			'bs_button'         => 'bs_button',

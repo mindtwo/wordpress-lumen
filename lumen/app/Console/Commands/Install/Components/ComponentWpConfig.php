@@ -109,7 +109,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 	 */
 	protected function setDatabaseSettings( $output ) {
 		echo "WordPress database configuration\n";
-		
+
 		$output = preg_replace( '/(define\(\'DB_USER\', )(\'.+\')(\)\;)/', '${1}getenv(\'DB_USERNAME\')${3}', $output );
 		$output = preg_replace( '/(define\(\'DB_PASSWORD\', )(\'.+\')(\)\;)/', '${1}getenv(\'DB_PASSWORD\')${3}', $output );
 		$output = preg_replace( '/(define\(\'DB_HOST\', )(\'.+\')(\)\;)/', '${1}getenv(\'DB_HOST\')${3}', $output );
