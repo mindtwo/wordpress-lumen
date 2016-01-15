@@ -3,6 +3,7 @@
 namespace WpTheme\Widgets\Widget;
 
 class WidgetCustomSearch extends \WP_Widget {
+
 	function __construct() {
 		parent::__construct('WidgetCustomSearch', 'Custom Search Widget ausgeben', array( 'description' => '' ) );
 	}
@@ -31,4 +32,5 @@ class WidgetCustomSearch extends \WP_Widget {
 	function form( $instance ) {
 
 	}
+
 }

@@ -24,7 +24,7 @@ class WidgetsRegister {
      */
     public function register() {
         foreach($this->widgets as $widget) {
-            register_widget(new WidgetCustomSearch());
+            register_widget(new $widget);
         }
     }
 
