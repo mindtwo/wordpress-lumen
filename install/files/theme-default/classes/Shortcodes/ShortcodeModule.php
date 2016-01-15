@@ -2,6 +2,9 @@
 
 namespace WpTheme\Shortcodes;
 
+use ReflectionClass;
+use Timber;
+
 abstract class ShortcodeModule {
 
     /**
@@ -42,7 +45,8 @@ abstract class ShortcodeModule {
     private function get_shortcodename_by_classname() {
 
         // Get classname and replace "Shortcode"
-        $name = str_replace(['Shortcode',], '', get_class());
+        $reflect = new ReflectionClass($this);
+        $name = str_replace(['Shortcode',], '', $reflect->getShortName());
 
         // Transform camel case to lowercase
         return $this->camel_case_to_undercore_case($name);
