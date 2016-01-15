@@ -38,7 +38,6 @@ abstract class CustomPostType {
 		$this->name = $this->camel_case_to_undercore_case(get_class());
 		$this->singular_name = $this->name;
 		$this->post_type = $this->name;
-
 		$this->set_default_post_type_params();
 	}
 
@@ -61,31 +60,46 @@ abstract class CustomPostType {
 	abstract protected function register_taxonomy();
 
 	/**
-	 *
+	 * @return array
      */
-	protected function set_default_post_type_params() {
+	protected function get_labels() {
+		// Set defaults
 		$labels = [
-			'labels' => array(
-				'name' => trans('cpt-default.labels.name', ['name' => $this->name]),
-				'singular_name' => trans('cpt-default.labels.singular-name', ['name' => $this->singular_name]),
-				'menu_name' => $this->name,
-				'name_admin_bar' => $this->singular_name,
-				'all_items' => trans('cpt-default.labels.all-items', ['name' => $this->name]),
-				'add_new' => trans('cpt-default.labels.add-new'),
-				'add_new_item' => trans('cpt-default.labels.add-new-item', ['name' => $this->singular_name]),
-				'edit' => trans('cpt-default.labels.edit'),
-				'edit_item' => trans('cpt-default.labels.edit-item', ['name' => $this->singular_name]),
-				'new_item' => trans('cpt-default.labels.new-item', ['name' => $this->singular_name]),
-				'view_item' => trans('cpt-default.labels.view-item', ['name' => $this->singular_name]),
-				'search_items' => trans('cpt-default.labels.search-items', ['name' => $this->name]),
-				'not_found' => trans('cpt-default.labels.not-found'),
-				'not_found_in_trash' => trans('cpt-default.labels.not-found-in-trash'),
-				'parent_item_colon' => trans('cpt-default.labels.parent-item-colon', ['name' => $this->singular_name])
-			),
+			'name' => trans('cpt-default.labels.name', ['name' => $this->name]),
+			'singular_name' => trans('cpt-default.labels.singular-name', ['name' => $this->singular_name]),
+			'menu_name' => $this->name,
+			'name_admin_bar' => $this->singular_name,
+			'all_items' => trans('cpt-default.labels.all-items', ['name' => $this->name]),
+			'add_new' => trans('cpt-default.labels.add-new'),
+			'add_new_item' => trans('cpt-default.labels.add-new-item', ['name' => $this->singular_name]),
+			'edit' => trans('cpt-default.labels.edit'),
+			'edit_item' => trans('cpt-default.labels.edit-item', ['name' => $this->singular_name]),
+			'new_item' => trans('cpt-default.labels.new-item', ['name' => $this->singular_name]),
+			'view_item' => trans('cpt-default.labels.view-item', ['name' => $this->singular_name]),
+			'search_items' => trans('cpt-default.labels.search-items', ['name' => $this->name]),
+			'not_found' => trans('cpt-default.labels.not-found'),
+			'not_found_in_trash' => trans('cpt-default.labels.not-found-in-trash'),
+			'parent_item_colon' => trans('cpt-default.labels.parent-item-colon', ['name' => $this->singular_name])
 		];
 
+		// Autotranslate from translation files
+		foreach($labels as $label){
+			$name = str_replace('_', '-', $label);
+
+			if(trans("cpt-{$this->post_type}.labels.$name")) {
+				$labels[$label] = trans("cpt-{$this->post_type}.labels.$name");
+			}
+		}
+
+		return $labels;
+	}
+
+	/**
+	 * Set default cpt params
+     */
+	protected function set_default_post_type_params() {
 		$this->post_type_params = [
-			'labels' => $labels,
+			'labels' => $this->get_labels(),
 			'description' => trans('cpt-default.description', ['name' => $this->name]),
 			'public' => true,
 			'publicly_queryable' => true,
@@ -96,7 +110,7 @@ abstract class CustomPostType {
 			'has_archive' => false,
 			'capability_type' => 'page',
 			'hierarchical' => false,
-			'supports' => array( 'title', 'editor', 'thumbnail', 'sticky')
+			'supports' => array( 'title', 'editor', 'thumbnail')
 		];
 	}
 
