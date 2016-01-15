@@ -9,6 +9,7 @@ class ModulesRegister {
      */
     public $types = [
         \WpTheme\Modules\Ajax\AjaxRegister::class,
+        \WpTheme\Modules\Navigation\BootstrapWalker::class,
     ];
 
     /**

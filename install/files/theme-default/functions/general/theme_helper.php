@@ -82,8 +82,8 @@ function primary_menu($name='menu-main') {
 		'container_class' => '',
 		'menu_class' => 'nav nav-pills',
 		'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-		'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-		'walker'=> new wp_bootstrap_navwalker()
+		'fallback_cb' => '\WpTheme\Modules\Navigation\BootstrapWalker()::fallback',
+		'walker'=> new \WpTheme\Modules\Navigation\BootstrapWalker()
 	));
 	$content = ob_get_contents(); ob_end_clean();
 	return $content;
@@ -99,8 +99,8 @@ function footer_menu($name='menu-footer') {
 			'depth'          => 1,
 			'link_before'    => '',
 			'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-			'fallback_cb'    => 'wp_bootstrap_navwalker::fallback',
-			'walker'         => new wp_bootstrap_navwalker()
+			'fallback_cb'    => '\WpTheme\Modules\Navigation\BootstrapWalker::fallback',
+			'walker'         => new \WpTheme\Modules\Navigation\BootstrapWalker()
 		) );
 	}
 	$content = ob_get_contents(); ob_end_clean();
