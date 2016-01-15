@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,7 +47,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         // Prevent exeptions inside wordpress
-        if(is_wordpress()) { return ''; }
+        if(is_wordpress() && $e instanceof NotFoundHttpException) { return ''; }
 
         return parent::render($request, $e);
     }
