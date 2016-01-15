@@ -24,6 +24,17 @@ class ShortcodesRegister {
      * Register shortcodes
      */
     public function __construct() {
+        // Move wpautop filter to AFTER shortcode is processed
+        remove_filter( 'the_content', 'wpautop' );
+        add_filter( 'the_content', 'wpautop', 99 );
+        add_filter( 'the_content', 'shortcode_unautop', 100 );
+
+        // The same as above, but for acf
+        remove_filter( 'acf_the_content', 'wpautop' );
+        add_filter( 'acf_the_content', 'wpautop', 99 );
+        add_filter( 'acf_the_content', 'shortcode_unautop', 100 );
+
+        // Register shortcodes
         foreach($this->shortcodes as $shortcode) {
             new $shortcode;
         }

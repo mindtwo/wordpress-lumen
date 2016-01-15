@@ -17,30 +17,21 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
 /**
  * Set files to be autoloaded
  */
-$required_function_files = array(
+$required_files = array(
     THEME_FUNCTIONS . 'general/lumen.php',
     THEME_FUNCTIONS . 'general/translator.php',
-    THEME_FUNCTIONS . 'general/walker_bootstrap.php',
-    THEME_FUNCTIONS . 'general/theme_helper.php',
-    THEME_FUNCTIONS . 'general/custom_excerpt.php',
-    THEME_FUNCTIONS . 'general/cleanup_backend.php',
-    THEME_FUNCTIONS . 'general/cleanup_frontend.php',
-    THEME_FUNCTIONS . 'general/shortcode_helper.php',
-    THEME_FUNCTIONS . 'general/timber_global.php',
     THEME_FUNCTIONS . 'general/acf.php',
     // THEME_FUNCTIONS . 'general/dashboard_widgets.php',
-    // THEME_FUNCTIONS . 'general/capabilities.php',
-    THEME_FUNCTIONS . 'project/sidebar.php',
-    THEME_FUNCTIONS . 'project/image-sizes.php',
-    THEME_FUNCTIONS . 'project/multisite.php',
-    THEME_FUNCTIONS . 'project/navigation.php',
+    THEME_FUNCTIONS . 'helper/theme_helper.php',
+    THEME_FUNCTIONS . 'helper/multisite.php',
+    THEME_FUNCTIONS . 'helper/timber_global.php',
 );
 
 
 /**
  * Autoload class files
  */
-foreach($required_function_files as $file){
+foreach($required_files as $file){
 	if(file_exists($file)) {
 		include($file);
 	}

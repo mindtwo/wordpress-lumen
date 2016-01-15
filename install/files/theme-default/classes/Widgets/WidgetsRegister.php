@@ -17,6 +17,10 @@ class WidgetsRegister {
      */
     public function __construct() {
         add_action( 'widgets_init', array( $this, 'register' ) );
+
+        // Allow shortcodes in text widget
+        add_filter( 'widget_text', 'shortcode_unautop' );
+        add_filter( 'widget_text', 'do_shortcode' );
     }
 
     /**

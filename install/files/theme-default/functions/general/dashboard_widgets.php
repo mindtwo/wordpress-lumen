@@ -2,6 +2,7 @@
 
 /**
  * Custom dahsboard widget
+ * TODO: Translate stings and refactor
  */
 function dashboard_widget_function() {
 	echo '<p>Die folgenden Shortcodes <em>[foo]</em> können direkt per copy & paste in den Editor geschrieben werden. Sie sorgen für die Ausgabe besonderer Inhaltselemente.</p>';
