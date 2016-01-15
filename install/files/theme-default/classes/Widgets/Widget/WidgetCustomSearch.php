@@ -2,7 +2,9 @@
 
 namespace WpTheme\Widgets\Widget;
 
-class WidgetCustomSearch extends \WP_Widget {
+use WP_Widget;
+
+class WidgetCustomSearch extends WP_Widget {
 
 	/**
 	 * WidgetCustomSearch constructor.
