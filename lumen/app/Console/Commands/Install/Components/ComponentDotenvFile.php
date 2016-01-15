@@ -43,8 +43,8 @@ class ComponentDotenvFile extends ComponentBase implements WpInstallComponentsIn
 			$output = preg_replace( '/(APP_KEY\=)(SomeRandomKey.+)/', '${1}' . $salt, $output );
 
 			// Write dotenv config file
-			echo "Write \"{$this->lumen_dir}/.env\" file.\n";
-			$this->filesystem->put( "{$this->lumen_dir}/.env", $output );
+			echo "Write \"{$this->home_dir}/.env\" file.\n";
+			$this->filesystem->put( "{$this->home_dir}/.env", $output );
 			unset( $output );
 		}
 	}
