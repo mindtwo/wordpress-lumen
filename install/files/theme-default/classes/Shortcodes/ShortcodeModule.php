@@ -15,11 +15,9 @@ abstract class ShortcodeModule {
 
     /**
      * Default register
-     *
-     * @param null $name
      */
-    public function register($name=NULL) {
-        $shortcode_name = !is_null($name) ? $name : $this->get_shortcodename_by_classname();
+    public function register() {
+        $shortcode_name = $this->get_shortcodename_by_classname();
         add_shortcode( $shortcode_name, array( $this , 'handle' ) );
     }
 
