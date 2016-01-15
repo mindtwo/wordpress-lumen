@@ -16,10 +16,10 @@ class Page extends CustomPostType {
 	/**
 	 * @return mixed
 	 */
-	protected function register_post_type() {}
+	public function register_post_type() {}
 
 	/**
 	 * @return mixed
 	 */
-	protected function register_taxonomy() {}
+	public function register_taxonomy() {}
 }

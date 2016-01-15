@@ -52,12 +52,12 @@ abstract class CustomPostType {
 	/**
 	 * @return mixed
      */
-	abstract protected function register_post_type();
+	abstract public function register_post_type();
 
 	/**
 	 * @return mixed
      */
-	abstract protected function register_taxonomy();
+	abstract public function register_taxonomy();
 
 	/**
 	 * @return array
