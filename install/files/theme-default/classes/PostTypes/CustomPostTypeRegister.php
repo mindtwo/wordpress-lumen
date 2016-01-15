@@ -7,7 +7,7 @@ class CustomPostTypeRegister {
     /**
      * @var array
      */
-    public $custom_types = [
+    public $custom_post_types = [
         \WpTheme\PostTypes\Type\Conversion::class,
         \WpTheme\PostTypes\Type\Faq::class,
         \WpTheme\PostTypes\Type\Job::class,
@@ -20,7 +20,7 @@ class CustomPostTypeRegister {
      * Register custom post types
      */
     public function __construct() {
-        foreach($this->types as $type) {
+        foreach($this->custom_post_types as $type) {
             (new $type)->register();
         }
     }
