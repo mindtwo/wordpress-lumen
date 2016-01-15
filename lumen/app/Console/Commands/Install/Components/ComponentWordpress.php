@@ -33,10 +33,6 @@ class ComponentWordpress extends ComponentBase implements WpInstallComponentsInt
 				echo "Please correct and re-run this script.\n";
 			}
 
-			// Set path
-			$url = $this->config->wordpress_version->install;
-			$wordpress_tar_file = $this->wp_dir . "/" . basename( $url );
-
 			// Create WordPress directory
 			if ( ! $this->filesystem->exists( $this->wp_dir ) ) {
 				echo "Create directory: '" . $this->wp_dir . "'...\n";
@@ -55,28 +51,6 @@ class ComponentWordpress extends ComponentBase implements WpInstallComponentsInt
 				$this->filesystem->makeDirectory($this->wp_languages_dir, intval(0776), true);
 			}
 
-			// Remove existing archive
-			if ( $this->filesystem->exists( $wordpress_tar_file ) ) {
-				echo "Old WordPress file exists and was deleted!\n";
-				$this->filesystem->delete( $wordpress_tar_file );
-			}
-
-			// Load WordPress file
-			echo "WordPress downloading...\n";
-			$this->filesystem->put( $wordpress_tar_file, file_get_contents( $url ) );
-			echo "WordPress complete!\n";
-
-			// Extract WordPress
-			echo "Extract WordPress...\n";
-			system( "cd {$this->wp_dir} && tar -zxvf " . $wordpress_tar_file . " --strip-components 1", $buff );
-
-			// Remove package
-			echo "Remove WordPress archive!\n";
-			$this->filesystem->delete( $wordpress_tar_file );
-
-			// Unset temp vars
-			unset( $url );
-			unset( $wordpress_tar_file );
 			unset( $buff );
 		}
 	}

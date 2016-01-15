@@ -85,15 +85,6 @@
         "/public/content/themes/default/screenshot-medsite.png",
         "/public/content/themes/default/screenshot-salonsite.png"
     ],
-
-    "// WordPress version": "::comment //",
-    "wordpress_version": {
-        "install": "http://wordpress.org/latest.tar.gz",
-        "official_packages": {
-            "wordpress_version_de": "https://de.wordpress.org/latest-de_DE.tar.gz",
-            "wordpress_version_en": "http://wordpress.org/latest.tar.gz"
-        }
-    },
     
     "// WordPress theme info": "::comment //",
     "infos": {

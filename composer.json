@@ -22,6 +22,7 @@
         "hampel/json": "2.*",
         "twig/twig": "1.*",
         "bugsnag/bugsnag": "~2.0",
+        "johnpbloch/wordpress": "~4.0",
         "advanced-custom-fields/advanced-custom-fields-pro": "*",
         "wpackagist-plugin/timber-library": "*",
         "wpackagist-plugin/w3-total-cache": "*",
