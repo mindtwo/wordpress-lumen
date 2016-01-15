@@ -1,6 +1,6 @@
 <?php
 
-if(!is_wordpress()) {
+if( function_exists('is_wordpress') && !is_wordpress() ) {
     require_once __DIR__ . '/../vendor/autoload.php';
 
     try {
