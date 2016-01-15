@@ -32,5 +32,5 @@ npm-debug.log
 backup/start.sh
 /install/config/**
 !/install/config/*-sample.json
-# /lumen/.env.*
-!/lumen/.env
+# /.env.*
+!/.env

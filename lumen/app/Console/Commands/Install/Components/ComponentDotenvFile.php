@@ -22,10 +22,10 @@ class ComponentDotenvFile extends ComponentBase implements WpInstallComponentsIn
 	 * @return mixed
 	 */
 	public function fire() {
-		if ( $this->filesystem->exists( $this->lumen_dir . '/.env' ) ) {
+		if ( $this->filesystem->exists( $this->home_dir . '/.env' ) ) {
 
 			// Init
-			$output = $this->filesystem->get( $this->lumen_dir . '/.env' );
+			$output = $this->filesystem->get( $this->home_dir . '/.env' );
 
 			// Add database data
 			echo "Lumen dotenv configuration\n";

@@ -132,7 +132,7 @@ require_once(ABSPATH . \'wp-settings.php\');' );
 		$dotenv = "/** Autoload lumen system */\n";
 		$dotenv .= "require_once(realpath(__DIR__ . '/../lumen/vendor/autoload.php'));\n";
 		$dotenv .= "try {\n";
-		$dotenv .= "	(new Dotenv\\Dotenv(__DIR__.'/../lumen/'))->load();\n";
+		$dotenv .= "	(new Dotenv\\Dotenv(__DIR__.'/../'))->load();\n";
 		$dotenv .= "} catch (Dotenv\\Exception\\InvalidPathException \$e) {}\n";
 
 		return str_replace( '<?php', "<?php\n$dotenv" . "\n", $output );

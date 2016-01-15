@@ -4,7 +4,7 @@ if( !function_exists('is_wordpress') || !is_wordpress() ) {
     require_once __DIR__ . '/../vendor/autoload.php';
 
     try {
-        ( new Dotenv\Dotenv( __DIR__ . '/../' ) )->load();
+        ( new Dotenv\Dotenv( __DIR__ . '/../../' ) )->load();
     } catch ( Dotenv\Exception\InvalidPathException $e ) {
         //
     }
