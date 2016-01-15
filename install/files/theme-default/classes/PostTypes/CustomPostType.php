@@ -1,18 +1,13 @@
 <?php
 
-namespace WpTheme\CustomPostTypes;
+namespace WpTheme\PostTypes;
 
 /**
  * Class CustomPostType
  *
  * Basic model operations needed for all custom post types
  */
-abstract class CustomPostType {
-
-	/**
-	 * @var string
-	 */
-	protected $post_type = '';
+abstract class CustomPostType extends PostType {
 
 	/**
 	 * @var string

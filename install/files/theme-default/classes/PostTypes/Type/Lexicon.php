@@ -1,8 +1,8 @@
 <?php
 
-namespace WpTheme\CustomPostTypes\Type;
+namespace WpTheme\PostTypes\Type;
 
-use WpTheme\CustomPostTypes\CustomPostType;
+use WpTheme\PostTypes\CustomPostType;
 
 class Lexicon extends CustomPostType {
 

@@ -1,17 +1,18 @@
 <?php
 
-namespace WpTheme\CustomPostTypes\Type;
+namespace WpTheme\PostTypes\Type;
 
-use WpTheme\CustomPostTypes\CustomPostType;
+use Illuminate\Support\Facades\Lang;
+use WpTheme\PostTypes\CustomPostType;
 
-class Testimonial extends CustomPostType {
+class Conversion extends CustomPostType {
 
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'testimonial';
-		$this->name = 'Testimonials';
-		$this->singular_name = 'Testimonial';
+		$this->post_type = 'conversion';
+		$this->name = 'Conversions';
+		$this->singular_name = 'Conversion';
 
 	}
 
@@ -21,9 +22,11 @@ class Testimonial extends CustomPostType {
 	 */
 	public function register_post_type() {
 		$custom_params = [
+			'public' => false,
+			'publicly_queryable' => false,
 			'exclude_from_search' => true,
-			'menu_icon' =>'dashicons-format-quote', // Select an icon: https://developer.wordpress.org/resource/dashicons/
-			'rewrite' => array( 'slug' => 'testimonial', 'with_front' => false ),
+			'menu_icon' =>'dashicons-chart-area', // Select an icon: https://developer.wordpress.org/resource/dashicons/
+			'rewrite' => array( 'slug' => 'conversion', 'with_front' => false ),
 			'supports' => array( 'title', 'editor'),
 		];
 
@@ -34,14 +37,14 @@ class Testimonial extends CustomPostType {
 	 * Register Custom Post Type Taxonomies
 	 */
 	public function register_taxonomy() {
-		$taxonomy_name = $this->post_type . '-type';
-		$taxonomy_slug = $this->post_type . '-type';
+		$taxonomy_name = $this->post_type . '-source';
+		$taxonomy_slug = $this->post_type . '-source';
 
 		register_taxonomy(
 			$taxonomy_name,
 			$this->post_type,
 			array(
-				'label' => trans('cpt-testimonial.testimonial-type.label'),
+				'label' => trans('cpt-conversion.conversion-source.label'),
 				'public' => true,
 				'rewrite' => array( 'slug' => $taxonomy_slug, 'with_front' => false ),
 				'hierarchical' => false,

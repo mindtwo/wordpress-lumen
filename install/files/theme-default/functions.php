@@ -52,7 +52,7 @@ foreach($required_function_files as $file){
  */
 $detect = new \Jenssegers\Agent\Agent();
 $shortcodes = new \WpTheme\Shortcodes\ShortcodesRegister();
-$cpt = new \WpTheme\CustomPostTypes\CustomPostTypeRegister();
+$cpt = new \WpTheme\PostTypes\CustomPostTypeRegister();
 $widgets = new \WpTheme\Widgets\WidgetsRegister();
 $modules = new \WpTheme\Modules\ModulesRegister();
 

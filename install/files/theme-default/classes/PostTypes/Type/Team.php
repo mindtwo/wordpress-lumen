@@ -1,17 +1,17 @@
 <?php
 
-namespace WpTheme\CustomPostTypes\Type;
+namespace WpTheme\PostTypes\Type;
 
-use WpTheme\CustomPostTypes\CustomPostType;
+use WpTheme\PostTypes\CustomPostType;
 
-class _Sample extends CustomPostType {
+class Team extends CustomPostType {
 
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = '_sample';
-		$this->name = '_Samples';
-		$this->singular_name = '_Sample';
+		$this->post_type = 'team';
+		$this->name = 'Team';
+		$this->singular_name = 'Team';
 
 	}
 
@@ -22,7 +22,8 @@ class _Sample extends CustomPostType {
 	public function register_post_type() {
 		$custom_params = [
 			'menu_icon' =>'dashicons-groups', // Select an icon: https://developer.wordpress.org/resource/dashicons/
-			'rewrite' => array( 'slug' => '_sample', 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'team', 'with_front' => false ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'sticky'),
 		];
 
 		register_post_type( $this->post_type, array_merge($this->post_type_params, $custom_params) );
@@ -40,7 +41,7 @@ class _Sample extends CustomPostType {
 			$taxonomy_name,
 			$this->post_type,
 			array(
-				'label' => trans('cpt-default.taxonomy.label'),
+				'label' => trans('cpt-team.team-category.label'),
 				'public' => true,
 				'rewrite' => array( 'slug' => $taxonomy_slug, 'with_front' => false ),
 				'hierarchical' => false,

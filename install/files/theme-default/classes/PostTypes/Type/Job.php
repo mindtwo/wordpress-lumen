@@ -1,17 +1,17 @@
 <?php
 
-namespace WpTheme\CustomPostTypes\Type;
+namespace WpTheme\PostTypes\Type;
 
-use WpTheme\CustomPostTypes\CustomPostType;
+use WpTheme\PostTypes\CustomPostType;
 
-class Faq extends CustomPostType {
+class Job extends CustomPostType {
 
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'faq';
-		$this->name = 'FAQs';
-		$this->singular_name = 'FAQ';
+		$this->post_type = 'job';
+		$this->name = 'Jobs';
+		$this->singular_name = 'Job';
 
 	}
 
@@ -21,14 +21,14 @@ class Faq extends CustomPostType {
 	 */
 	public function register_post_type() {
 		$custom_params = [
-			'menu_icon' =>'dashicons-editor-help', // Select an icon: https://developer.wordpress.org/resource/dashicons/
-			'rewrite' => array( 'slug' => 'faq', 'with_front' => false ),
-			'has_archive' => 'custom_type',
-			'supports' => array( 'title', 'editor'),
+			'menu_icon' =>'dashicons-id', // Select an icon: https://developer.wordpress.org/resource/dashicons/
+			'rewrite' => array( 'slug' => 'team', 'with_front' => false ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'sticky'),
 		];
 
 		register_post_type( $this->post_type, array_merge($this->post_type_params, $custom_params) );
 	}
+
 
 	/**
 	 * Register Custom Post Type Taxonomies
@@ -41,7 +41,7 @@ class Faq extends CustomPostType {
 			$taxonomy_name,
 			$this->post_type,
 			array(
-				'label' => trans('cpt-faq.faq-category.label'),
+				'label' => trans('cpt-job.job-category.label'),
 				'public' => true,
 				'rewrite' => array( 'slug' => $taxonomy_slug, 'with_front' => false ),
 				'hierarchical' => false,
