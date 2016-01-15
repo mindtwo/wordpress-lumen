@@ -355,9 +355,3 @@ class ShortcodesBootstrap extends ShortcodeModule {
 	}
 
 }
-
-$shorcodes_bootstrap_module = new ShortcodesBootstrapModule();
-
-// Debug: Show all active shortcodes:
-// global $shortcode_tags;
-// echo "<pre>"; print_r($shortcode_tags); echo "</pre>";
