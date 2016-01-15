@@ -35,7 +35,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "lumen/app/",
-            "WpTheme\\": "public/content/themes/default/classes/",
+            "WpTheme\\": "public/content/themes/default/classes/"
         },
         "classmap": [
             "lumen/database/"
