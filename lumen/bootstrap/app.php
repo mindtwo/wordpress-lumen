@@ -21,7 +21,7 @@ if( !function_exists('is_wordpress') || !is_wordpress() ) {
 |
 */
 
-$app = new Laravel\Lumen\Application(
+$app = new App\DomainApplication(
     realpath(__DIR__.'/../')
 );
 
