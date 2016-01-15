@@ -4,12 +4,16 @@ namespace WpTheme\Widgets\Widget;
 
 class WidgetCustomSearch extends \WP_Widget {
 
-	function __construct() {
+	/**
+	 * WidgetCustomSearch constructor.
+	 * TODO: Add translations
+     */
+	public function __construct() {
 		parent::__construct('WidgetCustomSearch', 'Custom Search Widget ausgeben', array( 'description' => '' ) );
 	}
 
 	/** @see WP_Widget::widget */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
         $template_instance = get_template_instance();
     	$template    = $template_instance->render(
@@ -23,13 +27,13 @@ class WidgetCustomSearch extends \WP_Widget {
 	}
 
 	/** @see WP_Widget::update */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		return $instance;
 	}
 
 	/** @see WP_Widget::form */
-	function form( $instance ) {
+	public function form( $instance ) {
 
 	}
 
