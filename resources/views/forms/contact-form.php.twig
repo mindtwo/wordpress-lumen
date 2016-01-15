@@ -22,7 +22,6 @@
             <label for="cform_message">{{function('trans','form.default.message')}}:</label>
             <textarea id="cform_message" class="form-control" v-model="inquery.message" rows="4"></textarea>
         </div>
-        <input type="hidden" name="_token" value="{{function('csrf_token')}}" v-if="! submitted">
         <button type="submit" @click="onSubmitForm" class="btn btn-primary btn-lg" v-if="! submitted"><span>{{function('trans','form.default.send')}}</span><i class="ti-email"></i></button>
 
     </form>
