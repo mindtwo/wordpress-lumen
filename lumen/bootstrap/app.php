@@ -1,11 +1,13 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+if(!is_wordpress()) {
+    require_once __DIR__ . '/../vendor/autoload.php';
 
-try {
-    (new Dotenv\Dotenv(__DIR__.'/../'))->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
-    //
+    try {
+        ( new Dotenv\Dotenv( __DIR__ . '/../' ) )->load();
+    } catch ( Dotenv\Exception\InvalidPathException $e ) {
+        //
+    }
 }
 
 /*
@@ -23,9 +25,10 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-$app->withFacades();
-
-$app->withEloquent();
+if(!is_wordpress()) {
+    $app->withFacades();
+    $app->withEloquent();
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +112,6 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\TwigServiceProvider::class);
 $app->register(App\Providers\TwigInstallerServiceProvider::class);
-$app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
 
 $app->singleton('filesystem', function ($app) {
     return $app->loadComponent(
