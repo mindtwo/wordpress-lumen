@@ -8,7 +8,7 @@ class ModulesRegister {
      * @var array
      */
     public $types = [
-        \WpTheme\Modules\Ajax\AjaxActionsModule::class,
+        \WpTheme\Modules\Ajax\AjaxRegister::class,
     ];
 
     /**
