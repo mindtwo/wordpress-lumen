@@ -4,7 +4,7 @@ namespace WpTheme\CustomPostTypes\Type;
 
 use WpTheme\CustomPostTypes\CustomPostType;
 
-class Posts extends CustomPostType {
+class Post extends CustomPostType {
 
 	public function __construct() {
 
