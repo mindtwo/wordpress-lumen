@@ -2,6 +2,8 @@
 
 namespace WpTheme\Shortcodes\Module;
 
+use WpTheme\Shortcodes\ShortcodeModule;
+
 class ShortcodesAcfOptions extends ShortcodeModule {
 
     public $option_fields;

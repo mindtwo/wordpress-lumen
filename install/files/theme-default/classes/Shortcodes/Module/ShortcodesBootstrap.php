@@ -2,7 +2,9 @@
 
 namespace WpTheme\Shortcodes\Module;
 
-class ShortcodesBootstrap {
+use WpTheme\Shortcodes\ShortcodeModule;
+
+class ShortcodesBootstrap extends ShortcodeModule {
 
 	/**
 	 * Register ShortcodesBootstrapModule
