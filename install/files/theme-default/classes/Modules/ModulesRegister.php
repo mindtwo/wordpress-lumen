@@ -16,6 +16,9 @@ class ModulesRegister {
         \WpTheme\Modules\WpCleanup\BackendRegister::class,
         \WpTheme\Modules\WpCleanup\FrontendRegister::class,
         \WpTheme\Modules\WpCleanup\CustomExcerpt::class,
+        \WpTheme\Modules\Addon\AddonACF::class,
+        \WpTheme\Modules\Addon\Timber::class,
+        \WpTheme\Modules\Dashboard\Shortcode\ShortcodeDashboardRegister::class,
     ];
 
     /**

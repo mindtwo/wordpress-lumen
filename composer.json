@@ -43,7 +43,9 @@
             "lumen/database/"
         ],
         "files": [
-            "lumen/app/Http/helpers.php"
+            "lumen/app/Http/helpers.php",
+            "public/content/themes/default/functions/multisite.php",
+            "public/content/themes/default/functions/theme.php"
         ]
     },
     "autoload-dev": {
