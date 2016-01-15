@@ -12,22 +12,22 @@ abstract class CustomPostType {
 	/**
 	 * @var string
 	 */
-	protected static $post_type = '';
+	protected $post_type = '';
 
 	/**
 	 * @var string
      */
-	protected static $name = '';
+	protected $name = '';
 
 	/**
 	 * @var string
      */
-	protected static $singular_name = '';
+	protected $singular_name = '';
 
 	/**
 	 * @var array
      */
-	protected static $post_type_params = [];
+	protected $post_type_params = [];
 
 	/**
 	 * Initialize
