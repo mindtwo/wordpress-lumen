@@ -1,12 +1,18 @@
 {
     "private": true,
     "devDependencies": {
-        "gulp": "^3.8.8"
+        "gulp": "3.x"
     },
     "dependencies": {
-        "bootstrap-sass": "^3.0.0",
-        "laravel-elixir": "^3.0.0",
-        "vue": "^1.0.4",
-        "vue-resource": "^0.1.16"
+        "laravel-elixir": "4.x",
+        "vue": "1.x",
+        "vue-resource": "0.6.x",
+        "jquery": "2.x",
+        "fancybox": "3.x",
+        "font-awesome": "4.x",
+        "jquery.localScroll": "1.x",
+        "jquery.scrollTo": "2.x",
+        "bootstrap-sass": "3.x",
+        "picturefill": "3.x"
     }
 }
