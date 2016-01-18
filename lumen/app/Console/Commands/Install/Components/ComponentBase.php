@@ -51,7 +51,8 @@ abstract class ComponentBase extends Command {
 		$this->wp_languages_dir      = $this->public_dir . '/content/languages';
 		$this->wp_assets_dir         = $this->wp_theme_dir . '/assets';
 		$this->wp_fonts_dir          = $this->wp_assets_dir . '/fonts';
-		$this->bower_folder          = $this->assets_dir . '/bower_components';
+		$this->bower_folder_rel      = '../../../../../bower_components';
+		$this->npm_folder_rel        = '../../../../../npm_modules';
 
 		// Delete files if gulp is not selected
 		$this->gulp_delete_files = [
@@ -63,9 +64,9 @@ abstract class ComponentBase extends Command {
 		];
 
 		// Symlinks if gulp is selected
-		$this->gulp_symlinks = [
-			$this->bower_folder . "/bootstrap-sass/assets/fonts/bootstrap bootstrap",
-			$this->bower_folder . "/fontawesome/fonts fontawesome"
+		$this->gulp_font_symlinks = [
+			$this->npm_folder_rel . "/bootstrap-sass/assets/fonts/bootstrap bootstrap",
+			$this->npm_folder_rel . "/font-awesome/fonts fontawesome"
 		];
 
 
