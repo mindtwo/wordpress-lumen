@@ -7,12 +7,7 @@ Thumbs.db
 # External repositories
 /resources/assets/bower_components
 /lumen/vendor
-
-
-# Public folder
 /public/wordpress
-!/public/wordpress/wp-config.php
-/public/wp-config.php
 
 
 # Backup files
@@ -32,5 +27,18 @@ npm-debug.log
 backup/start.sh
 /install/config/**
 !/install/config/*-sample.json
-# /.env.*
+/.env.*
+
+
+# Only for package dev
 !/.env
+/public/wp-config.php
+/public/content/languages/**
+!/public/content/languages/index.php
+/public/content/mu-plugins/**
+!/public/content/mu-plugins/index.php
+/public/content/plugins/**
+!/public/content/plugins/index.php
+/public/content/uploads/**
+!/public/content/uploads/index.php
+
