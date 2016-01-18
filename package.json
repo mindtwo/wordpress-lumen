@@ -10,8 +10,8 @@
         "jquery": "2.x",
         "fancybox": "3.x",
         "font-awesome": "4.x",
-        "jquery.localScroll": "1.x",
-        "jquery.scrollTo": "2.x",
+        "jquery.localscroll": "1.x",
+        "jquery.scrollto": "2.x",
         "bootstrap-sass": "3.x",
         "picturefill": "3.x"
     }
