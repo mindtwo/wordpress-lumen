@@ -6,7 +6,7 @@
         <div class="form-errors" v-if="errors">
             <strong>{{function('trans','form.error.headline')}}</strong>
             <ul>
-                <li v-for="error in errors">@{{ error }}</li>
+                <li v-for="error in errors">{{ '{{ error }}' }}</li>
             </ul>
         </div>
 
