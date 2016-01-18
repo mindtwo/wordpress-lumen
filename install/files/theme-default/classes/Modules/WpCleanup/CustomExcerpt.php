@@ -2,7 +2,7 @@
 
 namespace WpTheme\Modules\WpCleanup;
 
-class BackendRegister {
+class CustomExcerpt {
 
     /**
      * Initialize
