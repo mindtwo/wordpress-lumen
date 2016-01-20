@@ -82,11 +82,10 @@ abstract class CustomPostType extends PostType {
 		];
 
 		// Autotranslate from translation files
-		foreach($labels as $label){
-			$name = str_replace('_', '-', $label);
-
-			if(trans("cpt-{$this->post_type}.labels.$name")) {
-				$labels[$label] = trans("cpt-{$this->post_type}.labels.$name");
+		foreach($labels as $key => $label){
+			$name = str_replace('_', '-', $key);
+			if(hasTrans("cpt-{$this->post_type}.labels.$name")) {
+				$labels[$key] = trans("cpt-{$this->post_type}.labels.$name");
 			}
 		}
 
