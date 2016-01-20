@@ -6,17 +6,10 @@ use WpTheme\Shortcodes\ShortcodeModule;
 
 class ShortcodesAcfOptions extends ShortcodeModule {
 
-    public $option_fields;
-
     /**
      * Register WordPress shortcodes
      */
     public function register() {
-        // Load all option fields at once
-        if(function_exists('get_fields')) {
-            $this->option_fields = get_fields( 'option' );
-        }
-
         $register_shortcodes = array(
             'get_mobile_phone_number_display' => 'get_mobile_phone_number_display',
             'get_mobile_phone_number_href'    => 'get_mobile_phone_number_href',
@@ -43,6 +36,9 @@ class ShortcodesAcfOptions extends ShortcodeModule {
             'get_footer_tracking_codes'       => 'get_footer_tracking_codes',
             'get_header_tracking_codes'       => 'get_header_tracking_codes',
             'get_email'                       => 'shortcode_email',
+            'get_logo_alt'                    => 'get_logo_alt',
+            'get_logo_image_svg_filename'     => 'get_logo_image_svg_filename',
+            'get_logo_image_filename'     => 'get_logo_image_filename',
         );
 
         // Loop given shortcodes and add them to WordPress
@@ -60,11 +56,9 @@ class ShortcodesAcfOptions extends ShortcodeModule {
      * @return mixed
      */
     public function __call( $pram, $value ) {
-        if ( isset( $this->option_fields[ str_replace( 'get_', '', $pram ) ] ) ) {
-            return $this->option_fields[ str_replace( 'get_', '', $pram ) ];
-        }
+        $acf = $this->app->make('ACF');
 
-        return '';
+        return $acf->get_option_field(str_replace( 'get_', '', $pram ));
     }
 
     /**

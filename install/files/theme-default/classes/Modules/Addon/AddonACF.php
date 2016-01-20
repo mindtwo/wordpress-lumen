@@ -3,6 +3,9 @@
 namespace WpTheme\Modules\Addon;
 
 class AddonACF {
+
+    protected $options;
+
     /**
      * Initialize
      */
@@ -28,7 +31,41 @@ class AddonACF {
      *
      * @return string
      */
-    function my_acf_json_save_point( $path ) {
+    public function my_acf_json_save_point( $path ) {
         return get_stylesheet_directory() . '/acf-json';
+    }
+
+    /**
+     * Get all option fields
+     *
+     * @return array
+     */
+    public function get_option_fields() {
+        if(!is_array($this->options)) {
+            $this->set_option_fields();
+        }
+        return $this->options;
+    }
+
+    /**
+     * Get a specific option field
+     *
+     * @return array
+     */
+    public function get_option_field($key) {
+        if(!is_array($this->options)) {
+            $this->set_option_fields();
+        }
+
+        return array_key_exists($key, $this->options) ? $this->options[$key] : '' ;
+    }
+
+    /**
+     * Set option fields
+     */
+    protected function set_option_fields() {
+        if( function_exists( 'get_fields' ) ) {
+            $this->options = get_fields('options');
+        }
     }
 }

@@ -36,8 +36,11 @@ require_once(THEME_FUNCTIONS . 'theme.php');
  * Register theme classes
  */
 $app = (new \WpTheme\Modules\Addon\AddonLumen())->register();
+$app->singleton('ACF', function () {
+    return new \WpTheme\Modules\Addon\AddonACF();
+});
+$shortcodes = new \WpTheme\Shortcodes\ShortcodesRegister($app);
 $detect = new \Jenssegers\Agent\Agent();
-$shortcodes = new \WpTheme\Shortcodes\ShortcodesRegister();
 $cpt = new \WpTheme\PostTypes\CustomPostTypeRegister();
 $widgets = new \WpTheme\Widgets\WidgetsRegister();
-$modules = new \WpTheme\Modules\ModulesRegister();
+$modules = new \WpTheme\Modules\ModulesRegister($app);

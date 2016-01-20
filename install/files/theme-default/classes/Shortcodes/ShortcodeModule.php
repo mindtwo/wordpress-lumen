@@ -7,11 +7,14 @@ use Timber;
 
 abstract class ShortcodeModule {
 
+    protected $app;
+
     /**
      * ShortcodeModule constructor.
      */
-    public function __construct() {
+    public function __construct($app) {
 
+        $this->app = $app;
         $this->register();
 
     }
@@ -35,6 +38,33 @@ abstract class ShortcodeModule {
     protected function render_view( $view, $data = [] ) {
         $templete = file_get_contents(TEMPLATE_DIR.'/'.$view);
         return Timber::compile_string( $templete, (!is_array($data) ? [$data] : $data ) );
+    }
+
+    /**
+     * Remove multiple spaces from the buffer.
+     *
+     * @var string $buffer
+     * @return string
+     */
+    protected function compress_html($buffer)
+    {
+        // Remove html comments
+        $buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
+
+        $search = array(
+            '/\>[^\S ]+/s',  // strip whitespaces after tags, except space
+            '/[^\S ]+\</s',  // strip whitespaces before tags, except space
+            '/(\s)+/s'       // shorten multiple whitespace sequences
+        );
+
+        $replace = array(
+            '>',
+            '<',
+            '\\1'
+        );
+
+        $buffer = preg_replace($search, $replace, $buffer);
+        return trim($buffer);
     }
 
     /**
