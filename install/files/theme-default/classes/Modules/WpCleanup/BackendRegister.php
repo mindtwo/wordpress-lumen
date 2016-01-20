@@ -16,6 +16,7 @@ class BackendRegister {
         add_filter( 'tiny_mce_before_init', [$this, 'mce_mod'] );
         add_filter( 'tiny_mce_before_init', [$this, 'tinymce_paste_as_text'] );
         add_action( 'edit_form_after_title', [$this, 'fix_no_editor_on_posts_page'], 0 );
+        add_action( 'admin_init', [$this, 'hide_editor'] );
     }
 
     /**
@@ -52,7 +53,7 @@ class BackendRegister {
         // unregister_widget( 'WP_Widget_Text' );
     }
 
-    /*
+    /**
      * Remove unused links in admin bar
      */
     public function remove_admin_bar_links () {
@@ -72,7 +73,7 @@ class BackendRegister {
         //$wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
     }
 
-    /*
+    /**
      * Remove nodes from admin bar item new-content
      */
     public function remove_wp_nodes () {
@@ -82,15 +83,41 @@ class BackendRegister {
         $wp_admin_bar->remove_node ( 'new-media' );
     }
 
-    /*
+    /**
+     * Hide editor on certain custom templates
+     */
+    public function hide_editor () {
+        if(array_key_exists('post',$_GET)) {
+            $post_id = $_GET['post'];
+        } elseif(array_key_exists('post_ID',$_POST)) {
+            $post_id = $_POST['post_ID'];
+        } else {
+            return false;
+        }
+
+        $template_file = get_post_meta($post_id, '_wp_page_template', true);
+
+        if(in_array($template_file, [
+            // 'template-landingpage.php',
+            // 'template-team.php',
+        ])){
+            remove_post_type_support('page', 'editor');
+        }
+    }
+
+    /**
      * Custom ACF Backend CSS
      */
     public function my_acf_admin_head () {
         echo '<style type="text/css">.acf_postbox .field textarea{min-height:0;}</style>';
     }
 
-    /*
+    /**
      * Modifying TinyMCE editor to remove unused items.
+     *
+     * @param $init
+     *
+     * @return mixed
      */
     public function mce_mod ( $init ) {
         $init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
