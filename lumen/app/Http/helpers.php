@@ -43,6 +43,26 @@ if (! function_exists('trans')) {
 	}
 }
 
+if (! function_exists('hasTrans')) {
+	/**
+	 * Translate the given message.
+	 *
+	 * @param  string  $id
+	 * @param  array   $parameters
+	 * @param  string  $domain
+	 * @param  string  $locale
+	 * @return string
+	 */
+	function hasTrans($id = null)
+	{
+		if (is_null($id)) {
+			return app('translator');
+		}
+
+		return app('translator')->has($id);
+	}
+}
+
 if (! function_exists('elixir')) {
 	/**
 	 * Get the path to a versioned Elixir file.
