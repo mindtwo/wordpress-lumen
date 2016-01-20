@@ -194,6 +194,19 @@ img {
     max-width: 100%;
 }
 
+.mb_default { margin-bottom: 20px; }
+.mb_null    { margin-bottom: 0px; }
+.mb_small   { margin-bottom: 10px; }
+.mb_medium  { margin-bottom: 40px; }
+.mb_large   { margin-bottom: 80px; }
+.mb_xlarge  { margin-bottom: 120px; }
+.mt_default { margin-top: 20px; }
+.mt_null    { margin-top: 0px; }
+.mt_small   { margin-top: 10px; }
+.mt_medium  { margin-top: 40px; }
+.mt_large   { margin-top: 80px; }
+.mt_xlarge  { margin-top: 120px; }
+
 
 /*  ---------------------------------------------------------
 	Main structure

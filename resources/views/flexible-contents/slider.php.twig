@@ -1,3 +1,8 @@
+<div class="flexible_content --slider mt_{{ data.margin_top }} mb_{{ data.margin_bottom }}" {% if data.hash_key %}id="{{ data.hash_key }}"{% endif %}>
+
+</div>
+
+
 <?php if(get_sub_field('slides_wrapper', $post_id)){ ?>
 	<section class="carousel" id="<?php if(get_sub_field('hash_key') != '') { echo the_sub_field('hash_key'); }; ?>">
 		<!-- Main slider mask -->

@@ -1,0 +1,44 @@
+<div class="flexible_content --tab_or_accordion mt_{{ data.margin_top }} mb_{{ data.margin_bottom }}" {% if data.hash_key %}id="{{ data.hash_key }}"{% endif %}>
+    <section class="container">
+        {% if data.headline %}
+            <h2>{{ data.headline }}</h2>
+        {% endif %}
+        {% if data.contents %}
+            {% if data.type == 'tab'  %}
+                <div class="tab_wrapper">
+                    <ul class="nav nav-tabs" role="tablist">
+                        {% for id, content in data.contents %}
+                            <li role="presentation" class="{{ loop.first ? 'active' : '' }}"><a href="#a{{ key }}_p{{ id }}_content" aria-controls="home" role="tab" data-toggle="tab">{{ content.headline|raw }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <div class="tab-content">
+                        {% for id, content in data.contents %}
+                            <div role="tabpanel" class="tab-pane {{ loop.first ? 'active' : '' }}" id="a{{ key }}_p{{ id }}_content">{{ content.content|raw }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if data.type == 'accordion'  %}
+                <div class="panel-group accordion_wrapper" id="accordion_{{ key }}" role="tablist" aria-multiselectable="{{ data.multiselectable ? 'true' : 'false' }}">
+                {% for id, content in data.contents %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="a{{ key }}_p{{ id }}">
+                            <h4 class="panel-title" id="a{{ key }}_p{{ id }}_heading">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion_{{ key }}" data-target="#a{{ key }}_p{{ id }}_content" href="#" aria-expanded="{{ loop.first ? 'true' : 'false' }}" aria-controls="a{{ key }}_p{{ id }}">
+                                    {{ content.headline|raw }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="a{{ key }}_p{{ id }}_content" class="panel-collapse collapse {{ loop.first ? 'in' : '' }}" role="tabpanel" aria-labelledby="a{{ key }}_p{{ id }}_heading">
+                            <div class="panel-body">
+                                {{ content.content|raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </section>
+</div>

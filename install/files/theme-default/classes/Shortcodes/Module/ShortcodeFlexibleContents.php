@@ -14,43 +14,44 @@ class ShortcodeFlexibleContents extends ShortcodeModule {
      * @return mixed
      */
     public function handle( $atts, $content = null ) {
-        $output = '';
-
-        if ( is_home() ) {
-            $post_id = get_field( 'blog_page_id', 'option' );
-        } else {
-            $post_id = false;
-        }
-
-        if ( have_rows( 'flexible-content', $post_id ) ) {
-            while ( have_rows( "flexible-content", $post_id ) ) : the_row();
-                switch ( get_row_layout() ) {
-                    case 'col_three_content':
-                        $output = $this->render_view( 'col_one_content.php.twig' );
+        $output = [];
+        $post_id = is_home() ? get_field( 'blog_page_id', 'option' ) : false;
+        $data = get_fields($post_id);
+        if ( array_key_exists('flexible-content', $data) ) {
+            foreach($data['flexible-content'] as $key => $field) {
+                switch ( $field['acf_fc_layout'] ) {
+                    case 'col_one_content':
+                        $output[] = $this->render_view( 'col_one_content.php.twig', ['data'=>$field] );
                         break;
                     case 'col_two_content':
-                        $output = $this->render_view( 'col_three_content.php.twig' );
+                        $output[] = $this->render_view( 'col_two_content.php.twig', ['data'=>$field] );
                         break;
-                    case 'col_one_content':
-                        $output = $this->render_view( 'col_two_content.php.twig' );
+                    case 'col_three_content':
+                        $output[] = $this->render_view( 'col_three_content.php.twig', ['data'=>$field] );
+                        break;
+                    case 'tab_or_accordion':
+                        $output[] = $this->render_view( 'tab_or_accordion.php.twig', ['data'=>$field,'key'=>$key] );
+                        break;
+                    case 'colored_teaser_centered_content':
+                        $output[] = $this->render_view( 'colored_teaser_centered_content.php.twig', ['data'=>$field] );
                         break;
                     case 'shortcode':
-                        $output = $this->render_view( 'seperator.php.twig' );
+                        $output[] = $this->render_view( 'shortcode.php.twig', ['data'=>$field, 'shortcode_content'=>do_shortcode('[' . $field['shortcode'] . ']')] );
                         break;
                     case 'slider':
-                        $output = $this->render_view( 'shortcode.php.twig' );
+                        $output[] = $this->render_view( 'slider.php.twig', ['data'=>$field] );
                         break;
                     case 'intro':
-                        $output = $this->render_view( 'intro.php.twig' );
+                        $output[] = $this->render_view( 'intro.php.twig', ['data'=>$field] );
                         break;
                     case 'seperator':
-                        $output = $this->render_view( 'slider.php.twig' );
+                        $output[] = $this->render_view( 'seperator.php.twig', ['data'=>$field] );
                         break;
                 }
-            endwhile;
+            }
         }
 
-        return $output;
+        return implode('',$output);
     }
 
     /**
