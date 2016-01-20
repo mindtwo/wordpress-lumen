@@ -18,6 +18,7 @@ class ShortcodesRegister {
         \WpTheme\Shortcodes\Module\ShortcodeResponsiveImage::class,
         \WpTheme\Shortcodes\Module\ShortcodesAcfOptions::class,
         \WpTheme\Shortcodes\Module\ShortcodesBootstrap::class,
+        // \WpTheme\Shortcodes\Module\ShortcodesAcfShortcodes::class,
     ];
 
     /**
