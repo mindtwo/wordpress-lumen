@@ -1,5 +1,5 @@
 # Sitemap
-# Sitemap: http://www.domain.de/sitemap.xml
+# Sitemap: /sitemap.xml
 
 # Google AdSense
 User-agent: Mediapartners-Google*
@@ -13,10 +13,13 @@ Disallow: /
 User-agent: *
 
 # WordPress specific config
-Disallow: /wp-admin/
-Disallow: /wp-content/languages/
-Disallow: /wp-content/plugins/
-Disallow: /wp-includes/
+Disallow: /content/languages/
+Disallow: /content/plugins/
+Disallow: /content/cache/
+Disallow: /content/w3tc-config/
+Disallow: /content/upgrade/
+Disallow: /wordpress/
+Disallow: /ajax/
 
 # Disallow some more annoying bots
 User-agent: SurveyBot
