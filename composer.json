@@ -15,7 +15,7 @@
         "laravel/lumen-framework": "5.2.*",
         "illuminate/config": "5.2.*",
         "illuminate/support": "5.2.*",
-        "illuminate/mail": "5.2.*",
+        "phpmailer/phpmailer": "5.2.*",
         "vlucas/phpdotenv": "~2.2",
         "mandrill/mandrill": "~1.0",
         "jenssegers/agent": "2.*",
