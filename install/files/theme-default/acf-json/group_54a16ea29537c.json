@@ -61,11 +61,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -93,11 +93,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "defult": "defult"
@@ -109,6 +109,24 @@
                             "placeholder": "",
                             "disabled": 0,
                             "readonly": 0
+                        },
+                        {
+                            "key": "field_56a63169996a2",
+                            "label": "Text Overlay",
+                            "name": "text_overlay",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1
                         },
                         {
                             "key": "field_54e000e3cbe34",
@@ -427,11 +445,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -459,11 +477,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "defult": "defult"
@@ -477,7 +495,144 @@
                             "readonly": 0
                         },
                         {
-                            "key": "field_54ea080140fb9",
+                            "key": "field_54dff4e0d9fb5",
+                            "label": "Headline",
+                            "name": "headline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_569f825dfefc7",
+                            "label": "Subline",
+                            "name": "subline",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "569f8244fefc1",
+                    "name": "col_one_content",
+                    "label": "Col Container - 1",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_569f8244fefc2",
+                            "label": "Hash Key",
+                            "name": "hash_key",
+                            "type": "text",
+                            "instructions": "(Nur f\u00fcr Jumplinks auf One-Page Seiten)",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": 33,
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "#",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_569f8244fefc3",
+                            "label": "Abstand oben",
+                            "name": "margin_top",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": 33,
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "default",
+                                "none": "none",
+                                "small": "small",
+                                "medium": "medium",
+                                "large": "large",
+                                "xlarge": "xlarge"
+                            },
+                            "default_value": {
+                                "default": "default"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "disabled": 0,
+                            "readonly": 0
+                        },
+                        {
+                            "key": "field_569f8244fefc4",
+                            "label": "Abstand unten",
+                            "name": "margin_bottom",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": 33,
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "default",
+                                "none": "none",
+                                "small": "small",
+                                "medium": "medium",
+                                "large": "large",
+                                "xlarge": "xlarge"
+                            },
+                            "default_value": {
+                                "defult": "defult"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "disabled": 0,
+                            "readonly": 0
+                        },
+                        {
+                            "key": "field_569f8244fefc5",
                             "label": "Image Spalte 1",
                             "name": "image_col_1",
                             "type": "image",
@@ -492,16 +647,16 @@
                             "return_format": "array",
                             "preview_size": "thumbnail",
                             "library": "all",
-                            "min_width": 0,
-                            "min_height": 0,
-                            "min_size": 0,
-                            "max_width": 0,
-                            "max_height": 0,
-                            "max_size": 0,
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
                             "mime_types": ""
                         },
                         {
-                            "key": "field_54dff4e0d9fb5",
+                            "key": "field_569f8244fefc6",
                             "label": "Spalte 1",
                             "name": "col_1",
                             "type": "wysiwyg",
@@ -564,11 +719,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -596,11 +751,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1058,11 +1213,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1090,11 +1245,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1589,11 +1744,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1621,11 +1776,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1801,11 +1956,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1833,11 +1988,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -1914,17 +2069,17 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
                             },
-                            "multiple": 0,
                             "allow_null": 0,
+                            "multiple": 0,
                             "ui": 0,
                             "ajax": 0,
                             "placeholder": "",
@@ -1946,17 +2101,17 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "defult": "defult"
                             },
-                            "multiple": 0,
                             "allow_null": 0,
+                            "multiple": 0,
                             "ui": 0,
                             "ajax": 0,
                             "placeholder": "",
@@ -2229,11 +2384,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -2261,11 +2416,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -2345,11 +2500,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -2377,11 +2532,11 @@
                             },
                             "choices": {
                                 "default": "default",
-                                "null": "none",
+                                "none": "none",
                                 "small": "small",
                                 "medium": "medium",
                                 "large": "large",
-                                "xlarge": "x-large"
+                                "xlarge": "xlarge"
                             },
                             "default_value": {
                                 "default": "default"
@@ -2438,13 +2593,13 @@
             }
         ]
     ],
-    "menu_order": 0,
-    "position": "normal",
+    "menu_order": 10,
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1453293350
+    "modified": 1455567123
 }
