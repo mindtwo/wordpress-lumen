@@ -1,6 +1,12 @@
-.form {
-    &,
-    form {
+.form-control {
+    box-sizing: border-box;
+    padding: 3px 8px;
+    border: 1px solid #e0e0e0;
+    background: #f1f1f1;
+}
+
+form {
+    & {
         display: block;
     }
 
@@ -30,19 +36,7 @@
         box-sizing: border-box;
     }
 
-    textarea,
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="url"],
-    input[type="url"],
-    input[type="search"],
-    input[type="number"] {
-        box-sizing: border-box;
-        padding: 3px 8px;
-        float: left;
-        border: 1px solid $gray-light;
-    }
+
 
     textarea {
         resize: vertical;
@@ -66,6 +60,35 @@
         &:focus,
         &:hover {
             background: darken($brand-primary,8%);
+        }
+    }
+
+    .form-errors {
+        ul {
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            list-style: none;
+            &:before {
+                @include fa-icon-css(arrow-circle-right);
+                color: red;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .error {
+        &.form-group-check label,
+        &.form-group-radio label {
+            color: red;
+        }
+
+        textarea,
+        select,
+        input {
+            border-color: red;
         }
     }
 

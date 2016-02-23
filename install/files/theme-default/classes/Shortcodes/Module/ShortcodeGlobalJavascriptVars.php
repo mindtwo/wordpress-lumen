@@ -2,6 +2,7 @@
 
 namespace WpTheme\Shortcodes\Module;
 
+use Symfony\Component\HttpFoundation\Request;
 use WpTheme\Shortcodes\ShortcodeModule;
 
 class ShortcodeGlobalJavascriptVars extends ShortcodeModule {
@@ -27,10 +28,12 @@ class ShortcodeGlobalJavascriptVars extends ShortcodeModule {
             'svg_ready' => svg_ready(),
             'is_mobile' => is_mobile(),
             'is_tablet' => is_tablet(),
-            'is_desktop' => (!is_tablet() && !is_mobile())
+            'is_desktop' => (!is_tablet() && !is_mobile()),
+
+            // Site specific
+            'blog_id' => get_current_blog_id(),
         ];
 
         return '<script type="text/javascript">var GlobalVars=' . json_encode($result) . ';</script>';
     }
-
 }

@@ -2,27 +2,31 @@
 
 namespace WpTheme\PostTypes;
 
-class CustomPostTypeRegister {
+use Illuminate\Support\ServiceProvider;
+
+class CustomPostTypeRegister extends ServiceProvider {
 
     /**
      * @var array
      */
     public $custom_post_types = [
+        \WpTheme\PostTypes\Type\Post::class,
+        \WpTheme\PostTypes\Type\Testimonial::class,
         \WpTheme\PostTypes\Type\Conversion::class,
         \WpTheme\PostTypes\Type\Faq::class,
         \WpTheme\PostTypes\Type\Job::class,
         \WpTheme\PostTypes\Type\Lexicon::class,
         \WpTheme\PostTypes\Type\Team::class,
-        \WpTheme\PostTypes\Type\Testimonial::class,
     ];
 
     /**
-     * Register custom post types
+     * Register the service provider.
+     *
+     * @return void
      */
-    public function __construct() {
+    public function register() {
         foreach($this->custom_post_types as $type) {
             (new $type)->register();
         }
     }
-
 }

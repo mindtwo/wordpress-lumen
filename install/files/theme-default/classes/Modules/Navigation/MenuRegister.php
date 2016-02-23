@@ -17,12 +17,12 @@ class MenuRegister {
      * Register menu
      */
     public function custom_menus() {
-        register_nav_menus(
-            array(
-                'menu-main'   => 'Main',
-                'menu-footer' => 'Footer'
-            )
-        );
+        $menus = $this->add_locations_to_menu_array( [
+            'menu-main'     => 'Main',
+            'menu-footer'   => 'Footer',
+        ] );
+
+        register_nav_menus($menus);
     }
 
     /**
@@ -68,4 +68,28 @@ class MenuRegister {
 
         return $output;
     }
+
+    /**
+     * @param $menus
+     *
+     * @return mixed
+     */
+    protected function add_locations_to_menu_array( $menus ) {
+
+        // Quick return if there are no locations
+        $locations = get_locations();
+        if (! is_array( $locations ) ) {
+            return $menus;
+        }
+
+        // Loop locations and add to menu array
+        foreach ( $locations as $location ) {
+            if ( ! empty( $location['home_slug'] ) && ! empty( $location['name'] ) ) {
+                $menus[ 'menu-' . $location['home_slug'] ] = 'Menu ' . $location['name'];
+            }
+        }
+
+        return $menus;
+    }
 }
+

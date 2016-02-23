@@ -103,7 +103,7 @@ class ShortcodesBootstrap extends ShortcodeModule {
 			'headline' => 'h4',
 		), $params ) );
 		$content = preg_replace( '/<br class="nc".\/>/', '', $content );
-		$result  =  '<div class="panel panel-default"><div class="panel-heading" role="tab" id="heading_' . $id . '"><'.$headline.' class="panel-title">';
+		$result  =  '<div class="panel panel-default accordion_wrapper"><div class="panel-heading" role="tab" id="heading_' . $id . '"><'.$headline.' class="panel-title">';
 		$result .= '<a class="accordion-toggle collapsed" data-toggle="collapse" aria-controls="heading_' . $id . '" data-parent="#' . $parent . '" href="#' . $id . '">';
 		$result .= $title;
 		$result .= '</a></'.$headline.'></div>';

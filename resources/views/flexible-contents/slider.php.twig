@@ -1,41 +1,15 @@
 <div class="flexible_content --slider mt_{{ data.margin_top }} mb_{{ data.margin_bottom }}" {% if data.hash_key %}id="{{ data.hash_key }}"{% endif %}>
-
-</div>
-
-
-<?php if(get_sub_field('slides_wrapper', $post_id)){ ?>
-	<section class="carousel" id="<?php if(get_sub_field('hash_key') != '') { echo the_sub_field('hash_key'); }; ?>">
-		<!-- Main slider mask -->
-		<div class="mask">
-			<div class="slideset">
-				<?php while(has_sub_field('slides_wrapper', $post_id)){ ?>
-					<?php $image = get_sub_field('image'); ?>
-					<?php $image_responsive = get_sub_field('image_responsive'); ?>
-
-					<div class="slide win-width">
-						<?php if(get_sub_field('headline') || get_sub_field('subline')) { ?>
-							<div class="slider-caption">
-								<?php if(get_sub_field('headline')) { ?>
-									<strong><?php the_sub_field('headline'); ?></strong><br>
-								<?php } ?>
-								<?php if(get_sub_field('subline')) { ?>
-									<strong class="red"><?php the_sub_field('subline'); ?></strong>
-								<?php } ?>
-							</div>
-						<?php } ?>
-
-						<picture>
-							<!--[if IE 9]><audio><![endif]-->
-							<source data-srcset="<?php echo ($image_responsive) ? $image_responsive['sizes']['slider-image-mobile'] : $image['sizes']['slider-image-mobile']; ?>" media="--small">
-							<source data-srcset="<?php echo $image['sizes']['slider-image']; ?>" media="--large">
-							<!--[if IE 9]></audio><![endif]-->
-							<img src="<?php echo ($image_responsive) ? $image_responsive['sizes']['slider-image-mobile'] : $image['sizes']['slider-image-mobile']; ?>" class="lazyload" alt="<?php echo $image['alt']; ?>">
-						</picture>
-					</div>
-				<?php } ?>
+	{% if data.text_overlay %}
+		<div class="overlay_all">
+			<div class="container">
+				<img src="{{ function('theme_images_path') }}{{ options.logo_image_svg_filename }}" alt="{{ options.logo_alt }}" class="logo">
+				{{ data.text_overlay|raw }}
 			</div>
 		</div>
-		<!-- Pagination will generate here -->
-		<nav class="pagination"></nav>
-	</section>
-<?php } ?>
+	{% endif %}
+	<div class="slides">
+		{% for slide in data.slides_wrapper %}
+			{% include 'partials/responsive-image.php.twig' with {'image': slide.image.url,'portrait': slide.image_responsive.url,'alt': slide.image.alt} only %}
+		{% endfor %}
+	</div>
+</div>

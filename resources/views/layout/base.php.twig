@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html {{function('language_attributes')}}>
+<html {{ function('language_attributes') }}>
 <head>
 
-    {{function('theme_comment')}}
+    {{ function('theme_comment') }}
 
-    <title>{{function('bloginfo', 'wpseo_the_title')}}</title>
+    <title>{{ function('bloginfo', 'wpseo_the_title') }}</title>
     <meta charset="{{ site.charset }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="{{function('do_action', 'wpseo_the_desc')}}">
+    <meta name="description" content="{{ function('do_action', 'wpseo_the_desc') }}">
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{{ function('elixir', 'content/themes/default/assets/css/app.css') }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS Feed" href="{{ site.rss }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS2 Feed" href="{{ site.rss2 }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Atom Feed" href="{{ site.atom }}">
+    <link rel="alternate" type="application/rdf+xml" title="{{ site.title }} RDF Feed" href="{{ site.rdf }}">
+    <link rel="pingback" title="{{ site.title }} Pingback URL" href="{{ site.pingback_url }}">
     {{ function('do_shortcode', '[get_header_tracking_codes]') }}
-    <link type="text/css" rel="stylesheet" href="{{function('elixir', 'content/themes/default/assets/css/app.css')}}">
-    <link rel="alternate" type="application/rss+xml" title="mindtwo News Feed (RSS2)" href="{{function('bloginfo', 'rss2_url')}}">
 </head>
 <body id="app" class="{{ body_class }}">
     <div id="site">
@@ -39,11 +43,11 @@
             </div>
         </footer>
     </div>
-    <div class="preloader">
-        <div class="preloader__loader"></div>
+    <div id="form__contact" style="display:none;">
+        {{ function('do_shortcode', '[form]') }}
     </div>
     {{ function('do_shortcode', '[global_javascript_vars]') }}
-    <script type="text/javascript" src="{{function('elixir', 'content/themes/default/assets/js/all.js')}}" async></script>
+    <script type="text/javascript" src="{{ function('elixir', 'content/themes/default/assets/js/all.js') }}" async></script>
     {% include 'partials/tracking-codes.php.twig' %}
 </body>
 </html>

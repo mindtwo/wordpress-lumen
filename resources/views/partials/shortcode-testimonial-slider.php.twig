@@ -1,0 +1,31 @@
+<div class="testimonial_slider pb_large pt_large" style="background-image: url('{{ options.bg_testimonials.url }}')">
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1">
+                <h2 class="headline"><i class="fa fa-quote-left"></i> {{ headline }}</h2>
+                <div id="testimonial_slider_{{ key ? key : 'default' }}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        {% for testimonial in testimonials %}
+                            <div class="item {{ loop.first ? 'active' : '' }}">
+                                <div class="row">
+                                    <div class="col-md-4"><img src="{{testimonial.thumbnail.src}}" alt="{{ testimonial.post_title|raw }}"></div>
+                                    <div class="col-md-7">
+                                        <h3 class="headline"><i class="fa fa-comment"></i> {{ testimonial.post_title|raw }}</h3>
+                                        <div class="content">
+                                            {{ testimonial.content|raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <ol class="carousel-indicators">
+                        {% for testimonial in testimonials %}
+                            <li data-target="#testimonial_slider_{{ key ? key : 'default' }}" data-slide-to="{{ loop.index0 }}" class="{{ loop.first ? 'active' : '' }}"></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

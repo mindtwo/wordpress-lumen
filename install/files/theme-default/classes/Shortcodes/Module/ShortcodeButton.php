@@ -15,10 +15,11 @@ class ShortcodeButton extends ShortcodeModule {
         extract( shortcode_atts( array(
             'href'  => '#',
             'label' => '',
+            'icon' => false,
             'class' => 'btn btn-primary',
         ), $atts ) );
 
-        return $this->render_view( 'partials/button.php.twig', [ 'href' => $href, 'label' => $label, 'class' => $class ] );
+        return $this->compress_html($this->render_view( 'partials/button.php.twig', [ 'icon' => $icon, 'href' => $href, 'label' => $label, 'class' => $class ] ));
     }
 
 }

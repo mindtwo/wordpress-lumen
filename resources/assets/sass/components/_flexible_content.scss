@@ -1,0 +1,38 @@
+.flexible_content {
+    position: relative;
+
+    &.--location_menu {
+        background-size: cover;
+
+        * {
+            text-align: center;
+        }
+
+        nav {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                display: inline-block;
+                margin: 0 5px;
+                padding: 0;
+            }
+
+            a {
+                display: inline-block;
+                margin: 0;
+                @extend .btn-primary;
+            }
+        }
+    }
+
+    &.--tab_or_accordion {
+
+    }
+}

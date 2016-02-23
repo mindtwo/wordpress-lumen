@@ -1,0 +1,96 @@
+<script id="form-application-template" type="x-template">
+    <h2 v-if="! submitted" class="c_center two_lines">
+        Online Application
+        <strong>Schreib uns einfach über unser Kontaktformular:</strong>
+    </h2>
+    <p v-if="! submitted">
+        Intro Text
+    </p>
+    <form id="form-application" @submit="onSubmitForm">
+
+        <div class="alert alert-success" v-if="submitted">{{function('trans','form.contact.success_message')}}</div>
+
+        <div class="form-errors" v-if="errors">
+            <strong>{{function('trans','form.error.headline')}}</strong>
+            <ul>
+                <li v-for="error in errors">{{ '{{ error }}' }}</li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.name }" v-if="! submitted">
+                    <label for="application_form_name">{{function('trans','form.default.name')}}: *</label>
+                    <input id="application_form_name" class="form-control" type="text" v-model="inquery.name">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.lastname }" v-if="! submitted">
+                    <label for="application_form_lastname">{{function('trans','form.default.lastname')}}: *</label>
+                    <input id="application_form_lastname" class="form-control" type="text" v-model="inquery.lastname">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.birth_date }" v-if="! submitted">
+                    <label for="application_form_birth_date">{{function('trans','form.application.birth_date')}}: *</label>
+                    <input id="application_form_birth_date" class="form-control" type="text" v-model="inquery.birth_date">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.birth_location }" v-if="! submitted">
+                    <label for="application_form_birth_location">{{function('trans','form.application.birth_location')}}: *</label>
+                    <input id="application_form_birth_location" class="form-control" type="text" v-model="inquery.birth_location">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.street }" v-if="! submitted">
+                    <label for="application_form_street">{{function('trans','form.default.street')}}: *</label>
+                    <input id="application_form_street" class="form-control" type="text" v-model="inquery.street">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" v-bind:class="{ 'error': errors.zip }" v-if="! submitted">
+                            <label for="application_form_zip">{{function('trans','form.default.zip')}}: *</label>
+                            <input id="application_form_zip" class="form-control" type="text" v-model="inquery.zip">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group" v-bind:class="{ 'error': errors.city }" v-if="! submitted">
+                            <label for="application_form_city">{{function('trans','form.default.city')}}: *</label>
+                            <input id="application_form_city" class="form-control" type="text" v-model="inquery.city">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.email }" v-if="! submitted">
+                    <label for="application_form_email">{{function('trans','form.default.email')}}: *</label>
+                    <input id="application_form_email" class="form-control" type="text" v-model="inquery.email">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" v-bind:class="{ 'error': errors.phone }" v-if="! submitted">
+                    <label for="application_form_phone">{{function('trans','form.default.phone')}}: *</label>
+                    <input id="application_form_phone" class="form-control" type="text" v-model="inquery.phone">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" v-bind:class="{ 'error': errors.message }" v-if="! submitted">
+            <label for="application_form_message">{{function('trans','form.default.message')}}:</label>
+            <textarea id="application_form_message" class="form-control" v-model="inquery.message" rows="4"></textarea>
+        </div>
+        <div class="form-group form-group-check" v-bind:class="{ 'error': errors.privacy }" v-if="! submitted">
+            <input type="checkbox" id="application_form_privacy" v-model="inquery.privacy"> <label for="application_form_privacy">{{function('trans','form.default.privacy_label', {'link': '/datenschutz/'})}} *</label>
+        </div>
+        <button type="submit" @click="onSubmitForm" class="btn btn-primary btn-lg" v-if="! submitted"><span>{{function('trans','form.default.send')}}</span><i class="ti-email"></i></button>
+        <em class="required">{{function('trans','form.default.required')}}</em>
+    </form>
+</script>
+<form-application/>

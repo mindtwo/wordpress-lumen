@@ -3,32 +3,40 @@
 namespace WpTheme\Widgets;
 
 
-class WidgetsRegister {
+use Illuminate\Support\ServiceProvider;
+
+class WidgetsRegister extends ServiceProvider {
 
     /**
      * @var array
      */
     public $widgets = [
-        \WpTheme\Widgets\Widget\WidgetCustomSearch::class,
+        // \WpTheme\Widgets\Widget\WidgetCustomSearch::class,
+        \WpTheme\Widgets\Widget\WidgetContactBox::class,
+        \WpTheme\Widgets\Widget\WidgetSubnav::class,
+        \WpTheme\Widgets\Widget\WidgetLatestNews::class,
     ];
 
-    /**
-     * Add register widget hook
-     */
-    public function __construct() {
-        add_action( 'widgets_init', array( $this, 'register' ) );
-
-        // Allow shortcodes in text widget
-        add_filter( 'widget_text', 'shortcode_unautop' );
-        add_filter( 'widget_text', 'do_shortcode' );
-    }
 
     /**
      * Register widgets
      */
     public function register() {
+        add_action( 'widgets_init', array( $this, 'load_registred_widgets' ) );
+
+        // Allow shortcodes in text widget
+        add_filter( 'widget_text', 'shortcode_unautop' );
+        add_filter( 'widget_text', 'do_shortcode' );
+
+    }
+
+    /**
+     *
+     */
+    public function load_registred_widgets() {
+        global $wp_widget_factory;
         foreach($this->widgets as $widget) {
-            register_widget($widget);
+            $wp_widget_factory->widgets[$widget] = new $widget($this->app);
         }
     }
 

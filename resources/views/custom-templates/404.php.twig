@@ -1,7 +1,9 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
-    <h1>{{ function('trans', '404.headline') }}</h1>
-    <h2>{{ function('trans', '404.subheadline') }}</h2>
-    <p>{{ function('trans', '404.paragraph_1') }}</p>
-    <p>{{ function('trans', '404.paragraph_2') }}</p>
+    <div class="container">
+        <h1>{{ function('trans', '404.headline') }}</h1>
+        <h2>{{ function('trans', '404.subheadline') }}</h2>
+        <p>{{ function('trans', '404.paragraph_1') }}</p>
+        <p>{{ function('trans', '404.paragraph_2') }}</p>
+    </div>
 {% endblock %}

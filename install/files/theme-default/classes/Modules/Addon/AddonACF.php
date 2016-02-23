@@ -2,14 +2,23 @@
 
 namespace WpTheme\Modules\Addon;
 
+
+use Illuminate\Cache\CacheManager;
+
+/**
+ * @property \Laravel\Lumen\Application|mixed cache
+ */
 class AddonACF {
 
     protected $options;
+    protected $cache;
 
     /**
      * Initialize
      */
-    public function __construct() {
+    public function __construct(CacheManager $cache) {
+        $this->cache = $cache;
+
         if ( function_exists( 'acf_add_options_page' ) ) {
             acf_add_options_page();
         }
@@ -57,7 +66,7 @@ class AddonACF {
             $this->set_option_fields();
         }
 
-        return array_key_exists($key, $this->options) ? $this->options[$key] : '' ;
+        return array_key_exists($key, $this->options) ? $this->options[$key] : false;
     }
 
     /**
@@ -65,7 +74,9 @@ class AddonACF {
      */
     protected function set_option_fields() {
         if( function_exists( 'get_fields' ) ) {
-            $this->options = get_fields('options');
+            $this->options = $this->cache->rememberForever('options_' . get_current_blog_id(), function() {
+                return get_fields('options');
+            });
         }
     }
 }

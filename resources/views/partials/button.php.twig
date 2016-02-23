@@ -1,3 +1,6 @@
 {% if href %}
-    <a class="{{ class ? class : 'btn-primary' }}" href="{{ href|raw }}">{{ label ? label|raw : href|raw }}</a>
+    <a class="{{ class ? class : 'btn-primary' }}" href="{{ href|raw }}">
+        {% if icon %}<i class="fa fa-{{ icon }}"></i>{% endif %}
+        {{ label ? label|raw : href|raw }}
+    </a>
 {% endif %}

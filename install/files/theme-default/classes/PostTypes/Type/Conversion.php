@@ -27,7 +27,7 @@ class Conversion extends CustomPostType {
 			'exclude_from_search' => true,
 			'menu_icon' =>'dashicons-chart-area', // Select an icon: https://developer.wordpress.org/resource/dashicons/
 			'rewrite' => array( 'slug' => 'conversion', 'with_front' => false ),
-			'supports' => array( 'title', 'editor'),
+			'supports' => array( 'title'),
 		];
 
 		register_post_type( $this->post_type, array_merge($this->post_type_params, $custom_params) );

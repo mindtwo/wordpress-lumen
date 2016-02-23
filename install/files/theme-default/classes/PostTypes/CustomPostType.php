@@ -34,9 +34,9 @@ abstract class CustomPostType extends PostType {
 		// Get classname as default post type name
 		$reflect = new ReflectionClass($this);
 		$class_name = str_replace(['Shortcode',], '', $reflect->getShortName());
-		$this->name = $this->camel_case_to_undercore_case($class_name);
-		$this->singular_name = $this->name;
-		$this->post_type = $this->name;
+		$this->post_type = $this->camel_case_to_undercore_case($class_name);
+		$this->name = ucwords($this->post_type);
+		$this->singular_name = ucwords($this->post_type);
 		$this->set_default_post_type_params();
 	}
 

@@ -1,9 +1,20 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
-    <h1>{{post.title}}</h1>
-    {{ function('do_shortcode', '[hr]') }}
-    <img src="{{post.thumbnail.src}}" />
-    <div class="body">
-        {{post.content}}
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-4 pb_medium pt_medium">
+                {{sidebar}}
+            </aside>
+            <div class="col-md-8 pb_medium pt_medium">
+                <div class="content_box">
+                    <h1>{{post.title}}</h1>
+                    {{ function('do_shortcode', '[hr]') }}
+                    <img src="{{post.thumbnail.src}}" />
+                    <div class="body">
+                        {{post.content}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

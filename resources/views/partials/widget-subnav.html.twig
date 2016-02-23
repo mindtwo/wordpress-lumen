@@ -1,0 +1,11 @@
+{% if children %}
+    <section class="widget widget--subnav">
+        <div class="headline-wrapper">
+            <strong class="headline">{{ instance.headline }}</strong>
+            <em class="subline">{{ instance.subline }}</em>
+        </div>
+        <ul class="list-group">
+            {{ children }}
+        </ul>
+    </section>
+{% endif %}

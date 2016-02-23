@@ -4,7 +4,14 @@ module.exports = {
 
     data: function(){
         return {
-            inquery: { name: '', email: '', message: '' },
+            inquery: {
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+                subject: '',
+                blog_id: window.GlobalVars.blog_id
+            },
             submitted: false,
             errors: false
         };
@@ -13,17 +20,25 @@ module.exports = {
     methods: {
         onSubmitForm: function(e) {
             e.preventDefault();
-            var _inquery = this.inquery;
-            this.$http.post('/api/form-contact', _inquery).success(function(data, status, request) {
-                this.errors = false;
-                this.submitted = true;
-            }).error(function (data, status, request) {
-                var _errors = [];
-                $.each(JSON.parse(request.response), function(key, value) {
-                    _errors.push(value);
-                });
-                this.errors = _errors;
-            });
+            var inquery = this.inquery;
+            inquery.all_locations = this.locations;
+            this.$http.post('/api/form-contact', inquery).then(
+                function(response) {
+                    this.errors = false;
+                    this.submitted = true;
+                    $.fancybox.toggle();
+                    if (typeof ga == 'function') {
+                        ga('send', 'pageview', '/success/form-contact/');
+                    }
+                }, function (response) {
+                    var _errors = [];
+                    $.each(response.data, function(key, value) {
+                        _errors.push(value);
+                    });
+                    this.errors = _errors;
+                    $.fancybox.toggle();
+                }
+            );
         }
     }
 };

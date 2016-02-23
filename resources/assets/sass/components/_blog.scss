@@ -9,3 +9,10 @@
 .posts__single {
     
 }
+
+.post {
+    img.wp-post-image {
+        max-width: 100%;
+        height: auto;
+    }
+}

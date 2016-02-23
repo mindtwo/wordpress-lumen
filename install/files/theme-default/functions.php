@@ -15,17 +15,6 @@ define('TEMPLATE_DIR', realpath(THEME_APPLICATION_DIR . 'resources/views/'));
 
 
 /**
- * Set backend localisation
- * TODO: set language by domain
- * TODO: extract to own class
- */
-// if(is_admin()) {
-//     $translator = app('translator');
-//     $translator->setLocale('en');
-// }
-
-
-/**
  * Require WordPress theme helpers
  */
 require_once(THEME_FUNCTIONS . 'multisite.php');
@@ -33,14 +22,26 @@ require_once(THEME_FUNCTIONS . 'theme.php');
 
 
 /**
- * Register theme classes
+ * Load lumen
  */
-$app = (new \WpTheme\Modules\Addon\AddonLumen())->register();
-$app->singleton('ACF', function () {
-    return new \WpTheme\Modules\Addon\AddonACF();
-});
-$shortcodes = new \WpTheme\Shortcodes\ShortcodesRegister($app);
-$detect = new \Jenssegers\Agent\Agent();
-$cpt = new \WpTheme\PostTypes\CustomPostTypeRegister();
-$widgets = new \WpTheme\Widgets\WidgetsRegister();
-$modules = new \WpTheme\Modules\ModulesRegister($app);
+try {
+    $request = \Illuminate\Http\Request::capture();
+    $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
+    $app->run($request);
+} catch (Exception $e) {}
+
+
+/**
+ * Register service providers
+ */
+$app->register(\WpTheme\Shortcodes\ShortcodesRegister::class);
+$app->register(\WpTheme\PostTypes\CustomPostTypeRegister::class);
+$app->register(\WpTheme\Widgets\WidgetsRegister::class);
+$app->register(\WpTheme\Modules\ModulesRegister::class);
+$app->register(\WpTheme\Routes\RoutesRegister::class);
+
+
+/**
+ * Load global vars
+ */
+$detect = $app->make('Agent');

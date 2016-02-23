@@ -1,0 +1,12 @@
+{% for post in posts %}
+    <div class="item {{ loop.first ? 'active' : '' }}">
+        <h3 class="headline">{{ post.post_title|raw }}</h3>
+        {% if post.thumbnail.src %}
+            <img src="{{post.thumbnail.src}}" alt="{{ post.post_title|raw }}">
+        {% endif %}
+        <div class="content">
+            {{ post.content|raw }}
+        </div>
+        <a href="{{ post.permalink|raw }}" class="btn-primary iframe-content"><i class="fa fa-caret-right"></i> Weiterlesen</a>
+    </div>
+{% endfor %}

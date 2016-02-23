@@ -1,10 +1,10 @@
 <?php
 
-namespace WpTheme\Modules\Addon;
+namespace WpTheme\Modules\Timber;
 
 use Timber;
 
-class AddonTimber {
+class RegisterTimber {
 
     /**
      * Initialize
@@ -13,12 +13,14 @@ class AddonTimber {
         if (class_exists('\Timber')) {
             Timber::$locations = TEMPLATE_DIR;
             Timber::$dirname   = TEMPLATE_DIR;
+            // Timber::$cache     = true;
         }
         add_filter( 'timber_context', [$this, 'timber_context'] );
     }
 
     function timber_context( $context ) {
-        $context['options'] = get_fields('option');
+        $context['options'] = app('ACF')->get_option_fields();
+        $context['selected_location'] = app('ACF')->get_selected_location();
         return $context;
     }
 

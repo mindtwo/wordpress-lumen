@@ -8,9 +8,10 @@ use Timber;
 abstract class ShortcodeModule {
 
     protected $app;
+    protected $options;
 
     /**
-     * ShortcodeModule constructor.
+     * Shortcode Module constructor.
      */
     public function __construct($app) {
 
@@ -28,6 +29,13 @@ abstract class ShortcodeModule {
     }
 
     /**
+     * Make ACF Options available to shortcode templates
+     */
+    public function get_acf_options() {
+        return $this->app->make('ACF')->get_option_fields();
+    }
+
+    /**
      * Render flexible content view
      *
      * @param       $view
@@ -36,8 +44,9 @@ abstract class ShortcodeModule {
      * @return mixed
      */
     protected function render_view( $view, $data = [] ) {
-        $templete = file_get_contents(TEMPLATE_DIR.'/'.$view);
-        return Timber::compile_string( $templete, (!is_array($data) ? [$data] : $data ) );
+        $path = TEMPLATE_DIR.'/'.$view;
+        $data['options'] = $this->get_acf_options();
+        return Timber::compile( $path, (!is_array($data) ? [$data] : $data ) );
     }
 
     /**

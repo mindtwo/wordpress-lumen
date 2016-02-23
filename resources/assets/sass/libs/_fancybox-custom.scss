@@ -1,0 +1,34 @@
+.fancybox-close {
+    top: -45px;
+    right: 0px;
+    width: 31px;
+    height: 32px;
+    background: url("../images/close-icon.png") no-repeat;
+}
+
+.fancybox-overlay {
+    background: transparentize($brand-primary, 0.15);
+}
+
+.fancybox-inner {
+    & > * {
+        overflow: hidden;
+    }
+
+    & > div {
+        padding: 40px 60px 60px;
+    }
+}
+
+.fancybox-media .fancybox-skin {
+        background: #000;
+}
+
+.fancybox-opened .fancybox-skin {
+    box-shadow: 0px 3px 5.7px 0.3px rgba(0, 0, 0, 0.13);
+    background-color: rgb(255, 255, 255);
+}
+
+.fancybox-skin {
+    @include border-radius(0);
+}

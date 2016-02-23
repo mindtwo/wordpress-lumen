@@ -2,13 +2,19 @@
 
 namespace WpTheme\Shortcodes;
 
-class ShortcodesRegister {
+use Illuminate\Support\ServiceProvider;
+
+class ShortcodesRegister extends ServiceProvider {
 
     /**
      * @var array
      */
     public $shortcodes = [
         \WpTheme\Shortcodes\Module\ShortcodeBox::class,
+        \WpTheme\Shortcodes\Module\ShortcodeFontAwesome::class,
+        \WpTheme\Shortcodes\Module\ShortcodeYoutube::class,
+        \WpTheme\Shortcodes\Module\ShortcodeVimeo::class,
+        \WpTheme\Shortcodes\Module\ShortcodeIframe::class,
         \WpTheme\Shortcodes\Module\ShortcodeButton::class,
         \WpTheme\Shortcodes\Module\ShortcodeFlexibleContents::class,
         \WpTheme\Shortcodes\Module\ShortcodeForm::class,
@@ -16,15 +22,17 @@ class ShortcodesRegister {
         \WpTheme\Shortcodes\Module\ShortcodeHr::class,
         \WpTheme\Shortcodes\Module\ShortcodeLatestPosts::class,
         \WpTheme\Shortcodes\Module\ShortcodeResponsiveImage::class,
+        \WpTheme\Shortcodes\Module\ShortcodeTestimonialSlider::class,
         \WpTheme\Shortcodes\Module\ShortcodesAcfOptions::class,
         \WpTheme\Shortcodes\Module\ShortcodesBootstrap::class,
         // \WpTheme\Shortcodes\Module\ShortcodesAcfShortcodes::class,
     ];
-
     /**
-     * Register shortcodes
+     * Register the service provider.
+     *
+     * @return void
      */
-    public function __construct() {
+    public function register() {
         // Move wpautop filter to AFTER shortcode is processed
         remove_filter( 'the_content', 'wpautop' );
         add_filter( 'the_content', 'wpautop', 99 );
@@ -37,7 +45,7 @@ class ShortcodesRegister {
 
         // Register shortcodes
         foreach($this->shortcodes as $shortcode) {
-            new $shortcode;
+            new $shortcode($this->app);
         }
 
         // Debug: Show all active shortcodes:
@@ -45,5 +53,4 @@ class ShortcodesRegister {
         // echo "<pre>"; print_r($shortcode_tags); echo "</pre>";
         // die();
     }
-
 }

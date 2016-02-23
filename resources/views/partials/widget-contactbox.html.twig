@@ -1,0 +1,18 @@
+<section class="widget widget--contactbox">
+    <div class="headline-wrapper">
+        <strong class="headline">{{ instance.headline }}</strong>
+        <em class="subline">{{ instance.subline }}</em>
+    </div>
+    {% for location in selected_location.sub_locations %}
+        {% if location.phone_number %}
+            <p>
+                <strong>{{ location.name }}</strong>
+                <br>
+                <span class="fa fa-phone-square"></span> {{ location.phone_number }}
+            </p>
+        {% endif %}
+    {% endfor %}
+    <div class="mt_default">
+        {{ button }}
+    </div>
+</section>

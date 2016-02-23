@@ -53,29 +53,13 @@
 	}
 }
 
-
-
-
-
-@mixin element($element, $top, $right, $bottom, $left){
-	position: relative;
-	&:#{$element} {
-	position: absolute;
-	content: "";
-	top:$top;
-	bottom:$bottom;
-	left:$left;
-	right:$right;
-	}
-}
-
-
 // custom font mixin
 @mixin fontface ($fontfamily, $filename, $fontweight: normal, $fontstyle: normal) {
 	font-family: $fontfamily;
 	src:url('../fonts/#{$filename}.eot');
 	src:url('../fonts/#{$filename}.eot?#iefix') format('embedded-opentype'),
 		url('../fonts/#{$filename}.woff') format('woff'),
+		url('../fonts/#{$filename}.woff2') format('woff2'),
 		url('../fonts/#{$filename}.ttf') format('truetype'),
 		url('../fonts/#{$filename}.svg#{$filename}') format('svg');
 	font-weight: $fontweight;
@@ -130,6 +114,7 @@
 		}
 	}
 }
+
 // from http://codepen.io/MichaelArestad/pen/IxFGj 
 @mixin verticle-middle-method(){
 	&:after {
@@ -142,8 +127,6 @@
 	}
 }
 
-
-
 // placeholder
 @mixin placeholder {
 	::-webkit-input-placeholder {@content}
@@ -155,7 +138,6 @@
 
 /* Mixins
 ----------------------------------------------------------------------------------------------------------------------*/
-
 @mixin fa-icon-css($name) {
     @extend .#{$fa-css-prefix}-#{$name};
     @extend .#{$fa-css-prefix};
@@ -164,15 +146,13 @@
 @mixin linear-gradient($fromColor, $toColor) {
     background-color: $toColor;
     background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
-    background-image: -webkit-linear-gradient(top, $fromColor, $toColor);
-    background-image:    -moz-linear-gradient(top, $fromColor, $toColor);
-    background-image:     -ms-linear-gradient(top, $fromColor, $toColor);
-    background-image:      -o-linear-gradient(top, $fromColor, $toColor);
-    background-image:         linear-gradient(top, $fromColor, $toColor);
+    background-image: -webkit-linear-gradient($fromColor, $toColor);
+    background-image:    -moz-linear-gradient($fromColor, $toColor);
+    background-image:     -ms-linear-gradient($fromColor, $toColor);
+    background-image:      -o-linear-gradient($fromColor, $toColor);
+    background-image:         linear-gradient($fromColor, $toColor);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
 }
-
-
 
 @mixin transition($transition-property, $transition-time, $method) {
     -webkit-transition: $transition-property $transition-time $method;

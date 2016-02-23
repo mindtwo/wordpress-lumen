@@ -1,0 +1,94 @@
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Custom variables
+.row-no-padding {
+    [class*="col-"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.row-no-margin {
+    margin: 0 !important;
+}
+
+.btn-primary {
+    @include border-radius(10px);
+    background-size: 100%;
+    background: linear-gradient(lighten($brand-secondary, 15%), $brand-secondary);
+    padding: 16px 30px;
+    border: none;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        background: linear-gradient(lighten($brand-secondary, 25%), lighten($brand-secondary, 5%));
+    }
+
+    &,
+    * {
+        @include font-size(26);
+        color: $brand-secondary-contrast;
+    }
+
+    &.--highlight {
+        @include linear-gradient(rgb(231,2,2), rgb(181,0,0));
+
+        &:focus,
+        &:hover {
+            @include linear-gradient(lighten(rgb(231,2,2), 5%), lighten(rgb(181,0,0), 15%));
+        }
+    }
+}
+
+.accordion_wrapper {
+    .panel-default {
+        .panel-heading {
+            padding: 0;
+            a {
+                padding: 15px 25px;
+            }
+        }
+    }
+}
+
+.panel-default {
+    .panel-heading {
+        @include font-size(26);
+        background-color: $brand-secondary;
+        color: $brand-secondary-contrast;
+        font-weight: normal;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: transparentize($brand-secondary, 0.2);
+        }
+
+        a {
+            font-weight: normal;
+            @include font-size(26);
+            display: block;
+
+            &:focus,
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.panel-group .panel + .panel {
+    margin-top: 0px;
+}
+
+.dropdown-menu > .active > a,
+.pagination .dropdown-menu > .current > a,
+.dropdown-menu > .active > a:hover,
+.pagination .dropdown-menu > .current > a:hover,
+.dropdown-menu > .active > a:focus,
+.pagination .dropdown-menu > .current > a:focus {
+    color: $brand-primary-contrast;
+}

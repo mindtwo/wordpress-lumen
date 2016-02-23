@@ -30,7 +30,7 @@ class ShortcodesAcfOptions extends ShortcodeModule {
             'get_zip'                         => 'get_zip',
             'get_city'                        => 'get_city',
             'get_phone_number_display'        => 'get_phone_number_display',
-            'get_phone_number_display'        => 'get_phone_number_href',
+            'get_phone_number_href'           => 'get_phone_number_href',
             'get_fax'                         => 'get_fax',
             'get_google_analytics_id'         => 'get_google_analytics_id',
             'get_footer_tracking_codes'       => 'get_footer_tracking_codes',
@@ -38,7 +38,7 @@ class ShortcodesAcfOptions extends ShortcodeModule {
             'get_email'                       => 'shortcode_email',
             'get_logo_alt'                    => 'get_logo_alt',
             'get_logo_image_svg_filename'     => 'get_logo_image_svg_filename',
-            'get_logo_image_filename'     => 'get_logo_image_filename',
+            'get_email'                       => 'shortcode_email',
         );
 
         // Loop given shortcodes and add them to WordPress
@@ -56,9 +56,11 @@ class ShortcodesAcfOptions extends ShortcodeModule {
      * @return mixed
      */
     public function __call( $pram, $value ) {
+
         $acf = $this->app->make('ACF');
 
         return $acf->get_option_field(str_replace( 'get_', '', $pram ));
+
     }
 
     /**
