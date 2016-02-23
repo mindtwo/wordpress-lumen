@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\WpOptions;
+use App\Modules\Mailer\MailData;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(MailData::class, function ($app) {
+            return new MailData(
+                new WpOptions()
+            );
+        });
     }
 }

@@ -66,7 +66,7 @@ return [
             'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => env('DB_PREFIX', ''),
+            'prefix'    => env('DB_PREFIX', 'wp_'),
             'timezone'  => env('DB_TIMEZONE', '+00:00'),
             'strict'    => false,
         ],

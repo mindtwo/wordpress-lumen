@@ -9,10 +9,10 @@
     </tr>
     <tr>
         <td>
-            <table width="80%" border="0" cellpadding="0" cellspacing="0" align="center" style="background:#fff; min-width:400px;">
+            <table width="80%" border="0" cellpadding="0" cellspacing="0" align="center" style="background:#fff; border:1px solid #eee; min-width:400px; max-width:800px;">
                 <tr>
                     <td>
-                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:{{ data.secondary_color }};">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#eee">
                             <tr>
                                 <td height="30"></td>
                             </tr>
@@ -22,7 +22,7 @@
                                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td align="left" valign="top" style="padding:0 25px;">
-                                                <a href="{{ data.homepage_href }}" target="_blank"><img src="{{ data.logo|raw }}" style="max-height: 80px; width: auto;" /></a>
+                                                <a href="{{ url|raw }}" target="_blank"><img src="cid:logo" style="max-height: 120px; width: auto;" /></a>
                                             </td>
                                         </tr>
                                     </table>
@@ -56,15 +56,15 @@
                 </tr>
                 <tr>
                     <td>
-                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:{{ data.secondary_color }};">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background: #eee;">
                             <tr>
                                 <td height="20"></td>
                             </tr>
                             <tr>
                                 <td width="20"></td>
                                 <td width="100%" style="padding:0 25px;">
-                                    <p style="font-family:Arial, Helvetica, sans-serif; color:{{ data.secondary_text_color }}; line-height:12px; font-size:12px;">
-                                        {{ data.subline|raw }}
+                                    <p style="font-family:Arial, Helvetica, sans-serif; color: #000; line-height:12px; font-size:12px;">
+                                        {{ subline|raw }}
                                     </p>
                                 </td>
                                 <td width="20"></td>

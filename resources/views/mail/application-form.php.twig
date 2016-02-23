@@ -1,0 +1,63 @@
+{% extends "mail/layout/base.php.twig" %}
+{% block content %}
+    <h1 style="font-family:Arial, Helvetica, sans-serif; color:#3b3b3b; line-height:24px; font-weight:bold; font-size:22px;">
+        Online Application: {{ request.title }} {{ request.name }} {{ request.surname }}
+    </h1>
+    <div style="font-family:Arial, Helvetica, sans-serif; color:#666666; padding: 20px 20px 20px; line-height:24px; font-size:16px; display:block; border:1px solid #eee;">
+        {% if location %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Standort/Filiale:</strong> {{ location }}
+            <br />
+        {% endif %}
+        {% if request.title %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Anrede:</strong> {{ request.title }}
+            <br />
+        {% endif %}
+        {% if request.name %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Name:</strong> {{ request.name }}
+            <br />
+        {% endif %}
+        {% if request.lastname %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Nachname:</strong> {{ request.lastname }}
+            <br />
+        {% endif %}
+        {% if request.birth_date %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Geburtsdatum (tt.mm.jjjj):</strong> {{ request.birth_date }}
+            <br />
+        {% endif %}
+        {% if request.birth_location %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Geburtsort:</strong> {{ request.birth_location }}
+            <br />
+        {% endif %}
+        {% if request.street %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Straße und Nr.:</strong> {{ request.street }}
+            <br />
+        {% endif %}
+        {% if request.zip %}
+            <strong style="color: #3b3b3b; font-weight:bold;">PLZ:</strong> {{ request.zip }}
+            <br />
+        {% endif %}
+        {% if request.city %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Stadt:</strong> {{ request.city }}
+            <br />
+        {% endif %}
+        {% if request.email %}
+            <strong style="color: #3b3b3b; font-weight:bold;">E-Mail Adresse:</strong> {{ request.email }}
+            <br />
+        {% endif %}
+        {% if request.phone %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Telefon:</strong> {{ request.phone }}
+            <br />
+        {% endif %}
+        {% if request.privacy %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Datenschutz:</strong> Ja, ich habe die Datenschutzerklärung gelesen und akzeptiere diese.
+            <br />
+        {% endif %}
+        {% if message %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Nachricht:</strong>
+            <div>
+                {{ message|raw }}
+            </div>
+        {% endif %}
+    </div>
+    <br />
+{% endblock %}

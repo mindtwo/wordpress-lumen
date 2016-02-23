@@ -1,23 +1,29 @@
 {% extends "mail/layout/base.php.twig" %}
 {% block content %}
     <h1 style="font-family:Arial, Helvetica, sans-serif; color:#3b3b3b; line-height:24px; font-weight:bold; font-size:22px;">
-        Anfrage von: {{ data.saltuation }} {{ data.name }} {{ data.lastname }}
+        Anfrage von: {{ name }}
     </h1>
     <p style="font-family:Arial, Helvetica, sans-serif; color:#666666; line-height:24px; font-size:16px; margin-top: 5px;">
         Folgende Nachricht wurde übermittelt:
     </p>
-    <div style="font-family:Arial, Helvetica, sans-serif; color:#666666; padding: 20px 20px 10px; line-height:24px; font-size:16px; display:block; border:1px solid #dcdcdc;">
-        <strong style="color: #3b3b3b; font-weight:bold;">Vorname:</strong> {{ data.name }}
+    <div style="font-family:Arial, Helvetica, sans-serif; color:#666666; padding: 20px 20px 20px; line-height:24px; font-size:16px; display:block; border:1px solid #eee;">
+        <strong style="color: #3b3b3b; font-weight:bold;">Name:</strong> {{ name }}
         <br />
-        <strong style="color: #3b3b3b; font-weight:bold;">Nachname:</strong> {{ data.lastname }}
+        <strong style="color: #3b3b3b; font-weight:bold;">E-Mail Adresse:</strong> {{ email }}
         <br />
-        <strong style="color: #3b3b3b; font-weight:bold;">E-Mail Adresse:</strong> {{ data.email }}
+        <strong style="color: #3b3b3b; font-weight:bold;">Telefon:</strong> {{ phone }}
         <br />
-        <strong style="color: #3b3b3b; font-weight:bold;">Telefon:</strong> {{ data.phone }}
-        <br />
+        {% if subject %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Betreff:</strong> {{ subject }}
+            <br />
+        {% endif %}
+        {% if location %}
+            <strong style="color: #3b3b3b; font-weight:bold;">Standort/Filiale:</strong> {{ location }}
+            <br />
+        {% endif %}
         <strong style="color: #3b3b3b; font-weight:bold;">Nachricht:</strong>
         <div>
-            {{ data.message|raw }}
+            {{ message|raw }}
         </div>
     </div>
     <br />

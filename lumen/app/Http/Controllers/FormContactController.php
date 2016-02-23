@@ -2,45 +2,79 @@
 
 namespace App\Http\Controllers;
 
-use App\Modules\Mailer\Services\MandrillService;
+use App\Events\FormWasSendEvent;
+use App\Exceptions\MailNotSendException;
 use Illuminate\Http\Request;
 
 class FormContactController extends Controller {
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return \Laravel\Lumen\Http\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+	 * @throws MailNotSendException
+	 */
 	public function store(Request $request) {
-		$this->validate($request, [
-			'name' => 'required|min:2',
-			'email' => 'required|email',
+		$this->store_validate( $request );
+		$mail_data = $this->mail_data->get($request);
+		$template = $this->get_store_template( $request, $mail_data );
+
+		$this->set_mailer_default_options($mail_data);
+		$this->mailer->isHTML(true);
+		$this->mailer->setFrom($mail_data['from'], $mail_data['from_name']);
+		$this->mailer->addAddress($mail_data['to'], $mail_data['to_name']);
+		$this->mailer->addAddress($request->email, $request->name);
+		$this->mailer->addReplyTo($request->email, $request->name);
+
+		$this->mailer->addEmbeddedImage($mail_data['logo_sever_path'], 'logo');
+		$this->mailer->Subject = 'Kontaktanfrage - ' . $request->name;
+		$this->mailer->Body    = $template;
+
+		if(!$this->mailer->send()) {
+			throw new MailNotSendException($this->mailer->ErrorInfo);
+			return response(json_encode(['mailer' => trans('validation.custom.mailer.error')]), 422);
+		} else {
+			event(new FormWasSendEvent($request, $mail_data, 'Kontaktanfrage - ' . $request->name, 'form_contact'));
+		}
+	}
+
+
+	/**
+	 * @param Request $request
+	 */
+	protected function store_validate( Request $request ) {
+		$rules = [
+			'name'    => 'required|min:2',
+			'email'   => 'required|email',
+			'phone'   => 'required',
 			'message' => 'required|min:10',
-		]);
+			'blog_id' => 'required|exists:blogs,blog_id',
+		];
 
-		$view = view('mail.contact-form')->with(['name' => $request->name, 'email' => $request->email, 'message' => nl2br($request->message)]);
+		if ( $request->has( 'all_locations' ) && $request->has( 'blog_id' ) && $request->all_locations ) {
+			$prefix = ( $request->blog_id == 1  || !is_numeric($request->blog_id)) ? '' : $request->blog_id . '_';
+			$rules['location'] = 'required|exists:' . $prefix . 'options,option_value';
+		}
 
-		(new MandrillService())->send(
-			$view->render(),
-			null,
-			trans('email.headline'), // TODO: Fix translation
-			trans('home.email'), // TODO: Fix translation
-			'John Doe',
-			[
-				[
-					'email' => trans('home.email'), // TODO: Fix translation
-					'name'  => 'John Doe',
-					'type'  => 'to'
-				],
-				[
-					'email' => $request->email,
-					'name'  => $request->name,
-					'type'  => 'to'
-				]
-			],
-			null,
-			[
-				[
-					"type" => "image/png",
-					"name" => "image",
-					"content" => base64_encode(file_get_contents(base_path() . '/public/assets/img/logo-mail.png'))
-				]
-			]
-		);
+		$this->validate( $request, $rules);
+	}
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return array
+     */
+    protected function get_store_template( Request $request, $data ) {
+		return app( 'Twig' )->render( 'mail/contact-form.php.twig', [
+			'name'     => $request->name,
+			'email'    => $request->email,
+			'phone'    => $request->phone,
+			'subject'  => $request->has( 'subject' ) ? $request->subject : false,
+			'location' => $request->has( 'location' ) ? $request->location : false,
+			'message'  => nl2br( $request->message ),
+			'url'      => $data['url'],
+			'logo'     => $data['logo_public_path'],
+			'subline'  => 'Dies ist eine automatisiert erstellte E-Mail von ' . $data['company_name'] . '.',
+		] );
 	}
 }

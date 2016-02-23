@@ -12,6 +12,10 @@ return [
 		'terms' => 'Terms and conditions',
 		'captcha' => 'Captcha',
 		'send' => 'Submit now',
+		'required' => '* required',
+		'location' => 'Location',
+		'choose_your_location' => 'Choose your location',
+		'privacy_label' => 'Ja, ich habe die <a href=":link" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere diese.',
 	],
 	'error' => [
 		'headline' => 'Transmission failed!',

@@ -87,9 +87,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'mailer'                  => [
+            'error' => 'Es ist ein Fehler beim Versenden der E-Mail aufgetreten.',
+        ]
     ],
 
     /*
@@ -103,6 +103,23 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'blog_id' => 'Blog ID',
+        'title' => 'Anrede',
+        'name' => 'Name',
+        'firstname' => 'Vorname',
+        'lastname' => 'Nachname',
+        'surname' => 'Nachname',
+        'email' => 'E-Mail Adresse',
+        'phone' => 'Telefon',
+        'message' => 'Nachricht',
+        'street' => 'Straße und Nr.',
+        'zip' => 'PLZ',
+        'city' => 'Stadt',
+        'birth_location' => 'Geburtsort',
+        'birth_date' => 'Geburtsdatum',
+        'privacy' => 'Datenschutzerklärung',
+        'location' => 'Standort/Filiale',
+    ],
 
 ];

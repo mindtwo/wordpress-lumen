@@ -30,6 +30,9 @@ return [
     */
     'taxonomy' => array(
         'label' => ':name Kategorie',
+        'location' => [
+            'label' => 'Standort Kategorie',
+        ],
     )
 
 ];
