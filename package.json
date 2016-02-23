@@ -1,18 +1,20 @@
 {
-    "private": true,
-    "devDependencies": {
-        "gulp": "3.x"
-    },
-    "dependencies": {
-        "laravel-elixir": "4.x",
-        "vue": "1.x",
-        "vue-resource": "0.6.x",
-        "jquery": "2.x",
-        "fancybox": "3.x",
-        "font-awesome": "4.x",
-        "jquery.localscroll": "1.x",
-        "jquery.scrollto": "2.x",
-        "bootstrap-sass": "3.x",
-        "picturefill": "3.x"
-    }
+  "private": true,
+  "devDependencies": {
+    "gulp": "3.x",
+    "laravel-elixir": "4.x"
+  },
+  "dependencies": {
+    "bootstrap-sass": "3.x",
+    "fancybox": "3.x",
+    "font-awesome": "4.x",
+    "jquery": "2.x",
+    "jquery-ui": "^1.10.5",
+    "jquery.easing": "1.x",
+    "jquery.localscroll": "1.x",
+    "jquery.scrollto": "2.x",
+    "picturefill": "3.x",
+    "vue": "1.x",
+    "vue-resource": "0.6.x"
+  }
 }
