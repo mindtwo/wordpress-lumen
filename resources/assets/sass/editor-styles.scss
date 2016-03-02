@@ -1,0 +1,32 @@
+@import "libs/font-awesome";
+@import "markup-mixins";
+@import "markup-variables";
+@import "fonts_cityfahrschule";
+
+* {
+    font-family: infotext, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 36px; }
+h3 { font-size: 30px; }
+h4 { font-size: 24px; }
+
+.check,
+.arrow {
+    list-style: none;
+    margin-left: 20px;
+
+    li:before  {
+        margin-right: 10px;
+    }
+
+    &.check li:before {
+        @include fa-icon-css(check-circle);
+    }
+
+    &.arrow li:before {
+        @include fa-icon-css(arrow-circle-right);
+    }
+}

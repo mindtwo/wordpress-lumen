@@ -14,9 +14,12 @@ class BackendRegister {
         add_action( 'admin_bar_menu', [$this, 'remove_wp_nodes'], 999 );
         add_action( 'acf/input/admin_head', [$this, 'my_acf_admin_head'] );
         add_filter( 'tiny_mce_before_init', [$this, 'mce_mod'] );
+        add_filter( 'mce_buttons_2', [$this, 'mce_add_buttons'] );
+        add_filter( 'mce_css', [$this, 'mce_css'] );
         add_filter( 'tiny_mce_before_init', [$this, 'tinymce_paste_as_text'] );
         add_action( 'edit_form_after_title', [$this, 'fix_no_editor_on_posts_page'], 0 );
         add_action( 'admin_init', [$this, 'hide_editor'] );
+
     }
 
     /**
@@ -120,7 +123,17 @@ class BackendRegister {
      * @return mixed
      */
     public function mce_mod ( $init ) {
-        $init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
+        $init['block_formats'] = 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
+
+        $init['style_formats'] = json_encode ( array (
+            // array ( 'title' => 'Highlight Text', 'selector' => 'p', 'classes' => 'highlight' ),
+            // array ( 'title' => 'Highlight Headline', 'selector' => 'h1,h2,h3,h4,h5', 'classes' => 'highlight' ),
+            array ( 'title' => 'List - Check', 'selector' => 'ul', 'classes' => 'check' ),
+            array ( 'title' => 'List - Arrow', 'selector' => 'ul', 'classes' => 'arrow' ),
+        ) );
+
+        $init['style_formats_merge'] = false;
+
         return $init;
     }
 
@@ -130,6 +143,25 @@ class BackendRegister {
     public function tinymce_paste_as_text ( $init ) {
         $init['paste_as_text'] = true;
         return $init;
+    }
+
+    public function mce_add_buttons ( $buttons ) {
+        //array_splice ( $buttons, 1, 0, 'styleselect' );
+        array_unshift( $buttons, 'styleselect' );
+        return $buttons;
+    }
+
+
+    public function mce_css($url) {
+
+        if ( !empty($url) )
+            $url .= ',';
+
+        // Retrieves the plugin directory URL and adds editor stylesheet
+        // Change the path here if using different directories
+        $url .= THEME_ASSETS_LIVE . 'css/editor-styles.css';
+
+        return $url;
     }
 
     /**
