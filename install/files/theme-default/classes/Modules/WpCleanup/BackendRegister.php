@@ -195,8 +195,10 @@ class BackendRegister {
     public function manage_column_cleanup ( $columns )
     {
         $filters = array(
+            // 'cb',
+            // 'date',
+            // 'categories',
             'author',
-            'date',
             'comments',
             'tags',
         );
