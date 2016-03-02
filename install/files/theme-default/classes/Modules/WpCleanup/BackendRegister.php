@@ -19,6 +19,8 @@ class BackendRegister {
         add_filter( 'tiny_mce_before_init', [$this, 'tinymce_paste_as_text'] );
         add_action( 'edit_form_after_title', [$this, 'fix_no_editor_on_posts_page'], 0 );
         add_action( 'admin_init', [$this, 'hide_editor'] );
+        add_action( 'admin_menu', [$this, 'remove_subpages_from_menu'] );
+        add_action( 'admin_init' , [$this, 'manage_column_cleanup_init'] );
 
     }
 
@@ -177,5 +179,40 @@ class BackendRegister {
 
         remove_action( 'edit_form_after_title', '_wp_posts_page_notice' );
         add_post_type_support( 'page', 'editor' );
+    }
+
+    /**
+     * Remove subpages from menu
+     */
+    public function remove_subpages_from_menu ()
+    {
+        global $submenu;
+
+        // unset( $submenu['themes.php'][5] ); // removes 'Themes'
+        unset( $submenu['themes.php'][6] ); // remove 'Customize'
+    }
+
+    public function manage_column_cleanup ( $columns )
+    {
+        $filters = array(
+            'author',
+            'date',
+            'comments',
+            'tags',
+        );
+
+        foreach($filters as $filter) {
+            if(array_key_exists($filter,$columns)) {
+                unset( $columns[$filter] );
+            }
+        }
+
+        return $columns;
+    }
+
+    public function manage_column_cleanup_init() {
+        add_filter( 'manage_posts_columns' , [$this, 'manage_column_cleanup'] );
+        add_filter( 'manage_pages_columns', [$this, 'manage_column_cleanup'] );
+        add_filter( 'manage_upload_columns', [$this, 'manage_column_cleanup'] );
     }
 }
