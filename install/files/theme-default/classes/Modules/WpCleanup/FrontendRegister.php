@@ -12,6 +12,7 @@ class FrontendRegister {
         add_action( 'init', [$this, 'remove_admin_bar'] );
         add_action( 'init', [$this, 'add_post_formats'] );
         add_action( 'init', [$this, 'add_theme_support'] );
+        add_action ( 'wp_enqueue_scripts', [$this, 'cleanup_scripts'] );
 
     }
 
@@ -23,6 +24,17 @@ class FrontendRegister {
             show_admin_bar( false );
         }
     }
+
+    /**
+     * Deregister scripts
+     */
+    public function cleanup_scripts ()
+    {
+        if ( function_exists( 'is_admin' ) && !is_admin () ) {
+            wp_deregister_script ( 'wp-embed' );
+        }
+    }
+
 
     /**
      * Clean <head> Section
