@@ -12,7 +12,7 @@ class FrontendRegister {
         add_action( 'init', [$this, 'remove_admin_bar'] );
         add_action( 'init', [$this, 'add_post_formats'] );
         add_action( 'init', [$this, 'add_theme_support'] );
-        add_action ( 'wp_enqueue_scripts', [$this, 'cleanup_scripts'] );
+        add_action( 'wp_enqueue_scripts', [$this, 'cleanup_scripts'] );
 
     }
 
