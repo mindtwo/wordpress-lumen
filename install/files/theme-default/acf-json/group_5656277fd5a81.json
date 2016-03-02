@@ -20,8 +20,8 @@
             "maxlength": "",
             "rows": 35,
             "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
+            "readonly": 1,
+            "disabled": 1
         }
     ],
     "location": [
