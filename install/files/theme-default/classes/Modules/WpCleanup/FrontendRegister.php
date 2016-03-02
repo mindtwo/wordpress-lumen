@@ -13,13 +13,6 @@ class FrontendRegister {
         add_action( 'init', [$this, 'add_post_formats'] );
         add_action( 'init', [$this, 'add_theme_support'] );
 
-        /**
-         * Remove emoji ****
-         */
-        remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-        remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-        remove_action( 'wp_print_styles', 'print_emoji_styles' );
-        remove_action( 'admin_print_styles', 'print_emoji_styles' );
     }
 
     public function remove_admin_bar() {
@@ -48,6 +41,13 @@ class FrontendRegister {
             remove_action( 'wp_head', 'parent_post_rel_link' );
             remove_action( 'wp_head', 'start_post_rel_link' );
             remove_action( 'wp_head', 'adjacent_posts_rel_link' );
+            remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+            remove_action( 'wp_head', 'rest_output_link_wp_head' );
+            remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+            remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+            remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+            remove_action( 'wp_print_styles', 'print_emoji_styles' );
+            remove_action( 'admin_print_styles', 'print_emoji_styles' );
         }
     }
 
