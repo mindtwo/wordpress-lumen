@@ -216,5 +216,6 @@ class BackendRegister {
         add_filter( 'manage_posts_columns' , [$this, 'manage_column_cleanup'] );
         add_filter( 'manage_pages_columns', [$this, 'manage_column_cleanup'] );
         add_filter( 'manage_upload_columns', [$this, 'manage_column_cleanup'] );
+        // add_filter( 'manage_{$post_type}_posts_columns', [$this, 'manage_column_cleanup'] );
     }
 }
