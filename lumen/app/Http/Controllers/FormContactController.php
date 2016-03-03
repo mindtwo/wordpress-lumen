@@ -30,11 +30,11 @@ class FormContactController extends Controller {
 		$this->mailer->Subject = 'Kontaktanfrage - ' . $request->name;
 		$this->mailer->Body    = $template;
 
+		event(new FormWasSendEvent($request, $template, 'Kontaktanfrage - ' . $request->name, 'form_contact'));
+
 		if(!$this->mailer->send()) {
 			throw new MailNotSendException($this->mailer->ErrorInfo);
 			return response(json_encode(['mailer' => trans('validation.custom.mailer.error')]), 422);
-		} else {
-			event(new FormWasSendEvent($request, $mail_data, 'Kontaktanfrage - ' . $request->name, 'form_contact'));
 		}
 	}
 

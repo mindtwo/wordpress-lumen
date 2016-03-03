@@ -30,11 +30,11 @@ class FormApplicationController extends Controller {
         $this->mailer->Subject = 'Online Application - ' . $request->name;
         $this->mailer->Body    = $template;
 
+        event(new FormWasSendEvent($request, $template, 'Online Application - ' . $request->name, 'form_application'));
+
         if(!$this->mailer->send()) {
             throw new MailNotSendException($this->mailer->ErrorInfo);
             return response(json_encode(['mailer' => trans('validation.custom.mailer.error')]), 422);
-        } else {
-            event(new FormWasSendEvent($request, $mail_data, 'Online Application - ' . $request->name, 'form_application'));
         }
     }
 

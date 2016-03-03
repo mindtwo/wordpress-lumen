@@ -24,20 +24,21 @@ class FormWasSendEvent extends Event
     /**
      * @var
      */
-    private $mail_data;
+    public $email_html;
 
     /**
      * Create a new event instance.
      *
      * @param Request $request
+     * @param         $email_html
      * @param         $title
      * @param         $conversion_key
      */
-    public function __construct(Request $request, $mail_data, $title, $conversion_key)
+    public function __construct(Request $request, $email_html, $title, $conversion_key)
     {
         $this->request = $request;
         $this->title = $title;
         $this->conversion_key = $conversion_key;
-        $this->mail_data = $mail_data;
+        $this->email_html = $email_html;
     }
 }

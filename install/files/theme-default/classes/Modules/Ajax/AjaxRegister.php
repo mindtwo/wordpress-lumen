@@ -9,6 +9,7 @@ class AjaxRegister {
 	 */
 	public $types = [
 		\WpTheme\Modules\Ajax\Requests\BlogPosts::class,
+		\WpTheme\Modules\Ajax\Requests\BackendConversionHtml::class,
 	];
 
 	/**

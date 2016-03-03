@@ -36,6 +36,7 @@ try {
  */
 $app->register(\WpTheme\Shortcodes\ShortcodesRegister::class);
 $app->register(\WpTheme\PostTypes\CustomPostTypeRegister::class);
+$app->register(\WpTheme\PostTypes\PostTypeRepositoryRegister::class);
 $app->register(\WpTheme\Widgets\WidgetsRegister::class);
 $app->register(\WpTheme\Modules\ModulesRegister::class);
 $app->register(\WpTheme\Routes\RoutesRegister::class);

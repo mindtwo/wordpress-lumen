@@ -3,6 +3,27 @@
     "title": "Custom Post Type \u2013 Conversion",
     "fields": [
         {
+            "key": "field_56d877f078c73",
+            "label": "Mail HTML",
+            "name": "mail_html",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_5656278b9a8c2",
             "label": "JSON Log",
             "name": "json_log",
@@ -18,7 +39,7 @@
             "default_value": "",
             "placeholder": "{}",
             "maxlength": "",
-            "rows": 35,
+            "rows": 10,
             "new_lines": "",
             "readonly": 1,
             "disabled": 1
@@ -41,5 +62,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1448486904
+    "modified": 1457027101
 }

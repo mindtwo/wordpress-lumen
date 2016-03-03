@@ -48,7 +48,7 @@ class StoreConversionListener
             'ping_status' => 'closed',
         ]);
 
-        $this->add_meta_field( $post );
+        $this->add_meta_fields( $post, $event );
         $this->add_term( $post, $event->conversion_key );
     }
 
@@ -99,7 +99,7 @@ class StoreConversionListener
      *
      * @return bool
      */
-    protected function add_meta_field( $post ) {
+    protected function add_meta_fields( $post, $event ) {
         $post->meta()->create( [
             'post_id'    => $post->ID,
             'meta_key'   => '_json_log',
@@ -110,6 +110,18 @@ class StoreConversionListener
             'post_id'    => $post->ID,
             'meta_key'   => 'json_log',
             'meta_value' => $this->collect_meta_data(),
+        ] );
+
+        $post->meta()->create( [
+            'post_id'    => $post->ID,
+            'meta_key'   => '_mail_html',
+            'meta_value' => 'field_56d877f078c73',
+        ] );
+
+        $post->meta()->create( [
+            'post_id'    => $post->ID,
+            'meta_key'   => 'mail_html',
+            'meta_value' => $event->email_html,
         ] );
 
         return true;
