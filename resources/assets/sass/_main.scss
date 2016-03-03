@@ -204,31 +204,31 @@ img {
     }
 }
 
-.mb_default { margin-bottom: 30px; }
-.mb_none    { margin-bottom: 0px; }
-.mb_small   { margin-bottom: 10px; }
-.mb_medium  { margin-bottom: 60px; }
-.mb_large   { margin-bottom: 100px; }
-.mb_xlarge  { margin-bottom: 140px; }
-.mt_default { margin-top: 30px; }
-.mt_none    { margin-top: 0px; }
-.mt_small   { margin-top: 10px; }
-.mt_medium  { margin-top: 60px; }
-.mt_large   { margin-top: 100px; }
-.mt_xlarge  { margin-top: 140px; }
+.mb_default { @include spacing(margin, bottom, 30px, null, 20px, null); }
+.mb_none    { @include spacing(margin, bottom, 0px, null, null, null); }
+.mb_small   { @include spacing(margin, bottom, 10px, null, 20px, null); }
+.mb_medium  { @include spacing(margin, bottom, 60px, null, 20px, null); }
+.mb_large   { @include spacing(margin, bottom, 100px, null, 60px, null); }
+.mb_xlarge  { @include spacing(margin, bottom, 140px, null, 60px, null); }
+.mt_default { @include spacing(margin, top, 30px, null, 20px, null); }
+.mt_none    { @include spacing(margin, top, 0px, null, null, null); }
+.mt_small   { @include spacing(margin, top, 10px, null, 20px, null); }
+.mt_medium  { @include spacing(margin, top, 60px, null, 20px, null); }
+.mt_large   { @include spacing(margin, top, 100px, null, 60px, null); }
+.mt_xlarge  { @include spacing(margin, top, 140px, null, 60px, null); }
 
-.pb_default { padding-bottom: 30px; }
-.pb_none    { padding-bottom: 0px; }
-.pb_small   { padding-bottom: 10px; }
-.pb_medium  { padding-bottom: 60px; }
-.pb_large   { padding-bottom: 100px; }
-.pb_xlarge  { padding-bottom: 140px; }
-.pt_default { padding-top: 30px; }
-.pt_none    { padding-top: 0px; }
-.pt_small   { padding-top: 10px; }
-.pt_medium  { padding-top: 60px; }
-.pt_large   { padding-top: 100px; }
-.pt_xlarge  { padding-top: 140px; }
+.pb_default { @include spacing(padding, bottom, 30px, null, 20px, null); }
+.pb_none    { @include spacing(padding, bottom, 0px, null, null, null); }
+.pb_small   { @include spacing(padding, bottom, 10px, null, 20px, null); }
+.pb_medium  { @include spacing(padding, bottom, 60px, null, 20px, null); }
+.pb_large   { @include spacing(padding, bottom, 100px, null, 20px, null); }
+.pb_xlarge  { @include spacing(padding, bottom, 140px, null, 60px, null); }
+.pt_default { @include spacing(padding, top, 30px, null, 60px, null); }
+.pt_none    { @include spacing(padding, top, 0px, null, null, null); }
+.pt_small   { @include spacing(padding, top, 10px, null, 20px, null);  }
+.pt_medium  { @include spacing(padding, top, 60px, null, 20px, null);  }
+.pt_large   { @include spacing(padding, top, 100px, null, 60px, null);  }
+.pt_xlarge  { @include spacing(padding, top, 140px, null, 60px, null);  }
 
 
 /*  ---------------------------------------------------------

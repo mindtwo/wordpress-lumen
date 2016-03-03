@@ -247,3 +247,25 @@
     line-height: $sizeValue + px;
     line-height: ($base * $sizeValue) + rem;
 }
+
+@mixin spacing($type, $location, $size, $size-md: null, $size-sm: null, $size-xs: null) {
+	#{$type}-#{ $location}: $size;
+
+	@if $screen-md != null {
+		@media (max-width: $screen-md) {
+			#{$type}-#{ $location}: $size-md;
+		}
+	}
+
+	@if $size-sm != null {
+		@media (max-width: $screen-sm) {
+			#{$type}-#{ $location}: $size-sm;
+		}
+	}
+
+	@if $size-xs != null {
+		@media (max-width: $screen-xs) {
+			#{$type}-#{ $location}: $size-xs;
+		}
+	}
+}
