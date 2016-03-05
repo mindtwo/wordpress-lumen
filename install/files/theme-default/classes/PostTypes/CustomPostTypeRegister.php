@@ -26,7 +26,8 @@ class CustomPostTypeRegister extends ServiceProvider {
      */
     public function register() {
         foreach($this->custom_post_types as $type) {
-            (new $type)->register();
+            $class = new $type;
+            (method_exists($class, 'register')) ? $class->register() : false;
         }
     }
 }
