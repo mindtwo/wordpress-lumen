@@ -24,7 +24,7 @@ class WidgetLatestNews extends WidgetModule {
 
 	/** @see WP_Widget::widget */
 	public function widget( $args, $instance ) {
-		$news = do_shortcode('[latest_posts auto_location="true"]');
+		$news = do_shortcode('[latest_posts]');
 		echo $this->render_view( 'partials/widget-latest-news.html.twig', compact('news', 'instance'));
 	}
 }

@@ -48,9 +48,6 @@ class ShortcodeFlexibleContents extends ShortcodeModule {
                 case 'seperator':
                     $this->output[] = $this->render_view( 'seperator.php.twig', ['data'=>$field] );
                     break;
-                case 'location_menu':
-                    $this->output[] = $this->render_view( 'location_menu.php.twig', ['data'=>$field] );
-                    break;
             }
         }
 

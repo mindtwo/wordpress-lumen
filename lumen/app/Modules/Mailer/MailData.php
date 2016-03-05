@@ -15,19 +15,9 @@ class MailData
 
     public function get(Request $request) {
         $data = $this->options->mailInfo();
-        if($request->has('location')) {
-            if(array_search($request->location, $data)) {
-                $selected_location = preg_split('/(_[0-9]+_+)/',array_search($request->location, $data), 0, PREG_SPLIT_DELIM_CAPTURE);
-                list( $sub_location_mail, $location_mail ) = $this->getLocationMail( $selected_location, $data );
-            }
-        }
 
         // Get most specific mail
-        if(isset($sub_location_mail) && $sub_location_mail) {
-            $mail = $sub_location_mail;
-        } elseif(isset($location_mail) && $location_mail) {
-            $mail = $location_mail;
-        } elseif(array_key_exists('options_form_email_to',$data)) {
+        if(array_key_exists('options_form_email_to',$data)) {
             $mail = $data['options_form_email_to'];
         } elseif(array_key_exists('options_email',$data)) {
             $mail = $data['options_email'];
@@ -44,44 +34,5 @@ class MailData
             'logo_public_path' => $data['home'] . 'content/themes/' . $data['template'] . '/assets/images/' . $data['options_logo_image_filename'],
             'logo_alt' => $data['options_logo_alt'],
         ];
-    }
-
-    /**
-     * @param $selected_location
-     * @param $data
-     *
-     * @return array
-     */
-    protected function getLocationMail( $selected_location, $data ) {
-        $sub_location_mail = false;
-        $selected_location_tmp = $selected_location;
-        array_pop( $selected_location_tmp );
-        $key = is_array($selected_location_tmp) ? implode( '', $selected_location_tmp ) . 'contact_email': '';
-        if ( count( $selected_location ) == 5 && array_key_exists($key , $data ) ) {
-            $sub_location_mail = !empty($data[$key]) ? $data[$key]: false;
-
-            // Get Location Mail
-            array_pop( $selected_location_tmp );
-            $selected_location = $selected_location_tmp;
-        }
-
-        return array( $sub_location_mail, $this->getParentLocationEmail( $selected_location, $data ) );
-    }
-
-    /**
-     * @param $selected_location
-     * @param $data
-     *
-     * @return mixed
-     */
-    protected function getParentLocationEmail( $selected_location, $data ) {
-        $selected_location_tmp = $selected_location;
-        array_pop( $selected_location_tmp );
-        $key = implode( '', $selected_location_tmp ) . 'contact_email';
-        if ( count( $selected_location ) == 3 && array_key_exists($key , $data ) ) {
-            return !empty($data[ $key ]) ? $data[ $key ] : false;
-        }
-
-        return false;
     }
 }

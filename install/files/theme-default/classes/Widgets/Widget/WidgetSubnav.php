@@ -38,12 +38,6 @@ class WidgetSubnav extends WidgetModule {
 		$child_of = ( $post->ancestors ) ? $this->get_shifted_child_page_id( $instance, $post ) : $post->ID ;
 		$children = wp_list_pages("title_li=&child_of=$child_of&echo=0&depth=$depth");
 
-		// Replace markers from backend fields
-		$selected_location = $this->app->make('ACF')->get_selected_location();
-		$location = (is_array($selected_location) && array_key_exists('name', $selected_location)) ? $selected_location['name'] : false;
-		(array_key_exists('headline',$instance)) ? $instance['headline'] = $this->compile_string($instance['headline'], ['location' => $location]) : false;
-		(array_key_exists('subline',$instance)) ? $instance['subline'] = $this->compile_string($instance['subline'], ['location' => $location]) : false;
-
 		if( $children ){
 			echo $this->render_view( 'partials/widget-subnav.html.twig', compact('children', 'instance') );
 		}

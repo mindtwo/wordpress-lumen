@@ -72,13 +72,7 @@ function theme_comment() {
 	return $config->get('comment.default');
 }
 
-function primary_menu() {
-	$location = get_selected_location();
-	if($location && array_key_exists('home_slug', $location)) {
-		$name = 'menu-'.$location['home_slug'];
-	} else {
-		$name = 'menu-main';
-	}
+function primary_menu($name = 'menu-main') {
 	ob_start();
 	wp_nav_menu( array(
 		'theme_location' => $name,
@@ -112,27 +106,6 @@ function footer_menu($name='menu-footer') {
 	$content = ob_get_contents(); ob_end_clean();
 	return $content;
 }
-
-function location_menu($name='menu-location') {
-	ob_start();
-	if(has_nav_menu($name)) {
-		wp_nav_menu( array(
-			'theme_location' => $name,
-			'container'      => 'nav',
-			'container_class'=> '',
-			'depth'          => 1,
-			'link_before'    => '',
-			'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-			'fallback_cb'    => '\WpTheme\Modules\Navigation\CustomThemeWalker::fallback',
-			'walker'         => new \WpTheme\Modules\Navigation\CustomThemeWalker()
-		) );
-	}
-	$content = ob_get_contents(); ob_end_clean();
-	return $content;
-}
-
-
-
 
 // Load is_home() Blog Frontpage postdata
 function get_home_pagedata() {

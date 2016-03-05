@@ -20,7 +20,6 @@ class RegisterTimber {
 
     function timber_context( $context ) {
         $context['options'] = app('ACF')->get_option_fields();
-        $context['selected_location'] = app('ACF')->get_selected_location();
         return $context;
     }
 

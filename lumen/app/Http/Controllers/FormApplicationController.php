@@ -58,11 +58,6 @@ class FormApplicationController extends Controller {
             'blog_id'                 => 'required|exists:blogs,blog_id',
         ];
 
-        if ( $request->has( 'all_locations' ) && $request->has( 'blog_id' ) && $request->all_locations ) {
-            $prefix = ( $request->blog_id == 1 || !is_numeric($request->blog_id) ) ? '' : $request->blog_id . '_';
-            $rules['location'] = 'required|exists:' . $prefix . 'options,option_value';
-        }
-
         $this->validate( $request, $rules );
     }
 
@@ -74,7 +69,6 @@ class FormApplicationController extends Controller {
     protected function get_store_template( Request $request, $data ) {
         return app( 'Twig' )->render( 'mail/application-form.php.twig', [
             'request'  => $request,
-            'location' => $request->has( 'location' ) ? $request->location : false,
             'message'  => nl2br( $request->message ),
             'url'      => $data['url'],
             'logo'     => $data['logo_public_path'],

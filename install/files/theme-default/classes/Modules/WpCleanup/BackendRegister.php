@@ -103,8 +103,7 @@ class BackendRegister {
         $template_file = get_post_meta($post_id, '_wp_page_template', true);
 
         if(in_array($template_file, [
-            //'template-frontpage-location-default.php',
-            'template-frontpage-select-location.php',
+            // 'template-landingpage.php',
         ])){
             remove_post_type_support('page', 'editor');
         }
