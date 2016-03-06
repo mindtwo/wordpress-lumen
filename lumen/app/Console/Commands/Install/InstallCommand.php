@@ -49,6 +49,8 @@ class InstallCommand extends Command {
 		\App\Console\Commands\Install\Components\ComponentBackupSettings::class,
 		\App\Console\Commands\Install\Components\ComponentRemoveFiles::class,
 		\App\Console\Commands\Install\Components\ComponentWpCli::class,
+		\App\Console\Commands\Install\Components\ComponentLoadAssetsTools::class,
+		\App\Console\Commands\Install\Components\ComponentSetFilesAndFolderPermission::class,
 	];
 
 	/**

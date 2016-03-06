@@ -79,10 +79,14 @@
       }
    ],
    "scripts":{  
-      "post-install-cmd":[  
+      "post-root-package-install":[
+         "php artisan wp-lumen:refresh-dotenv-file",
+         "php artisan wp-lumen:install"
+      ],
+      "post-install-cmd":[
 
       ],
-      "post-update-cmd":[  
+      "post-update-cmd":[
 
       ],
       "fixYostPlugin":"sed -ie 's/( $this->locale == $set->wp_locale )/( property_exists($set, \"wp_locale\") \\&\\& $this->locale == $set->wp_locale )/g' public/content/plugins/wordpress-seo/vendor/yoast/i18n-module/i18n-module.php 2> /dev/null &",
