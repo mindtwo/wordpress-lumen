@@ -21,7 +21,7 @@ class ComponentLoadAssetsTools extends ComponentBase implements WpInstallCompone
 	 * @return mixed
 	 */
 	public function fire() {
-		if ( !$this->isGulpSelected() ) { return true; }
+		if ( $this->config->gulp != true ) { return true; }
 
 		$tools = [
 			'npm install',
