@@ -78,11 +78,7 @@
          }
       }
    ],
-   "scripts":{  
-      "post-root-package-install":[
-         "php artisan wp-lumen:refresh-dotenv-file",
-         "php artisan wp-lumen:install"
-      ],
+   "scripts":{
       "post-install-cmd":[
 
       ],
