@@ -35,17 +35,6 @@ ToDos:
 - Import ACF .json files from "public/content/themes/default/acf-json"
 - Fill ACF Pro option page
 - Setup backup script in crontab "* * * * * php /lumen/artisan schedule:run >> /dev/null 2>&1"
-- Setup correct file and folder access rights:
-```bash
-find "public/" -type d -exec chmod 755 {} \;
-find "public/content/uploads" -type d -exec chmod 776 {} \;
-find "public/content/plugins" -type d -exec chmod 776 {} \;
-find "public/content/languages" -type d -exec chmod 776 {} \;
-find "public/content/upgrade" -type d -exec chmod 776 {} \;
-find "public/" -type f -exec chmod 644 {} \;
-chmod 660 "public/wp-config.php"
-chmod 660 "public/wordpress/wp-config.php"
-```
 
 ## Setting up Total Cache Plugin
 ```bash

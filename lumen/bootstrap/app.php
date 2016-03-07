@@ -94,14 +94,17 @@ $app->singleton('filesystem', function ($app) {
 | route or middleware that'll be assigned to some specific routes.
 |
 */
+// if(!is_wordpress()) {
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+    // $app->middleware([
+    //    App\Http\Middleware\ExampleMiddleware::class
+    // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+    // $app->routeMiddleware([
+    //     'auth' => App\Http\Middleware\Authenticate::class,
+    // ]);
+
+// }
 
 /*
 |--------------------------------------------------------------------------

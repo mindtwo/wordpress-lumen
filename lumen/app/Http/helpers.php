@@ -76,7 +76,10 @@ if (! function_exists('elixir')) {
 	{
 		static $manifest = null;
 		if(env('APP_ENV') == 'local') {
-			$manifest = json_decode(file_get_contents(base_path('../public/rev-manifest-dev.json')), true);
+			$file_path_local = base_path('../public/rev-manifest-dev.json');
+			if(app( "files" )->exists( $file_path_local )) {
+				$manifest = json_decode(file_get_contents($file), true);
+			}
 		}
 
 		if (is_null($manifest)) {
