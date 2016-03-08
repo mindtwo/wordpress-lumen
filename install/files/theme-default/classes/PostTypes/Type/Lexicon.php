@@ -9,7 +9,10 @@ class Lexicon extends CustomPostType {
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'lexicon';
+		$this->post_type_cache_keys = [
+			'latest',
+			'list'
+		];
 
 	}
 

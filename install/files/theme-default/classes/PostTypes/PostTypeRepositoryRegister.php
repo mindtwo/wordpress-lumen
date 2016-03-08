@@ -11,9 +11,9 @@ class PostTypeRepositoryRegister extends ServiceProvider {
      * @var array
      */
     public $custom_post_types = [
-        // \WpTheme\PostTypes\Repository\Post::class,
-        // \WpTheme\PostTypes\Repository\Page::class,
-        // \WpTheme\PostTypes\Repository\Testimonial::class,
+        \WpTheme\PostTypes\Repository\Post::class,
+        \WpTheme\PostTypes\Repository\Page::class,
+        \WpTheme\PostTypes\Repository\Testimonial::class,
         \WpTheme\PostTypes\Repository\Conversion::class,
     ];
 

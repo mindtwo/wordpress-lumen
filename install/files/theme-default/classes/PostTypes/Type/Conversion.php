@@ -10,7 +10,6 @@ class Conversion extends CustomPostType {
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'conversion';
 		$this->name = 'Conversions';
 		$this->singular_name = 'Conversion';
 

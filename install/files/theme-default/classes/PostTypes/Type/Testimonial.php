@@ -9,9 +9,12 @@ class Testimonial extends CustomPostType {
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'testimonial';
 		$this->name = 'Testimonials';
 		$this->singular_name = 'Testimonial';
+		$this->post_type_cache_keys = [
+			'latest',
+			'list'
+		];
 
 	}
 

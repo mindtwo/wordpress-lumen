@@ -9,9 +9,12 @@ class Job extends CustomPostType {
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'job';
 		$this->name = 'Jobs';
 		$this->singular_name = 'Job';
+		$this->post_type_cache_keys = [
+			'latest',
+			'list'
+		];
 
 	}
 

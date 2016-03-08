@@ -2,8 +2,6 @@
 
 namespace WpTheme\PostTypes;
 
-use ReflectionClass;
-
 /**
  * Class CustomPostType
  *
@@ -30,14 +28,9 @@ abstract class CustomPostType extends PostType {
 	 * Initialize
 	 */
 	function __construct() {
-
-		// Get classname as default post type name
-		$reflect = new ReflectionClass($this);
-		$class_name = str_replace(['Shortcode',], '', $reflect->getShortName());
-		$this->post_type = $this->camel_case_to_undercore_case($class_name);
-		$this->name = ucwords($this->post_type);
-		$this->singular_name = ucwords($this->post_type);
+		parent::__construct();
 		$this->set_default_post_type_params();
+
 	}
 
 	/**
@@ -110,21 +103,5 @@ abstract class CustomPostType extends PostType {
 			'hierarchical' => false,
 			'supports' => array( 'title', 'editor', 'thumbnail')
 		];
-	}
-
-	/**
-	 * Converts a camel case string to a lowercase underscore string
-	 *
-	 * @param $input
-	 *
-	 * @return string
-	 */
-	protected function camel_case_to_undercore_case($input) {
-		preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
-		$ret = $matches[0];
-		foreach ($ret as &$match) {
-			$match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
-		}
-		return implode('_', $ret);
 	}
 }

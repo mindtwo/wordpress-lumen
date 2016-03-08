@@ -9,9 +9,12 @@ class Faq extends CustomPostType {
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = 'faq';
 		$this->name = 'FAQs';
 		$this->singular_name = 'FAQ';
+		$this->post_type_cache_keys = [
+			'latest',
+			'list'
+		];
 
 	}
 

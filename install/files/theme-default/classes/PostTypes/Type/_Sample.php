@@ -9,7 +9,6 @@ class _Sample extends CustomPostType {
 	public function __construct() {
 
 		parent::__construct();
-		$this->post_type = '_sample';
 		$this->name = '_Samples';
 		$this->singular_name = '_Sample';
 

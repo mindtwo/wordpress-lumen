@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Define constants
- */
 define('THEME_APPLICATION_DIR', realpath( ABSPATH . '/../../') . '/');
 define('THEME_DIR', realpath(get_template_directory()) . '/');
 define('THEME_FUNCTIONS', THEME_DIR . 'functions/');
