@@ -28,6 +28,9 @@
         "site_name": "WordPress/Lumen"
     },
 
+    "// Php shell version": "::comment //",
+    "php": "php",
+
     "// Basicauth protection on install?": "::comment //",
     "basicauth":{
         "status": true,

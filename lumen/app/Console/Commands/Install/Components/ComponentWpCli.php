@@ -29,7 +29,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 	 * @return mixed
 	 */
 	public function fire() {
-		$this->wp_cli = "cd {$this->home_dir} && php wp-cli.phar ";
+		$php_version = $this->config->php ? $this->config->php : 'php';
+		$this->wp_cli = "cd {$this->home_dir} && $php_version wp-cli.phar ";
 		$wp_cli = $this->wp_cli;
 
 		// Use WordPress cli manually!
