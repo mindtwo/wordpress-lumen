@@ -16,25 +16,28 @@ ToDos:
 - composer
 - tar
 - unzip
-- Ruby, Node, NPM global Gulp (optional), NPM global Bower (optional)
+
+## Option Server Requirements
+- Node
+- NPM global Gulp
+- NPM global Bower
 
 ## WordPress Commercial Plugin Requirements
 - ACF Pro (http://www.advancedcustomfields.com/pro/)
-- wpSEO (https://wpseo.de/)
 
 ## Installer
-- Edit "/install/config/installer-config-sample.json" with project settings and save as "/install/config/installer-config.json"
+- Edit "/install/config/install-config-sample.json" with project settings and save as "/install/config/install-config.json"
+- Replace "ACF_LICENCE_KEY" with your ACF license key
 - Run 'composer install'
 - If using gulp?
     - Run "npm install"
     - Run "bower install -y"
-- Run "php /lumen/artisan wp-lumen:refresh-dotenv-file"
-- Run "php /lumen/artisan wp-lumen:install"
+- Run "php artisan wp-lumen:refresh-dotenv-file"
+- Run "php artisan wp-lumen:install"
 - Set document root to "/public"
 - Restart apache or nginx
-- Import ACF .json files from "public/content/themes/default/acf-json"
 - Fill ACF Pro option page
-- Setup backup script in crontab "* * * * * php /lumen/artisan schedule:run >> /dev/null 2>&1"
+- Setup backup script in crontab "* * * * * php artisan schedule:run >> /dev/null 2>&1"
 
 ## Setting up Total Cache Plugin
 ```bash

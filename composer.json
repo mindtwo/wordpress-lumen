@@ -27,7 +27,8 @@
       "wpackagist-plugin/timber-library":"*",
       "wpackagist-plugin/w3-total-cache":"*",
       "wpackagist-plugin/google-sitemap-generator":"*",
-      "wpackagist-plugin/force-regenerate-thumbnails":"*"
+      "wpackagist-plugin/force-regenerate-thumbnails":"*",
+      "koodimonni-language/de_DE": "*",
    },
    "require-dev":{  
       "laravel/envoy":"~1.0",
@@ -113,13 +114,16 @@
       },
       "dropin-paths":{  
          "public/content/languages/":[  
-            "vendor:language"
+            "vendor:language",
+            "vendor:koodimonni-language"
          ],
          "public/content/languages/plugins/":[  
-            "vendor:plugin-language"
+            "vendor:plugin-language",
+            "vendor:koodimonni-plugin-language"
          ],
          "public/content/languages/themes/":[  
-            "vendor:theme-language"
+            "vendor:theme-language",
+            "vendor:koodimonni-theme-language"
          ]
       }
    }
