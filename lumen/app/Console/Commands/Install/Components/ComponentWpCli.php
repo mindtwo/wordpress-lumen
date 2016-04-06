@@ -13,6 +13,7 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 
 	protected $faker;
 	protected $wp_cli;
+	protected $php_version;
 
 	/**
 	 * Create a new command instance.
@@ -29,8 +30,8 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 	 * @return mixed
 	 */
 	public function fire() {
-		$php_version = $this->config->php ? $this->config->php : 'php';
-		$this->wp_cli = "cd {$this->home_dir} && $php_version wp-cli.phar ";
+		$this->php_version = isset($this->config->php) ? $this->config->php : 'php';
+		$this->wp_cli = "cd {$this->home_dir} && {$this->php_version} wp-cli.phar ";
 		$wp_cli = $this->wp_cli;
 
 		// Use WordPress cli manually!
@@ -138,9 +139,16 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		foreach ( $exec as $command ) {
 			echo shell_exec( $command );
 		}
+
+		$this->setLanguage();
 	}
 
-	protected function get_text($paragraphs=10) {
+	/**
+	 * @param int $paragraphs
+	 *
+	 * @return string
+     */
+    protected function get_text($paragraphs=10) {
 		$result = [];
 
 		for ($i = 0; $i <= $paragraphs; $i++) {
@@ -150,8 +158,30 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 		return implode("\n\n",$result);
 	}
 
-	protected function create_post($ype, $title, $content, $status) {
+	/**
+	 * @param $ype
+	 * @param $title
+	 * @param $content
+	 * @param $status
+	 *
+	 * @return string
+     */
+    protected function create_post($ype, $title, $content, $status) {
 		$wp_cli = $this->wp_cli;
 		return $wp_cli . "post create --post_type=$ype --post_title='$title' --post_content='$content' --post_status='$status'";
+	}
+
+	/**
+	 * Set Language
+	 *
+	 * @return mixed
+	 */
+	protected function setLanguage() {
+
+		// Return output if there is no language set
+		if ( !isset( $this->config->wordpress_language_key ) ) { return false; }
+
+		$wp_cli = $this->wp_cli;
+		return $wp_cli . "option add WPLANG \"{$this->config->wordpress_language_key}\"";
 	}
 }
