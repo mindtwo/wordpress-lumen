@@ -21,8 +21,7 @@
       "hampel/json":"2.*",
       "twig/twig":"1.*",
       "bugsnag/bugsnag":"~2.0",
-      "johnpbloch/wordpress":"~4.6",
-      "wpackagist-plugin/timber-library":"*",
+      "johnpbloch/wordpress":"~4.5",
       "wpackagist-plugin/w3-total-cache":"*",
       "wpackagist-plugin/google-sitemap-generator":"*",
       "wpackagist-plugin/force-regenerate-thumbnails":"*",
@@ -30,7 +29,8 @@
       "mindtwo/advanced-custom-fields-pro": "*",
       "mindtwo/wp-migrate-db-pro": "*",
       "mindtwo/wp-migrate-db-pro-cli": "*",
-      "mindtwo/advanced-post-types-order": "*"
+      "mindtwo/advanced-post-types-order": "*",
+      "timber/timber": "^1.1"
    },
    "require-dev": {
       "laravel/envoy": "~1.0",

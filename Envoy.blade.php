@@ -23,7 +23,6 @@
     curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On;
 @endtask
 
-
 @macro('deploy')
     git
     create_release
