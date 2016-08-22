@@ -2,23 +2,26 @@
 
 namespace WpTheme\Modules\Ajax\Requests;
 
-class BlogPosts {
+class BlogPosts
+{
 
     /**
      * GlobalAjaxActions constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
 
         // Register ajax handlers
-        add_action( 'wp_ajax_blog_posts', array( $this, 'ajax_load_blog_posts' ) );
-        add_action( 'wp_ajax_nopriv_blog_posts', array( $this, 'ajax_load_blog_posts' ) );
+        add_action('wp_ajax_blog_posts', array($this, 'ajax_load_blog_posts'));
+        add_action('wp_ajax_nopriv_blog_posts', array($this, 'ajax_load_blog_posts'));
 
     }
 
     /**
      * Ajax action to load blog posts action
      */
-    public function ajax_load_blog_posts() {
+    public function ajax_load_blog_posts()
+    {
         // get the parameters
         $page = $_REQUEST['paged'];
         $order = $_REQUEST['order'];
@@ -26,9 +29,9 @@ class BlogPosts {
         $count = isset($_REQUEST['count']) ? $_REQUEST['count'] : get_option('posts_per_page');
         $cat = $_REQUEST['cat'];
 
-        $args = $this->get_blog_posts_wpquery_args( $page, $order, $orderby, $count, $cat );
+        $args = $this->get_blog_posts_wpquery_args($page, $order, $orderby, $count, $cat);
 
-        $query = new WP_Query( $args );
+        $query = new WP_Query($args);
 
         $response = array(
             'result_count' => 0,
@@ -38,7 +41,7 @@ class BlogPosts {
 
         ob_start();
 
-        while ( $query->have_posts() ) {
+        while ($query->have_posts()) {
 
             $query->the_post();
 
@@ -46,14 +49,14 @@ class BlogPosts {
 
         }
 
-        $response['result_count'] = (int) $query->found_posts;
+        $response['result_count'] = (int)$query->found_posts;
         $response['result_list'] = ob_get_contents();
-        $response['hasmore'] = ( $query->max_num_pages == $page ) ? false : true;
+        $response['hasmore'] = ($query->max_num_pages == $page) ? false : true;
 
         ob_end_clean();
 
-        header( "Content-Type: application/json" );
-        echo json_encode( $response );
+        header("Content-Type: application/json");
+        echo json_encode($response);
         exit;
     }
 
@@ -68,7 +71,8 @@ class BlogPosts {
      *
      * @return array
      */
-    private function get_blog_posts_wpquery_args( $page, $order, $orderby, $count, $cat ) {
+    private function get_blog_posts_wpquery_args($page, $order, $orderby, $count, $cat)
+    {
 
         // The Query
         $args = array(
@@ -82,7 +86,7 @@ class BlogPosts {
         );
 
         // Limit by categories
-        if ( !is_null($cat) ) {
+        if (!is_null($cat)) {
             $args['category_name'] = $cat;
         }
 

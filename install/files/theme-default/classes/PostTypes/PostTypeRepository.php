@@ -8,7 +8,8 @@ use Timber;
 /**
  * Class PostType
  */
-abstract class PostTypeRepository {
+abstract class PostTypeRepository
+{
 
     /**
      * Declared in implementation
@@ -20,7 +21,8 @@ abstract class PostTypeRepository {
     /**
      * Initialize
      */
-    function __construct() {
+    function __construct()
+    {
     }
 
     /**
@@ -28,19 +30,20 @@ abstract class PostTypeRepository {
      *
      * @return array
      */
-    public function latest( $args = null ) {
-        $args = array_merge( [
+    public function latest($args = null)
+    {
+        $args = array_merge([
             'posts_per_page' => 6,
-            'post_status'    => 'publish',
-            'post_type'      => $this->post_type,
-            'paged'          => ( get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1 )
-        ], is_array( $args ) ? $args : [ ] );
+            'post_status' => 'publish',
+            'post_type' => $this->post_type,
+            'paged' => (get_query_var('paged') ? get_query_var('paged') : 1)
+        ], is_array($args) ? $args : []);
 
-        $posts      = Timber::get_posts( $args );
+        $posts = Timber::get_posts($args);
         query_posts($args);
         $pagination = Timber::get_pagination();
 
-        return compact( 'posts', 'pagination' );
+        return compact('posts', 'pagination');
     }
 
     /**
@@ -48,7 +51,8 @@ abstract class PostTypeRepository {
      *
      * @return Collection
      */
-    public function get_metas( $post_id ) {
-        return new Collection( get_fields( $post_id ) );
+    public function get_metas($post_id)
+    {
+        return new Collection(get_fields($post_id));
     }
 }

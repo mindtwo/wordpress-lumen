@@ -2,10 +2,10 @@
 
 namespace WpTheme\PostTypes;
 
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\ServiceProvider;
 
-class PostTypeRepositoryRegister extends ServiceProvider {
+class PostTypeRepositoryRegister extends ServiceProvider
+{
 
     /**
      * @var array
@@ -22,8 +22,9 @@ class PostTypeRepositoryRegister extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
-        foreach($this->custom_post_types as $type) {
+    public function boot()
+    {
+        foreach ($this->custom_post_types as $type) {
             $this->app->make($type);
         }
     }
@@ -33,8 +34,9 @@ class PostTypeRepositoryRegister extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        foreach($this->custom_post_types as $type) {
+    public function register()
+    {
+        foreach ($this->custom_post_types as $type) {
             $this->app->singleton($type, $type);
         }
     }

@@ -2,20 +2,21 @@
 
 namespace WpTheme\Shortcodes\Module;
 
-use Symfony\Component\HttpFoundation\Request;
 use WpTheme\Shortcodes\ShortcodeModule;
 
-class ShortcodeGlobalJavascriptVars extends ShortcodeModule {
+class ShortcodeGlobalJavascriptVars extends ShortcodeModule
+{
 
     /**
      * @param $atts
      *
      * @return mixed
      */
-    public function handle( $atts, $content = null ) {
+    public function handle($atts, $content = null)
+    {
         return sprintf('<script type="text/javascript">var GlobalVars=%s;</script>', collect([
             // URL to wp-admin/admin-ajax.php to process the request
-            'ajax_url' => admin_url( 'admin-ajax.php' ),
+            'ajax_url' => admin_url('admin-ajax.php'),
 
             // Set api keys
             'google_maps_public_api_key' => config('services.google.maps.public_api_key'),

@@ -5,7 +5,8 @@ namespace WpTheme\Widgets;
 
 use Illuminate\Support\ServiceProvider;
 
-class WidgetsRegister extends ServiceProvider {
+class WidgetsRegister extends ServiceProvider
+{
 
     /**
      * @var array
@@ -22,21 +23,23 @@ class WidgetsRegister extends ServiceProvider {
     /**
      * Register widgets
      */
-    public function boot() {
-        add_action( 'widgets_init', array( $this, 'load_registred_widgets' ) );
+    public function boot()
+    {
+        add_action('widgets_init', array($this, 'load_registred_widgets'));
 
         // Allow shortcodes in text widget
-        add_filter( 'widget_text', 'shortcode_unautop' );
-        add_filter( 'widget_text', 'do_shortcode' );
+        add_filter('widget_text', 'shortcode_unautop');
+        add_filter('widget_text', 'do_shortcode');
 
     }
 
     /**
      * Register widgets
      */
-    public function register() {
+    public function register()
+    {
         // Register shortcode singeltons
-        foreach($this->widgets as $widget) {
+        foreach ($this->widgets as $widget) {
             $this->app->singleton($widget, $widget);
         }
     }
@@ -44,9 +47,10 @@ class WidgetsRegister extends ServiceProvider {
     /**
      *
      */
-    public function load_registred_widgets() {
+    public function load_registred_widgets()
+    {
         global $wp_widget_factory;
-        foreach($this->widgets as $widget) {
+        foreach ($this->widgets as $widget) {
             $wp_widget_factory->widgets[$widget] = $this->app->make($widget);
         }
     }

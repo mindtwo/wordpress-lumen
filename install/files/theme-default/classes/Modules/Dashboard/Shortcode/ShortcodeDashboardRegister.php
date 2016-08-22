@@ -1,19 +1,22 @@
 <?php
 namespace WpTheme\Modules\Dashboard\Shortcode;
 
-class ShortcodeDashboardRegister {
+class ShortcodeDashboardRegister
+{
     /**
      * Register modules
      */
-    public function __construct() {
-        add_action( 'wp_dashboard_setup', [$this, 'add_dashboard_widget'] );
+    public function __construct()
+    {
+        add_action('wp_dashboard_setup', [$this, 'add_dashboard_widget']);
     }
 
     /**
      * Custom dahsboard widget
      * TODO: Translate stings and refactor
      */
-    public function dashboard_widget_function() {
+    public function dashboard_widget_function()
+    {
         echo '<p>Die folgenden Shortcodes <em>[foo]</em> können direkt per copy & paste in den Editor geschrieben werden. Sie sorgen für die Ausgabe besonderer Inhaltselemente.</p>';
         echo '<h4 style="border-bottom:1px solid #eeeeee;">Standard Shortcodes</h4>';
         echo '<table style="width:100%;margin-bottom:20px">';
@@ -30,7 +33,8 @@ class ShortcodeDashboardRegister {
         echo '</table>';
     }
 
-    public function add_dashboard_widget() {
-        wp_add_dashboard_widget( 'add_dashboard_widget', 'Verwendbare Shortcodes', [$this, 'dashboard_widget_function'] );
+    public function add_dashboard_widget()
+    {
+        wp_add_dashboard_widget('add_dashboard_widget', 'Verwendbare Shortcodes', [$this, 'dashboard_widget_function']);
     }
 }

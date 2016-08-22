@@ -7,7 +7,8 @@ use ReflectionClass;
 use Timber;
 use WP_Widget;
 
-abstract class WidgetModule extends WP_Widget {
+abstract class WidgetModule extends WP_Widget
+{
 
     protected $app;
     protected $widget_name;
@@ -20,7 +21,8 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @param Application $app
      */
-    public function __construct(Application $app) {
+    public function __construct(Application $app)
+    {
         $this->app = $app;
         $this->register();
 
@@ -47,11 +49,12 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return array
      */
-    public function form( $instance ) {
-        if(!empty($this->fields)) {
-            foreach($this->fields as $field) {
+    public function form($instance)
+    {
+        if (!empty($this->fields)) {
+            foreach ($this->fields as $field) {
                 $func_name = 'render_' . $field['type'];
-                if(is_callable(array($this, $func_name))){
+                if (is_callable(array($this, $func_name))) {
                     $this->$func_name($instance, $field);
                 }
             }
@@ -68,11 +71,12 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return array
      */
-    public function update( $new_instance, $old_instance ) {
+    public function update($new_instance, $old_instance)
+    {
         $instance = $old_instance;
-        if(!empty($this->fields)) {
-            foreach($this->fields as $field) {
-                $instance[$field['name']] = ( ! empty( $new_instance[$field['name']] ) ) ? $new_instance[$field['name']] : '';
+        if (!empty($this->fields)) {
+            foreach ($this->fields as $field) {
+                $instance[$field['name']] = (!empty($new_instance[$field['name']])) ? $new_instance[$field['name']] : '';
             }
         }
         return $instance;
@@ -85,12 +89,13 @@ abstract class WidgetModule extends WP_Widget {
      * @param $instance
      * @param $field
      */
-    protected function render_input_text($instance, $field) {
+    protected function render_input_text($instance, $field)
+    {
         $field = array_merge($field, [
-            'id' => $this->get_field_id( $field['name'] ),
-            'name' => $this->get_field_name( $field['name'] ),
-            'title' => array_key_exists('title', $field) ? esc_attr( $field['title']) : ucwords(strtolower($field['name'])),
-            'value' => array_key_exists($field['name'], $instance) ? esc_attr( $instance[$field['name']]) : '' ,
+            'id' => $this->get_field_id($field['name']),
+            'name' => $this->get_field_name($field['name']),
+            'title' => array_key_exists('title', $field) ? esc_attr($field['title']) : ucwords(strtolower($field['name'])),
+            'value' => array_key_exists($field['name'], $instance) ? esc_attr($instance[$field['name']]) : '',
         ]);
 
         echo $this->render_view('backend/partials/widget-form-input-text.php.twig', compact('field'));
@@ -102,14 +107,15 @@ abstract class WidgetModule extends WP_Widget {
      * @param $instance
      * @param $field
      */
-    protected function render_input_number($instance, $field) {
+    protected function render_input_number($instance, $field)
+    {
         $field = array_merge($field, [
-            'id' => $this->get_field_id( $field['name'] ),
-            'name' => $this->get_field_name( $field['name'] ),
+            'id' => $this->get_field_id($field['name']),
+            'name' => $this->get_field_name($field['name']),
             'min' => 0,
             'max' => 10,
-            'title' => array_key_exists('title', $field) ? esc_attr( $field['title']) : ucwords(strtolower($field['name'])),
-            'value' => array_key_exists($field['name'], $instance) ? esc_attr( $instance[$field['name']]) : '' ,
+            'title' => array_key_exists('title', $field) ? esc_attr($field['title']) : ucwords(strtolower($field['name'])),
+            'value' => array_key_exists($field['name'], $instance) ? esc_attr($instance[$field['name']]) : '',
         ]);
 
         echo $this->render_view('backend/partials/widget-form-input-number.php.twig', compact('field'));
@@ -122,12 +128,13 @@ abstract class WidgetModule extends WP_Widget {
      * @param $instance
      * @param $field
      */
-    protected function render_textarea($instance, $field) {
+    protected function render_textarea($instance, $field)
+    {
         $field = array_merge($field, [
-            'id' => $this->get_field_id( $field['name'] ),
-            'name' => $this->get_field_name( $field['name'] ),
-            'title' => array_key_exists('title', $field) ? esc_attr( $field['title']) : ucwords(strtolower($field['name'])),
-            'value' => array_key_exists($field['name'], $instance) ? esc_attr( $instance[$field['name']]) : '' ,
+            'id' => $this->get_field_id($field['name']),
+            'name' => $this->get_field_name($field['name']),
+            'title' => array_key_exists('title', $field) ? esc_attr($field['title']) : ucwords(strtolower($field['name'])),
+            'value' => array_key_exists($field['name'], $instance) ? esc_attr($instance[$field['name']]) : '',
         ]);
 
         echo $this->render_view('backend/partials/widget-form-textarea.php.twig', compact('field'));
@@ -140,12 +147,13 @@ abstract class WidgetModule extends WP_Widget {
      * @param       $name
      * @param array $args
      */
-    protected function add_field($name, $args=[]) {
+    protected function add_field($name, $args = [])
+    {
         $default_title = ucwords(strtolower(str_replace('_', ' ', $name)));
         $args = array_merge([
             'type' => 'input_text',
             'name' => strtolower(str_replace(' ', '_', $name)),
-            'title' => array_key_exists('title', $args) ? esc_attr( $args['title']) : $default_title,
+            'title' => array_key_exists('title', $args) ? esc_attr($args['title']) : $default_title,
         ], $args);
         array_push($this->fields, $args);
     }
@@ -156,7 +164,8 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return mixed
      */
-    protected function get_acf_options() {
+    protected function get_acf_options()
+    {
         return $this->app->make('AddonACF')->get_option_fields();
     }
 
@@ -169,10 +178,11 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return mixed
      */
-    protected function render_view( $view, $data = [] ) {
-        $path = TEMPLATE_DIR.'/'.$view;
+    protected function render_view($view, $data = [])
+    {
+        $path = TEMPLATE_DIR . '/' . $view;
         $data['options'] = $this->get_acf_options();
-        return Timber::compile( $path, (!is_array($data) ? [$data] : $data ) );
+        return Timber::compile($path, (!is_array($data) ? [$data] : $data));
     }
 
     /**
@@ -183,11 +193,11 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return mixed
      */
-    protected function compile_string( $string, $data = [] ) {
+    protected function compile_string($string, $data = [])
+    {
         $data['options'] = $this->get_acf_options();
-        return Timber::compile_string( $string, (!is_array($data) ? [$data] : $data ) );
+        return Timber::compile_string($string, (!is_array($data) ? [$data] : $data));
     }
-
 
 
     /**
@@ -195,7 +205,8 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return string
      */
-    protected function get_widget_name_by_classname() {
+    protected function get_widget_name_by_classname()
+    {
 
         // Get classname and replace "Widget"
         $reflect = new ReflectionClass($this);
@@ -213,7 +224,8 @@ abstract class WidgetModule extends WP_Widget {
      *
      * @return string
      */
-    protected function camel_case_to_undercore_case($input) {
+    protected function camel_case_to_undercore_case($input)
+    {
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
         $ret = $matches[0];
         foreach ($ret as &$match) {

@@ -2,28 +2,28 @@
 
 namespace WpTheme\Modules\Timber;
 
-use \Timber\Timber as TimberLib;
+use Timber\Timber as TimberLib;
 
 
-class RegisterTimber {
+class RegisterTimber
+{
 
     /**
      * Initialize
      */
-    public function __construct() {
+    public function __construct()
+    {
         if (class_exists('\Timber\Timber')) {
             TimberLib::$locations = TEMPLATE_DIR;
-            TimberLib::$dirname   = TEMPLATE_DIR;
+            TimberLib::$dirname = TEMPLATE_DIR;
             // Timber::$cache     = true;
         }
-        add_filter( 'timber_context', [$this, 'timber_context'] );
+        add_filter('timber_context', [$this, 'timber_context']);
     }
 
-    function timber_context( $context ) {
+    function timber_context($context)
+    {
         $context['options'] = app('AddonACF')->get_option_fields();
-        $context['selected_location'] = app('AddonACF')->get_selected_location();
         return $context;
     }
-
 }
-

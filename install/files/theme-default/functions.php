@@ -3,7 +3,7 @@
 /**
  * Define constants
  */
-define('THEME_APPLICATION_DIR', realpath( ABSPATH . '/../../') . '/');
+define('THEME_APPLICATION_DIR', realpath(ABSPATH . '/../../') . '/');
 define('THEME_DIR', realpath(get_template_directory()) . '/');
 define('THEME_FUNCTIONS', THEME_DIR . 'functions/');
 define('THEME_CONFIG', THEME_DIR . 'config/');
@@ -34,7 +34,7 @@ try {
     /**
      * Load lumen
      */
-    $app = require THEME_APPLICATION_DIR.'/lumen/bootstrap/app.php';
+    $app = require THEME_APPLICATION_DIR . '/lumen/bootstrap/app.php';
 
     /**
      * Register service providers
@@ -52,5 +52,6 @@ try {
     $request = \Illuminate\Http\Request::capture();
     $app->run($request);
 
-} catch (Exception $e) {}
+} catch (Exception $e) {
+}
 

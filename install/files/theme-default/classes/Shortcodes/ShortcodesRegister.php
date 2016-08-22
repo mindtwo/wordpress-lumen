@@ -4,7 +4,8 @@ namespace WpTheme\Shortcodes;
 
 use Illuminate\Support\ServiceProvider;
 
-class ShortcodesRegister extends ServiceProvider {
+class ShortcodesRegister extends ServiceProvider
+{
 
     /**
      * @var array
@@ -33,19 +34,20 @@ class ShortcodesRegister extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         // Move wpautop filter to AFTER shortcode is processed
-        remove_filter( 'the_content', 'wpautop' );
-        add_filter( 'the_content', 'wpautop', 99 );
-        add_filter( 'the_content', 'shortcode_unautop', 100 );
+        remove_filter('the_content', 'wpautop');
+        add_filter('the_content', 'wpautop', 99);
+        add_filter('the_content', 'shortcode_unautop', 100);
 
         // The same as above, but for acf
-        remove_filter( 'acf_the_content', 'wpautop' );
-        add_filter( 'acf_the_content', 'wpautop', 99 );
-        add_filter( 'acf_the_content', 'shortcode_unautop', 100 );
+        remove_filter('acf_the_content', 'wpautop');
+        add_filter('acf_the_content', 'wpautop', 99);
+        add_filter('acf_the_content', 'shortcode_unautop', 100);
 
         // Register shortcodes
-        foreach($this->shortcodes as $shortcode) {
+        foreach ($this->shortcodes as $shortcode) {
             $this->app->make($shortcode);
         }
 
@@ -60,8 +62,9 @@ class ShortcodesRegister extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        foreach($this->shortcodes as $shortcode) {
+    public function register()
+    {
+        foreach ($this->shortcodes as $shortcode) {
             $this->app->singleton($shortcode, $shortcode);
         }
     }

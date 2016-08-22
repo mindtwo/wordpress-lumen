@@ -7,7 +7,8 @@ use ReflectionClass;
 /**
  * Class PostType
  */
-abstract class PostType {
+abstract class PostType
+{
 
     /**
      * Declared in implementation
@@ -19,9 +20,10 @@ abstract class PostType {
     /**
      * Initialize
      */
-    function __construct() {
+    function __construct()
+    {
         // Get classname as default post type name
-        if(empty($this->post_type)) {
+        if (empty($this->post_type)) {
             $this->post_type = $this->set_default_post_type_name();
         }
 
@@ -36,9 +38,10 @@ abstract class PostType {
     /**
      * Register action
      */
-    protected function set_default_post_type_name() {
-        $reflect = new ReflectionClass( $this );
-        return $this->camel_case_to_undercore_case( $reflect->getShortName() );
+    protected function set_default_post_type_name()
+    {
+        $reflect = new ReflectionClass($this);
+        return $this->camel_case_to_undercore_case($reflect->getShortName());
     }
 
     /**
@@ -48,7 +51,8 @@ abstract class PostType {
      *
      * @return string
      */
-    protected function camel_case_to_undercore_case($input) {
+    protected function camel_case_to_undercore_case($input)
+    {
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
         $ret = $matches[0];
         foreach ($ret as &$match) {

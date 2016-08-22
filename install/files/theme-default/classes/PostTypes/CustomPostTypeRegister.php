@@ -4,7 +4,8 @@ namespace WpTheme\PostTypes;
 
 use Illuminate\Support\ServiceProvider;
 
-class CustomPostTypeRegister extends ServiceProvider {
+class CustomPostTypeRegister extends ServiceProvider
+{
 
     /**
      * @var array
@@ -24,8 +25,9 @@ class CustomPostTypeRegister extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
-        foreach($this->custom_post_types as $type) {
+    public function boot()
+    {
+        foreach ($this->custom_post_types as $type) {
             $this->app->make($type);
         }
     }
@@ -35,8 +37,9 @@ class CustomPostTypeRegister extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        foreach($this->custom_post_types as $type) {
+    public function register()
+    {
+        foreach ($this->custom_post_types as $type) {
             $this->app->singleton($type, $type);
         }
     }

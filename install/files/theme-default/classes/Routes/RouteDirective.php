@@ -2,12 +2,14 @@
 
 namespace WpTheme\Routes;
 
-abstract class RouteDirective {
+abstract class RouteDirective
+{
 
     /**
      * Route Directive constructor.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->register();
     }
 
@@ -19,14 +21,16 @@ abstract class RouteDirective {
     /**
      * Default register
      */
-    public function register() {
-        add_action( 'init', array( $this , 'handle' ) );
+    public function register()
+    {
+        add_action('init', array($this, 'handle'));
     }
 
     /**
      * @return mixed
      */
-    protected function flush_rules() {
+    protected function flush_rules()
+    {
         global $wp_rewrite;
         return $wp_rewrite->flush_rules();
     }

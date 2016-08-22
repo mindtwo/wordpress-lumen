@@ -4,13 +4,15 @@ namespace WpTheme\Shortcodes\Module;
 
 use WpTheme\Shortcodes\ShortcodeModule;
 
-class ShortcodeFontAwesome extends ShortcodeModule {
+class ShortcodeFontAwesome extends ShortcodeModule
+{
 
     /**
      * Register specific shortcode name
      */
-    public function register() {
-        add_shortcode( 'fa', array( $this , 'handle' ) );
+    public function register()
+    {
+        add_shortcode('fa', array($this, 'handle'));
     }
 
     /**
@@ -18,12 +20,13 @@ class ShortcodeFontAwesome extends ShortcodeModule {
      *
      * @return mixed
      */
-    public function handle( $atts, $content = null ) {
-        extract( shortcode_atts( array(
+    public function handle($atts, $content = null)
+    {
+        extract(shortcode_atts(array(
             'icon' => '',
-        ), $atts ) );
+        ), $atts));
 
-        return '<i class="fa '.$icon.'"></i>';
+        return '<i class="fa ' . $icon . '"></i>';
     }
 
 }

@@ -8,7 +8,8 @@ use Jenssegers\Agent\Agent;
 use WpTheme\Modules\Addon\AddonACF;
 use WpTheme\Modules\Addon\WordPressTotalCache;
 
-class ModulesRegister extends ServiceProvider{
+class ModulesRegister extends ServiceProvider
+{
 
     protected $storage;
 
@@ -32,8 +33,9 @@ class ModulesRegister extends ServiceProvider{
      *
      * @return void
      */
-    public function boot() {
-        foreach($this->types as $type) {
+    public function boot()
+    {
+        foreach ($this->types as $type) {
             $this->app->make($type);
         }
     }
@@ -43,7 +45,8 @@ class ModulesRegister extends ServiceProvider{
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->app->singleton('AddonACF', function ($app) {
             return new AddonACF(
                 new CacheManager($this->app)
@@ -58,7 +61,7 @@ class ModulesRegister extends ServiceProvider{
 
         $this->app->singleton('Agent', Agent::class);
 
-        foreach($this->types as $type) {
+        foreach ($this->types as $type) {
             $this->app->singleton($type, $type);
         }
     }
