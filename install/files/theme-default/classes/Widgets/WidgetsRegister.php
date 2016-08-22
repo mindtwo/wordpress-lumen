@@ -14,14 +14,15 @@ class WidgetsRegister extends ServiceProvider {
         // \WpTheme\Widgets\Widget\WidgetCustomSearch::class,
         \WpTheme\Widgets\Widget\WidgetContactBox::class,
         \WpTheme\Widgets\Widget\WidgetSubnav::class,
+        \WpTheme\Widgets\Widget\WidgetBox::class,
         \WpTheme\Widgets\Widget\WidgetLatestNews::class,
+        \WpTheme\Widgets\Widget\WidgetBanner::class,
     ];
-
 
     /**
      * Register widgets
      */
-    public function register() {
+    public function boot() {
         add_action( 'widgets_init', array( $this, 'load_registred_widgets' ) );
 
         // Allow shortcodes in text widget
@@ -31,12 +32,22 @@ class WidgetsRegister extends ServiceProvider {
     }
 
     /**
+     * Register widgets
+     */
+    public function register() {
+        // Register shortcode singeltons
+        foreach($this->widgets as $widget) {
+            $this->app->singleton($widget, $widget);
+        }
+    }
+
+    /**
      *
      */
     public function load_registred_widgets() {
         global $wp_widget_factory;
         foreach($this->widgets as $widget) {
-            $wp_widget_factory->widgets[$widget] = new $widget($this->app);
+            $wp_widget_factory->widgets[$widget] = $this->app->make($widget);
         }
     }
 

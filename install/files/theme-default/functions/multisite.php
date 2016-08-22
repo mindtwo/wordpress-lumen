@@ -39,15 +39,9 @@ function theme_sites() {
 	// Set sitenames
 	$sites = get_sites_config();
 
-	foreach ( $sites as $key => $site ) {
-		$result[ $key ] = array(
-			'home' => $site['BASE_URL'],
-			'name' => $site['NAME'],
-		);
-	}
-
-	return $result;
+	return $sites;
 }
+
 
 
 /**

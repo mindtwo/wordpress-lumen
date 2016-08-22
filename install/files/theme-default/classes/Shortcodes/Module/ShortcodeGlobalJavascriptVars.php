@@ -13,7 +13,7 @@ class ShortcodeGlobalJavascriptVars extends ShortcodeModule {
      * @return mixed
      */
     public function handle( $atts, $content = null ) {
-        $result = [
+        return sprintf('<script type="text/javascript">var GlobalVars=%s;</script>', collect([
             // URL to wp-admin/admin-ajax.php to process the request
             'ajax_url' => admin_url( 'admin-ajax.php' ),
 
@@ -22,7 +22,7 @@ class ShortcodeGlobalJavascriptVars extends ShortcodeModule {
             'google_recaptcha_public_api_key' => config('services.google.recaptcha.public_api_key'),
 
             // Submit server vars
-            'http_host' => (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ''),
+            'http_host' => collect($_SERVER)->get('HTTP_HOST'),
 
             // Submit responsive vars
             'svg_ready' => svg_ready(),
@@ -32,8 +32,6 @@ class ShortcodeGlobalJavascriptVars extends ShortcodeModule {
 
             // Site specific
             'blog_id' => get_current_blog_id(),
-        ];
-
-        return '<script type="text/javascript">var GlobalVars=' . json_encode($result) . ';</script>';
+        ])->toJson());
     }
 }

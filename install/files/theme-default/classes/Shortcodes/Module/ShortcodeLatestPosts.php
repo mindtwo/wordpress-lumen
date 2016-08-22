@@ -15,11 +15,12 @@ class ShortcodeLatestPosts extends ShortcodeModule {
     public function handle( $atts, $content = null ) {
         extract( shortcode_atts( array(
             'category' => false,
+            'count' => 6,
             'headline' => trans('cpt-testimonial.slider.headline'),
         ), $atts ) );
 
-        $posts = (new Post())->latest(['posts_per_page' => 6, 'tax_query' => ['category'=>$category]])['posts'];
-        return $this->render_view( 'partials/shortcode-latest-posts.php.twig', compact( 'headline', 'posts' ) );
+        $posts = (new Post())->latest(['posts_per_page' => $count, 'tax_query' => ['category'=>$category]])['posts'];
+        return $this->render_view( 'partials/shortcode-latest-posts.php.twig', compact( 'headline', 'posts') );
     }
 
 }

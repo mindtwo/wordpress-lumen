@@ -1,5 +1,7 @@
 <?php
 
+
+
 function get_theme_assets_path() {
 	return THEME_ASSETS_LIVE;
 }
@@ -20,7 +22,7 @@ function theme_images_path( $callback = false ) {
 }
 
 function svg_ready() {
-	global $detect;
+	$detect = app('Agent');
 
 	if ( $detect->browser() == 'IE' && $detect->version( $detect->browser() ) < 9 ) {
 		return false;
@@ -38,7 +40,7 @@ function svg_ready_prefix( $default = '.jpg' ) {
 }
 
 function is_mobile() {
-	global $detect;
+	$detect = app('Agent');
 	if ( $detect->isMobile() ) {
 		return true;
 	}
@@ -47,7 +49,7 @@ function is_mobile() {
 }
 
 function is_tablet() {
-	global $detect;
+	$detect = app('Agent');
 	if ( $detect->isTablet() ) {
 		return true;
 	}
@@ -72,7 +74,13 @@ function theme_comment() {
 	return $config->get('comment.default');
 }
 
-function primary_menu($name = 'menu-main') {
+function primary_menu() {
+	$location = get_selected_location();
+	if($location && array_key_exists('home_slug', $location)) {
+		$name = 'menu-'.$location['home_slug'];
+	} else {
+		$name = 'menu-main';
+	}
 	ob_start();
 	wp_nav_menu( array(
 		'theme_location' => $name,
@@ -81,9 +89,9 @@ function primary_menu($name = 'menu-main') {
 		'container_id' => '',
 		'container_class' => '',
 		'menu_class' => 'nav nav-pills',
-		'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-		'fallback_cb' => '\WpTheme\Modules\Navigation\CustomThemeWalker()::fallback',
-		'walker'=> new \WpTheme\Modules\Navigation\CustomThemeWalker()
+		'items_wrap' => '<ul id="primary_menu" class="%1$s %2$s">%3$s</ul>',
+		'fallback_cb' => '\WpTheme\Modules\Navigation\WalkerCustomTheme()::fallback',
+		'walker'=> new \WpTheme\Modules\Navigation\WalkerCustomTheme()
 	));
 	$content = ob_get_contents(); ob_end_clean();
 	return $content;
@@ -99,8 +107,8 @@ function footer_menu($name='menu-footer') {
 			'depth'          => 1,
 			'link_before'    => '',
 			'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-			'fallback_cb'    => '\WpTheme\Modules\Navigation\CustomThemeWalker::fallback',
-			'walker'         => new \WpTheme\Modules\Navigation\CustomThemeWalker()
+			'fallback_cb'    => '\WpTheme\Modules\Navigation\WalkerCustomTheme::fallback',
+			'walker'         => new \WpTheme\Modules\Navigation\WalkerCustomTheme()
 		) );
 	}
 	$content = ob_get_contents(); ob_end_clean();
@@ -122,4 +130,13 @@ function get_home_pagedata() {
 		'title'   => $page->post_title,
 		'content' => apply_filters( 'the_content', $page->post_content ),
 	);
+}
+
+function throw_404() {
+	global $wp_query;
+	$wp_query->set_404();
+	status_header(404);
+	nocache_headers();
+	include THEME_DIR . '/404.php';
+	die();
 }

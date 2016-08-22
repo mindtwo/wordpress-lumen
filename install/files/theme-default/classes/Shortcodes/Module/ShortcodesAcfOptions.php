@@ -37,8 +37,7 @@ class ShortcodesAcfOptions extends ShortcodeModule {
             'get_header_tracking_codes'       => 'get_header_tracking_codes',
             'get_email'                       => 'shortcode_email',
             'get_logo_alt'                    => 'get_logo_alt',
-            'get_logo_image_svg_filename'     => 'get_logo_image_svg_filename',
-            'get_email'                       => 'shortcode_email',
+            'get_logo_image_svg_filename'     => 'get_logo_image_svg_filename'
         );
 
         // Loop given shortcodes and add them to WordPress
@@ -57,7 +56,7 @@ class ShortcodesAcfOptions extends ShortcodeModule {
      */
     public function __call( $pram, $value ) {
 
-        $acf = $this->app->make('ACF');
+        $acf = $this->app->make('AddonACF');
 
         return $acf->get_option_field(str_replace( 'get_', '', $pram ));
 

@@ -13,6 +13,7 @@ class FrontendRegister {
         add_action( 'init', [$this, 'add_post_formats'] );
         add_action( 'init', [$this, 'add_theme_support'] );
         add_action( 'wp_enqueue_scripts', [$this, 'cleanup_scripts'] );
+        add_filter( 'use_default_gallery_style', '__return_false' );
 
     }
 
@@ -93,5 +94,4 @@ class FrontendRegister {
             add_theme_support( 'automatic-feed-links' );
         }
     }
-
 }

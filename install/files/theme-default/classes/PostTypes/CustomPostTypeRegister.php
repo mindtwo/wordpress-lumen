@@ -20,14 +20,24 @@ class CustomPostTypeRegister extends ServiceProvider {
     ];
 
     /**
+     * Boot the service provider.
+     *
+     * @return void
+     */
+    public function boot() {
+        foreach($this->custom_post_types as $type) {
+            $this->app->make($type);
+        }
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register() {
         foreach($this->custom_post_types as $type) {
-            $class = new $type;
-            (method_exists($class, 'register')) ? $class->register() : false;
+            $this->app->singleton($type, $type);
         }
     }
 }

@@ -18,10 +18,6 @@ class BackendConversionHtml {
      * Ajax action to load conversion html
      */
     public function ajax_load_conversion_html() {
-        if(! isset($_REQUEST) || ! array_key_exists('nonce', $_REQUEST) || ! wp_verify_nonce( $_REQUEST['nonce'], 'conversion_html' )) {
-            die( 'Security check failed!' );
-        }
-
         $response = '';
 
         if(isset($_REQUEST) && array_key_exists('conversion_id', $_REQUEST)) {

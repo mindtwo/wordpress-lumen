@@ -7,12 +7,14 @@ use WpTheme\PostTypes\CustomPostType;
 
 class Conversion extends CustomPostType {
 
-	public function __construct() {
+	public function register() {
+		parent::register();
+		$this->name = trans('cpt-conversion.labels.name');
+		$this->singular_name = 'cpt-conversion.labels.singular-name';
 
-		parent::__construct();
-		$this->name = 'Conversions';
-		$this->singular_name = 'Conversion';
-
+		if( function_exists( 'add_action' ) ) {
+			add_action('acf/render_field', [$this, 'action_function_name'], 10, 1);
+		}
 	}
 
 	/**
@@ -49,5 +51,20 @@ class Conversion extends CustomPostType {
 				'hierarchical' => false,
 			)
 		);
+	}
+
+	public function action_function_name($field) {
+		if(array_key_exists('key', $field) && $field['key'] == 'field_56d877f078c73') {
+			echo '<style type="text/css">#acf-field_56d877f078c73 { display:none; }</style>';
+			echo '<iframe style="border:1px solid #DDD; width: 100%; height: 500px;" src="' . $this->get_admin_url() . '?action=conversion_html&conversion_id=562"></iframe>';
+		}
+	}
+
+	protected function get_admin_url() {
+		if(function_exists( 'admin_url' )) {
+			return admin_url( 'admin-ajax.php' );
+		}
+
+		return '/wp-admin/admin-ajax.php';
 	}
 }

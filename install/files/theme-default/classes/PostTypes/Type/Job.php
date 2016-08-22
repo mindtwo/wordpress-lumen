@@ -6,16 +6,10 @@ use WpTheme\PostTypes\CustomPostType;
 
 class Job extends CustomPostType {
 
-	public function __construct() {
-
-		parent::__construct();
+	public function register() {
+		parent::register();
 		$this->name = 'Jobs';
 		$this->singular_name = 'Job';
-		$this->post_type_cache_keys = [
-			'latest',
-			'list'
-		];
-
 	}
 
 	/**

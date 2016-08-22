@@ -2,6 +2,7 @@
 
 namespace WpTheme\Widgets;
 
+use Laravel\Lumen\Application;
 use ReflectionClass;
 use Timber;
 use WP_Widget;
@@ -16,10 +17,13 @@ abstract class WidgetModule extends WP_Widget {
 
     /**
      * Widget Module constructor.
+     *
+     * @param Application $app
      */
-    public function __construct($app) {
-
+    public function __construct(Application $app) {
         $this->app = $app;
+        $this->register();
+
         parent::__construct(
             $this->get_widget_name_by_classname(),
             $this->widget_name,
@@ -28,9 +32,13 @@ abstract class WidgetModule extends WP_Widget {
                 'description' => $this->widget_description,
             ]
         );
-
     }
 
+
+    /**
+     * @return mixed
+     */
+    abstract public function register();
 
     /**
      * Render backend widget form
@@ -64,7 +72,7 @@ abstract class WidgetModule extends WP_Widget {
         $instance = $old_instance;
         if(!empty($this->fields)) {
             foreach($this->fields as $field) {
-                $instance[$field['name']] = ( ! empty( $new_instance[$field['name']] ) ) ? strip_tags( $new_instance[$field['name']] ) : '';
+                $instance[$field['name']] = ( ! empty( $new_instance[$field['name']] ) ) ? $new_instance[$field['name']] : '';
             }
         }
         return $instance;
@@ -149,7 +157,7 @@ abstract class WidgetModule extends WP_Widget {
      * @return mixed
      */
     protected function get_acf_options() {
-        return $this->app->make('ACF')->get_option_fields();
+        return $this->app->make('AddonACF')->get_option_fields();
     }
 
 

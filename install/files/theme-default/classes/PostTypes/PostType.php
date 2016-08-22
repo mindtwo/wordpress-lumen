@@ -17,55 +17,28 @@ abstract class PostType {
     protected $post_type = '';
 
     /**
-     * Define post type cache keys to forget them on save
-     *
-     * @var string
-     */
-    protected $post_type_cache_keys = [];
-
-    /**
      * Initialize
      */
     function __construct() {
         // Get classname as default post type name
-        $reflect = new ReflectionClass($this);
-        $class_name = $reflect->getShortName();
-        $this->post_type = $this->camel_case_to_undercore_case($class_name);
-        $this->name = ucwords($this->post_type);
-        $this->singular_name = ucwords($this->post_type);
+        if(empty($this->post_type)) {
+            $this->post_type = $this->set_default_post_type_name();
+        }
 
-        // Register save method
-        add_action( 'save_post', [$this, 'save_post_type'], 10, 3 );
+        $this->register();
     }
 
     /**
-     * Save post metadata when a post is saved.
-     *
-     * @param int $post_id The post ID.
-     * @param post $post The post object.
-     * @param bool $update Whether this is an existing post being updated or not.
+     * Register action
      */
-    public function save_post_type($post_id, $post, $update) {
-        $this->clear_cache( $post );
-    }
+    abstract public function register();
 
     /**
-     * Clear post type caches
-     *
-     * @param $post
+     * Register action
      */
-    protected function clear_cache( $post ) {
-        if ( $this->post_type != $post->post_type ) {
-            return;
-        }
-
-        $cache = app( 'cache' );
-
-        if ( is_object( $cache ) && ! empty( $this->post_type_cache_keys ) && is_array($this->post_type_cache_keys) ) {
-            foreach ( $this->post_type_cache_keys as $key ) {
-                $cache->forget( $key );
-            }
-        }
+    protected function set_default_post_type_name() {
+        $reflect = new ReflectionClass( $this );
+        return $this->camel_case_to_undercore_case( $reflect->getShortName() );
     }
 
     /**

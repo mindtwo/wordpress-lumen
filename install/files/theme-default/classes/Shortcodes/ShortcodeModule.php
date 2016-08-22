@@ -2,6 +2,7 @@
 
 namespace WpTheme\Shortcodes;
 
+use Laravel\Lumen\Application;
 use ReflectionClass;
 use Timber;
 
@@ -12,8 +13,10 @@ abstract class ShortcodeModule {
 
     /**
      * Shortcode Module constructor.
+     *
+     * @param Application $app
      */
-    public function __construct($app) {
+    public function __construct(Application $app) {
 
         $this->app = $app;
         $this->register();
@@ -32,8 +35,16 @@ abstract class ShortcodeModule {
      * Make ACF Options available to shortcode templates
      */
     public function get_acf_options() {
-        return $this->app->make('ACF')->get_option_fields();
+        return $this->app->make('AddonACF')->get_option_fields();
     }
+
+    /**
+     * Make ACF Options available to shortcode templates
+     */
+    public function get_site_fields() {
+        return $this->app->make('AddonACF')->get_site_fields();
+    }
+
 
     /**
      * Render flexible content view
@@ -46,6 +57,8 @@ abstract class ShortcodeModule {
     protected function render_view( $view, $data = [] ) {
         $path = TEMPLATE_DIR.'/'.$view;
         $data['options'] = $this->get_acf_options();
+        $data['sites'] = $this->get_site_fields();
+        $data['blog_id'] = get_current_blog_id();
         return Timber::compile( $path, (!is_array($data) ? [$data] : $data ) );
     }
 
@@ -55,21 +68,23 @@ abstract class ShortcodeModule {
      * @var string $buffer
      * @return string
      */
-    protected function compress_html($buffer)
+    function compress_output($buffer)
     {
         // Remove html comments
         $buffer = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
 
         $search = array(
-            '/\>[^\S ]+/s',  // strip whitespaces after tags, except space
-            '/[^\S ]+\</s',  // strip whitespaces before tags, except space
-            '/(\s)+/s'       // shorten multiple whitespace sequences
+            '/\>[^\S]+/s',  // strip whitespaces after tags, except space
+            '/[^\S]+\</s',  // strip whitespaces before tags, except space
+            '/(\s)+/s',       // shorten multiple whitespace sequences
+            '/<!--.*?-->|\t|(?:\r?\n[ \t]*)+/s'
         );
 
         $replace = array(
             '>',
             '<',
-            '\\1'
+            '\\1',
+            ' '
         );
 
         $buffer = preg_replace($search, $replace, $buffer);

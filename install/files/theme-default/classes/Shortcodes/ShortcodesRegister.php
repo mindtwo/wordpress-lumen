@@ -27,12 +27,13 @@ class ShortcodesRegister extends ServiceProvider {
         \WpTheme\Shortcodes\Module\ShortcodesBootstrap::class,
         // \WpTheme\Shortcodes\Module\ShortcodesAcfShortcodes::class,
     ];
+
     /**
-     * Register the service provider.
+     * Boot the service provider.
      *
      * @return void
      */
-    public function register() {
+    public function boot() {
         // Move wpautop filter to AFTER shortcode is processed
         remove_filter( 'the_content', 'wpautop' );
         add_filter( 'the_content', 'wpautop', 99 );
@@ -45,12 +46,23 @@ class ShortcodesRegister extends ServiceProvider {
 
         // Register shortcodes
         foreach($this->shortcodes as $shortcode) {
-            new $shortcode($this->app);
+            $this->app->make($shortcode);
         }
 
         // Debug: Show all active shortcodes:
         // global $shortcode_tags;
         // echo "<pre>"; print_r($shortcode_tags); echo "</pre>";
         // die();
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register() {
+        foreach($this->shortcodes as $shortcode) {
+            $this->app->singleton($shortcode, $shortcode);
+        }
     }
 }

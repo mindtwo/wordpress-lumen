@@ -6,10 +6,10 @@ use WpTheme\PostTypes\PostType;
 
 class Page extends PostType {
 
-	public function __construct() {
-
-		parent::__construct();
+	/**
+	 * Register action
+	 */
+	public function register() {
 
 	}
-
 }

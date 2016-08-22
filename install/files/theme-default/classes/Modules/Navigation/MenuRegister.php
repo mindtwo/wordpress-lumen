@@ -8,9 +8,9 @@ class MenuRegister {
      * Initialize
      */
     public function __construct() {
-        add_action( 'init', [ $this, 'custom_menus' ] );
-        add_filter( 'nav_menu_css_class', [ $this, 'add_class_to_wp_nav_menu' ] );
-        add_filter( 'wp_nav_menu', [ $this, 'add_first_and_last' ] );
+        add_action( 'init', [$this, 'custom_menus'] );
+        add_filter( 'nav_menu_css_class', [$this, 'add_class_to_wp_nav_menu'] );
+        add_filter( 'wp_nav_menu', [$this, 'add_first_and_last'] );
     }
 
     /**
@@ -22,7 +22,7 @@ class MenuRegister {
             'menu-footer' => 'Footer',
         ];
 
-        register_nav_menus( $menus );
+        register_nav_menus($menus);
     }
 
     /**
@@ -44,7 +44,7 @@ class MenuRegister {
         switch ( get_post_type() ) {
             case 'POST_TYPE_NAME' :
                 // we're viewing a custom post type, so remove the 'current_page_xxx and current-menu-item' from all menu items.
-                $classes = array_filter( $classes, [ $this, "remove_parent_classes" ] );
+                $classes = array_filter( $classes, [$this, "remove_parent_classes"] );
 
                 // add the current page class to a specific menu item (replace ###).
                 if ( in_array( 'menu-item-38', $classes ) ) {

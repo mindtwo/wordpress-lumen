@@ -6,15 +6,11 @@ use WpTheme\PostTypes\CustomPostType;
 
 class Team extends CustomPostType {
 
-	public function __construct() {
-
-		parent::__construct();
+	public function register() {
+		parent::register();
+		$this->post_type = 'team';
 		$this->name = 'Team';
 		$this->singular_name = 'Team';
-		$this->post_type_cache_keys = [
-			'list'
-		];
-
 	}
 
 	/**

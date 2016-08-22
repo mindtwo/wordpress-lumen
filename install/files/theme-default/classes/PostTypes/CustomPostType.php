@@ -16,6 +16,11 @@ abstract class CustomPostType extends PostType {
 
 	/**
 	 * @var string
+	 */
+	protected $post_type = '';
+
+	/**
+	 * @var string
      */
 	protected $singular_name = '';
 
@@ -29,8 +34,16 @@ abstract class CustomPostType extends PostType {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->set_default_post_type_params();
 
+		if(empty($this->name)) {
+			$this->name = ucwords($this->post_type);
+		}
+
+		if(empty($this->singular_name)) {
+			$this->singular_name = ucwords($this->post_type);
+		}
+
+		$this->set_default_post_type_params();
 	}
 
 	/**

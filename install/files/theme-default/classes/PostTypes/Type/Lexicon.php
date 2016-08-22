@@ -6,16 +6,6 @@ use WpTheme\PostTypes\CustomPostType;
 
 class Lexicon extends CustomPostType {
 
-	public function __construct() {
-
-		parent::__construct();
-		$this->post_type_cache_keys = [
-			'latest',
-			'list'
-		];
-
-	}
-
 	/**
 	 * Custom Post Type
 	 * http://codex.wordpress.org/Function_Reference/register_post_type

@@ -18,16 +18,24 @@ class PostTypeRepositoryRegister extends ServiceProvider {
     ];
 
     /**
+     * Boot the service provider.
+     *
+     * @return void
+     */
+    public function boot() {
+        foreach($this->custom_post_types as $type) {
+            $this->app->make($type);
+        }
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register() {
         foreach($this->custom_post_types as $type) {
-            $this->app->singleton($type, function ($type) {
-                return new $type;
-            });
-            new $type;
+            $this->app->singleton($type, $type);
         }
     }
 }

@@ -59,12 +59,7 @@ class StoreConversionListener
         $date = date('Y-m-d H:i:s');
         $result['_DATETIME'] = $date;
 
-        if(isset($_SERVER)) {
-            $whitelist_server_keys = array('SCRIPT_FILENAME', 'REMOTE_ADDR', 'REMOTE_PORT', 'SERVER_ADDR', 'SERVER_PORT', 'REQUEST_URI', 'HTTP_HOST', 'HTTP_ACCEPT_LANGUAGE', 'HTTP_USER_AGENT', 'REQUEST_TIME_FLOAT', 'HTTP_REFERER', 'HTTP_CONTENT_LENGTH');
-            foreach($whitelist_server_keys as $key) {
-                $result['_SERVER'][$key] = (isset($_SERVER[$key]) ? $_SERVER[$key] : '');
-            }
-        }
+        collect($_SERVER)->only('SCRIPT_FILENAME', 'REMOTE_ADDR', 'REMOTE_PORT', 'SERVER_ADDR', 'SERVER_PORT', 'REQUEST_URI', 'HTTP_HOST', 'HTTP_ACCEPT_LANGUAGE', 'HTTP_USER_AGENT', 'REQUEST_TIME_FLOAT', 'HTTP_REFERER', 'HTTP_CONTENT_LENGTH')->toArray();
 
         if(isset($_REQUEST)) {
             $result['_REQUEST'] = $_REQUEST;

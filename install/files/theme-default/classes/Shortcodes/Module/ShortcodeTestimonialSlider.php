@@ -14,11 +14,11 @@ class ShortcodeTestimonialSlider extends ShortcodeModule {
      */
     public function handle( $atts, $content = null ) {
         extract( shortcode_atts( array(
-            'type' => false,
+            'location' => false,
             'headline' => trans('cpt-testimonial.slider.headline'),
         ), $atts ) );
 
-        $testimonials = (new Testimonial())->latest(['posts_per_page' => 6, 'tax_query' => ['testimonial-type'=>$type]])['posts'];
+        $testimonials = (new Testimonial())->latest(['posts_per_page' => 12])['posts'];
         return $this->render_view( 'partials/shortcode-testimonial-slider.php.twig', compact( 'headline', 'testimonials') );
     }
 

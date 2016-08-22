@@ -7,27 +7,22 @@ use WpTheme\Widgets\WidgetModule;
 class WidgetSubnav extends WidgetModule {
 
 	/**
-	 * Widget constructor.
+	 * @return mixed
 	 */
-	public function __construct($app) {
+	public function register() {
 		// Basics
 		$this->widget_name = 'Subnavigation Widget';
 		$this->widget_description = '';
 
 		// Widget Fields
-		$this->add_field('headline');
-		$this->add_field('subline');
 		$this->add_field('child_of_shift', [
 			'title' => 'Shift Menu Start',
 			'type' => 'input_number',
 		]);
+
 		$this->add_field('depth', [
 			'type' => 'input_number',
 		]);
-
-
-		// Parent Constructor
-		parent::__construct($app);
 	}
 
 	/** @see WP_Widget::widget */
@@ -38,8 +33,12 @@ class WidgetSubnav extends WidgetModule {
 		$child_of = ( $post->ancestors ) ? $this->get_shifted_child_page_id( $instance, $post ) : $post->ID ;
 		$children = wp_list_pages("title_li=&child_of=$child_of&echo=0&depth=$depth");
 
+		// Set Post Title asheadline
+		$headline = get_the_title($child_of);
+
+
 		if( $children ){
-			echo $this->render_view( 'partials/widget-subnav.html.twig', compact('children', 'instance') );
+			echo $this->render_view( 'partials/widget-subnav.html.twig', compact('children', 'headline') );
 		}
 	}
 
@@ -50,17 +49,13 @@ class WidgetSubnav extends WidgetModule {
 	 * @return mixed
 	 */
 	protected function get_shifted_child_page_id( $instance, $post ) {
-		$child_of_shift = array_key_exists('child_of_shift', $instance) ? intval($instance['child_of_shift']) : 0;
-		$ancestors = get_post_ancestors( $post );
+		$shift = array_key_exists('child_of_shift', $instance) ? intval($instance['child_of_shift']) : 0;
+		$ancestors = collect(get_post_ancestors( $post ));
 
-		if ( $child_of_shift != 0 && count( $post->ancestors ) > $child_of_shift ) {
-			for ( $i = 1; $i <= $child_of_shift; $i ++ ) {
-				array_pop( $ancestors );
-			}
-
-			return end( $ancestors );
+		if($ancestors->count() == 1) {
+			return $ancestors->first();
 		}
 
-		return $post->ID;
+		return $ancestors->reverse()->splice($shift)->first();
 	}
 }

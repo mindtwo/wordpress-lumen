@@ -6,20 +6,14 @@ use WpTheme\Widgets\WidgetModule;
 
 class WidgetCustomSearch extends WidgetModule {
 
-	/**
-	 * Widget constructor.
-	 */
-	public function __construct($app) {
+	public function register() {
 		// Basics
-		$this->widget_name = 'Custom Search Widget ausgeben';
+		$this->widget_name        = 'Custom Search Widget ausgeben';
 		$this->widget_description = '';
 
 		// Widget Fields
-		$this->add_field('headline');
-		$this->add_field('subline');
-
-		// Parent Constructor
-		parent::__construct($app);
+		$this->add_field( 'headline' );
+		$this->add_field( 'subline' );
 	}
 
 	/** @see WP_Widget::widget */

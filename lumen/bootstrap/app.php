@@ -49,6 +49,7 @@ $configuration_files = [
     'sites',
     'view',
     'services',
+    'twigbridge',
 ];
 
 foreach($configuration_files as $config) {
@@ -94,17 +95,14 @@ $app->singleton('filesystem', function ($app) {
 | route or middleware that'll be assigned to some specific routes.
 |
 */
-// if(!is_wordpress()) {
 
-    // $app->middleware([
-    //    App\Http\Middleware\ExampleMiddleware::class
-    // ]);
+// $app->middleware([
+//    App\Http\Middleware\ExampleMiddleware::class
+// ]);
 
-    // $app->routeMiddleware([
-    //     'auth' => App\Http\Middleware\Authenticate::class,
-    // ]);
-
-// }
+// $app->routeMiddleware([
+//     'auth' => App\Http\Middleware\Authenticate::class,
+// ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +114,7 @@ $app->singleton('filesystem', function ($app) {
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
 if(!is_wordpress()) {
     $app->register(App\Providers\AppServiceProvider::class);
     $app->register(App\Providers\ValidatorServiceProvider::class);
@@ -124,6 +123,7 @@ if(!is_wordpress()) {
     $app->register(App\Providers\TwigServiceProvider::class);
     $app->register(App\Providers\TwigInstallerServiceProvider::class);
 }
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

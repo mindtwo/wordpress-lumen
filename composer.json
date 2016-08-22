@@ -28,7 +28,7 @@
       "wpackagist-plugin/w3-total-cache":"*",
       "wpackagist-plugin/google-sitemap-generator":"*",
       "wpackagist-plugin/force-regenerate-thumbnails":"*",
-      "koodimonni-language/de_DE": "*",
+      "koodimonni-language/de_DE": "*"
    },
    "require-dev":{  
       "laravel/envoy":"~1.0",

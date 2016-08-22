@@ -9,6 +9,8 @@ class BackendRegister {
      */
     public function __construct() {
         add_action( 'admin_menu', [$this, 'remove_wordpress_backend_menu_li'] );
+        add_action( 'admin_menu', [$this, 'editor_capabilities'] );
+        add_action( 'admin_head', [$this, 'remove_submenu_entries'] );
         add_action( 'widgets_init', [$this, 'my_unregister_widgets'] );
         add_action( 'wp_before_admin_bar_render', [$this, 'remove_admin_bar_links'] );
         add_action( 'admin_bar_menu', [$this, 'remove_wp_nodes'], 999 );
@@ -16,11 +18,13 @@ class BackendRegister {
         add_filter( 'tiny_mce_before_init', [$this, 'mce_mod'] );
         add_filter( 'mce_buttons_2', [$this, 'mce_add_buttons'] );
         add_filter( 'mce_css', [$this, 'mce_css'] );
+        add_filter( 'admin_enqueue_scripts', [$this, 'admin_css'] );
         add_filter( 'tiny_mce_before_init', [$this, 'tinymce_paste_as_text'] );
         add_action( 'edit_form_after_title', [$this, 'fix_no_editor_on_posts_page'], 0 );
         add_action( 'admin_init', [$this, 'hide_editor'] );
         add_action( 'admin_menu', [$this, 'remove_subpages_from_menu'] );
         add_action( 'admin_init' , [$this, 'manage_column_cleanup_init'] );
+        add_action( 'http_request_args' , [$this, 'dont_update_theme'], 5, 2 );
 
     }
 
@@ -30,14 +34,36 @@ class BackendRegister {
      */
     public function remove_wordpress_backend_menu_li () {
         global $menu;
-        $restricted = array ( __ ( 'Comments' ), __ ( 'Links' ) );
-        end ( $menu );
-        while ( prev ( $menu ) ) {
-            $value = explode ( ' ', $menu[ key ( $menu ) ][0] );
-            if ( in_array ( $value[0] != null ? $value[0] : "", $restricted ) ) {
-                unset( $menu[ key ( $menu ) ] );
-            }
+
+        $restricted = collect(['edit-comments.php']);
+
+        if( current_user_can('editor') && !current_user_can('administrator') ) {
+            $restricted = $restricted->merge(['tools.php', 'profile.php']);
         }
+
+        $menu = collect($menu)->reject(function($value, $key) use($restricted){
+            return $restricted->contains(collect($value)->get(2)) ? true : false;
+        })->toArray();
+
+
+    }
+
+    public function remove_submenu_entries() {
+        if( current_user_can('editor') && !current_user_can('administrator') ) {
+            remove_submenu_page( 'themes.php', 'themes.php' );
+            // remove_submenu_page( 'themes.php', 'widgets.php' );
+            // remove_submenu_page( 'themes.php', 'yiw_panel' );
+            // remove_submenu_page( 'themes.php', 'custom-header' );
+            // remove_submenu_page( 'themes.php', 'custom-background' );
+        }
+    }
+
+    public function editor_capabilities() {
+        // get the the role object
+        $role_object = get_role( 'editor' );
+
+        // Allow editors to use
+        $role_object->add_cap( 'edit_theme_options' );
     }
 
     /**
@@ -61,20 +87,21 @@ class BackendRegister {
     /**
      * Remove unused links in admin bar
      */
-    public function remove_admin_bar_links () {
+    public function remove_admin_bar_links() {
         global $wp_admin_bar;
         //$wp_admin_bar->remove_menu('wp-logo');          // Remove the WordPress logo
         //$wp_admin_bar->remove_menu('about');            // Remove the about WordPress link
         //$wp_admin_bar->remove_menu('wporg');            // Remove the WordPress.org link
         //$wp_admin_bar->remove_menu('documentation');    // Remove the WordPress documentation link
-        $wp_admin_bar->remove_menu ( 'support-forums' );   // Remove the support forums link
-        $wp_admin_bar->remove_menu ( 'feedback' );         // Remove the feedback link
+        $wp_admin_bar->remove_menu( 'support-forums' );   // Remove the support forums link
+        $wp_admin_bar->remove_menu( 'feedback' );         // Remove the feedback link
         //$wp_admin_bar->remove_menu('site-name');        // Remove the site name menu
         //$wp_admin_bar->remove_menu('view-site');        // Remove the view site link
         //$wp_admin_bar->remove_menu('updates');          // Remove the updates link
-        $wp_admin_bar->remove_menu ( 'comments' );         // Remove the comments link
+        $wp_admin_bar->remove_menu( 'comments' );         // Remove the comments link
         //$wp_admin_bar->remove_menu('new-content');      // Remove the content link
-        //$wp_admin_bar->remove_menu('w3tc');             // If you use w3 total cache remove the performance link
+        $wp_admin_bar->remove_menu( 'w3tc' );             // If you use w3 total cache remove the performance link
+        $wp_admin_bar->remove_menu( 'wpseo-menu' );       // If you use yost remove the link
         //$wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
     }
 
@@ -128,7 +155,8 @@ class BackendRegister {
 
         $init['style_formats'] = json_encode ( array (
             // array ( 'title' => 'Highlight Text', 'selector' => 'p', 'classes' => 'highlight' ),
-            // array ( 'title' => 'Highlight Headline', 'selector' => 'h1,h2,h3,h4,h5', 'classes' => 'highlight' ),
+            array ( 'title' => 'Highlight Headline', 'selector' => 'h1,h2,h3,h4,h5,h6', 'classes' => 'highlight' ),
+            array ( 'title' => 'Subheadline', 'selector' => 'h1,h2,h3,h4,h5,h6', 'classes' => 'sub_headline' ),
             array ( 'title' => 'List - Check', 'selector' => 'ul', 'classes' => 'check' ),
             array ( 'title' => 'List - Arrow', 'selector' => 'ul', 'classes' => 'arrow' ),
         ) );
@@ -164,6 +192,13 @@ class BackendRegister {
 
         return $url;
     }
+
+    public function admin_css() {
+
+        wp_enqueue_style('admin-styles', THEME_ASSETS_LIVE . 'css/admin.css');
+
+    }
+
 
     /**
      * Add the wp-editor back into WordPress after it was removed in 4.2.2.
@@ -215,6 +250,29 @@ class BackendRegister {
         add_filter( 'manage_posts_columns' , [$this, 'manage_column_cleanup'] );
         add_filter( 'manage_pages_columns', [$this, 'manage_column_cleanup'] );
         add_filter( 'manage_upload_columns', [$this, 'manage_column_cleanup'] );
-        // add_filter( 'manage_{$post_type}_posts_columns', [$this, 'manage_column_cleanup'] );
+    }
+
+    /**
+     * Don't Update Theme
+     * @since 1.0.0
+     *
+     * If there is a theme in the repo with the same name,
+     * this prevents WP from prompting an update.
+     *
+     * @author Mark Jaquith
+     * @link http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
+     *
+     * @param array $r, request arguments
+     * @param string $url, request url
+     * @return array request arguments
+     */
+    public function dont_update_theme( $r, $url ) {
+        if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
+            return $r; // Not a theme update request. Bail immediately.
+        $themes = unserialize( $r['body']['themes'] );
+        unset( $themes[ get_option( 'template' ) ] );
+        unset( $themes[ get_option( 'stylesheet' ) ] );
+        $r['body']['themes'] = serialize( $themes );
+        return $r;
     }
 }

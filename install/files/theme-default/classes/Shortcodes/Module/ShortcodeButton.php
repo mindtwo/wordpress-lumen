@@ -19,7 +19,7 @@ class ShortcodeButton extends ShortcodeModule {
             'class' => 'btn btn-primary',
         ), $atts ) );
 
-        return $this->compress_html($this->render_view( 'partials/button.php.twig', [ 'icon' => $icon, 'href' => $href, 'label' => $label, 'class' => $class ] ));
+        return $this->compress_output($this->render_view( 'partials/button.php.twig', [ 'icon' => $icon, 'href' => $href, 'label' => $label, 'class' => $class ] ));
     }
 
 }
