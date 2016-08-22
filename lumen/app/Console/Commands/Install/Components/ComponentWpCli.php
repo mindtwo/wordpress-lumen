@@ -30,7 +30,7 @@ class ComponentWpCli extends ComponentBase implements WpInstallComponentsInterfa
 	 * @return mixed
 	 */
 	public function fire() {
-		$this->php_version = isset($this->config->php) ? $this->config->php : 'php';
+		$this->php_version = isset($this->config->php) ? $this->config->php : 'php -d allow_url_fopen=On';
 		$this->wp_cli = "cd {$this->home_dir} && {$this->php_version} wp-cli.phar ";
 		$wp_cli = $this->wp_cli;
 
