@@ -10,8 +10,7 @@
          "homepage":"http://www.mindtwo.de/"
       }
    ],
-   "require":{  
-      "php":">=5.5.9",
+   "require":{
       "laravel/lumen-framework":"5.2.*",
       "illuminate/config":"5.2.*",
       "illuminate/support":"5.2.*",
@@ -22,18 +21,21 @@
       "hampel/json":"2.*",
       "twig/twig":"1.*",
       "bugsnag/bugsnag":"~2.0",
-      "johnpbloch/wordpress":"~4.0",
-      "advanced-custom-fields/advanced-custom-fields-pro":"*",
+      "johnpbloch/wordpress":"~4.6",
       "wpackagist-plugin/timber-library":"*",
       "wpackagist-plugin/w3-total-cache":"*",
       "wpackagist-plugin/google-sitemap-generator":"*",
       "wpackagist-plugin/force-regenerate-thumbnails":"*",
-      "koodimonni-language/de_DE": "*"
+      "koodimonni-language/de_DE": "*",
+      "mindtwo/advanced-custom-fields-pro": "*",
+      "mindtwo/wp-migrate-db-pro": "*",
+      "mindtwo/wp-migrate-db-pro-cli": "*",
+      "mindtwo/advanced-post-types-order": "*"
    },
-   "require-dev":{  
-      "laravel/envoy":"~1.0",
-      "phpunit/phpunit":"~4.0",
-      "fzaninotto/faker":"~1.0"
+   "require-dev": {
+      "laravel/envoy": "~1.0",
+      "phpunit/phpunit": "~4.0",
+      "fzaninotto/faker": "~1.0"
    },
    "autoload":{  
       "psr-4":{  
@@ -57,26 +59,18 @@
       "vendor-dir":"lumen/vendor",
       "secure-http":false
    },
-   "repositories":[  
-      {  
-         "type":"composer",
-         "url":"http://wpackagist.org"
+   "repositories":[
+      {
+         "type": "composer",
+         "url": "https://wpackagist.org"
       },
-      {  
-         "type":"composer",
-         "url":"http://languages.koodimonni.fi"
+      {
+         "type": "composer",
+         "url": "https://languages.koodimonni.fi"
       },
-      {  
-         "type":"package",
-         "package":{  
-            "name":"advanced-custom-fields/advanced-custom-fields-pro",
-            "version":"5.3.5",
-            "type":"wordpress-plugin",
-            "dist":{  
-               "type":"zip",
-               "url":"http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=ACF_LICENCE_KEY"
-            }
-         }
+      {
+         "type": "composer",
+         "url": "https://COMPOSER_MINDTWO_DE_USERNAME:COMPOSER_MINDTWO_DE_PASSWORD@composer.mindtwo.de"
       }
    ],
    "scripts":{
@@ -86,8 +80,6 @@
       "post-update-cmd":[
 
       ],
-      "fixYostPlugin":"sed -ie 's/( $this->locale == $set->wp_locale )/( property_exists($set, \"wp_locale\") \\&\\& $this->locale == $set->wp_locale )/g' public/content/plugins/wordpress-seo/vendor/yoast/i18n-module/i18n-module.php 2> /dev/null &",
-      "removeWordPressCoreMenuLimit":"sed -ie 's/per_page = 50;/per_page = 50000;/g' public/wordpress/wp-admin/includes/nav-menu.php 2> /dev/null &",
       "devInstallBowerDependencies":"bower install",
       "devUpdateBowerDependencies":"bower update",
       "devInstallNpmDependencies":"npm install",
@@ -95,35 +87,32 @@
    },
    "extra":{  
       "wordpress-install-dir":"public/wordpress",
-      "installer-paths":{  
-         "public/content/plugins/{$name}/":[  
+      "installer-paths": {
+         "public/content/plugins/{$name}/": [
             "type:wordpress-plugin"
          ],
-         "public/content/mu-plugins/{$name}/":[  
+         "public/content/mu-plugins/{$name}/": [
             "type:wordpress-muplugin"
          ],
-         "public/content/themes/{$name}/":[  
+         "public/content/themes/{$name}/": [
             "type:wordpress-theme"
          ],
-         "resources/assets/sass/libs/{$name}/":[  
+         "resources/assets/sass/libs/{$name}/": [
             "type:css-library"
          ],
-         "resources/assets/js/libs/{$name}/":[  
+         "resources/assets/js/libs/{$name}/": [
             "type:js-library"
          ]
       },
-      "dropin-paths":{  
-         "public/content/languages/":[  
-            "vendor:language",
-            "vendor:koodimonni-language"
+      "dropin-paths": {
+         "public/content/languages/": [
+            "vendor:language"
          ],
-         "public/content/languages/plugins/":[  
-            "vendor:plugin-language",
-            "vendor:koodimonni-plugin-language"
+         "public/content/languages/plugins/": [
+            "vendor:plugin-language"
          ],
-         "public/content/languages/themes/":[  
-            "vendor:theme-language",
-            "vendor:koodimonni-theme-language"
+         "public/content/languages/themes/": [
+            "vendor:theme-language"
          ]
       }
    }
