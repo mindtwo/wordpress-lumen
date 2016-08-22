@@ -8,13 +8,23 @@
                         {% for testimonial in testimonials %}
                             <div class="item {{ loop.first ? 'active' : '' }}">
                                 <div class="row">
-                                    <div class="col-md-4"><img src="{{testimonial.thumbnail.src}}" alt="{{ testimonial.post_title|raw }}"></div>
-                                    <div class="col-md-7">
-                                        <h3 class="headline"><i class="fa fa-comment"></i> {{ testimonial.post_title|raw }}</h3>
-                                        <div class="content">
-                                            {{ testimonial.content|raw }}
+                                    {% if testimonial.thumbnail.src %}
+                                        <div class="col-md-4"><img src="{{testimonial.thumbnail.src}}" alt="{{ testimonial.post_title|raw }}"></div>
+                                        <div class="col-md-7">
+                                            <h3 class="headline"><i class="fa fa-comment"></i> {{ testimonial.post_title|raw }}</h3>
+                                            <div class="content">
+                                                {{ testimonial.content|raw }}
+                                            </div>
                                         </div>
-                                    </div>
+                                    {% else  %}
+                                        <div class="col-md-10 no-image">
+                                            <h3 class="headline"><i class="fa fa-comment"></i> {{ testimonial.post_title|raw }}</h3>
+                                            <div class="content">
+                                                {{ testimonial.content|raw }}
+                                            </div>
+                                        </div>
+                                    {% endif  %}
+
                                 </div>
                             </div>
                         {% endfor %}

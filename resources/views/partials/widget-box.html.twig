@@ -1,0 +1,11 @@
+<section class="widget widget--contactbox">
+    <div class="headline-wrapper">
+        {% if instance.headline %}<strong class="headline">{{ instance.headline }}</strong>{% endif %}
+        {% if instance.subline %}<em class="subline">{{ instance.subline }}</em>{% endif %}
+    </div>
+    {% if instance.content %}
+        <div class="mt_default">
+            {{ instance.content }}
+        </div>
+    {% endif %}
+</section>

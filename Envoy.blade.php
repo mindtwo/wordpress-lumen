@@ -7,11 +7,22 @@
     $git_log = shell_exec('git log -n 1 --pretty=format:"%h %s [%an]"');
     $branch = isset($branch) ? $branch : "master";
     $env = isset($env) ? $env : "dev";
-    $path = "/var/www/XXX/{$env}/";
+    $path = "/usr/www/users/cityfc/{$env}/";
+    $current_dir = "/usr/www/users/cityfc/dev/current/";
     $release_dir = $path . 'releases/' . $date . '/';
     $shared_dir = $path . 'shared/';
     $repo = 'git@github.com:username/XXX.git';
 @endsetup
+
+@task('update_phar_files', ['on' => ['local'], 'parallel' => true])
+    # WP-CLI
+    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+    chmod +x wp-cli.phar
+
+    # Composer
+    curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On;
+@endtask
+
 
 @macro('deploy')
     git
@@ -56,8 +67,10 @@
     echo "Cleaned up old deploments";
 @endtask
 
-@task('refresh_images', ['on' => ['live'], 'parallel' => true])
-    rsync -av --delete {{ $path }}../live/shared/uploads {{ $path }}../dev/shared;
+@task('refresh_images', ['on' => ['local'], 'parallel' => true])
+    echo "Starting rsync to local";
+    rsync -rc --delete -e "ssh -p 22" user@dev.domain.com:{{ $current_dir}}public/content/uploads public/content;
+    echo "Rsync to local was successfully!";
 @endtask
 
 @after

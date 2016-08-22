@@ -1,8 +1,9 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
     <div class="container">
-        <h1>{{post.title}}</h1>
-        {{ function('do_shortcode', '[hr]') }}
+        {% if not has_h1 %}
+            <h1>{{post.title}}</h1>
+        {% endif %}
         <div class="body">
             {{post.content}}
         </div>

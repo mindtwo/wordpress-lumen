@@ -1,5 +1,11 @@
 <div>
-    <h1>{{post.title}}</h1>
+    {% if not has_h1 %}
+        <h1>{{post.title}}</h1>
+    {% endif %}
+
+    {% if post.thumbnail.src %}
+        <img src="{{post.thumbnail.src}}" />
+    {% endif %}
     <div class="body">
         {{post.content}}
     </div>

@@ -1,17 +1,19 @@
-{{ function('do_shortcode', '[hr]') }}
 
-<div>
-    <ul class="pagination pagination-lg">
-        <li class="previous {{pagination.prev.link|length ? '' : 'disabled'}}"><a href="{{pagination.prev.link}}">Prev</a></li>
-        {% for page in pagination.pages %}
-            <li class="{{page.class}}">
-                {% if page.link %}
-                    <a href="{{page.link}}">{{page.title}}</a>
-                {% else %}
-                    <span>{{page.title}}</span>
-                {% endif %}
-            </li>
-        {% endfor %}
-        <li class="next {{pagination.next.link|length ? '' : 'disabled'}}"><a href="{{pagination.next.link}}">Next</a></li>
-    </ul>
-</div>
+{% if pagination.prev.link %}
+    {{ function('do_shortcode', '[hr]') }}
+    <div>
+        <ul class="pagination pagination-lg">
+            <li class="previous {{pagination.prev.link|length ? '' : 'disabled'}}"><a href="{{pagination.prev.link}}">{{ function('trans', 'general.pager.prev') }}</a></li>
+            {% for page in pagination.pages %}
+                <li class="{{page.class}}">
+                    {% if page.link %}
+                        <a href="{{page.link}}">{{page.title}}</a>
+                    {% else %}
+                        <span>{{page.title}}</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            <li class="next {{pagination.next.link|length ? '' : 'disabled'}}"><a href="{{pagination.next.link}}">{{ function('trans', 'general.pager.next') }}</a></li>
+        </ul>
+    </div>
+{%  endif %}

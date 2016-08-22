@@ -1,0 +1,17 @@
+{% if instance.image_link %}
+    <section class="widget widget--no-padding widget--latest-news">
+
+        {% if instance.link %}
+            <a href="{{ instance.link }}">
+        {% endif %}
+
+        {% if instance.image_link %}
+            <img src="{{ instance.image_link }}" alt="{{ instance.image_alt }}">
+        {% endif %}
+
+        {% if instance.link %}
+            </a>
+        {% endif %}
+    </section>
+{% endif %}
+

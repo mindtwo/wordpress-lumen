@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html {{ function('language_attributes') }}>
+<html lang="de-DE">
 <head>
 
     {{ function('theme_comment') }}
 
-    <title>{{ function('bloginfo', 'wpseo_the_title') }}</title>
+    <title>{{ function('wp_title') }}</title>
     <meta charset="{{ site.charset }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="{{ function('do_action', 'wpseo_the_desc') }}">
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="{{ function('elixir', 'content/themes/default/assets/css/app.css') }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS Feed" href="{{ site.rss }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS2 Feed" href="{{ site.rss2 }}">
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Atom Feed" href="{{ site.atom }}">
-    <link rel="alternate" type="application/rdf+xml" title="{{ site.title }} RDF Feed" href="{{ site.rdf }}">
-    <link rel="pingback" title="{{ site.title }} Pingback URL" href="{{ site.pingback_url }}">
+    {% if options.css_file %}
+        <link type="text/css" rel="stylesheet" href="/content/themes/default/assets/css/{{ options.css_file }}">
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="/content/themes/default/assets/css/app.css">
+    {% endif %}
     {{ function('do_shortcode', '[get_header_tracking_codes]') }}
 </head>
 <body id="app" class="{{ body_class }}">
     <div id="site">
-        <header id="site__header" class="header clearfix" itemscope itemtype="http://schema.org/Organization">
-            <div class="container">
-                <div class="page-header">
-                    {% include 'partials/logo.php.twig' %}
+        {% block header %}
+            <header id="site__header" class="header clearfix" itemscope itemtype="http://schema.org/Organization">
+                <div class="container">
+                    <div class="page-header">
+                        {% include 'partials/logo.php.twig' %}
+                        {% include 'partials/nav-primary.php.twig' %}
+                    </div>
                 </div>
-                {% include 'partials/nav-primary.php.twig' %}
-            </div>
-        </header>
+            </header>
+        {% endblock %}
+        {% include 'partials/slider.php.twig' %}
         <main id="site__main" role="main">
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
+            {% block content %}{% endblock %}
         </main>
-        <footer id="site__footer" class="footer">
-            <div class="container">
-                <hr>
-                <div class="row">
-                    <div class="col-md-6"><a href="http://www.mindtwo.de/" target="_blank">Theme by mindtwo GmbH</a></div>
-                    <div class="col-md-6">{% include 'partials/nav-footer.php.twig' %}</div>
+        {% block footer %}
+            <footer id="site__footer" class="footer">
+                <div class="container">
+                    <div class="social-btn-container">
+                        Finden Sie uns auf:
+                        <br>
+                        {% if options.facebook %}
+                            <a href="{{ options.facebook }}" class=" fa fa-facebook-official" target="_blank" rel="nofollow" title="Finde {{ site.title }} auf Facebook!"></a>
+                        {% endif %}
+                        {% if options.instagram %}
+                            <a href="{{ options.instagram }}" class="fa fa-instagram" target="_blank" rel="nofollow" title="Finde {{ site.title }} auf Instagram!"></a>
+                        {% endif %}
+                        {% if options.google_plus %}
+                            <a href="{{ options.google_plus }}" class="fa fa-google-plus-square" target="_blank" rel="nofollow" title="Finde {{ site.title }} auf Google Plus!"></a>
+                        {% endif %}
+                        {% if options.youtube %}
+                            <a href="{{ options.youtube }}" class="fa fa-youtube-square" target="_blank" rel="nofollow" title="Finde {{ site.title }} auf YouTube!"></a>
+                        {% endif %}
+                        {% if options.twitter %}
+                            <a href="{{ options.twitter }}" class="fa fa-twitter-square" target="_blank" rel="nofollow" title="Finde {{ site.title }} auf Twitter!"></a>
+                        {% endif %}
+                    </div>
+                    {% include 'partials/nav-footer.php.twig' %}
+                    Copyright {{ function('date', 'Y') }} {{ options.company_name }}. Alle Rechte vorbehalten. Website erstellt von: <a href="http://www.mindtwo.de/" target="_blank">mindtwo GmbH</a>.
                 </div>
-            </div>
-        </footer>
-    </div>
-    <div id="form__contact" style="display:none;">
-        {{ function('do_shortcode', '[form]') }}
+            </footer>
+        {% endblock %}
     </div>
     {{ function('do_shortcode', '[global_javascript_vars]') }}
     <script type="text/javascript" src="{{ function('elixir', 'content/themes/default/assets/js/all.js') }}" async></script>

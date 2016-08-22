@@ -23,6 +23,7 @@ return [
 		'required' => '* Pflichtfelder',
 		'location' => 'Standort/Filiale',
 		'choose_your_location' => 'Wähle Deinen Standort',
+		'subject' => 'Betreff',
 		'privacy_label' => 'Ja, ich habe die <a href=":link" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere diese.',
 	],
 	'error' => [
@@ -44,6 +45,11 @@ return [
 	],
 	'callback' => [
 		'success_message' => 'Rückruf erfolgreich angefordert!',
+	],
+	'appointment' => [
+		'send' => 'Jetzt anmelden',
+		'appointment' => 'Veranstaltung',
+		'success_message' => 'Anmeldung erfolgreich übermittelt!',
 	],
 	'application' => [
 		'success_message' => 'Bewerbung erfolgreich übermittelt!',

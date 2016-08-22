@@ -2,11 +2,21 @@
     <div class="item {{ loop.first ? 'active' : '' }}">
         <h3 class="headline">{{ post.post_title|raw }}</h3>
         {% if post.thumbnail.src %}
-            <img src="{{post.thumbnail.src}}" alt="{{ post.post_title|raw }}">
+            {% if location_prefix %}
+                <a href="{{ location_prefix }}{{ post.slug }}/" class="image">
+            {% else %}
+                <a href="{{ post.link|raw }}" class="image">
+            {% endif %}
+                <img src="{{post.thumbnail.src}}" alt="{{ post.post_title|raw }}">
+            </a>
         {% endif %}
-        <div class="content">
-            {{ post.content|raw }}
+        <div class="content pt_null pb_default">
+            {{ post.get_preview(40,false,false)|raw }}
         </div>
-        <a href="{{ post.permalink|raw }}" class="btn-primary iframe-content"><i class="fa fa-caret-right"></i> Weiterlesen</a>
+        {% if location_prefix %}
+            <a href="{{ location_prefix }}{{ post.slug }}/" class="btn-primary"><i class="fa fa-caret-right"></i> Weiterlesen</a>
+        {% else %}
+            <a href="{{ post.link|raw }}" class="btn-primary iframe-content"><i class="fa fa-caret-right"></i> Weiterlesen</a>
+        {% endif %}
     </div>
 {% endfor %}

@@ -1,8 +1,7 @@
 {% if children %}
     <section class="widget widget--subnav">
         <div class="headline-wrapper">
-            <strong class="headline">{{ instance.headline }}</strong>
-            <em class="subline">{{ instance.subline }}</em>
+            {% if headline %}<strong class="headline">{{ headline }}</strong>{% endif %}
         </div>
         <ul class="list-group">
             {{ children }}

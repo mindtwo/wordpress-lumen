@@ -1,20 +1,23 @@
 {% extends "layout/base.php.twig" %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <aside class="col-md-4 pb_medium pt_medium">
-                {{sidebar}}
-            </aside>
-            <div class="col-md-8 pb_medium pt_medium">
-                <div class="content_box">
+    <div class="container mt_large mb_large">
+        <div class="row equal_height_childs">
+            <div class="col-sm-12 col-md-8 col-md-push-4 content_box">
+                {% if not has_h1 %}
                     <h1>{{post.title}}</h1>
-                    {{ function('do_shortcode', '[hr]') }}
+                {% endif %}
+
+                {% if post.thumbnail.src %}
                     <img src="{{post.thumbnail.src}}" />
-                    <div class="body">
-                        {{post.content}}
-                    </div>
+                {% endif %}
+
+                <div class="body">
+                    {{post.content}}
                 </div>
             </div>
+            <aside class="col-sm-12 col-md-4 col-md-pull-8 sidebar">
+                {{sidebar}}
+            </aside>
         </div>
     </div>
 

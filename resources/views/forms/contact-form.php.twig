@@ -1,7 +1,7 @@
 <script id="form-contact-template" type="x-template">
     <h2 v-if="! submitted" class="c_center two_lines">
-        Wie können wir Dir helfen?
-        <strong>Schreib uns einfach über unser Kontaktformular:</strong>
+        Wie können wir Ihnen helfen?
+        <strong>Schreiben Sie uns einfach über unser Kontaktformular:</strong>
     </h2>
     <form id="form-contact" @submit="onSubmitForm">
 
@@ -16,13 +16,13 @@
 
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group" v-if="! submitted">
+                <div class="form-group" v-bind:class="{ 'error': errors.name }" v-if="! submitted">
                     <label for="cform_name">{{function('trans','form.default.name')}}: *</label>
                     <input id="cform_name" class="form-control" type="text" v-model="inquery.name">
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group" v-if="! submitted">
+                <div class="form-group" v-bind:class="{ 'error': errors.email }" v-if="! submitted">
                     <label for="cform_email">{{function('trans','form.default.email')}}: *</label>
                     <input id="cform_email" class="form-control" type="text" v-model="inquery.email">
                 </div>
@@ -30,20 +30,20 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group" v-if="! submitted">
+                <div class="form-group" v-bind:class="{ 'error': errors.phone }" v-if="! submitted">
                     <label for="cform_phone">{{function('trans','form.default.phone')}}: *</label>
                     <input id="cform_phone" class="form-control" type="text" v-model="inquery.phone">
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group" v-if="! submitted">
+                <div class="form-group" v-bind:class="{ 'error': errors.subject }" v-if="! submitted">
                     <label for="cform_subject">{{function('trans','form.default.subject')}}:</label>
                     <input id="cform_subject" class="form-control" type="text" v-model="inquery.subject">
                 </div>
             </div>
         </div>
 
-        <div class="form-group" v-if="! submitted">
+        <div class="form-group" v-bind:class="{ 'error': errors.message }" v-if="! submitted">
             <label for="cform_message">{{function('trans','form.default.message')}}: *</label>
             <textarea id="cform_message" class="form-control" v-model="inquery.message" rows="4"></textarea>
         </div>

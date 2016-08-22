@@ -1,7 +1,7 @@
 <section class="widget widget--contactbox">
     <div class="headline-wrapper">
-        <strong class="headline">{{ instance.headline }}</strong>
-        <em class="subline">{{ instance.subline }}</em>
+        {% if instance.headline %}<strong class="headline">{{ instance.headline }}</strong>{% endif %}
+        {% if instance.subline %}<em class="subline">{{ instance.subline }}</em>{% endif %}
     </div>
     {% for location in selected_location.sub_locations %}
         {% if location.phone_number %}
@@ -12,6 +12,13 @@
             </p>
         {% endif %}
     {% endfor %}
+    {% if not selected_location %}
+        <p>
+            <strong>{{ options.company_name }}</strong>
+            <br>
+            <span class="fa fa-phone-square"></span> {{ options.phone_number_display }}
+        </p>
+    {% endif %}
     <div class="mt_default">
         {{ button }}
     </div>

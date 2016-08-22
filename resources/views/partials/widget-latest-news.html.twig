@@ -1,9 +1,10 @@
 {% if news %}
     <section class="widget widget--latest-news">
         <div class="headline-wrapper">
-            <strong class="headline">{{ instance.headline }}</strong>
-            <em class="subline">{{ instance.subline }}</em>
+            {% if instance.headline %}<strong class="headline">{{ instance.headline }}</strong>{% endif %}
+            {% if instance.subline %}<em class="subline">{{ instance.subline }}</em>{% endif %}
         </div>
+        <hr>
         {{ news }}
     </section>
 {% endif %}

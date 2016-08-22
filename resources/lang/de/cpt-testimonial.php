@@ -9,17 +9,17 @@ return [
     */
 
     'labels' => array(
-        'name' => 'Testimonials',
-        'singular-name' => 'Testimonial',
-        'all-items' => 'Alle Testimonials',
-        'add-new' => 'Testimonial hinzufügen',
-        'add-new-item' => 'Neues Testimonial hinzufügen',
+        'name' => 'Kundenstimmen',
+        'singular-name' => 'Kundenstimme',
+        'all-items' => 'Alle Kundenstimmen',
+        'add-new' => 'Kundenstimme hinzufügen',
+        'add-new-item' => 'Neues Kundenstimme hinzufügen',
         'edit' => 'Bearbeiten',
-        'edit-item' => 'Testimonial bearbeiten',
-        'new-item' => 'Neues Testimonial',
-        'view-item' => 'Testimonial ansehen',
-        'search-items' => 'Testimonials durchsuchen',
-        'not-found' =>  'Keine Team-Mitglieder in der Datenbank gefunden.',
+        'edit-item' => 'Kundenstimme bearbeiten',
+        'new-item' => 'Neue Kundenstimme',
+        'view-item' => 'Kundenstimme ansehen',
+        'search-items' => 'Kundenstimmen durchsuchen',
+        'not-found' =>  'Keine in der Datenbank gefunden.',
         'not-found-in-trash' => 'Keine Datensätze im Papierkorb enthalten',
         'parent-item-colon' => ''
     ),
@@ -34,7 +34,17 @@ return [
 
     'testimonial-type' => array(
         'label' => 'Testimonial-Kategorie',
-    )
+    ),
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Slider
+    |--------------------------------------------------------------------------
+    */
+    'slider' => array(
+        'headline' => 'Das sagen unsere Kunden über uns:',
+    ),
 
 ];
 

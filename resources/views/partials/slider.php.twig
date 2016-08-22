@@ -1,0 +1,28 @@
+{% if meta.slides_wrapper %}
+    {% set first_slider_element = meta.slides_wrapper|first %}
+    <div class="slider {{ first_slider_element.style == 'light' ? 'invert' }}">
+        {% if meta.text_overlay %}
+            <img src="{{ function('theme_images_path') }}{{ options.logo_image_svg_filename }}" alt="{{ options.logo_alt }}" class="responsive_logo">
+            <div class="overlay_all">
+                <div class="container">
+                    {% if meta.show_logo %}
+                        <img src="{{ function('theme_images_path') }}{{ options.logo_image_svg_filename }}" alt="{{ options.logo_alt }}" class="logo">
+                    {% endif %}
+                    {{ meta.text_overlay|raw }}
+                </div>
+            </div>
+        {% endif %}
+        <div class="slides">
+            {% for slide in meta.slides_wrapper %}
+                <div style="{{ loop.first ? '' : 'display:none;' }}"
+                     class="{{ slide.style == 'light' ? 'invert' }}">
+                    {% include 'partials/responsive-image.php.twig' with {'image': slide.image.url,'portrait': slide.image_responsive.url,'alt': slide.image.alt} only %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    <div class="static_background">
+        <img src="{{ options.bg_default_header.url }}">
+    </div>
+{% endif %}

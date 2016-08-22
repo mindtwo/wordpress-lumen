@@ -1,15 +1,18 @@
-<div class="post" role="article" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
-    <h1 class="post-headline" itemprop="headline">{{post.post_title}}</h1>
-    <div class="well well-sm">
-        <time itemprop="datePublished" content="{{function('get_the_date', 'Y-m-d')}}" class="timeBanner">
-            <i class="fa fa-calendar"></i> <time datetime="{{function('get_the_date', 'Y-m-d')}}">{{function('get_the_date', 'j. F Y')}}</time>
-        </time>
-        {{function('the_tags', '<span class="fa fa-tag"></span>', ', ', '')}}
+<div class="{{post.class}} mb_large mt_large row" role="article" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="c_center col-md-8 col-lg-offset-2">
+        <time itemprop="datePublished" content="{{ post.post_date }}" datetime="{{ post.post_date }}">{{ post.display_date }}</time>
+        {% if not has_h1 %}
+            <h1>{{post.title}}</h1>
+        {% endif %}
     </div>
-    {{function('the_tags', '<span class="fa fa-tag"></span>', ', ', '')}}
 
-    {{function('the_post_thumbnail', 'news-teaser-single')}}
-    <div class="post-content">
-        {{function('get_the_content')}}
+    {% if thumbnail %}
+        <div class="post-content col-md-10 col-lg-offset-1 mb_default mt_default">
+            {{ thumbnail }}
+        </div>
+    {% endif %}
+
+    <div class="post-content col-md-8 col-lg-offset-2">
+        {{post.content}}
     </div>
 </div>

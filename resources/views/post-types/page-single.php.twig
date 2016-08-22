@@ -2,19 +2,24 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <aside class="col-md-4 pb_medium pt_medium">
-                {{sidebar}}
-            </aside>
-            <div class="col-md-8 pb_medium pt_medium">
+            <div class="col-md-8 col-md-push-4 pb_medium pt_medium {{post.class}}">
                 <div class="content_box">
-                    <h1>{{post.title}}</h1>
-                    {{ function('do_shortcode', '[hr]') }}
-                    <img src="{{post.thumbnail.src}}" />
+                    {% if not has_h1 %}
+                        <h1>{{post.title}}</h1>
+                    {% endif %}
+
+                    {% if post.thumbnail %}
+                        <img src="{{post.thumbnail.src}}" alt="{{post.thumbnail.alt}}" />
+                    {% endif %}
+
                     <div class="body">
                         {{post.content}}
                     </div>
                 </div>
             </div>
+            <aside class="col-md-4 col-md-pull-8 pb_medium pt_medium sidebar">
+                {{sidebar}}
+            </aside>
         </div>
     </div>
 {% endblock %}

@@ -34,7 +34,17 @@ return [
 
 	'testimonial-type' => array(
 		'label' => 'Testimonial Type',
-	)
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Slider
+	|--------------------------------------------------------------------------
+	*/
+	'slider' => array(
+		'headline' => 'What our customers say about us:',
+	),
 
 ];
 
