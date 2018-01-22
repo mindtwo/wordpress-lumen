@@ -2,13 +2,16 @@
   "private": true,
   "devDependencies": {
     "gulp": "3.x",
-    "laravel-elixir": "4.x"
+    "laravel-elixir": "4.x",
+    "elixir-rsync": "^1.2.1"
   },
   "dependencies": {
+    "bootstrap-carousel-swipe": "0.x",
     "bootstrap-sass": "3.x",
     "fancybox": "3.x",
     "font-awesome": "4.x",
-    "jquery": "2.x",
+    "jquery": "3.x",
+    "jquery-match-height": "^0.7.0",
     "jquery-ui": "^1.10.5",
     "jquery.easing": "1.x",
     "jquery.localscroll": "1.x",
